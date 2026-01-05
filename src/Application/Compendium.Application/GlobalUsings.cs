@@ -1,0 +1,9 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using Compendium.Abstractions.CQRS.Commands;
+global using Compendium.Abstractions.CQRS.Handlers;
+global using Compendium.Abstractions.CQRS.Queries;
+global using Compendium.Core.Results;

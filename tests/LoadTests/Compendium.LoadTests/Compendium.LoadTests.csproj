@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NBomber" />
+    <PackageReference Include="NBomber.Http" />
+    <PackageReference Include="Testcontainers.PostgreSql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../../../src/Framework/Abstractions/Compendium.Abstractions/Compendium.Abstractions.csproj" />
+    <ProjectReference Include="../../../../src/Framework/Core/Compendium.Core/Compendium.Core.csproj" />
+    <ProjectReference Include="../../../../src/Framework/Infrastructure/Compendium.Infrastructure/Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="../../../../src/Framework/Adapters/Compendium.Adapters.PostgreSQL/Compendium.Adapters.PostgreSQL.csproj" />
+  </ItemGroup>
+
+</Project>

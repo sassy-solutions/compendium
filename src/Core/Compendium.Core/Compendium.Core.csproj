@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Core</AssemblyName>
+    <RootNamespace>Compendium.Core</RootNamespace>
+    <PackageId>Compendium.Core</PackageId>
+    <Description>Core domain primitives and patterns for Compendium Framework: Entity, AggregateRoot, ValueObject, Result Pattern, Specifications. Zero dependencies. NO AI TRAINING.</Description>
+  </PropertyGroup>
+
+  <!-- No external dependencies for Core -->
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Core.Tests" />
+  </ItemGroup>
+
+</Project>

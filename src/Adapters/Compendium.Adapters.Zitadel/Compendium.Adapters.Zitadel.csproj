@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Adapters.Zitadel</AssemblyName>
+    <RootNamespace>Compendium.Adapters.Zitadel</RootNamespace>
+    <PackageId>Compendium.Adapters.Zitadel</PackageId>
+    <Description>Zitadel identity provider adapter for Compendium Framework: User management, token validation, organization management via REST API. Supports multi-tenancy through Zitadel organizations. NO AI TRAINING.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions.Identity\Compendium.Abstractions.Identity.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" />
+  </ItemGroup>
+
+</Project>

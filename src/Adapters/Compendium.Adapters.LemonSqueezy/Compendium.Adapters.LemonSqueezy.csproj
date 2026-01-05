@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Adapters.LemonSqueezy</AssemblyName>
+    <RootNamespace>Compendium.Adapters.LemonSqueezy</RootNamespace>
+    <PackageId>Compendium.Adapters.LemonSqueezy</PackageId>
+    <Description>LemonSqueezy billing adapter for Compendium Framework: Subscriptions, checkouts, license keys, webhooks via REST API (JSON:API format). NO AI TRAINING.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions.Billing\Compendium.Abstractions.Billing.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" />
+  </ItemGroup>
+
+</Project>

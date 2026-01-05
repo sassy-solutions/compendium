@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Testing</AssemblyName>
+    <RootNamespace>Compendium.Testing</RootNamespace>
+    <PackageId>Compendium.Testing</PackageId>
+    <Description>Testing utilities for Compendium Framework: TestContainers integration (PostgreSQL/Redis), test data builders (AutoFixture/Bogus), aggregate testing helpers for Event Sourcing. NO AI TRAINING.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Application\Compendium.Application\Compendium.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.abstractions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Testcontainers" />
+    <PackageReference Include="Bogus" />
+    <PackageReference Include="AutoFixture" />
+    
+    <!-- Security overrides -->
+    <PackageReference Include="System.Net.Http" />
+    <PackageReference Include="System.Text.RegularExpressions" />
+  </ItemGroup>
+
+</Project>

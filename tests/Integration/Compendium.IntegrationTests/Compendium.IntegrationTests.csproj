@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Compendium.IntegrationTests</AssemblyName>
+    <RootNamespace>Compendium.IntegrationTests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Framework\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Application\Compendium.Application\Compendium.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Testing\Compendium.Testing\Compendium.Testing.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Adapters\Compendium.Adapters.PostgreSQL\Compendium.Adapters.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Adapters\Compendium.Adapters.Redis\Compendium.Adapters.Redis.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="NSubstitute" />
+    <PackageReference Include="Testcontainers" />
+    <PackageReference Include="Testcontainers.PostgreSql" />
+    <PackageReference Include="Testcontainers.Redis" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+
+    <!-- OpenTelemetry for telemetry integration tests -->
+    <PackageReference Include="OpenTelemetry" />
+    <PackageReference Include="OpenTelemetry.Exporter.InMemory" />
+
+    <!-- Security overrides -->
+    <PackageReference Include="System.Net.Http" />
+    <PackageReference Include="System.Text.RegularExpressions" />
+  </ItemGroup>
+
+</Project>

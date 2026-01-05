@@ -1,0 +1,75 @@
+// -----------------------------------------------------------------------
+// <copyright file="ProjectionOptions.cs" company="Compendium">
+//     Copyright (c) 2025 Sassy Solutions. All rights reserved.
+//     Licensed under the MIT License with Attribution.
+//     NO AI TRAINING: This code may NOT be used for training AI/ML models.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// -----------------------------------------------------------------------
+
+namespace Compendium.Infrastructure.Projections;
+
+/// <summary>
+/// Configuration options for projection management and processing.
+/// </summary>
+public class ProjectionOptions
+{
+    /// <summary>
+    /// Configuration section name for appsettings.json.
+    /// </summary>
+    public const string SectionName = "Compendium:Projections";
+
+    /// <summary>
+    /// Gets or sets the batch size for processing events during rebuilds.
+    /// Default is 1000 events per batch.
+    /// </summary>
+    public int RebuildBatchSize { get; set; } = 1000;
+
+    /// <summary>
+    /// Gets or sets the maximum number of concurrent rebuild operations.
+    /// Default is 3 to prevent resource exhaustion.
+    /// </summary>
+    public int MaxConcurrentRebuilds { get; set; } = 3;
+
+    /// <summary>
+    /// Gets or sets the interval for progress reporting during rebuilds.
+    /// Progress will be reported every N processed events. Default is 100.
+    /// </summary>
+    public int ProgressReportInterval { get; set; } = 100;
+
+    /// <summary>
+    /// Gets or sets the interval for saving checkpoints during processing.
+    /// Default is 10 seconds.
+    /// </summary>
+    public TimeSpan CheckpointInterval { get; set; } = TimeSpan.FromSeconds(10);
+
+    /// <summary>
+    /// Gets or sets whether to enable snapshot functionality.
+    /// Default is true for better rebuild performance.
+    /// </summary>
+    public bool EnableSnapshots { get; set; } = true;
+
+    /// <summary>
+    /// Gets or sets the interval for creating snapshots.
+    /// Default is 5 minutes.
+    /// </summary>
+    public TimeSpan SnapshotInterval { get; set; } = TimeSpan.FromMinutes(5);
+
+    /// <summary>
+    /// Gets or sets the timeout for projection operations.
+    /// Default is 30 seconds.
+    /// </summary>
+    public TimeSpan OperationTimeout { get; set; } = TimeSpan.FromSeconds(30);
+
+    /// <summary>
+    /// Gets or sets the retry count for failed operations.
+    /// Default is 3 retries.
+    /// </summary>
+    public int RetryCount { get; set; } = 3;
+
+    /// <summary>
+    /// Gets or sets the delay between retries.
+    /// Default is 1 second.
+    /// </summary>
+    public TimeSpan RetryDelay { get; set; } = TimeSpan.FromSeconds(1);
+}

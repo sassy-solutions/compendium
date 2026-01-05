@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Abstractions.Billing</AssemblyName>
+    <RootNamespace>Compendium.Abstractions.Billing</RootNamespace>
+    <PackageId>Compendium.Abstractions.Billing</PackageId>
+    <Description>Billing abstractions for Compendium Framework: IBillingService, ISubscriptionService, ILicenseService, IPaymentWebhookHandler. Provider-agnostic interfaces for checkout, subscriptions, licensing, and webhook processing. NO AI TRAINING.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Abstractions.Billing.Tests" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Infrastructure.Tests</AssemblyName>
+    <RootNamespace>Compendium.Infrastructure.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="NSubstitute" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="coverlet.collector" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Framework\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Framework\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
+  </ItemGroup>
+
+</Project>

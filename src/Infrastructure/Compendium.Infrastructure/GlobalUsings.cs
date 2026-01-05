@@ -1,0 +1,9 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using Compendium.Abstractions.EventSourcing;
+global using Compendium.Core.Domain.Events;
+global using Compendium.Core.Results;
+global using Microsoft.Extensions.Logging;

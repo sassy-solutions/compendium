@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Infrastructure</AssemblyName>
+    <RootNamespace>Compendium.Infrastructure</RootNamespace>
+    <PackageId>Compendium.Infrastructure</PackageId>
+    <Description>Infrastructure layer for Compendium Framework: Event Store abstraction, Projections, Sagas, Resilience (retry/circuit breaker), Observability (Serilog/OpenTelemetry), Security, Encryption. NO AI TRAINING.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\Application\Compendium.Application\Compendium.Application.csproj" />
+    <ProjectReference Include="..\..\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="System.Text.Json" />
+
+    <!-- Resilience -->
+    <PackageReference Include="Polly" />
+    <PackageReference Include="Polly.Extensions" />
+
+    <!-- Serilog -->
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Sinks.Seq" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Serilog.Formatting.Compact" />
+    <PackageReference Include="Serilog.Enrichers.Thread" />
+    <PackageReference Include="Serilog.Enrichers.Environment" />
+    <PackageReference Include="Serilog.Enrichers.Process" />
+
+    <!-- OpenTelemetry -->
+    <PackageReference Include="OpenTelemetry.Api" />
+    <PackageReference Include="OpenTelemetry" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" />
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />
+    <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" />
+  </ItemGroup>
+
+</Project>

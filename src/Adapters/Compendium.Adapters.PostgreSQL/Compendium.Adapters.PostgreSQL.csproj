@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Adapters.PostgreSQL</AssemblyName>
+    <RootNamespace>Compendium.Adapters.PostgreSQL</RootNamespace>
+    <PackageId>Compendium.Adapters.PostgreSQL</PackageId>
+    <Description>PostgreSQL Event Store adapter for Compendium Framework: JSONB event storage, optimistic concurrency, multi-tenancy support, schema auto-creation. Production-ready Event Sourcing with PostgreSQL. NO AI TRAINING.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="Npgsql" />
+  </ItemGroup>
+
+</Project>
