@@ -1,0 +1,11 @@
+global using Xunit;
+global using FluentAssertions;
+global using NSubstitute;
+global using Moq;
+global using Compendium.Abstractions.AI;
+global using Compendium.Abstractions.AI.Models;
+global using Compendium.Adapters.OpenRouter.Configuration;
+global using Compendium.Adapters.OpenRouter.Services;
+global using Compendium.Core.Results;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Options;
