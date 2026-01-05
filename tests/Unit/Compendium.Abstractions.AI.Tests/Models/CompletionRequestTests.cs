@@ -1,3 +1,6 @@
+using Compendium.Abstractions.AI.Models;
+using FluentAssertions;
+
 namespace Compendium.Abstractions.AI.Tests.Models;
 
 public class CompletionRequestTests

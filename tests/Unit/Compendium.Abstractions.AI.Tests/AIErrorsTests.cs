@@ -1,3 +1,6 @@
+using Compendium.Core.Results;
+using FluentAssertions;
+
 namespace Compendium.Abstractions.AI.Tests;
 
 public class AIErrorsTests

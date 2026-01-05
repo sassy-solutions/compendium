@@ -17,7 +17,7 @@ namespace Compendium.Adapters.OpenRouter.Http;
 /// <summary>
 /// HTTP client for communicating with the OpenRouter API.
 /// </summary>
-public sealed class OpenRouterHttpClient
+internal sealed class OpenRouterHttpClient
 {
     private readonly HttpClient _httpClient;
     private readonly OpenRouterOptions _options;

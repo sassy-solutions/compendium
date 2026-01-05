@@ -1,3 +1,6 @@
+using Compendium.Adapters.OpenRouter.Configuration;
+using FluentAssertions;
+
 namespace Compendium.Adapters.OpenRouter.Tests.Configuration;
 
 public class OpenRouterOptionsTests
