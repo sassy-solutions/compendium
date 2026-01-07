@@ -1,3 +1,4 @@
+using Compendium.Core.Results;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using NSubstitute;

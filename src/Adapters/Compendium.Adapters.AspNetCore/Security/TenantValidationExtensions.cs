@@ -8,6 +8,7 @@
 // -----------------------------------------------------------------------
 
 using Compendium.Multitenancy;
+using Compendium.Multitenancy.Stores;
 using Microsoft.AspNetCore.Builder;
 
 namespace Compendium.Adapters.AspNetCore.Security;

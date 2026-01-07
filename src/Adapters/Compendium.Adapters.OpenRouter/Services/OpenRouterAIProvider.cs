@@ -17,7 +17,7 @@ namespace Compendium.Adapters.OpenRouter.Services;
 /// OpenRouter implementation of <see cref="IAIProvider"/>.
 /// Provides access to 100+ LLM models through a unified API.
 /// </summary>
-public sealed class OpenRouterAIProvider : IAIProvider
+internal sealed class OpenRouterAIProvider : IAIProvider
 {
     private readonly OpenRouterHttpClient _httpClient;
     private readonly OpenRouterOptions _options;
