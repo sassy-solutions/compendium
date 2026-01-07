@@ -56,10 +56,10 @@ public sealed class TenantContext : ITenantContext
     public bool HasTenant => _currentTenant.Value is not null;
 
     /// <summary>
-    /// Sets the current tenant information. This method is internal to control tenant changes.
+    /// Sets the current tenant information.
     /// </summary>
     /// <param name="tenant">The tenant information to set.</param>
-    internal void SetTenant(TenantInfo? tenant)
+    public void SetTenant(TenantInfo? tenant)
     {
         _currentTenant.Value = tenant;
     }
