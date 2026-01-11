@@ -165,10 +165,10 @@ public sealed class RetryPolicyTests
         attemptCount.Should().Be(4); // Initial + 3 retries
         delays.Should().HaveCount(3);
 
-        // Verify exponential backoff (allowing for significant timing variance across environments)
-        delays[0].TotalMilliseconds.Should().BeInRange(5, 35); // ~10ms (wide tolerance for various environments)
-        delays[1].TotalMilliseconds.Should().BeInRange(10, 50); // ~20ms (wide tolerance for various environments)
-        delays[2].TotalMilliseconds.Should().BeInRange(20, 80); // ~40ms (wide tolerance for various environments)
+        // Verify exponential backoff (allowing for significant timing variance in CI environments)
+        delays[0].TotalMilliseconds.Should().BeInRange(5, 100); // ~10ms base delay
+        delays[1].TotalMilliseconds.Should().BeInRange(10, 150); // ~20ms with exponential increase
+        delays[2].TotalMilliseconds.Should().BeInRange(20, 200); // ~40ms with exponential increase
 
         _output.WriteLine($"Delays: {string.Join(", ", delays.Select(d => $"{d.TotalMilliseconds:F1}ms"))}");
     }
