@@ -7,6 +7,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Text.Json.Serialization;
+
 namespace Compendium.Core.Domain.Events;
 
 /// <summary>
@@ -15,7 +17,7 @@ namespace Compendium.Core.Domain.Events;
 public abstract class DomainEventBase : IDomainEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="DomainEventBase"/> class.
+    /// Initializes a new instance of the <see cref="DomainEventBase"/> class for creating new events.
     /// </summary>
     /// <param name="aggregateId">The identifier of the aggregate that raised the event.</param>
     /// <param name="aggregateType">The type name of the aggregate that raised the event.</param>
@@ -34,6 +36,27 @@ public abstract class DomainEventBase : IDomainEvent
         AggregateVersion = aggregateVersion;
         EventVersion = eventVersion;
         OccurredOn = DateTimeOffset.UtcNow;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DomainEventBase"/> class for deserialization.
+    /// This constructor restores all properties from serialized data.
+    /// </summary>
+    [JsonConstructor]
+    protected DomainEventBase(
+        Guid EventId,
+        string AggregateId,
+        string AggregateType,
+        DateTimeOffset OccurredOn,
+        long AggregateVersion,
+        int EventVersion)
+    {
+        this.EventId = EventId;
+        this.AggregateId = AggregateId;
+        this.AggregateType = AggregateType;
+        this.OccurredOn = OccurredOn;
+        this.AggregateVersion = AggregateVersion;
+        this.EventVersion = EventVersion;
     }
 
     /// <inheritdoc />
