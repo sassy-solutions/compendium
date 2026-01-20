@@ -48,6 +48,7 @@ public sealed class SecureEventDeserializer : IEventDeserializer
         _jsonOptions = jsonOptions ?? new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            PropertyNameCaseInsensitive = true,
             WriteIndented = false
         };
     }
