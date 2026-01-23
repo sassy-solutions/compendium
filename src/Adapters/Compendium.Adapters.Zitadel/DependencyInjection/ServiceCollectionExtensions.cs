@@ -9,9 +9,11 @@
 
 using Compendium.Adapters.Zitadel.Authentication;
 using Compendium.Adapters.Zitadel.Configuration;
+using Compendium.Adapters.Zitadel.Health;
 using Compendium.Adapters.Zitadel.Http;
 using Compendium.Adapters.Zitadel.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Polly;
 using Polly.Extensions.Http;
 
@@ -117,5 +119,47 @@ public static class ServiceCollectionExtensions
         return HttpPolicyExtensions
             .HandleTransientHttpError()
             .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
+    }
+
+    /// <summary>
+    /// Adds the Zitadel health check to the health checks builder.
+    /// </summary>
+    /// <param name="builder">The health checks builder.</param>
+    /// <param name="name">The health check name (default: "zitadel").</param>
+    /// <param name="failureStatus">
+    /// The health status to report when the check fails (default: Unhealthy).
+    /// </param>
+    /// <param name="tags">Tags to apply to the health check.</param>
+    /// <param name="timeout">Timeout for the health check.</param>
+    /// <returns>The health checks builder for chaining.</returns>
+    public static IHealthChecksBuilder AddZitadelHealthCheck(
+        this IHealthChecksBuilder builder,
+        string name = "zitadel",
+        HealthStatus? failureStatus = null,
+        IEnumerable<string>? tags = null,
+        TimeSpan? timeout = null)
+    {
+        ArgumentNullException.ThrowIfNull(builder);
+
+        builder.Services.AddHttpClient<ZitadelHealthCheck>()
+            .ConfigurePrimaryHttpMessageHandler(sp =>
+            {
+                var options = sp.GetRequiredService<IOptions<ZitadelOptions>>().Value;
+                var handler = new HttpClientHandler();
+
+                if (options.SkipSslValidation)
+                {
+                    handler.ServerCertificateCustomValidationCallback =
+                        HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+                }
+
+                return handler;
+            });
+
+        return builder.AddCheck<ZitadelHealthCheck>(
+            name,
+            failureStatus,
+            tags ?? new[] { "ready", "identity" },
+            timeout);
     }
 }
