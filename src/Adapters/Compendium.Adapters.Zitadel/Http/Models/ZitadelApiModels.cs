@@ -478,6 +478,87 @@ internal sealed record ZitadelTokenResponse
 }
 
 /// <summary>
+/// Represents a Zitadel project.
+/// </summary>
+internal sealed record ZitadelProject
+{
+    [JsonPropertyName("id")]
+    public string? Id { get; init; }
+
+    [JsonPropertyName("name")]
+    public string? Name { get; init; }
+
+    [JsonPropertyName("state")]
+    public string? State { get; init; }
+
+    [JsonPropertyName("details")]
+    public ZitadelResourceDetails? Details { get; init; }
+}
+
+/// <summary>
+/// Represents a request to create a project.
+/// </summary>
+internal sealed record ZitadelCreateProjectRequest
+{
+    [JsonPropertyName("name")]
+    public required string Name { get; init; }
+
+    [JsonPropertyName("projectRoleAssertion")]
+    public bool ProjectRoleAssertion { get; init; }
+
+    [JsonPropertyName("projectRoleCheck")]
+    public bool ProjectRoleCheck { get; init; }
+
+    [JsonPropertyName("hasProjectCheck")]
+    public bool HasProjectCheck { get; init; }
+}
+
+/// <summary>
+/// Represents a request to create an OIDC application.
+/// </summary>
+internal sealed record ZitadelCreateOidcAppRequest
+{
+    [JsonPropertyName("name")]
+    public required string Name { get; init; }
+
+    [JsonPropertyName("redirectUris")]
+    public required List<string> RedirectUris { get; init; }
+
+    [JsonPropertyName("postLogoutRedirectUris")]
+    public required List<string> PostLogoutRedirectUris { get; init; }
+
+    [JsonPropertyName("responseTypes")]
+    public required List<string> ResponseTypes { get; init; }
+
+    [JsonPropertyName("grantTypes")]
+    public required List<string> GrantTypes { get; init; }
+
+    [JsonPropertyName("appType")]
+    public required string AppType { get; init; }
+
+    [JsonPropertyName("authMethodType")]
+    public required string AuthMethodType { get; init; }
+}
+
+/// <summary>
+/// Represents the response from creating an OIDC application.
+/// </summary>
+internal sealed record ZitadelOidcApp
+{
+    [JsonPropertyName("appId")]
+    public string? AppId { get; init; }
+
+    [JsonPropertyName("details")]
+    public ZitadelResourceDetails? Details { get; init; }
+
+    [JsonPropertyName("clientId")]
+    public string? ClientId { get; init; }
+
+    [JsonPropertyName("clientSecret")]
+    public string? ClientSecret { get; init; }
+}
+
+/// <summary>
 /// Represents an error response from Zitadel.
 /// </summary>
 internal sealed record ZitadelErrorResponse

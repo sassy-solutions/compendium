@@ -310,6 +310,38 @@ internal sealed class ZitadelHttpClient : IDisposable
         return result.IsSuccess ? Result.Success() : Result.Failure(result.Error);
     }
 
+    /// <summary>
+    /// Creates a project within an organization.
+    /// </summary>
+    public async Task<Result<ZitadelProject>> CreateProjectAsync(
+        ZitadelCreateProjectRequest request,
+        string organizationId,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(organizationId);
+        var url = "management/v1/projects";
+
+        return await PostAsync<ZitadelProject>(url, request, organizationId, cancellationToken);
+    }
+
+    /// <summary>
+    /// Creates an OIDC application within a project.
+    /// </summary>
+    public async Task<Result<ZitadelOidcApp>> CreateOidcApplicationAsync(
+        string projectId,
+        ZitadelCreateOidcAppRequest request,
+        string organizationId,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(projectId);
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(organizationId);
+        var url = $"management/v1/projects/{projectId}/apps/oidc";
+
+        return await PostAsync<ZitadelOidcApp>(url, request, organizationId, cancellationToken);
+    }
+
     private async Task<Result<T>> GetAsync<T>(
         string url,
         string? organizationId,
