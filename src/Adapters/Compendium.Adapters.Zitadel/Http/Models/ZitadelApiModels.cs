@@ -538,6 +538,18 @@ internal sealed record ZitadelCreateOidcAppRequest
 
     [JsonPropertyName("authMethodType")]
     public required string AuthMethodType { get; init; }
+
+    [JsonPropertyName("accessTokenType")]
+    public string? AccessTokenType { get; init; }
+
+    [JsonPropertyName("accessTokenRoleAssertion")]
+    public bool? AccessTokenRoleAssertion { get; init; }
+
+    [JsonPropertyName("idTokenRoleAssertion")]
+    public bool? IdTokenRoleAssertion { get; init; }
+
+    [JsonPropertyName("idTokenUserinfoAssertion")]
+    public bool? IdTokenUserinfoAssertion { get; init; }
 }
 
 /// <summary>
@@ -556,6 +568,42 @@ internal sealed record ZitadelOidcApp
 
     [JsonPropertyName("clientSecret")]
     public string? ClientSecret { get; init; }
+}
+
+/// <summary>
+/// Represents a request to update an OIDC application's settings.
+/// </summary>
+internal sealed record ZitadelUpdateOidcAppRequest
+{
+    [JsonPropertyName("redirectUris")]
+    public List<string>? RedirectUris { get; init; }
+
+    [JsonPropertyName("postLogoutRedirectUris")]
+    public List<string>? PostLogoutRedirectUris { get; init; }
+
+    [JsonPropertyName("responseTypes")]
+    public List<string>? ResponseTypes { get; init; }
+
+    [JsonPropertyName("grantTypes")]
+    public List<string>? GrantTypes { get; init; }
+
+    [JsonPropertyName("appType")]
+    public string? AppType { get; init; }
+
+    [JsonPropertyName("authMethodType")]
+    public string? AuthMethodType { get; init; }
+
+    [JsonPropertyName("accessTokenType")]
+    public string? AccessTokenType { get; init; }
+
+    [JsonPropertyName("accessTokenRoleAssertion")]
+    public bool? AccessTokenRoleAssertion { get; init; }
+
+    [JsonPropertyName("idTokenRoleAssertion")]
+    public bool? IdTokenRoleAssertion { get; init; }
+
+    [JsonPropertyName("idTokenUserinfoAssertion")]
+    public bool? IdTokenUserinfoAssertion { get; init; }
 }
 
 /// <summary>

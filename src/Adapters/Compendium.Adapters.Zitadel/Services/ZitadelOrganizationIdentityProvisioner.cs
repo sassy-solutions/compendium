@@ -107,7 +107,11 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
                 ResponseTypes = ["OIDC_RESPONSE_TYPE_CODE"],
                 GrantTypes = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"],
                 AppType = "OIDC_APP_TYPE_WEB",
-                AuthMethodType = "OIDC_AUTH_METHOD_TYPE_BASIC"
+                AuthMethodType = "OIDC_AUTH_METHOD_TYPE_BASIC",
+                AccessTokenType = "OIDC_TOKEN_TYPE_JWT",
+                AccessTokenRoleAssertion = true,
+                IdTokenRoleAssertion = true,
+                IdTokenUserinfoAssertion = true
             },
             zitadelOrgId,
             cancellationToken);

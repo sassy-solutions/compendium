@@ -342,6 +342,25 @@ internal sealed class ZitadelHttpClient : IDisposable
         return await PostAsync<ZitadelOidcApp>(url, request, organizationId, cancellationToken);
     }
 
+    /// <summary>
+    /// Updates an OIDC application's settings.
+    /// </summary>
+    public async Task<Result> UpdateOidcApplicationAsync(
+        string projectId,
+        string appId,
+        ZitadelUpdateOidcAppRequest request,
+        string? organizationId = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(projectId);
+        ArgumentNullException.ThrowIfNull(appId);
+        ArgumentNullException.ThrowIfNull(request);
+        var url = $"management/v1/projects/{projectId}/apps/{appId}/oidc";
+
+        var result = await PutAsync<object>(url, request, organizationId, cancellationToken);
+        return result.IsSuccess ? Result.Success() : Result.Failure(result.Error);
+    }
+
     private async Task<Result<T>> GetAsync<T>(
         string url,
         string? organizationId,
