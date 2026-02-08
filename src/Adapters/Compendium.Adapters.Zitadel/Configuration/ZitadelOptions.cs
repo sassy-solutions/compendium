@@ -66,6 +66,13 @@ public sealed class ZitadelOptions
     public int MaxRetries { get; set; } = 3;
 
     /// <summary>
+    /// Gets or sets the internal (cluster-local) base URL for API calls.
+    /// When set, HTTP requests use this URL instead of Authority to avoid hairpin NAT issues.
+    /// The Host header is set to the Authority hostname for correct routing.
+    /// </summary>
+    public string? InternalBaseUrl { get; set; }
+
+    /// <summary>
     /// Gets or sets whether to skip SSL certificate validation. Only for development.
     /// </summary>
     public bool SkipSslValidation { get; set; }

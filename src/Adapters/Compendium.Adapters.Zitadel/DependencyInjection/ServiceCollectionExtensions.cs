@@ -67,6 +67,7 @@ public static class ServiceCollectionExtensions
             opt.DefaultOrganizationId = options.DefaultOrganizationId;
             opt.TimeoutSeconds = options.TimeoutSeconds;
             opt.MaxRetries = options.MaxRetries;
+            opt.InternalBaseUrl = options.InternalBaseUrl;
             opt.SkipSslValidation = options.SkipSslValidation;
         });
 

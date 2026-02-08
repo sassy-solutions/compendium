@@ -47,8 +47,19 @@ internal sealed class ZitadelHttpClient : IDisposable
         _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-        _httpClient.BaseAddress = new Uri(_options.Authority.TrimEnd('/') + "/");
+        // Use internal URL if configured (hairpin NAT workaround for in-cluster communication)
+        var baseUrl = !string.IsNullOrEmpty(_options.InternalBaseUrl)
+            ? _options.InternalBaseUrl
+            : _options.Authority;
+        _httpClient.BaseAddress = new Uri(baseUrl.TrimEnd('/') + "/");
         _httpClient.Timeout = TimeSpan.FromSeconds(_options.TimeoutSeconds);
+
+        if (!string.IsNullOrEmpty(_options.InternalBaseUrl))
+        {
+            // Set Host header to the external authority for correct routing
+            var authorityHost = new Uri(_options.Authority).Host;
+            _httpClient.DefaultRequestHeaders.Host = authorityHost;
+        }
     }
 
     /// <summary>
