@@ -155,10 +155,10 @@ internal sealed record ZitadelCreateUserRequest
 /// </summary>
 internal sealed record ZitadelCreateProfile
 {
-    [JsonPropertyName("firstName")]
+    [JsonPropertyName("givenName")]
     public required string FirstName { get; init; }
 
-    [JsonPropertyName("lastName")]
+    [JsonPropertyName("familyName")]
     public required string LastName { get; init; }
 
     [JsonPropertyName("nickName")]
