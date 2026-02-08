@@ -40,6 +40,12 @@ public sealed class ZitadelOptions
     public string? ClientSecret { get; set; }
 
     /// <summary>
+    /// Gets or sets the Personal Access Token for machine-to-machine authentication.
+    /// When set, used directly as Bearer token instead of client_credentials flow.
+    /// </summary>
+    public string? PersonalAccessToken { get; set; }
+
+    /// <summary>
     /// Gets or sets the project ID (required for some operations).
     /// </summary>
     public string? ProjectId { get; set; }

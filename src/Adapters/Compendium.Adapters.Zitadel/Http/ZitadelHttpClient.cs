@@ -543,6 +543,12 @@ internal sealed class ZitadelHttpClient : IDisposable
 
     private async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken)
     {
+        // PAT configured → use directly (no token exchange needed)
+        if (!string.IsNullOrEmpty(_options.PersonalAccessToken))
+        {
+            return _options.PersonalAccessToken;
+        }
+
         if (_accessToken is not null && DateTimeOffset.UtcNow < _tokenExpiry)
         {
             return _accessToken;
