@@ -244,7 +244,7 @@ internal sealed class ZitadelHttpClient : IDisposable
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(organizationId);
-        var url = $"management/v1/orgs/{organizationId}";
+        var url = "management/v1/orgs/me";
         return await GetAsync<ZitadelOrganization>(url, organizationId, cancellationToken);
     }
 
@@ -257,7 +257,7 @@ internal sealed class ZitadelHttpClient : IDisposable
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(organizationId);
-        var url = $"management/v1/orgs/{organizationId}/members";
+        var url = "management/v1/orgs/me/members";
 
         var result = await PostAsync<object>(url, request, organizationId, cancellationToken);
         return result.IsSuccess ? Result.Success() : Result.Failure(result.Error);
@@ -273,7 +273,7 @@ internal sealed class ZitadelHttpClient : IDisposable
     {
         ArgumentNullException.ThrowIfNull(organizationId);
         ArgumentNullException.ThrowIfNull(userId);
-        var url = $"management/v1/orgs/{organizationId}/members/{userId}";
+        var url = $"management/v1/orgs/me/members/{userId}";
 
         return await DeleteAsync(url, organizationId, cancellationToken);
     }
@@ -289,7 +289,7 @@ internal sealed class ZitadelHttpClient : IDisposable
     {
         ArgumentNullException.ThrowIfNull(organizationId);
         ArgumentNullException.ThrowIfNull(userId);
-        var url = $"management/v1/orgs/{organizationId}/members/{userId}";
+        var url = $"management/v1/orgs/me/members/{userId}";
 
         var result = await PutAsync<object>(url, new { roles }, organizationId, cancellationToken);
         return result.IsSuccess ? Result.Success() : Result.Failure(result.Error);
@@ -303,7 +303,7 @@ internal sealed class ZitadelHttpClient : IDisposable
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(organizationId);
-        var url = $"management/v1/orgs/{organizationId}/members/_search";
+        var url = "management/v1/orgs/me/members/_search";
 
         return await PostAsync<ZitadelMemberListResponse>(url, new { }, organizationId, cancellationToken);
     }
@@ -316,7 +316,7 @@ internal sealed class ZitadelHttpClient : IDisposable
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(organizationId);
-        var url = $"management/v1/orgs/{organizationId}/_deactivate";
+        var url = "management/v1/orgs/me/_deactivate";
 
         var result = await PostAsync<object>(url, new { }, organizationId, cancellationToken);
         return result.IsSuccess ? Result.Success() : Result.Failure(result.Error);
