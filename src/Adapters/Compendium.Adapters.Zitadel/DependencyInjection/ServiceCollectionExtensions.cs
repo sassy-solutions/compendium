@@ -104,6 +104,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ITokenValidator, ZitadelTokenValidator>();
         services.AddScoped<IOrganizationService, ZitadelOrganizationService>();
         services.AddScoped<IOrganizationIdentityProvisioner, ZitadelOrganizationIdentityProvisioner>();
+        services.AddScoped<IProjectIdentityProvisioner, ZitadelProjectIdentityProvisioner>();
 
         return services;
     }
