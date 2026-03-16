@@ -373,6 +373,38 @@ internal sealed class ZitadelHttpClient : IDisposable
         return result.IsSuccess ? Result.Success() : Result.Failure(result.Error);
     }
 
+    /// <summary>
+    /// Deletes an application from a project.
+    /// </summary>
+    public async Task<Result> DeleteApplicationAsync(
+        string projectId,
+        string appId,
+        string? organizationId = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(projectId);
+        ArgumentNullException.ThrowIfNull(appId);
+        var url = $"management/v1/projects/{projectId}/apps/{appId}";
+
+        return await DeleteAsync(url, organizationId, cancellationToken);
+    }
+
+    /// <summary>
+    /// Regenerates the client secret for an OIDC application.
+    /// </summary>
+    public async Task<Result<ZitadelOidcApp>> RegenerateOidcClientSecretAsync(
+        string projectId,
+        string appId,
+        string? organizationId = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(projectId);
+        ArgumentNullException.ThrowIfNull(appId);
+        var url = $"management/v1/projects/{projectId}/apps/{appId}/oidc_config/_generate_client_secret";
+
+        return await PostAsync<ZitadelOidcApp>(url, new { }, organizationId, cancellationToken);
+    }
+
     private async Task<Result<T>> GetAsync<T>(
         string url,
         string? organizationId,

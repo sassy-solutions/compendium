@@ -116,6 +116,78 @@ internal sealed class ZitadelProjectIdentityProvisioner : IProjectIdentityProvis
             "Created OIDC app with clientId {ClientId} in project {ZitadelProjectId}",
             clientId, zitadelProjectId);
 
-        return Result.Success(new OidcAppResult(ClientId: clientId, ClientSecret: clientSecret));
+        var appId = oidcResult.Value.AppId;
+        return Result.Success(new OidcAppResult(ClientId: clientId, ClientSecret: clientSecret, ZitadelAppId: appId));
+    }
+
+    public async Task<Result> UpdateOidcAppAsync(
+        string zitadelProjectId,
+        string zitadelAppId,
+        string zitadelOrgId,
+        List<string> redirectUris,
+        List<string> postLogoutRedirectUris,
+        CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation(
+            "Updating OIDC app {ZitadelAppId} in project {ZitadelProjectId}",
+            zitadelAppId, zitadelProjectId);
+
+        return await _httpClient.UpdateOidcApplicationAsync(
+            zitadelProjectId,
+            zitadelAppId,
+            new ZitadelUpdateOidcAppRequest
+            {
+                RedirectUris = redirectUris,
+                PostLogoutRedirectUris = postLogoutRedirectUris,
+                ResponseTypes = ["OIDC_RESPONSE_TYPE_CODE"],
+                GrantTypes = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"],
+                AppType = "OIDC_APP_TYPE_WEB",
+                AuthMethodType = "OIDC_AUTH_METHOD_TYPE_BASIC",
+                AccessTokenType = "OIDC_TOKEN_TYPE_JWT",
+                AccessTokenRoleAssertion = true,
+                IdTokenRoleAssertion = true,
+                IdTokenUserinfoAssertion = true
+            },
+            zitadelOrgId,
+            cancellationToken);
+    }
+
+    public async Task<Result> DeleteOidcAppAsync(
+        string zitadelProjectId,
+        string zitadelAppId,
+        string zitadelOrgId,
+        CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation(
+            "Deleting OIDC app {ZitadelAppId} from project {ZitadelProjectId}",
+            zitadelAppId, zitadelProjectId);
+
+        return await _httpClient.DeleteApplicationAsync(
+            zitadelProjectId,
+            zitadelAppId,
+            zitadelOrgId,
+            cancellationToken);
+    }
+
+    public async Task<Result<OidcAppSecretResult>> RotateOidcAppSecretAsync(
+        string zitadelProjectId,
+        string zitadelAppId,
+        string zitadelOrgId,
+        CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation(
+            "Rotating secret for OIDC app {ZitadelAppId} in project {ZitadelProjectId}",
+            zitadelAppId, zitadelProjectId);
+
+        var result = await _httpClient.RegenerateOidcClientSecretAsync(
+            zitadelProjectId,
+            zitadelAppId,
+            zitadelOrgId,
+            cancellationToken);
+
+        if (result.IsFailure)
+            return result.Error;
+
+        return Result.Success(new OidcAppSecretResult(ClientSecret: result.Value.ClientSecret ?? string.Empty));
     }
 }
