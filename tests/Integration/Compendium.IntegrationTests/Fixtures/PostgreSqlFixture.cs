@@ -26,6 +26,8 @@ public sealed class PostgreSqlFixture : IAsyncLifetime
 
     public string ConnectionString { get; private set; } = string.Empty;
     public bool UsesTestContainer { get; private set; }
+    public bool IsAvailable { get; private set; }
+    public string? UnavailableReason { get; private set; }
 
     public async Task InitializeAsync()
     {
@@ -36,24 +38,35 @@ public sealed class PostgreSqlFixture : IAsyncLifetime
         {
             ConnectionString = externalConnectionString;
             UsesTestContainer = false;
+            IsAvailable = true;
             Console.WriteLine($"✅ PostgreSqlFixture: Using external PostgreSQL");
         }
         else
         {
             // Start TestContainer
             Console.WriteLine($"⚠️ PostgreSqlFixture: Starting TestContainer...");
-            _container = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_test")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
+            try
+            {
+                _container = new PostgreSqlBuilder()
+                    .WithImage("postgres:15-alpine")
+                    .WithDatabase("compendium_test")
+                    .WithUsername("test_user")
+                    .WithPassword("test_password")
+                    .WithCleanUp(true)
+                    .Build();
 
-            await _container.StartAsync();
-            ConnectionString = _container.GetConnectionString();
-            UsesTestContainer = true;
-            Console.WriteLine($"✅ PostgreSqlFixture: TestContainer started");
+                await _container.StartAsync();
+                ConnectionString = _container.GetConnectionString();
+                UsesTestContainer = true;
+                IsAvailable = true;
+                Console.WriteLine($"✅ PostgreSqlFixture: TestContainer started");
+            }
+            catch (Exception ex) when (ex is ArgumentException || ex.InnerException is ArgumentException)
+            {
+                IsAvailable = false;
+                UnavailableReason = "Docker is not running or misconfigured. Start Docker or set EVENTSTORE_CONNECTION_STRING.";
+                Console.WriteLine($"⚠️ PostgreSqlFixture: {UnavailableReason}");
+            }
         }
     }
 

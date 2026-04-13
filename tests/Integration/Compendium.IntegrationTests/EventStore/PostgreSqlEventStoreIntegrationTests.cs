@@ -20,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EventStore;
@@ -160,7 +161,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
         await connection.ExecuteAsync("DELETE FROM event_store_test");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task AppendEventsAsync_WithValidEvents_ShouldSucceed()
     {
         // Arrange
@@ -202,7 +203,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
         retrievedEventsResult.Value.Should().HaveCount(2);
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task AppendEventsAsync_WithConcurrentWrites_ShouldMaintainConsistency()
     {
         // Arrange
@@ -243,7 +244,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
             r.Error.Code.Should().Be("EventStore.ConcurrencyConflict"));
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task GetEventsAsync_WithFromVersion_ShouldReturnCorrectEvents()
     {
         // Arrange
@@ -268,7 +269,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
         result.Value.Should().HaveCount(3); // Events 3, 4, 5
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task GetEventsInRangeAsync_ShouldReturnEventsInRange()
     {
         // Arrange
@@ -293,7 +294,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
         result.Value.Should().HaveCount(5); // Events 3, 4, 5, 6, 7
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task GetVersionAsync_ShouldReturnCorrectVersion()
     {
         // Arrange
@@ -318,7 +319,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
         result.Value.Should().Be(3);
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ExistsAsync_ShouldReturnCorrectValue()
     {
         // Arrange
@@ -350,7 +351,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
         notExistsResult.Value.Should().BeFalse();
     }
 
-    [Fact(Skip = "Flaky: Performance varies significantly in CI environments. Requires investigation.")]
+    [RequiresDockerFact(Skip = "Flaky: Performance varies significantly in CI environments. Requires investigation.")]
     public async Task PerformanceTest_ShouldHandle1000EventsQuickly()
     {
         // Arrange
@@ -383,7 +384,7 @@ public sealed class PostgreSqlEventStoreIntegrationTests : IAsyncLifetime
         retrievedResult.Value.Should().HaveCount(1000);
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task GetStatisticsAsync_ShouldReturnAccurateStatistics()
     {
         // Arrange - Clean table first for accurate statistics

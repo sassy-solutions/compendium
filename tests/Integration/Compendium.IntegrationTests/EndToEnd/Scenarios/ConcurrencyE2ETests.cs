@@ -19,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -98,7 +99,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ConcurrentAppends_WithSameExpectedVersion_OnlyOneSucceeds()
     {
         // Arrange
@@ -158,7 +159,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ Final aggregate version = 2 (no lost updates)
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ConcurrentAppends_WithRetry_AllEventuallySucceed()
     {
         // Arrange
@@ -240,7 +241,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ No lost updates
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task HighConcurrency_50ParallelAppends_MaintainsConsistency()
     {
         // Arrange
@@ -316,7 +317,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ All events present in correct order
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task SequentialAppends_NoConflicts_AllSucceed()
     {
         // Arrange
@@ -354,7 +355,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ Final version = 11
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ConcurrentReads_WithConcurrentWrites_ReadsRemainConsistent()
     {
         // Arrange

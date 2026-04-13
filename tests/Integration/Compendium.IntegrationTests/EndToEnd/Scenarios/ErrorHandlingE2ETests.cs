@@ -18,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -91,7 +92,7 @@ public sealed class ErrorHandlingE2ETests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task InvalidAggregateCommand_ShouldReturnValidationError()
     {
         // Arrange
@@ -133,7 +134,7 @@ public sealed class ErrorHandlingE2ETests : IAsyncLifetime
         // ✅ Aggregate state unchanged
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task BusinessRuleViolation_ShouldReturnBusinessError()
     {
         // Arrange
@@ -189,7 +190,7 @@ public sealed class ErrorHandlingE2ETests : IAsyncLifetime
         // ✅ System maintains consistency
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task OptimisticConcurrencyViolation_ShouldReturnConflictError()
     {
         // Arrange
@@ -235,7 +236,7 @@ public sealed class ErrorHandlingE2ETests : IAsyncLifetime
         // ✅ Retry with correct version succeeds
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task NonExistentAggregate_ShouldReturnNotFoundError()
     {
         // Arrange

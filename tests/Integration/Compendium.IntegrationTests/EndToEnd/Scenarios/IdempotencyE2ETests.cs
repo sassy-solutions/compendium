@@ -22,6 +22,7 @@ using NSubstitute;
 using StackExchange.Redis;
 using Testcontainers.PostgreSql;
 using Testcontainers.Redis;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -145,7 +146,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task FirstExecution_WithIdempotencyKey_OperationExecutesAndResultStored()
     {
         // Arrange
@@ -184,7 +185,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Events appended to event store
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task DuplicateExecution_WithSameKey_ReturnsCachedResult()
     {
         // Arrange
@@ -224,7 +225,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ NO duplicate events appended
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task DifferentOperations_SameKey_ConflictDetected()
     {
         // Arrange
@@ -262,7 +263,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Different operation type detectable
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task SameOperation_DifferentKeys_BothExecuteSuccessfully()
     {
         // Arrange
@@ -310,7 +311,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Each has separate cached result
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task IdempotencyPattern_CompleteWorkflow_PreventsDuplicates()
     {
         // Arrange
@@ -365,7 +366,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Only one event stored
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task IdempotencyExpiration_After1Hour_AllowsReExecution()
     {
         // Arrange

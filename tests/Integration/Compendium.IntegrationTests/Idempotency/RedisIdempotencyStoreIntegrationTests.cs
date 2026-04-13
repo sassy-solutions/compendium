@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using NSubstitute;
 using StackExchange.Redis;
 using Testcontainers.Redis;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.Idempotency;
@@ -83,7 +84,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task SetAsync_AndGetAsync_ShouldStoreAndRetrieveValue()
     {
         // Arrange
@@ -101,7 +102,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         retrievedValue.Name.Should().Be("Test");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ExistsAsync_ShouldReturnCorrectValue()
     {
         // Arrange
@@ -120,7 +121,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         notExists.Should().BeFalse();
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task SetAsync_WithExpiration_ShouldExpireAfterTTL()
     {
         // Arrange
@@ -143,7 +144,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         existsAfterExpiration.Should().BeFalse();
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task IdempotencyService_IsProcessedAsync_ShouldDetectProcessedOperations()
     {
         // Arrange
@@ -161,7 +162,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         isProcessedAfterMarking.Should().BeTrue();
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task IdempotencyService_SetResultAsync_AndGetResultAsync_ShouldStoreAndRetrieveResult()
     {
         // Arrange
@@ -182,7 +183,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         isProcessed.Should().BeTrue();
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ConcurrentAccess_ShouldMaintainDataIntegrity()
     {
         // Arrange
@@ -212,7 +213,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task LargeDataStorage_ShouldHandleLargeValues()
     {
         // Arrange
@@ -235,7 +236,7 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         retrievedData.Data.Should().HaveCount(1000);
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task KeyPrefix_ShouldIsolateKeys()
     {
         // Arrange

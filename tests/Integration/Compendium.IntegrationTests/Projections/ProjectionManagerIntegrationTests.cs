@@ -21,6 +21,7 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.Projections;
@@ -127,7 +128,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         }
     }
 
-    [Fact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
+    [RequiresDockerFact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
     public async Task RebuildProjection_WithLargeEventStream_CompletesSuccessfully()
     {
         // Arrange
@@ -161,7 +162,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         Console.WriteLine($"Processed 1000 events in {stopwatch.Elapsed.TotalSeconds:F2}s ({eventsPerMinute:F0} events/min)");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task RebuildProjection_WithCheckpoint_ResumesFromCheckpoint()
     {
         // Arrange
@@ -191,7 +192,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         }
     }
 
-    [Fact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
+    [RequiresDockerFact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
     public async Task RebuildProjection_WithConcurrentRebuilds_LimitsParallelism()
     {
         // Arrange - use unique stream IDs to avoid conflicts
@@ -232,7 +233,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         maxConcurrent.Should().BeLessOrEqualTo(2, "Should respect MaxConcurrentRebuilds setting");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task LiveProjectionProcessor_ProcessesNewEvents_InRealTime()
     {
         // Arrange
@@ -271,7 +272,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         }
     }
 
-    [Fact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
+    [RequiresDockerFact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
     public async Task ProjectionStore_SaveAndLoadSnapshot_PreservesState()
     {
         // Arrange
@@ -296,7 +297,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         loaded.LastProcessedEventId.Should().Be(events.Last().EventId);
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ProjectionManager_GetStatistics_ReturnsAccurateData()
     {
         // Arrange
@@ -318,7 +319,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         counterState.Status.Should().Be(ProjectionStatus.Completed);
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task RebuildProjection_WithErrors_HandlesGracefully()
     {
         // Arrange
@@ -341,7 +342,7 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         state.ErrorMessage.Should().NotBeNullOrEmpty();
     }
 
-    [Fact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
+    [RequiresDockerFact(Skip = "Flaky: Event seeding intermittently fails in CI. Requires investigation.")]
     public async Task PerformanceBenchmark_ProcessingSpeed_MeetsTarget()
     {
         // Arrange

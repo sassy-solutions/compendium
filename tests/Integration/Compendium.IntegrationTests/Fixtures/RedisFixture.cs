@@ -25,6 +25,8 @@ public sealed class RedisFixture : IAsyncLifetime
 
     public string ConnectionString { get; private set; } = string.Empty;
     public bool UsesTestContainer { get; private set; }
+    public bool IsAvailable { get; private set; }
+    public string? UnavailableReason { get; private set; }
 
     public async Task InitializeAsync()
     {
@@ -41,19 +43,30 @@ public sealed class RedisFixture : IAsyncLifetime
         {
             // Start TestContainer
             Console.WriteLine($"⚠️ RedisFixture: Starting TestContainer...");
-            _container = new RedisBuilder()
-                .WithImage("redis:7-alpine")
-                .WithCleanUp(true)
-                .Build();
+            try
+            {
+                _container = new RedisBuilder()
+                    .WithImage("redis:7-alpine")
+                    .WithCleanUp(true)
+                    .Build();
 
-            await _container.StartAsync();
-            ConnectionString = _container.GetConnectionString();
-            UsesTestContainer = true;
-            Console.WriteLine($"✅ RedisFixture: TestContainer started");
+                await _container.StartAsync();
+                ConnectionString = _container.GetConnectionString();
+                UsesTestContainer = true;
+                Console.WriteLine($"✅ RedisFixture: TestContainer started");
+            }
+            catch (Exception ex) when (ex is ArgumentException || ex.InnerException is ArgumentException)
+            {
+                IsAvailable = false;
+                UnavailableReason = "Docker is not running or misconfigured. Start Docker or set REDIS_CONNECTION_STRING.";
+                Console.WriteLine($"⚠️ RedisFixture: {UnavailableReason}");
+                return;
+            }
         }
 
         // Create connection for cleanup operations
         _connection = await ConnectionMultiplexer.ConnectAsync(ConnectionString);
+        IsAvailable = true;
     }
 
     public async Task DisposeAsync()

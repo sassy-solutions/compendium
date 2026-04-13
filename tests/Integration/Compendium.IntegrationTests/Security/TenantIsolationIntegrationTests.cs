@@ -15,6 +15,7 @@ using Compendium.IntegrationTests.Infrastructure;
 using Compendium.Multitenancy;
 using Microsoft.Extensions.Logging;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.Security;
@@ -186,7 +187,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: Tenant A cannot read Tenant B's events via EventStore API
     /// </summary>
-    [Fact]
+    [RequiresDockerFact]
     public async Task GetEventsAsync_WithDifferentTenant_ReturnsEmptyList()
     {
         // Arrange: Create events for tenant-A
@@ -226,7 +227,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: Tenant isolation via NULL tenant_id (single-tenant mode)
     /// </summary>
-    [Fact]
+    [RequiresDockerFact]
     public async Task GetEventsAsync_WithNullTenantId_ReturnsAllEvents()
     {
         // Arrange: Create events with NULL tenant (single-tenant mode)
@@ -260,7 +261,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: Cross-tenant write attempt should fail
     /// </summary>
-    [Fact]
+    [RequiresDockerFact]
     public async Task AppendEventsAsync_CrossTenantAccess_ShouldFail()
     {
         // Arrange: Create aggregate for tenant-X
@@ -318,7 +319,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: Statistics should respect tenant isolation
     /// </summary>
-    [Fact]
+    [RequiresDockerFact]
     public async Task GetStatisticsAsync_RespectsTenantIsolation()
     {
         // Arrange: Create events for two different tenants
@@ -379,7 +380,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: ExistsAsync respects tenant isolation
     /// </summary>
-    [Fact]
+    [RequiresDockerFact]
     public async Task ExistsAsync_RespectsTenantIsolation()
     {
         // Arrange: Create aggregate for tenant-exists-1

@@ -23,6 +23,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -143,7 +144,7 @@ public sealed class LiveProjectionE2ETests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task LiveProcessor_UpdatesProjectionInRealTime_WithinLatencyTarget()
     {
         // Arrange
@@ -246,7 +247,7 @@ public sealed class LiveProjectionE2ETests : IAsyncLifetime
         // ✅ Final state matches expectations
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task LiveProcessor_ProcessesMultipleOrders_Concurrently()
     {
         // Arrange
@@ -302,7 +303,7 @@ public sealed class LiveProjectionE2ETests : IAsyncLifetime
         // ✅ No events missed
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task LiveProcessor_GracefulShutdown_SavesCheckpoint()
     {
         // Arrange
@@ -347,7 +348,7 @@ public sealed class LiveProjectionE2ETests : IAsyncLifetime
         // ✅ Processor stopped gracefully
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task LiveProcessor_StartStop_CanRestart()
     {
         // Arrange

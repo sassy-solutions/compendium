@@ -19,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -102,7 +103,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task TenantIsolation_OrdersCreatedForDifferentTenants_ShouldBeCompletelyIsolated()
     {
         // Arrange
@@ -187,7 +188,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Cross-tenant access prevented
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task TenantIsolation_StreamExistsCheck_ShouldRespectTenantBoundaries()
     {
         // Arrange
@@ -224,7 +225,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Tenant B cannot see Tenant A's stream
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task TenantIsolation_GetCurrentVersion_ShouldReturnZeroForOtherTenants()
     {
         // Arrange
@@ -261,7 +262,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Tenant B sees version 0 for Tenant A's stream
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task TenantIsolation_GetStatistics_ShouldOnlyReturnTenantData()
     {
         // Arrange
@@ -308,7 +309,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Each tenant only sees their own data
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task TenantIsolation_OptimisticConcurrency_ShouldWorkWithinTenantContext()
     {
         // Arrange
@@ -351,7 +352,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Version conflicts detected correctly
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task TenantIsolation_WithoutTenantContext_ShouldStillWork()
     {
         // Arrange - Create event store WITHOUT tenant context

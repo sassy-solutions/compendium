@@ -23,6 +23,7 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -130,7 +131,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task RebuildProjection_From1000Events_CompletesSuccessfully()
     {
         // Arrange
@@ -213,7 +214,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         // ✅ Final projection state correct
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task RebuildProjection_WithMultipleOrders_AggregatesCorrectly()
     {
         // Arrange
@@ -261,7 +262,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         // ✅ Statistics show all events processed
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task ProjectionWithCheckpoint_ResumesFromLastPosition()
     {
         // Arrange
@@ -309,7 +310,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         // ✅ Final state shows completed
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task CompleteOrderLifecycle_WithProjectionRebuild_QueriesSucceed()
     {
         // Arrange

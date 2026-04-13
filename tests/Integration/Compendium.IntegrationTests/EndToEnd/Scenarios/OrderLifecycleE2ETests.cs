@@ -19,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSubstitute;
 using Testcontainers.PostgreSql;
+using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -93,7 +94,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task CompleteOrderLifecycle_HappyPath_ShouldSucceed()
     {
         // Arrange
@@ -176,7 +177,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         // ✅ No concurrency conflicts
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public void AddLineToCompletedOrder_ShouldFail()
     {
         // Arrange
@@ -195,7 +196,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.AddLine.Completed");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public void CompleteEmptyOrder_ShouldFail()
     {
         // Arrange
@@ -210,7 +211,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.Complete.Empty");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public void AddLineWithInvalidQuantity_ShouldFail()
     {
         // Arrange
@@ -225,7 +226,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.AddLine.InvalidQuantity");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public void AddLineWithNegativePrice_ShouldFail()
     {
         // Arrange
@@ -240,7 +241,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.AddLine.InvalidPrice");
     }
 
-    [Fact]
+    [RequiresDockerFact]
     public async Task LargeOrderWithManyLines_ShouldHandlePerformantly()
     {
         // Arrange
