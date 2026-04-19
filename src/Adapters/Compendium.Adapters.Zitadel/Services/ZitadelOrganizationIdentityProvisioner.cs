@@ -8,6 +8,7 @@
 // -----------------------------------------------------------------------
 
 using Compendium.Abstractions.Identity;
+using Compendium.Adapters.Zitadel.Configuration;
 using Compendium.Adapters.Zitadel.Http;
 using Compendium.Adapters.Zitadel.Http.Models;
 
@@ -17,22 +18,34 @@ namespace Compendium.Adapters.Zitadel.Services;
 /// Provisions Zitadel identity resources (organization, project, OIDC app, admin user)
 /// when a new tenant-level organization is created.
 /// </summary>
+/// <remarks>
+/// <para>
+/// Redirect URI templates for the OIDC app are <b>not hardcoded</b>. They are read from
+/// <see cref="ZitadelOptions.RedirectUriTemplate"/> and
+/// <see cref="ZitadelOptions.PostLogoutUriTemplate"/>. The templates must contain the
+/// literal <see cref="ZitadelOptions.OrganizationPlaceholder"/> placeholder which is
+/// substituted with the provisioned organization name.
+/// </para>
+/// </remarks>
 internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIdentityProvisioner
 {
     private readonly ZitadelHttpClient _httpClient;
     private readonly IOrganizationService _organizationService;
     private readonly IIdentityUserService _userService;
+    private readonly ZitadelOptions _options;
     private readonly ILogger<ZitadelOrganizationIdentityProvisioner> _logger;
 
     public ZitadelOrganizationIdentityProvisioner(
         ZitadelHttpClient httpClient,
         IOrganizationService organizationService,
         IIdentityUserService userService,
+        IOptions<ZitadelOptions> options,
         ILogger<ZitadelOrganizationIdentityProvisioner> logger)
     {
         _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         _organizationService = organizationService ?? throw new ArgumentNullException(nameof(organizationService));
         _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+        _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
@@ -47,6 +60,21 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
         _logger.LogInformation(
             "Provisioning identity for organization {OrganizationId} ({OrganizationName})",
             request.OrganizationId, request.Name);
+
+        // Step 0: Resolve redirect URI templates from options (no hardcoded URLs)
+        var redirectUriResult = ResolveTemplate(
+            _options.RedirectUriTemplate, nameof(ZitadelOptions.RedirectUriTemplate), request.Name);
+        if (redirectUriResult.IsFailure)
+        {
+            return redirectUriResult.Error;
+        }
+
+        var postLogoutUriResult = ResolveTemplate(
+            _options.PostLogoutUriTemplate, nameof(ZitadelOptions.PostLogoutUriTemplate), request.Name);
+        if (postLogoutUriResult.IsFailure)
+        {
+            return postLogoutUriResult.Error;
+        }
 
         // Step 1: Create Zitadel organization
         var orgResult = await _organizationService.CreateOrganizationAsync(
@@ -90,14 +118,14 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
         _logger.LogInformation("Created project {ProjectId} for organization {ZitadelOrgId}",
             projectId, zitadelOrgId);
 
-        // Step 3: Create OIDC application
+        // Step 3: Create OIDC application using URIs resolved in Step 0
         var oidcResult = await _httpClient.CreateOidcApplicationAsync(
             projectId,
             new ZitadelCreateOidcAppRequest
             {
                 Name = $"nexus-{request.Name}-app",
-                RedirectUris = [$"https://{request.Name}.admin.sassy.solutions/api/auth/callback/zitadel"],
-                PostLogoutRedirectUris = [$"https://{request.Name}.admin.sassy.solutions"],
+                RedirectUris = [redirectUriResult.Value],
+                PostLogoutRedirectUris = [postLogoutUriResult.Value],
                 ResponseTypes = ["OIDC_RESPONSE_TYPE_CODE"],
                 GrantTypes = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"],
                 AppType = "OIDC_APP_TYPE_WEB",
@@ -173,5 +201,37 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
             ClientId: clientId,
             ClientSecret: clientSecret,
             AdminUserId: adminUserId);
+    }
+
+    /// <summary>
+    /// Validates and substitutes the <see cref="ZitadelOptions.OrganizationPlaceholder"/>
+    /// in a configured URI template.
+    /// </summary>
+    private static Result<string> ResolveTemplate(
+        string? template,
+        string settingName,
+        string organizationName)
+    {
+        if (string.IsNullOrWhiteSpace(template))
+        {
+            return Error.Validation(
+                "Zitadel.TemplateMissing",
+                $"Zitadel option '{settingName}' is not configured. Set 'Zitadel:{settingName}' " +
+                "in configuration (e.g. appsettings.json or environment variable " +
+                $"'Zitadel__{settingName}').");
+        }
+
+        if (!template.Contains(ZitadelOptions.OrganizationPlaceholder, StringComparison.Ordinal))
+        {
+            return Error.Validation(
+                "Zitadel.TemplateMissingPlaceholder",
+                $"Zitadel option '{settingName}' must contain the placeholder " +
+                $"'{ZitadelOptions.OrganizationPlaceholder}'.");
+        }
+
+        return template.Replace(
+            ZitadelOptions.OrganizationPlaceholder,
+            organizationName,
+            StringComparison.Ordinal);
     }
 }

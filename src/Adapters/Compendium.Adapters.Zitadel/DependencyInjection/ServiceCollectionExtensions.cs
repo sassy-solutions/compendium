@@ -69,6 +69,8 @@ public static class ServiceCollectionExtensions
             opt.MaxRetries = options.MaxRetries;
             opt.InternalBaseUrl = options.InternalBaseUrl;
             opt.SkipSslValidation = options.SkipSslValidation;
+            opt.RedirectUriTemplate = options.RedirectUriTemplate;
+            opt.PostLogoutUriTemplate = options.PostLogoutUriTemplate;
         });
 
         return AddZitadelCore(services);

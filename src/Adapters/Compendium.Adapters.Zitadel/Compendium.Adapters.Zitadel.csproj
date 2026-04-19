@@ -22,4 +22,8 @@
     <PackageReference Include="Microsoft.Extensions.Http.Polly" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Adapters.Zitadel.Tests" />
+  </ItemGroup>
+
 </Project>

@@ -34,6 +34,23 @@ public class ZitadelOptionsTests
         options.TimeoutSeconds.Should().Be(30);
         options.MaxRetries.Should().Be(3);
         options.SkipSslValidation.Should().BeFalse();
+        options.RedirectUriTemplate.Should().BeNull();
+        options.PostLogoutUriTemplate.Should().BeNull();
+    }
+
+    [Fact]
+    public void ZitadelOptions_UriTemplateFields_CanBeSet()
+    {
+        // Arrange & Act
+        var options = new ZitadelOptions
+        {
+            RedirectUriTemplate = "https://{organization}.example.com/cb",
+            PostLogoutUriTemplate = "https://{organization}.example.com",
+        };
+
+        // Assert
+        options.RedirectUriTemplate.Should().Be("https://{organization}.example.com/cb");
+        options.PostLogoutUriTemplate.Should().Be("https://{organization}.example.com");
     }
 
     [Fact]

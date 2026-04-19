@@ -15,6 +15,12 @@ namespace Compendium.Adapters.Zitadel.Configuration;
 public sealed class ZitadelOptions
 {
     /// <summary>
+    /// Required placeholder in OIDC URI templates; substituted with the provisioned
+    /// organization name at provision time.
+    /// </summary>
+    public const string OrganizationPlaceholder = "{organization}";
+
+    /// <summary>
     /// Gets or sets the base URL of the Zitadel instance (e.g., "https://zitadel.example.com").
     /// </summary>
     public string Authority { get; set; } = string.Empty;
@@ -76,6 +82,21 @@ public sealed class ZitadelOptions
     /// Gets or sets whether to skip SSL certificate validation. Only for development.
     /// </summary>
     public bool SkipSslValidation { get; set; }
+
+    /// <summary>
+    /// Gets or sets the OIDC redirect URI template used when creating an OIDC application
+    /// for a newly provisioned organization. Must contain the literal placeholder
+    /// <see cref="OrganizationPlaceholder"/> which is substituted with the organization name.
+    /// Example: <c>https://{organization}.admin.example.com/api/auth/callback/zitadel</c>.
+    /// </summary>
+    public string? RedirectUriTemplate { get; set; }
+
+    /// <summary>
+    /// Gets or sets the OIDC post-logout redirect URI template. Same semantics as
+    /// <see cref="RedirectUriTemplate"/>.
+    /// Example: <c>https://{organization}.admin.example.com</c>.
+    /// </summary>
+    public string? PostLogoutUriTemplate { get; set; }
 
     /// <summary>
     /// Gets the API base URL for Zitadel management API.
