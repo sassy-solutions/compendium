@@ -20,4 +20,13 @@
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
     <AnalysisMode>None</AnalysisMode>
   </PropertyGroup>
+
+  <!-- MinVer: semantic versioning from git tags (prefix: compendium-v) -->
+  <PropertyGroup>
+    <MinVerTagPrefix>compendium-v</MinVerTagPrefix>
+    <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MinVer" PrivateAssets="All" />
+  </ItemGroup>
 </Project>
