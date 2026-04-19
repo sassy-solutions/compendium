@@ -93,13 +93,15 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         var expiration = TimeSpan.FromMinutes(5);
 
         // Act
-        await _idempotencyStore!.SetAsync(key, value, expiration);
-        var retrievedValue = await _idempotencyStore.GetAsync<TestData>(key);
+        var setResult = await _idempotencyStore!.SetAsync(key, value, expiration);
+        var getResult = await _idempotencyStore.GetAsync<TestData>(key);
 
         // Assert
-        retrievedValue.Should().NotBeNull();
-        retrievedValue!.Id.Should().Be(123);
-        retrievedValue.Name.Should().Be("Test");
+        setResult.IsSuccess.Should().BeTrue();
+        getResult.IsSuccess.Should().BeTrue();
+        getResult.Value.Should().NotBeNull();
+        getResult.Value!.Id.Should().Be(123);
+        getResult.Value.Name.Should().Be("Test");
     }
 
     [RequiresDockerFact]
@@ -115,10 +117,12 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
 
         // Act & Assert
         var exists = await _idempotencyStore.ExistsAsync(existingKey);
-        exists.Should().BeTrue();
+        exists.IsSuccess.Should().BeTrue();
+        exists.Value.Should().BeTrue();
 
         var notExists = await _idempotencyStore.ExistsAsync(nonExistingKey);
-        notExists.Should().BeFalse();
+        notExists.IsSuccess.Should().BeTrue();
+        notExists.Value.Should().BeFalse();
     }
 
     [RequiresDockerFact]
@@ -134,14 +138,16 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
 
         // Assert - Should exist immediately
         var existsImmediately = await _idempotencyStore.ExistsAsync(key);
-        existsImmediately.Should().BeTrue();
+        existsImmediately.IsSuccess.Should().BeTrue();
+        existsImmediately.Value.Should().BeTrue();
 
         // Wait for expiration
         await Task.Delay(TimeSpan.FromSeconds(1));
 
         // Assert - Should not exist after expiration
         var existsAfterExpiration = await _idempotencyStore.ExistsAsync(key);
-        existsAfterExpiration.Should().BeFalse();
+        existsAfterExpiration.IsSuccess.Should().BeTrue();
+        existsAfterExpiration.Value.Should().BeFalse();
     }
 
     [RequiresDockerFact]
@@ -206,10 +212,12 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         for (int i = 0; i < 10; i++)
         {
             var exists = await _idempotencyStore!.ExistsAsync($"{key}-{i}");
-            exists.Should().BeTrue();
+            exists.IsSuccess.Should().BeTrue();
+            exists.Value.Should().BeTrue();
 
-            var value = await _idempotencyStore.GetAsync<string>($"{key}-{i}");
-            value.Should().Be($"value-{i}");
+            var valueResult = await _idempotencyStore.GetAsync<string>($"{key}-{i}");
+            valueResult.IsSuccess.Should().BeTrue();
+            valueResult.Value.Should().Be($"value-{i}");
         }
     }
 
@@ -227,13 +235,14 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
 
         // Act
         await _idempotencyStore!.SetAsync(key, largeData, TimeSpan.FromMinutes(5));
-        var retrievedData = await _idempotencyStore.GetAsync<TestData>(key);
+        var retrievedResult = await _idempotencyStore.GetAsync<TestData>(key);
 
         // Assert
-        retrievedData.Should().NotBeNull();
-        retrievedData!.Id.Should().Be(999);
-        retrievedData.Name.Length.Should().Be(10000);
-        retrievedData.Data.Should().HaveCount(1000);
+        retrievedResult.IsSuccess.Should().BeTrue();
+        retrievedResult.Value.Should().NotBeNull();
+        retrievedResult.Value!.Id.Should().Be(999);
+        retrievedResult.Value.Name.Length.Should().Be(10000);
+        retrievedResult.Value.Data.Should().HaveCount(1000);
     }
 
     [RequiresDockerFact]
@@ -263,8 +272,10 @@ public sealed class RedisIdempotencyStoreIntegrationTests : IAsyncLifetime
         var retrieved1 = await _idempotencyStore.GetAsync<string>(key);
         var retrieved2 = await store2.GetAsync<string>(key);
 
-        retrieved1.Should().Be(value1);
-        retrieved2.Should().Be(value2);
+        retrieved1.IsSuccess.Should().BeTrue();
+        retrieved2.IsSuccess.Should().BeTrue();
+        retrieved1.Value.Should().Be(value1);
+        retrieved2.Value.Should().Be(value2);
     }
 
     /// <summary>

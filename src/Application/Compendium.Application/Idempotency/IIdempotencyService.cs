@@ -1,3 +1,5 @@
+using Compendium.Core.Results;
+
 namespace Compendium.Application.Idempotency;
 
 /// <summary>
@@ -79,7 +81,10 @@ public sealed class IdempotencyService : IIdempotencyService
             throw new ArgumentException("Idempotency key cannot be null or empty", nameof(idempotencyKey));
         }
 
-        return await _store.ExistsAsync(idempotencyKey, cancellationToken);
+        var result = await _store.ExistsAsync(idempotencyKey, cancellationToken);
+
+        // On store failure, assume key does not exist to allow the operation to proceed (graceful degradation).
+        return result.IsSuccess && result.Value;
     }
 
     /// <summary>
@@ -97,7 +102,10 @@ public sealed class IdempotencyService : IIdempotencyService
             throw new ArgumentException("Idempotency key cannot be null or empty", nameof(idempotencyKey));
         }
 
-        return await _store.GetAsync<TResult>(idempotencyKey, cancellationToken);
+        var result = await _store.GetAsync<TResult>(idempotencyKey, cancellationToken);
+
+        // On store failure, return default to allow operation to proceed (graceful degradation).
+        return result.IsSuccess ? result.Value : default;
     }
 
     /// <summary>
@@ -117,7 +125,13 @@ public sealed class IdempotencyService : IIdempotencyService
             throw new ArgumentException("Idempotency key cannot be null or empty", nameof(idempotencyKey));
         }
 
-        await _store.SetAsync(idempotencyKey, result, expiration ?? _defaultExpiration, cancellationToken);
+        var storeResult = await _store.SetAsync(idempotencyKey, result, expiration ?? _defaultExpiration, cancellationToken);
+
+        // Surface failures via an exception so callers (e.g. IdempotencyBehavior) can log them as best-effort.
+        if (storeResult.IsFailure)
+        {
+            throw new InvalidOperationException($"Failed to persist idempotency record: {storeResult.Error.Message}");
+        }
     }
 
     /// <summary>
@@ -135,7 +149,13 @@ public sealed class IdempotencyService : IIdempotencyService
             throw new ArgumentException("Idempotency key cannot be null or empty", nameof(idempotencyKey));
         }
 
-        await _store.SetAsync(idempotencyKey, true, expiration ?? _defaultExpiration, cancellationToken);
+        var storeResult = await _store.SetAsync(idempotencyKey, true, expiration ?? _defaultExpiration, cancellationToken);
+
+        // Surface failures via an exception so callers can log them as best-effort.
+        if (storeResult.IsFailure)
+        {
+            throw new InvalidOperationException($"Failed to mark idempotency key as processed: {storeResult.Error.Message}");
+        }
     }
 }
 
@@ -143,6 +163,11 @@ public sealed class IdempotencyService : IIdempotencyService
 /// Defines the storage contract for idempotency data.
 /// Implementations should provide persistent storage for operation tracking.
 /// </summary>
+/// <remarks>
+/// All methods return <see cref="Result"/> / <see cref="Result{T}"/> so that infrastructure
+/// failures (Redis connection, serialization, timeouts) are surfaced as structured errors
+/// rather than exceptions. This aligns with the Compendium Result pattern.
+/// </remarks>
 public interface IIdempotencyStore
 {
     /// <summary>
@@ -150,8 +175,8 @@ public interface IIdempotencyStore
     /// </summary>
     /// <param name="key">The key to check.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation with a boolean indicating existence.</returns>
-    Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default);
+    /// <returns>A <see cref="Result{Boolean}"/> indicating existence, or a failure on store error.</returns>
+    Task<Result<bool>> ExistsAsync(string key, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Retrieves a value from the store by key.
@@ -159,8 +184,8 @@ public interface IIdempotencyStore
     /// <typeparam name="TResult">The type of the stored value.</typeparam>
     /// <param name="key">The key to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation with the stored value or null if not found.</returns>
-    Task<TResult?> GetAsync<TResult>(string key, CancellationToken cancellationToken = default);
+    /// <returns>A <see cref="Result{TResult}"/> with the value or default when not found, or a failure on store error.</returns>
+    Task<Result<TResult?>> GetAsync<TResult>(string key, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Stores a value in the store with the specified expiration.
@@ -170,6 +195,6 @@ public interface IIdempotencyStore
     /// <param name="value">The value to store.</param>
     /// <param name="expiration">The expiration time for the stored value.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
-    Task SetAsync<TValue>(string key, TValue value, TimeSpan expiration, CancellationToken cancellationToken = default);
+    /// <returns>A <see cref="Result"/> indicating success or a failure on store error.</returns>
+    Task<Result> SetAsync<TValue>(string key, TValue value, TimeSpan expiration, CancellationToken cancellationToken = default);
 }

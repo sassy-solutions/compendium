@@ -10,6 +10,7 @@
 using System.Text.Json;
 using Compendium.Adapters.Redis.Configuration;
 using Compendium.Application.Idempotency;
+using Compendium.Core.Results;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
@@ -19,6 +20,8 @@ namespace Compendium.Adapters.Redis.Idempotency;
 /// <summary>
 /// Redis implementation of IIdempotencyStore for distributed idempotency tracking.
 /// Provides high-performance, distributed storage for operation results with configurable TTL.
+/// All infrastructure failures (Redis connection, serialization, timeouts) are surfaced via
+/// <see cref="Result{T}"/> failures rather than exceptions, matching the Compendium Result pattern.
 /// </summary>
 public sealed class RedisIdempotencyStore : IIdempotencyStore, IAsyncDisposable
 {
@@ -54,14 +57,21 @@ public sealed class RedisIdempotencyStore : IIdempotencyStore, IAsyncDisposable
     }
 
     /// <inheritdoc />
-    public async Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default)
+    public async Task<Result<bool>> ExistsAsync(string key, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(key))
         {
-            throw new ArgumentException("Key cannot be null or empty", nameof(key));
+            return Result.Failure<bool>(Error.Validation(
+                "Redis.Idempotency.InvalidKey",
+                "Key cannot be null or empty"));
         }
 
-        ThrowIfDisposed();
+        if (_disposed)
+        {
+            return Result.Failure<bool>(Error.Failure(
+                "Redis.Idempotency.Disposed",
+                "Idempotency store has been disposed"));
+        }
 
         var redisKey = GetRedisKey(key);
 
@@ -71,27 +81,39 @@ public sealed class RedisIdempotencyStore : IIdempotencyStore, IAsyncDisposable
 
             _logger.LogDebug("Checked existence for key {Key}: {Exists}", key, exists);
 
-            return exists;
+            return Result.Success(exists);
+        }
+        catch (RedisException ex)
+        {
+            _logger.LogError(ex, "Redis error checking existence for key {Key}", key);
+            return Result.Failure<bool>(Error.Failure("Redis.Idempotency.ExistsFailed", ex.Message));
+        }
+        catch (TimeoutException ex)
+        {
+            _logger.LogError(ex, "Redis timeout checking existence for key {Key}", key);
+            return Result.Failure<bool>(Error.Failure("Redis.Idempotency.Timeout", ex.Message));
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to check existence for key {Key}", key);
-
-            // In case of Redis failure, assume key doesn't exist to allow operation to proceed
-            // This provides graceful degradation when Redis is unavailable
-            return false;
+            _logger.LogError(ex, "Unexpected error checking existence for key {Key}", key);
+            return Result.Failure<bool>(Error.Failure("Redis.Idempotency.ExistsFailed", ex.Message));
         }
     }
 
     /// <inheritdoc />
-    public async Task<TResult?> GetAsync<TResult>(string key, CancellationToken cancellationToken = default)
+    public async Task<Result<TResult?>> GetAsync<TResult>(string key, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(key))
         {
-            throw new ArgumentException("Key cannot be null or empty", nameof(key));
+            return Result.Success<TResult?>(default);
         }
 
-        ThrowIfDisposed();
+        if (_disposed)
+        {
+            return Result.Failure<TResult?>(Error.Failure(
+                "Redis.Idempotency.Disposed",
+                "Idempotency store has been disposed"));
+        }
 
         var redisKey = GetRedisKey(key);
 
@@ -102,43 +124,60 @@ public sealed class RedisIdempotencyStore : IIdempotencyStore, IAsyncDisposable
             if (!value.HasValue)
             {
                 _logger.LogDebug("No value found for key {Key}", key);
-                return default;
+                return Result.Success<TResult?>(default);
             }
 
             var deserializedValue = JsonSerializer.Deserialize<TResult>(value!, _jsonOptions);
 
             _logger.LogDebug("Retrieved value for key {Key}", key);
 
-            return deserializedValue;
+            return Result.Success<TResult?>(deserializedValue);
         }
         catch (JsonException ex)
         {
             _logger.LogError(ex, "Failed to deserialize value for key {Key}", key);
-            return default;
+            return Result.Failure<TResult?>(Error.Failure("Redis.Idempotency.SerializationFailed", ex.Message));
+        }
+        catch (RedisException ex)
+        {
+            _logger.LogError(ex, "Redis error getting value for key {Key}", key);
+            return Result.Failure<TResult?>(Error.Failure("Redis.Idempotency.GetFailed", ex.Message));
+        }
+        catch (TimeoutException ex)
+        {
+            _logger.LogError(ex, "Redis timeout getting value for key {Key}", key);
+            return Result.Failure<TResult?>(Error.Failure("Redis.Idempotency.Timeout", ex.Message));
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to get value for key {Key}", key);
-
-            // In case of Redis failure, return null to allow operation to proceed
-            return default;
+            _logger.LogError(ex, "Unexpected error getting value for key {Key}", key);
+            return Result.Failure<TResult?>(Error.Failure("Redis.Idempotency.GetFailed", ex.Message));
         }
     }
 
     /// <inheritdoc />
-    public async Task SetAsync<TValue>(string key, TValue value, TimeSpan expiration, CancellationToken cancellationToken = default)
+    public async Task<Result> SetAsync<TValue>(string key, TValue value, TimeSpan expiration, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(key))
         {
-            throw new ArgumentException("Key cannot be null or empty", nameof(key));
+            return Result.Failure(Error.Validation(
+                "Redis.Idempotency.InvalidKey",
+                "Key cannot be null or empty"));
         }
 
         if (expiration <= TimeSpan.Zero)
         {
-            throw new ArgumentException("Expiration must be greater than zero", nameof(expiration));
+            return Result.Failure(Error.Validation(
+                "Redis.Idempotency.InvalidExpiration",
+                "Expiration must be greater than zero"));
         }
 
-        ThrowIfDisposed();
+        if (_disposed)
+        {
+            return Result.Failure(Error.Failure(
+                "Redis.Idempotency.Disposed",
+                "Idempotency store has been disposed"));
+        }
 
         var redisKey = GetRedisKey(key);
 
@@ -151,23 +190,33 @@ public sealed class RedisIdempotencyStore : IIdempotencyStore, IAsyncDisposable
             if (!success)
             {
                 _logger.LogWarning("Failed to set value for key {Key}", key);
-                return;
+                return Result.Failure(Error.Failure(
+                    "Redis.Idempotency.SetFailed",
+                    $"Redis StringSet returned false for key {key}"));
             }
 
             _logger.LogDebug("Set value for key {Key} with expiration {Expiration}", key, expiration);
+            return Result.Success();
         }
         catch (JsonException ex)
         {
             _logger.LogError(ex, "Failed to serialize value for key {Key}", key);
-            throw;
+            return Result.Failure(Error.Failure("Redis.Idempotency.SerializationFailed", ex.Message));
+        }
+        catch (RedisException ex)
+        {
+            _logger.LogError(ex, "Redis error setting value for key {Key}", key);
+            return Result.Failure(Error.Failure("Redis.Idempotency.SetFailed", ex.Message));
+        }
+        catch (TimeoutException ex)
+        {
+            _logger.LogError(ex, "Redis timeout setting value for key {Key}", key);
+            return Result.Failure(Error.Failure("Redis.Idempotency.Timeout", ex.Message));
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to set value for key {Key}", key);
-
-            // Re-throw to ensure the caller knows the operation failed
-            // Idempotency failures should be visible to prevent duplicate processing
-            throw;
+            _logger.LogError(ex, "Unexpected error setting value for key {Key}", key);
+            return Result.Failure(Error.Failure("Redis.Idempotency.SetFailed", ex.Message));
         }
     }
 
@@ -181,17 +230,6 @@ public sealed class RedisIdempotencyStore : IIdempotencyStore, IAsyncDisposable
         return string.IsNullOrEmpty(_options.KeyPrefix)
             ? key
             : $"{_options.KeyPrefix}:{key}";
-    }
-
-    /// <summary>
-    /// Throws an exception if the instance has been disposed.
-    /// </summary>
-    private void ThrowIfDisposed()
-    {
-        if (_disposed)
-        {
-            throw new ObjectDisposedException(nameof(RedisIdempotencyStore));
-        }
     }
 
     /// <inheritdoc />

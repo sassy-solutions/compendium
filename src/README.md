@@ -15,7 +15,7 @@ Compendium is the framework that powers [Nexus](https://sassy.solutions), Sassy 
 - **CQRS + Event Sourcing built-in** — Command/query dispatchers, event store interfaces, and a PostgreSQL adapter wired out of the box.
 - **Multi-tenancy native** — Tenant context, resolution, and scoping baked into the primitives — not bolted on.
 - **Result pattern everywhere** — No control-flow exceptions. Every fallible operation returns `Result<T>` with structured `Error` values.
-- **Modular adapters** — Pick only what you need: PostgreSQL, Redis, Zitadel, Listmonk, LemonSqueezy, OpenRouter, RabbitMQ, ASP.NET Core.
+- **Modular adapters** — Pick only what you need: PostgreSQL, Redis, Zitadel, Listmonk, LemonSqueezy, OpenRouter, ASP.NET Core.
 - **Battle-tested in production** — Powers Nexus, a multi-tenant platform engineering product.
 
 ## Quick start
@@ -111,7 +111,6 @@ Core (zero deps) → Abstractions → Application → Infrastructure → Adapter
 | `Compendium.Adapters.AspNetCore` | ASP.NET Core integration (middleware, auth, problem details) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.AspNetCore.svg)](https://www.nuget.org/packages/Compendium.Adapters.AspNetCore/) |
 | `Compendium.Adapters.PostgreSQL` | PostgreSQL event store & repositories | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.PostgreSQL.svg)](https://www.nuget.org/packages/Compendium.Adapters.PostgreSQL/) |
 | `Compendium.Adapters.Redis` | Redis cache adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Redis.svg)](https://www.nuget.org/packages/Compendium.Adapters.Redis/) |
-| `Compendium.Adapters.RabbitMQ` | RabbitMQ message bus adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.RabbitMQ.svg)](https://www.nuget.org/packages/Compendium.Adapters.RabbitMQ/) |
 | `Compendium.Adapters.Zitadel` | Zitadel OIDC identity adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Zitadel.svg)](https://www.nuget.org/packages/Compendium.Adapters.Zitadel/) |
 | `Compendium.Adapters.Listmonk` | Listmonk email adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Listmonk.svg)](https://www.nuget.org/packages/Compendium.Adapters.Listmonk/) |
 | `Compendium.Adapters.LemonSqueezy` | LemonSqueezy billing adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.LemonSqueezy.svg)](https://www.nuget.org/packages/Compendium.Adapters.LemonSqueezy/) |

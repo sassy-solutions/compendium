@@ -251,25 +251,25 @@ public sealed class CommandPipelineIntegrationTests
     {
         private readonly Dictionary<string, (object Value, DateTime Expiry)> _store = new();
 
-        public Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default)
+        public Task<Result<bool>> ExistsAsync(string key, CancellationToken cancellationToken = default)
         {
             var exists = _store.ContainsKey(key) && _store[key].Expiry > DateTime.UtcNow;
-            return Task.FromResult(exists);
+            return Task.FromResult(Result.Success(exists));
         }
 
-        public Task<TResult?> GetAsync<TResult>(string key, CancellationToken cancellationToken = default)
+        public Task<Result<TResult?>> GetAsync<TResult>(string key, CancellationToken cancellationToken = default)
         {
             if (_store.TryGetValue(key, out var entry) && entry.Expiry > DateTime.UtcNow)
             {
-                return Task.FromResult((TResult?)entry.Value);
+                return Task.FromResult(Result.Success((TResult?)entry.Value));
             }
-            return Task.FromResult(default(TResult));
+            return Task.FromResult(Result.Success<TResult?>(default));
         }
 
-        public Task SetAsync<TValue>(string key, TValue value, TimeSpan expiration, CancellationToken cancellationToken = default)
+        public Task<Result> SetAsync<TValue>(string key, TValue value, TimeSpan expiration, CancellationToken cancellationToken = default)
         {
             _store[key] = (value!, DateTime.UtcNow.Add(expiration));
-            return Task.CompletedTask;
+            return Task.FromResult(Result.Success());
         }
     }
 }
