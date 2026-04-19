@@ -205,7 +205,7 @@ internal sealed class ZitadelHttpClient : IDisposable
 
         try
         {
-            var response = await _httpClient.PostAsync(_options.IntrospectionEndpoint, content, cancellationToken);
+            var response = await _httpClient.PostAsync("oauth/v2/introspect", content, cancellationToken);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -614,7 +614,7 @@ internal sealed class ZitadelHttpClient : IDisposable
                 ["scope"] = "openid urn:zitadel:iam:org:project:id:zitadel:aud"
             });
 
-            var response = await _httpClient.PostAsync(_options.TokenEndpoint, content, cancellationToken);
+            var response = await _httpClient.PostAsync("oauth/v2/token", content, cancellationToken);
             response.EnsureSuccessStatusCode();
 
             var tokenResponse = await response.Content.ReadFromJsonAsync<ZitadelTokenResponse>(JsonOptions, cancellationToken);
