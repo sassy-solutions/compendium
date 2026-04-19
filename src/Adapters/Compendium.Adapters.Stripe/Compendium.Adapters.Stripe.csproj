@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Adapters.Stripe</AssemblyName>
     <RootNamespace>Compendium.Adapters.Stripe</RootNamespace>
     <PackageId>Compendium.Adapters.Stripe</PackageId>
-    <Description>Stripe billing adapter for Compendium Framework: Subscriptions, checkouts, customer portal, and HMAC-signed webhooks via the official Stripe.net SDK. NO AI TRAINING.</Description>
+    <Description>Stripe billing adapter for Compendium Framework: Subscriptions, checkouts, customer portal, and HMAC-signed webhooks via the official Stripe.net SDK.</Description>
   </PropertyGroup>
 
   <ItemGroup>

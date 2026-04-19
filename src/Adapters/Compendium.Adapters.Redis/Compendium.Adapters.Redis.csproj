@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Adapters.Redis</AssemblyName>
     <RootNamespace>Compendium.Adapters.Redis</RootNamespace>
     <PackageId>Compendium.Adapters.Redis</PackageId>
-    <Description>Redis Idempotency Store adapter for Compendium Framework: Distributed idempotency tracking using Redis, prevents duplicate command processing in event-driven systems. NO AI TRAINING.</Description>
+    <Description>Redis Idempotency Store adapter for Compendium Framework: Distributed idempotency tracking using Redis, prevents duplicate command processing in event-driven systems.</Description>
   </PropertyGroup>
 
   <ItemGroup>

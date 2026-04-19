@@ -8,8 +8,9 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
-    <!-- These projects are now embedded, not published as packages -->
-    <IsPackable>false</IsPackable>
+    <!-- POM-144: Compendium.* projects are published as NuGet packages.
+         Individual projects may opt-out by setting <IsPackable>false</IsPackable>. -->
+    <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 
     <!-- Build Configuration -->
@@ -20,6 +21,30 @@
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
     <AnalysisMode>None</AnalysisMode>
   </PropertyGroup>
+
+  <!-- POM-144: NuGet package metadata common to all Compendium.* packages.
+       See docs/compendium/migration-to-packages.md for the downstream consumer migration plan. -->
+  <PropertyGroup>
+    <Authors>Sassy Solutions</Authors>
+    <Company>Sassy Solutions</Company>
+    <Copyright>Copyright © 2026 Sassy Solutions</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/sassy-solutions/compendium</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sassy-solutions/compendium</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ddd;cqrs;event-sourcing;multi-tenancy;dotnet</PackageTags>
+    <Description>Modular framework for DDD + CQRS + Event Sourcing + Multi-tenancy in .NET.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <!-- POM-144: Package README. Uses the per-project README.md when present,
+       otherwise falls back to the Framework-level README.md shared across packages. -->
+  <ItemGroup Condition="'$(IsPackable)' == 'true' And Exists('$(MSBuildProjectDirectory)/README.md')">
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(IsPackable)' == 'true' And !Exists('$(MSBuildProjectDirectory)/README.md')">
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <!-- MinVer: semantic versioning from git tags (prefix: compendium-v) -->
   <PropertyGroup>

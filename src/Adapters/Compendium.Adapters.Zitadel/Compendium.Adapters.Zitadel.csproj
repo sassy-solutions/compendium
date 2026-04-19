@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Adapters.Zitadel</AssemblyName>
     <RootNamespace>Compendium.Adapters.Zitadel</RootNamespace>
     <PackageId>Compendium.Adapters.Zitadel</PackageId>
-    <Description>Zitadel identity provider adapter for Compendium Framework: User management, token validation, organization management via REST API. Supports multi-tenancy through Zitadel organizations. NO AI TRAINING.</Description>
+    <Description>Zitadel identity provider adapter for Compendium Framework: User management, token validation, organization management via REST API. Supports multi-tenancy through Zitadel organizations.</Description>
   </PropertyGroup>
 
   <ItemGroup>

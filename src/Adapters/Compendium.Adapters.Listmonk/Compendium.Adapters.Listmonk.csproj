@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Adapters.Listmonk</AssemblyName>
     <RootNamespace>Compendium.Adapters.Listmonk</RootNamespace>
     <PackageId>Compendium.Adapters.Listmonk</PackageId>
-    <Description>Listmonk email service adapter for Compendium Framework: Transactional emails, newsletter management, subscriber management via REST API. NO AI TRAINING.</Description>
+    <Description>Listmonk email service adapter for Compendium Framework: Transactional emails, newsletter management, subscriber management via REST API.</Description>
   </PropertyGroup>
 
   <ItemGroup>

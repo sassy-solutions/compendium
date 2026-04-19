@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Extensions.ExternalAdapters</AssemblyName>
     <RootNamespace>Compendium.Extensions.ExternalAdapters</RootNamespace>
     <PackageId>Compendium.Extensions.ExternalAdapters</PackageId>
-    <Description>Unified DI extensions for all Compendium external adapters: Zitadel (identity), Listmonk (email/newsletter), LemonSqueezy (billing/payments). Provides a single AddCompendiumExternalAdapters() method for easy configuration. NO AI TRAINING.</Description>
+    <Description>Unified DI extensions for all Compendium external adapters: Zitadel (identity), Listmonk (email/newsletter), LemonSqueezy (billing/payments). Provides a single AddCompendiumExternalAdapters() method for easy configuration.</Description>
   </PropertyGroup>
 
   <ItemGroup>

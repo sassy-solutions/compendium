@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Adapters.LemonSqueezy</AssemblyName>
     <RootNamespace>Compendium.Adapters.LemonSqueezy</RootNamespace>
     <PackageId>Compendium.Adapters.LemonSqueezy</PackageId>
-    <Description>LemonSqueezy billing adapter for Compendium Framework: Subscriptions, checkouts, license keys, webhooks via REST API (JSON:API format). NO AI TRAINING.</Description>
+    <Description>LemonSqueezy billing adapter for Compendium Framework: Subscriptions, checkouts, license keys, webhooks via REST API (JSON:API format).</Description>
   </PropertyGroup>
 
   <ItemGroup>

@@ -217,4 +217,4 @@ Execution order:
 
 ## License
 
-Licensed under the MIT License with Attribution. See LICENSE file for details.
+Licensed under the MIT License. See LICENSE file for details.

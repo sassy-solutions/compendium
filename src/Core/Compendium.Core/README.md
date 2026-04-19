@@ -145,4 +145,4 @@ var spec = new ActiveUsersSpecification()
 
 ## License
 
-Copyright (c) 2025 Sassy Solutions. All rights reserved. NO AI TRAINING.
+Copyright (c) 2026 Sassy Solutions. Licensed under the MIT License.

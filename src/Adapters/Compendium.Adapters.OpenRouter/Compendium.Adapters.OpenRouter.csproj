@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Adapters.OpenRouter</AssemblyName>
     <RootNamespace>Compendium.Adapters.OpenRouter</RootNamespace>
     <PackageId>Compendium.Adapters.OpenRouter</PackageId>
-    <Description>OpenRouter AI provider adapter for Compendium Framework. Implements IAIProvider for access to 100+ LLM models including Claude, GPT-4, Llama, Mistral, and more. NO AI TRAINING.</Description>
+    <Description>OpenRouter AI provider adapter for Compendium Framework. Implements IAIProvider for access to 100+ LLM models including Claude, GPT-4, Llama, Mistral, and more.</Description>
   </PropertyGroup>
 
   <ItemGroup>

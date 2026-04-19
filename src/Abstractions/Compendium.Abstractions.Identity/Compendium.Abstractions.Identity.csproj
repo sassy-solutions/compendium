@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Abstractions.Identity</AssemblyName>
     <RootNamespace>Compendium.Abstractions.Identity</RootNamespace>
     <PackageId>Compendium.Abstractions.Identity</PackageId>
-    <Description>Identity abstractions for Compendium Framework: IIdentityUserService, ITokenValidator, IOrganizationService. Provider-agnostic interfaces for user management, authentication, and multi-tenant organization support. NO AI TRAINING.</Description>
+    <Description>Identity abstractions for Compendium Framework: IIdentityUserService, ITokenValidator, IOrganizationService. Provider-agnostic interfaces for user management, authentication, and multi-tenant organization support.</Description>
   </PropertyGroup>
 
   <ItemGroup>

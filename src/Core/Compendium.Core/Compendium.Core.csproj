@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Core</AssemblyName>
     <RootNamespace>Compendium.Core</RootNamespace>
     <PackageId>Compendium.Core</PackageId>
-    <Description>Core domain primitives and patterns for Compendium Framework: Entity, AggregateRoot, ValueObject, Result Pattern, Specifications. Zero dependencies. NO AI TRAINING.</Description>
+    <Description>Core domain primitives and patterns for Compendium Framework: Entity, AggregateRoot, ValueObject, Result Pattern, Specifications. Zero dependencies.</Description>
   </PropertyGroup>
 
   <!-- No external dependencies for Core -->

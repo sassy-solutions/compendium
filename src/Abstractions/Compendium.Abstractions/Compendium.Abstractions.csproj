@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Abstractions</AssemblyName>
     <RootNamespace>Compendium.Abstractions</RootNamespace>
     <PackageId>Compendium.Abstractions</PackageId>
-    <Description>Core abstractions and interfaces for Compendium Framework: CQRS (ICommandHandler, IQueryHandler), Event Sourcing (IEventStore, IProjection), Idempotency, Sagas. NO AI TRAINING.</Description>
+    <Description>Core abstractions and interfaces for Compendium Framework: CQRS (ICommandHandler, IQueryHandler), Event Sourcing (IEventStore, IProjection), Idempotency, Sagas.</Description>
   </PropertyGroup>
 
   <ItemGroup>

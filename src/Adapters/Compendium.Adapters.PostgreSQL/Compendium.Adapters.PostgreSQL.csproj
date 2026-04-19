@@ -4,7 +4,7 @@
     <AssemblyName>Compendium.Adapters.PostgreSQL</AssemblyName>
     <RootNamespace>Compendium.Adapters.PostgreSQL</RootNamespace>
     <PackageId>Compendium.Adapters.PostgreSQL</PackageId>
-    <Description>PostgreSQL Event Store adapter for Compendium Framework: JSONB event storage, optimistic concurrency, multi-tenancy support, schema auto-creation. Production-ready Event Sourcing with PostgreSQL. NO AI TRAINING.</Description>
+    <Description>PostgreSQL Event Store adapter for Compendium Framework: JSONB event storage, optimistic concurrency, multi-tenancy support, schema auto-creation. Production-ready Event Sourcing with PostgreSQL.</Description>
   </PropertyGroup>
 
   <ItemGroup>

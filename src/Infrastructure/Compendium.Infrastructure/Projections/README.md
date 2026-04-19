@@ -376,5 +376,4 @@ See the main Compendium contributing guidelines. For projection-specific contrib
 
 ## License
 
-MIT License with Attribution - see LICENSE file for details.
-NO AI TRAINING: This code may NOT be used for training AI/ML models.
+MIT License - see LICENSE file for details.
