@@ -31,7 +31,7 @@ dotnet add package Compendium.Adapters.PostgreSQL
 Define an event-sourced aggregate:
 
 ```csharp
-using Compendium.Core.Domain;
+using Compendium.Core.Domain.Primitives;
 using Compendium.Core.Results;
 
 public sealed class OrderAggregate : AggregateRoot<OrderId>
@@ -63,12 +63,19 @@ public sealed class OrderAggregate : AggregateRoot<OrderId>
 Wire it up in `Program.cs`:
 
 ```csharp
-services.AddCompendiumCore();
-services.AddCompendiumApplication();
-services.AddPostgreSqlEventStore(options =>
-{
-    options.ConnectionString = configuration.GetConnectionString("EventStore");
-});
+using Compendium.Application.CQRS;
+using Microsoft.Extensions.DependencyInjection;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Register Compendium CQRS dispatchers (command/query handlers are resolved via IServiceProvider).
+builder.Services.AddScoped<ICommandDispatcher, CommandDispatcher>();
+builder.Services.AddScoped<IQueryDispatcher, QueryDispatcher>();
+
+// Register your command/query handlers, then wire the PostgreSQL event store adapter
+// using the options published by Compendium.Adapters.PostgreSQL.
+
+var app = builder.Build();
 ```
 
 ## Architecture
@@ -112,11 +119,7 @@ Core (zero deps) → Abstractions → Application → Infrastructure → Adapter
 
 ## Documentation
 
-- [Getting Started](docs/getting-started.md)
-- [Core Concepts](docs/concepts.md)
-- [Adapters Guide](docs/adapters.md)
-- [Architecture](docs/architecture.md)
-- Sample apps under [`samples/`](samples/)
+_Docs and samples will be populated when the package is extracted to its own repo. In the meantime, browse the source under `src/Framework/` or the Nexus consumer code for end-to-end examples._
 
 ## Who's using Compendium?
 
