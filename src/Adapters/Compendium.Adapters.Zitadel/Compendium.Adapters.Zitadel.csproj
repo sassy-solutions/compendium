@@ -12,7 +12,6 @@
     <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions.Identity\Compendium.Abstractions.Identity.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
-    <ProjectReference Include="..\..\..\Core\Nexus.Core\Nexus.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

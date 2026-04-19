@@ -7,16 +7,15 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using Compendium.Abstractions.Identity;
 using Compendium.Adapters.Zitadel.Http;
 using Compendium.Adapters.Zitadel.Http.Models;
-using Nexus.Core.Domain.ValueObjects;
-using Nexus.Core.Ports.Platform;
 
 namespace Compendium.Adapters.Zitadel.Services;
 
 /// <summary>
 /// Provisions Zitadel identity resources (organization, project, OIDC app, admin user)
-/// for a new Nexus organization.
+/// when a new tenant-level organization is created.
 /// </summary>
 internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIdentityProvisioner
 {
@@ -38,32 +37,27 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
     }
 
     /// <inheritdoc />
-    public async Task<Result<OrganizationIdentityResult>> ProvisionIdentityAsync(
-        OrganizationId organizationId,
-        string organizationName,
-        string? displayName,
-        string planId,
-        AdminUserRequest adminUser,
+    public async Task<Result<OrganizationProvisioningResult>> ProvisionAsync(
+        OrganizationProvisioningRequest request,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(organizationId);
-        ArgumentNullException.ThrowIfNull(organizationName);
-        ArgumentNullException.ThrowIfNull(adminUser);
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(request.AdminUser);
 
         _logger.LogInformation(
             "Provisioning identity for organization {OrganizationId} ({OrganizationName})",
-            organizationId.Value, organizationName);
+            request.OrganizationId, request.Name);
 
         // Step 1: Create Zitadel organization
         var orgResult = await _organizationService.CreateOrganizationAsync(
-            new CreateOrganizationRequest { Name = displayName ?? organizationName },
+            new CreateOrganizationRequest { Name = request.DisplayName ?? request.Name },
             cancellationToken);
 
         if (orgResult.IsFailure)
         {
             _logger.LogWarning(
                 "Failed to create Zitadel organization for {OrganizationName}: {Error}",
-                organizationName, orgResult.Error.Message);
+                request.Name, orgResult.Error.Message);
             return orgResult.Error;
         }
 
@@ -74,7 +68,7 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
         var projectResult = await _httpClient.CreateProjectAsync(
             new ZitadelCreateProjectRequest
             {
-                Name = $"nexus-{organizationName}",
+                Name = $"nexus-{request.Name}",
                 ProjectRoleAssertion = true,
                 ProjectRoleCheck = true,
                 HasProjectCheck = true
@@ -101,9 +95,9 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
             projectId,
             new ZitadelCreateOidcAppRequest
             {
-                Name = $"nexus-{organizationName}-app",
-                RedirectUris = [$"https://{organizationName}.admin.sassy.solutions/api/auth/callback/zitadel"],
-                PostLogoutRedirectUris = [$"https://{organizationName}.admin.sassy.solutions"],
+                Name = $"nexus-{request.Name}-app",
+                RedirectUris = [$"https://{request.Name}.admin.sassy.solutions/api/auth/callback/zitadel"],
+                PostLogoutRedirectUris = [$"https://{request.Name}.admin.sassy.solutions"],
                 ResponseTypes = ["OIDC_RESPONSE_TYPE_CODE"],
                 GrantTypes = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"],
                 AppType = "OIDC_APP_TYPE_WEB",
@@ -133,12 +127,12 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
         var userResult = await _userService.CreateUserAsync(
             new CreateUserRequest
             {
-                Email = adminUser.Email,
-                FirstName = adminUser.FirstName,
-                LastName = adminUser.LastName,
-                Password = adminUser.Password,
+                Email = request.AdminUser.Email,
+                FirstName = request.AdminUser.FirstName,
+                LastName = request.AdminUser.LastName,
+                Password = request.AdminUser.Password,
                 OrganizationId = zitadelOrgId,
-                SendVerificationEmail = adminUser.Password is null
+                SendVerificationEmail = request.AdminUser.Password is null
             },
             cancellationToken);
 
@@ -146,7 +140,7 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
         {
             _logger.LogWarning(
                 "Failed to create admin user {Email} for organization {ZitadelOrgId}: {Error}",
-                adminUser.Email, zitadelOrgId, userResult.Error.Message);
+                request.AdminUser.Email, zitadelOrgId, userResult.Error.Message);
             return userResult.Error;
         }
 
@@ -170,12 +164,12 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
         }
 
         _logger.LogInformation(
-            "Identity provisioning complete for organization {OrganizationId}: ZitadelOrg={ZitadelOrgId}, Project={ProjectId}, AdminUser={AdminUserId}",
-            organizationId.Value, zitadelOrgId, projectId, adminUserId);
+            "Identity provisioning complete for organization {OrganizationId}: ExternalOrg={ZitadelOrgId}, Project={ProjectId}, AdminUser={AdminUserId}",
+            request.OrganizationId, zitadelOrgId, projectId, adminUserId);
 
-        return new OrganizationIdentityResult(
-            ZitadelOrganizationId: zitadelOrgId,
-            ProjectId: projectId,
+        return new OrganizationProvisioningResult(
+            ExternalOrganizationId: zitadelOrgId,
+            ExternalProjectId: projectId,
             ClientId: clientId,
             ClientSecret: clientSecret,
             AdminUserId: adminUserId);

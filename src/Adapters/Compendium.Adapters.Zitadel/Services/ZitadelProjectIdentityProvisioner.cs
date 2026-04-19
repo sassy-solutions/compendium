@@ -7,12 +7,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using Compendium.Abstractions.Identity;
 using Compendium.Adapters.Zitadel.Http;
 using Compendium.Adapters.Zitadel.Http.Models;
 using Compendium.Core.Results;
 using Microsoft.Extensions.Logging;
-using Nexus.Core.Domain.ValueObjects;
-using Nexus.Core.Ports.Platform;
 
 namespace Compendium.Adapters.Zitadel.Services;
 
@@ -33,63 +32,62 @@ internal sealed class ZitadelProjectIdentityProvisioner : IProjectIdentityProvis
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<Result<ProjectIdentityResult>> ProvisionProjectAsync(
-        ProjectId projectId,
-        OrganizationId organizationId,
-        string zitadelOrgId,
-        string projectName,
+    /// <inheritdoc />
+    public async Task<Result<ProjectProvisioningResult>> ProvisionProjectAsync(
+        ProjectProvisioningRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request);
+
         _logger.LogInformation(
-            "Creating Zitadel project '{ProjectName}' for org {ZitadelOrgId}",
-            projectName, zitadelOrgId);
+            "Creating Zitadel project '{ProjectName}' for org {ExternalOrganizationId}",
+            request.ProjectName, request.ExternalOrganizationId);
 
         var projectResult = await _httpClient.CreateProjectAsync(
             new ZitadelCreateProjectRequest
             {
-                Name = projectName,
+                Name = request.ProjectName,
                 ProjectRoleAssertion = true,
                 ProjectRoleCheck = true,
                 HasProjectCheck = true
             },
-            zitadelOrgId,
+            request.ExternalOrganizationId,
             cancellationToken);
 
         if (projectResult.IsFailure)
         {
             _logger.LogWarning(
                 "Failed to create Zitadel project for {ProjectName}: {Error}",
-                projectName, projectResult.Error.Message);
+                request.ProjectName, projectResult.Error.Message);
             return projectResult.Error;
         }
 
-        var zitadelProjectId = projectResult.Value.Id ?? string.Empty;
+        var externalProjectId = projectResult.Value.Id ?? string.Empty;
         _logger.LogInformation(
-            "Created Zitadel project {ZitadelProjectId} for Nexus project {ProjectId}",
-            zitadelProjectId, projectId.Value);
+            "Created Zitadel project {ExternalProjectId} for project {ProjectId}",
+            externalProjectId, request.ProjectId);
 
-        return Result.Success(new ProjectIdentityResult(ZitadelProjectId: zitadelProjectId));
+        return Result.Success(new ProjectProvisioningResult(ExternalProjectId: externalProjectId));
     }
 
-    public async Task<Result<OidcAppResult>> CreateOidcAppAsync(
-        string zitadelProjectId,
-        string zitadelOrgId,
-        string appName,
-        List<string> redirectUris,
-        List<string> postLogoutRedirectUris,
+    /// <inheritdoc />
+    public async Task<Result<OidcAppProvisioningResult>> CreateOidcAppAsync(
+        OidcAppProvisioningRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request);
+
         _logger.LogInformation(
-            "Creating OIDC app '{AppName}' in Zitadel project {ZitadelProjectId}",
-            appName, zitadelProjectId);
+            "Creating OIDC app '{AppName}' in Zitadel project {ExternalProjectId}",
+            request.AppName, request.ExternalProjectId);
 
         var oidcResult = await _httpClient.CreateOidcApplicationAsync(
-            zitadelProjectId,
+            request.ExternalProjectId,
             new ZitadelCreateOidcAppRequest
             {
-                Name = appName,
-                RedirectUris = redirectUris,
-                PostLogoutRedirectUris = postLogoutRedirectUris,
+                Name = request.AppName,
+                RedirectUris = [.. request.RedirectUris],
+                PostLogoutRedirectUris = [.. request.PostLogoutRedirectUris],
                 ResponseTypes = ["OIDC_RESPONSE_TYPE_CODE"],
                 GrantTypes = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"],
                 AppType = "OIDC_APP_TYPE_WEB",
@@ -99,46 +97,45 @@ internal sealed class ZitadelProjectIdentityProvisioner : IProjectIdentityProvis
                 IdTokenRoleAssertion = true,
                 IdTokenUserinfoAssertion = true
             },
-            zitadelOrgId,
+            request.ExternalOrganizationId,
             cancellationToken);
 
         if (oidcResult.IsFailure)
         {
             _logger.LogWarning(
-                "Failed to create OIDC app for project {ZitadelProjectId}: {Error}",
-                zitadelProjectId, oidcResult.Error.Message);
+                "Failed to create OIDC app for project {ExternalProjectId}: {Error}",
+                request.ExternalProjectId, oidcResult.Error.Message);
             return oidcResult.Error;
         }
 
         var clientId = oidcResult.Value.ClientId ?? string.Empty;
         var clientSecret = oidcResult.Value.ClientSecret ?? string.Empty;
         _logger.LogInformation(
-            "Created OIDC app with clientId {ClientId} in project {ZitadelProjectId}",
-            clientId, zitadelProjectId);
+            "Created OIDC app with clientId {ClientId} in project {ExternalProjectId}",
+            clientId, request.ExternalProjectId);
 
         var appId = oidcResult.Value.AppId;
-        return Result.Success(new OidcAppResult(ClientId: clientId, ClientSecret: clientSecret, ZitadelAppId: appId));
+        return Result.Success(new OidcAppProvisioningResult(ClientId: clientId, ClientSecret: clientSecret, ExternalAppId: appId));
     }
 
+    /// <inheritdoc />
     public async Task<Result> UpdateOidcAppAsync(
-        string zitadelProjectId,
-        string zitadelAppId,
-        string zitadelOrgId,
-        List<string> redirectUris,
-        List<string> postLogoutRedirectUris,
+        OidcAppUpdateRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request);
+
         _logger.LogInformation(
-            "Updating OIDC app {ZitadelAppId} in project {ZitadelProjectId}",
-            zitadelAppId, zitadelProjectId);
+            "Updating OIDC app {ExternalAppId} in project {ExternalProjectId}",
+            request.ExternalAppId, request.ExternalProjectId);
 
         return await _httpClient.UpdateOidcApplicationAsync(
-            zitadelProjectId,
-            zitadelAppId,
+            request.ExternalProjectId,
+            request.ExternalAppId,
             new ZitadelUpdateOidcAppRequest
             {
-                RedirectUris = redirectUris,
-                PostLogoutRedirectUris = postLogoutRedirectUris,
+                RedirectUris = [.. request.RedirectUris],
+                PostLogoutRedirectUris = [.. request.PostLogoutRedirectUris],
                 ResponseTypes = ["OIDC_RESPONSE_TYPE_CODE"],
                 GrantTypes = ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE"],
                 AppType = "OIDC_APP_TYPE_WEB",
@@ -148,46 +145,48 @@ internal sealed class ZitadelProjectIdentityProvisioner : IProjectIdentityProvis
                 IdTokenRoleAssertion = true,
                 IdTokenUserinfoAssertion = true
             },
-            zitadelOrgId,
+            request.ExternalOrganizationId,
             cancellationToken);
     }
 
+    /// <inheritdoc />
     public async Task<Result> DeleteOidcAppAsync(
-        string zitadelProjectId,
-        string zitadelAppId,
-        string zitadelOrgId,
+        OidcAppDeleteRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request);
+
         _logger.LogInformation(
-            "Deleting OIDC app {ZitadelAppId} from project {ZitadelProjectId}",
-            zitadelAppId, zitadelProjectId);
+            "Deleting OIDC app {ExternalAppId} from project {ExternalProjectId}",
+            request.ExternalAppId, request.ExternalProjectId);
 
         return await _httpClient.DeleteApplicationAsync(
-            zitadelProjectId,
-            zitadelAppId,
-            zitadelOrgId,
+            request.ExternalProjectId,
+            request.ExternalAppId,
+            request.ExternalOrganizationId,
             cancellationToken);
     }
 
-    public async Task<Result<OidcAppSecretResult>> RotateOidcAppSecretAsync(
-        string zitadelProjectId,
-        string zitadelAppId,
-        string zitadelOrgId,
+    /// <inheritdoc />
+    public async Task<Result<OidcAppSecretRotationResult>> RotateOidcAppSecretAsync(
+        OidcAppSecretRotationRequest request,
         CancellationToken cancellationToken = default)
     {
+        ArgumentNullException.ThrowIfNull(request);
+
         _logger.LogInformation(
-            "Rotating secret for OIDC app {ZitadelAppId} in project {ZitadelProjectId}",
-            zitadelAppId, zitadelProjectId);
+            "Rotating secret for OIDC app {ExternalAppId} in project {ExternalProjectId}",
+            request.ExternalAppId, request.ExternalProjectId);
 
         var result = await _httpClient.RegenerateOidcClientSecretAsync(
-            zitadelProjectId,
-            zitadelAppId,
-            zitadelOrgId,
+            request.ExternalProjectId,
+            request.ExternalAppId,
+            request.ExternalOrganizationId,
             cancellationToken);
 
         if (result.IsFailure)
             return result.Error;
 
-        return Result.Success(new OidcAppSecretResult(ClientSecret: result.Value.ClientSecret ?? string.Empty));
+        return Result.Success(new OidcAppSecretRotationResult(ClientSecret: result.Value.ClientSecret ?? string.Empty));
     }
 }

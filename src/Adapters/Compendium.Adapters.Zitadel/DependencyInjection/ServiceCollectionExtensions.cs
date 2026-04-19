@@ -7,6 +7,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using Compendium.Abstractions.Identity;
 using Compendium.Adapters.Zitadel.Authentication;
 using Compendium.Adapters.Zitadel.Configuration;
 using Compendium.Adapters.Zitadel.Health;
@@ -14,7 +15,6 @@ using Compendium.Adapters.Zitadel.Http;
 using Compendium.Adapters.Zitadel.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Nexus.Core.Ports.Platform;
 using Polly;
 using Polly.Extensions.Http;
 

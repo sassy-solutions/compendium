@@ -89,8 +89,8 @@ public sealed class ZitadelEndUserOptions
     public string DefaultSubscriptionTier { get; set; } = "Free";
 
     /// <summary>
-    /// Gets or sets the mapping from Zitadel organization IDs to Nexus tenant IDs.
-    /// Key: Zitadel Org ID, Value: Nexus Tenant ID (Guid string).
+    /// Gets or sets the mapping from Zitadel organization IDs to application tenant IDs.
+    /// Key: Zitadel Org ID, Value: Tenant ID (Guid string).
     /// </summary>
     /// <remarks>
     /// If empty, the system will attempt to look up the mapping dynamically
