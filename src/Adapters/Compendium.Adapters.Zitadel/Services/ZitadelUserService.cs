@@ -5,6 +5,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Security.Cryptography;
+using System.Text;
 using Compendium.Adapters.Zitadel.Configuration;
 using Compendium.Adapters.Zitadel.Http;
 using Compendium.Adapters.Zitadel.Http.Models;
@@ -45,8 +47,12 @@ internal sealed class ZitadelUserService : IIdentityUserService
 
         var orgId = GetOrganizationId(request.OrganizationId);
 
-        _logger.LogInformation("Creating user with email {Email} in organization {OrgId}",
-            request.Email, orgId);
+        // POM-170: do not log the raw email. Substitute a short SHA-256 prefix
+        // so the log line is still correlatable across calls without exposing
+        // PII to whatever downstream collects logs (Loki, stdout scrape, etc.).
+        _logger.LogInformation(
+            "Creating user in organization {OrgId} (email hash {EmailHashPrefix})",
+            orgId, HashPrefix(request.Email));
 
         var zitadelRequest = new ZitadelCreateUserRequest
         {
@@ -78,12 +84,18 @@ internal sealed class ZitadelUserService : IIdentityUserService
 
         if (result.IsFailure)
         {
-            _logger.LogWarning("Failed to create user {Email}: {Error}", request.Email, result.Error.Message);
+            // POM-170: keep the correlation hash in warning logs — never the
+            // raw email — even when the create fails.
+            _logger.LogWarning(
+                "Failed to create user (email hash {EmailHashPrefix}): {Error}",
+                HashPrefix(request.Email), result.Error.Message);
             return result.Error;
         }
 
         var user = MapToIdentityUser(result.Value, orgId);
-        _logger.LogInformation("Created user {UserId} with email {Email}", user.Id, user.Email);
+        // POM-170: once the user exists, its opaque id is the right identifier
+        // to log. Echoing the email back is unnecessary.
+        _logger.LogInformation("Created user {UserId}", user.Id);
 
         return user;
     }
@@ -122,7 +134,9 @@ internal sealed class ZitadelUserService : IIdentityUserService
 
         var orgId = GetOrganizationId();
 
-        _logger.LogDebug("Getting user by email {Email}", email);
+        // POM-170: debug logs also flow into centralised log stores, so use the
+        // short hash here as well.
+        _logger.LogDebug("Getting user by email (hash {EmailHashPrefix})", HashPrefix(email));
 
         var searchRequest = new ZitadelUserSearchRequest
         {
@@ -369,5 +383,23 @@ internal sealed class ZitadelUserService : IIdentityUserService
             UpdatedAt = zitadelUser.Details?.ChangeDate,
             OrganizationId = organizationId ?? zitadelUser.Details?.ResourceOwner
         };
+    }
+
+    /// <summary>
+    /// Returns an 8-hex-char SHA-256 prefix of the (lowercased, trimmed) email
+    /// for log correlation (POM-170). 32 bits of entropy is enough to correlate
+    /// a single user's lines within a bounded log window without being a
+    /// practical cross-corpus identity fingerprint.
+    /// </summary>
+    private static string HashPrefix(string? email)
+    {
+        if (string.IsNullOrEmpty(email))
+        {
+            return "<empty>";
+        }
+
+        Span<byte> hash = stackalloc byte[32];
+        SHA256.HashData(Encoding.UTF8.GetBytes(email.Trim().ToLowerInvariant()), hash);
+        return Convert.ToHexString(hash[..4]).ToLowerInvariant();
     }
 }

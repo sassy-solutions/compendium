@@ -82,8 +82,12 @@ internal sealed class ListmonkEmailService : IEmailService
 
         if (result.IsFailure)
         {
-            _logger.LogWarning("Failed to send templated email to {Recipient}: {Error}",
-                firstRecipient, result.Error.Message);
+            // POM-170: do not log the raw recipient email. Template + recipient
+            // count gives operators enough context to triage delivery failures
+            // without leaking PII into the log pipeline.
+            _logger.LogWarning(
+                "Failed to send templated email (template {TemplateId}, {RecipientCount} recipients): {Error}",
+                templateId, message.To?.Count ?? 0, result.Error.Message);
             return result.Error;
         }
 
