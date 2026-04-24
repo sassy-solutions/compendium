@@ -35,14 +35,15 @@ jobs:
       - name: Pack Compendium.* packages (excluding tests)
         run: |
           mkdir -p artifacts
-          for csproj in src/**/*.csproj; do
+          while IFS= read -r csproj; do
             name=$(basename "$csproj" .csproj)
             if [[ "$name" == Compendium.* && "$name" != *.Tests ]]; then
               echo "Packing $name"
               dotnet pack "$csproj" -c Release --no-build -o artifacts/
             fi
-          done
+          done < <(find src -name '*.csproj')
           ls -la artifacts/
+          echo "Packed $(ls artifacts/*.nupkg 2>/dev/null | wc -l) packages"
 
       - name: Push to nuget.org
         run: |
