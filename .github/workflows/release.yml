@@ -53,6 +53,7 @@ jobs:
             --skip-duplicate
 
       - name: Push to GitHub Packages (backup feed)
+        continue-on-error: true
         run: |
           dotnet nuget push "artifacts/*.nupkg" \
             --api-key ${{ secrets.GITHUB_TOKEN }} \
