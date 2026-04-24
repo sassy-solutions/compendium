@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Framework\Core\Compendium.Core\Compendium.Core.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Framework\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\..\src\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

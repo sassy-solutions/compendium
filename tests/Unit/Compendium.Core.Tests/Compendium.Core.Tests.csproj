@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Framework\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\Compendium.Core\Compendium.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

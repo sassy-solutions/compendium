@@ -1,0 +1,7 @@
+# False positives in test fixtures — not real secrets
+1406123837014e8f89fbe70d2f8ab169ea086014:tests/Integration/Compendium.IntegrationTests/EndToEnd/Scenarios/IdempotencyE2ETests.cs:generic-api-key:372
+1406123837014e8f89fbe70d2f8ab169ea086014:tests/Integration/Compendium.IntegrationTests/Idempotency/RedisIdempotencyStoreIntegrationTests.cs:generic-api-key:150
+1406123837014e8f89fbe70d2f8ab169ea086014:tests/Unit/Compendium.Adapters.LemonSqueezy.Tests/Configuration/LemonSqueezyOptionsTests.cs:generic-api-key:44
+tests/Integration/Compendium.IntegrationTests/EndToEnd/Scenarios/IdempotencyE2ETests.cs:generic-api-key:371
+tests/Integration/Compendium.IntegrationTests/Idempotency/RedisIdempotencyStoreIntegrationTests.cs:generic-api-key:155
+tests/Unit/Compendium.Adapters.LemonSqueezy.Tests/Configuration/LemonSqueezyOptionsTests.cs:generic-api-key:42

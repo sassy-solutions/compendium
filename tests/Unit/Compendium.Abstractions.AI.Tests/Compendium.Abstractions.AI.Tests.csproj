@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Framework\Abstractions\Compendium.Abstractions.AI\Compendium.Abstractions.AI.csproj" />
+    <ProjectReference Include="..\..\..\src\Abstractions\Compendium.Abstractions.AI\Compendium.Abstractions.AI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

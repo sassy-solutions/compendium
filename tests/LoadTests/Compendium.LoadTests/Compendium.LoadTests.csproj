@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../../../src/Framework/Abstractions/Compendium.Abstractions/Compendium.Abstractions.csproj" />
-    <ProjectReference Include="../../../../src/Framework/Core/Compendium.Core/Compendium.Core.csproj" />
-    <ProjectReference Include="../../../../src/Framework/Infrastructure/Compendium.Infrastructure/Compendium.Infrastructure.csproj" />
-    <ProjectReference Include="../../../../src/Framework/Adapters/Compendium.Adapters.PostgreSQL/Compendium.Adapters.PostgreSQL.csproj" />
+    <ProjectReference Include="../../../src/Abstractions/Compendium.Abstractions/Compendium.Abstractions.csproj" />
+    <ProjectReference Include="../../../src/Core/Compendium.Core/Compendium.Core.csproj" />
+    <ProjectReference Include="../../../src/Infrastructure/Compendium.Infrastructure/Compendium.Infrastructure.csproj" />
+    <ProjectReference Include="../../../src/Adapters/Compendium.Adapters.PostgreSQL/Compendium.Adapters.PostgreSQL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,66 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  pack-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # MinVer needs full history
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Restore
+        run: dotnet restore Compendium.sln
+
+      - name: Build
+        run: dotnet build Compendium.sln -c Release --no-restore
+
+      - name: Test (unit only)
+        run: |
+          dotnet test Compendium.sln -c Release --no-build \
+            --filter "FullyQualifiedName!~IntegrationTests&FullyQualifiedName!~LoadTests"
+
+      - name: Pack Compendium.* packages (excluding tests)
+        run: |
+          mkdir -p artifacts
+          for csproj in src/**/*.csproj; do
+            name=$(basename "$csproj" .csproj)
+            if [[ "$name" == Compendium.* && "$name" != *.Tests ]]; then
+              echo "Packing $name"
+              dotnet pack "$csproj" -c Release --no-build -o artifacts/
+            fi
+          done
+          ls -la artifacts/
+
+      - name: Push to nuget.org
+        run: |
+          dotnet nuget push "artifacts/*.nupkg" \
+            --api-key ${{ secrets.NUGET_API_KEY }} \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
+
+      - name: Push to GitHub Packages (backup feed)
+        run: |
+          dotnet nuget push "artifacts/*.nupkg" \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
+            --source https://nuget.pkg.github.com/sassy-solutions/index.json \
+            --skip-duplicate
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*.nupkg
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref, '-preview') || contains(github.ref, '-rc') || contains(github.ref, '-alpha') || contains(github.ref, '-beta') }}

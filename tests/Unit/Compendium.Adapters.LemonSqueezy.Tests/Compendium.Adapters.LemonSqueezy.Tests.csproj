@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Framework\Core\Compendium.Core\Compendium.Core.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Framework\Abstractions\Compendium.Abstractions.Billing\Compendium.Abstractions.Billing.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Framework\Adapters\Compendium.Adapters.LemonSqueezy\Compendium.Adapters.LemonSqueezy.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\..\src\Abstractions\Compendium.Abstractions.Billing\Compendium.Abstractions.Billing.csproj" />
+    <ProjectReference Include="..\..\..\src\Adapters\Compendium.Adapters.LemonSqueezy\Compendium.Adapters.LemonSqueezy.csproj" />
   </ItemGroup>
 
   <ItemGroup>

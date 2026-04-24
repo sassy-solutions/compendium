@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Framework\Core\Compendium.Core\Compendium.Core.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Framework\Abstractions\Compendium.Abstractions.Email\Compendium.Abstractions.Email.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Framework\Adapters\Compendium.Adapters.Listmonk\Compendium.Adapters.Listmonk.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\..\src\Abstractions\Compendium.Abstractions.Email\Compendium.Abstractions.Email.csproj" />
+    <ProjectReference Include="..\..\..\src\Adapters\Compendium.Adapters.Listmonk\Compendium.Adapters.Listmonk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

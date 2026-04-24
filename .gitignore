@@ -1,0 +1,47 @@
+# Build outputs
+**/bin/
+**/obj/
+artifacts/
+
+# Test results
+TestResults/
+*.trx
+coverage.*
+coverage-report/
+*.coverage
+*.coveragexml
+
+# IDE / editors
+.idea/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!Compendium.sln
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Local.json
+
+# Logs
+*.log
+logs/
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user

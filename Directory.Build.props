@@ -48,7 +48,7 @@
 
   <!-- MinVer: semantic versioning from git tags (prefix: compendium-v) -->
   <PropertyGroup>
-    <MinVerTagPrefix>compendium-v</MinVerTagPrefix>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
   </PropertyGroup>
   <ItemGroup>

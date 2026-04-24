@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Framework\Core\Compendium.Core\Compendium.Core.csproj" />
-    <ProjectReference Include="..\..\..\..\src\Framework\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\..\src\Multitenancy\Compendium.Multitenancy\Compendium.Multitenancy.csproj" />
   </ItemGroup>
 
   <ItemGroup>
