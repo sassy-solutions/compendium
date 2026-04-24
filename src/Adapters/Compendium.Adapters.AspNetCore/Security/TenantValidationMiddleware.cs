@@ -49,7 +49,7 @@ public sealed class TenantValidationMiddleware
         // Check if path is excluded
         if (IsExcludedPath(context.Request.Path))
         {
-            _logger.LogDebug("Path {Path} is excluded from tenant validation", context.Request.Path);
+            _logger.LogDebug("Path {Path} is excluded from tenant validation", SanitizeForLog(context.Request.Path.Value));
             await _next(context);
             return;
         }
@@ -65,7 +65,7 @@ public sealed class TenantValidationMiddleware
             _logger.LogWarning(
                 "Tenant validation failed: {Error}. Path: {Path}",
                 validationResult.Error.Message,
-                context.Request.Path);
+                SanitizeForLog(context.Request.Path.Value));
 
             await WriteErrorResponse(context, validationResult.Error.Message, StatusCodes.Status403Forbidden);
             return;
@@ -80,7 +80,7 @@ public sealed class TenantValidationMiddleware
 
             if (tenantResult.IsFailure || tenantResult.Value is null)
             {
-                _logger.LogWarning("Tenant {TenantId} not found or inactive", tenantId);
+                _logger.LogWarning("Tenant {TenantId} not found or inactive", SanitizeForLog(tenantId));
                 await WriteErrorResponse(
                     context,
                     TenantErrors.TenantNotFound(tenantId).Message,
@@ -90,7 +90,7 @@ public sealed class TenantValidationMiddleware
 
             if (!tenantResult.Value.IsActive)
             {
-                _logger.LogWarning("Tenant {TenantId} is not active", tenantId);
+                _logger.LogWarning("Tenant {TenantId} is not active", SanitizeForLog(tenantId));
                 await WriteErrorResponse(
                     context,
                     TenantErrors.TenantAccessDenied(tenantId).Message,
@@ -203,6 +203,13 @@ public sealed class TenantValidationMiddleware
 
         return _options.ExcludedPaths.Any(excluded =>
             pathValue.StartsWith(excluded, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static string SanitizeForLog(string? value)
+    {
+        if (string.IsNullOrEmpty(value))
+            return string.Empty;
+        return value.Replace("\r", "_").Replace("\n", "_").Replace("\t", "_");
     }
 
     private static async Task WriteErrorResponse(HttpContext context, string message, int statusCode)
