@@ -1,0 +1,16 @@
+- name: ASP.NET Core
+  href: aspnetcore.md
+- name: PostgreSQL
+  href: postgresql.md
+- name: Redis
+  href: redis.md
+- name: Zitadel
+  href: zitadel.md
+- name: Stripe
+  href: stripe.md
+- name: LemonSqueezy
+  href: lemonsqueezy.md
+- name: Listmonk
+  href: listmonk.md
+- name: OpenRouter
+  href: openrouter.md
