@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IProjectIdentityProvisioner | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IProjectIdentityProvisioner | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Provisions identity resources for a project within an organization. Creates an external project and manages OIDC applications.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Identity_IProjectIdentityProvisioner.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Identity.IProjectIdentityProvisioner%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner">
+
+
+
+  <h1 id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner" class="text-break">
+Interface IProjectIdentityProvisioner  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Identity/IProjectIdentityProvisioner.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Identity.html">Identity</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.Identity.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provisions identity resources for a project within an organization.
+Creates an external project and manages OIDC applications.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IProjectIdentityProvisioner</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_CreateOidcAppAsync_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.CreateOidcAppAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_CreateOidcAppAsync_Compendium_Abstractions_Identity_OidcAppProvisioningRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.CreateOidcAppAsync(Compendium.Abstractions.Identity.OidcAppProvisioningRequest,System.Threading.CancellationToken)">
+  CreateOidcAppAsync(OidcAppProvisioningRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Identity/IProjectIdentityProvisioner.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates an OIDC application within an external project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;OidcAppProvisioningResult&gt;&gt; CreateOidcAppAsync(OidcAppProvisioningRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.OidcAppProvisioningRequest.html">OidcAppProvisioningRequest</a></dt>
+    <dd><p>The OIDC app provisioning request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.OidcAppProvisioningResult.html">OidcAppProvisioningResult</a>&gt;&gt;</dt>
+    <dd><p>A result containing the created OIDC app details.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_DeleteOidcAppAsync_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.DeleteOidcAppAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_DeleteOidcAppAsync_Compendium_Abstractions_Identity_OidcAppDeleteRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.DeleteOidcAppAsync(Compendium.Abstractions.Identity.OidcAppDeleteRequest,System.Threading.CancellationToken)">
+  DeleteOidcAppAsync(OidcAppDeleteRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Identity/IProjectIdentityProvisioner.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes an OIDC application.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; DeleteOidcAppAsync(OidcAppDeleteRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.OidcAppDeleteRequest.html">OidcAppDeleteRequest</a></dt>
+    <dd><p>The OIDC app delete request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A result indicating success or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_ProvisionProjectAsync_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.ProvisionProjectAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_ProvisionProjectAsync_Compendium_Abstractions_Identity_ProjectProvisioningRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.ProvisionProjectAsync(Compendium.Abstractions.Identity.ProjectProvisioningRequest,System.Threading.CancellationToken)">
+  ProvisionProjectAsync(ProjectProvisioningRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Identity/IProjectIdentityProvisioner.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates an external project within an organization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;ProjectProvisioningResult&gt;&gt; ProvisionProjectAsync(ProjectProvisioningRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.ProjectProvisioningRequest.html">ProjectProvisioningRequest</a></dt>
+    <dd><p>The project provisioning request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.ProjectProvisioningResult.html">ProjectProvisioningResult</a>&gt;&gt;</dt>
+    <dd><p>A result containing the provisioned project identity details.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_RotateOidcAppSecretAsync_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.RotateOidcAppSecretAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_RotateOidcAppSecretAsync_Compendium_Abstractions_Identity_OidcAppSecretRotationRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.RotateOidcAppSecretAsync(Compendium.Abstractions.Identity.OidcAppSecretRotationRequest,System.Threading.CancellationToken)">
+  RotateOidcAppSecretAsync(OidcAppSecretRotationRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Identity/IProjectIdentityProvisioner.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rotates the client secret of an OIDC application.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;OidcAppSecretRotationResult&gt;&gt; RotateOidcAppSecretAsync(OidcAppSecretRotationRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.OidcAppSecretRotationRequest.html">OidcAppSecretRotationRequest</a></dt>
+    <dd><p>The OIDC app secret rotation request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.OidcAppSecretRotationResult.html">OidcAppSecretRotationResult</a>&gt;&gt;</dt>
+    <dd><p>A result containing the new client secret or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_UpdateOidcAppAsync_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.UpdateOidcAppAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IProjectIdentityProvisioner_UpdateOidcAppAsync_Compendium_Abstractions_Identity_OidcAppUpdateRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IProjectIdentityProvisioner.UpdateOidcAppAsync(Compendium.Abstractions.Identity.OidcAppUpdateRequest,System.Threading.CancellationToken)">
+  UpdateOidcAppAsync(OidcAppUpdateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Identity/IProjectIdentityProvisioner.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates an OIDC application's redirect URIs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; UpdateOidcAppAsync(OidcAppUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.OidcAppUpdateRequest.html">OidcAppUpdateRequest</a></dt>
+    <dd><p>The OIDC app update request.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A result indicating success or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Identity/IProjectIdentityProvisioner.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SecurityHeadersOptions | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SecurityHeadersOptions | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Configuration options for security headers middleware. Implements OWASP security best practices for HTTP headers.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions.md&amp;value=---%0Auid%3A%20Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions">
+
+
+
+  <h1 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions" class="text-break">
+Class SecurityHeadersOptions  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Adapters.html">Adapters</a>.<a class="xref" href="Compendium.Adapters.AspNetCore.html">AspNetCore</a>.<a class="xref" href="Compendium.Adapters.AspNetCore.Security.html">Security</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Adapters.AspNetCore.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Configuration options for security headers middleware.
+Implements OWASP security best practices for HTTP headers.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class SecurityHeadersOptions</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">SecurityHeadersOptions</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ContentSecurityPolicy_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ContentSecurityPolicy*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ContentSecurityPolicy" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ContentSecurityPolicy">
+  ContentSecurityPolicy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the Content-Security-Policy directive.
+Default: Restrictive policy suitable for APIs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ContentSecurityPolicy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ContentSecurityPolicy_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For APIs: &quot;default-src 'none'; frame-ancestors 'none'&quot;
+For web apps: Customize based on your needs.
+See: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP</a></p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableContentSecurityPolicy_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableContentSecurityPolicy*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableContentSecurityPolicy" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableContentSecurityPolicy">
+  EnableContentSecurityPolicy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to set Content-Security-Policy.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableContentSecurityPolicy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableContentSecurityPolicy_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>CSP helps prevent XSS, clickjacking, and other code injection attacks.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableFrameOptions_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableFrameOptions*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableFrameOptions" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableFrameOptions">
+  EnableFrameOptions
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to set X-Frame-Options.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableFrameOptions { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableFrameOptions_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Prevents clickjacking attacks by controlling iframe embedding.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableHsts_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableHsts*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableHsts" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableHsts">
+  EnableHsts
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to enable HTTP Strict Transport Security (HSTS).
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableHsts { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableHsts_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>HSTS forces browsers to use HTTPS instead of HTTP.
+Recommended max-age: 31536000 seconds (1 year).</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableNoSniff_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableNoSniff*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableNoSniff" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableNoSniff">
+  EnableNoSniff
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to set X-Content-Type-Options to nosniff.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableNoSniff { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableNoSniff_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Prevents browsers from MIME-sniffing responses, reducing XSS attacks.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnablePermissionsPolicy_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnablePermissionsPolicy*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnablePermissionsPolicy" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnablePermissionsPolicy">
+  EnablePermissionsPolicy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to set Permissions-Policy.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnablePermissionsPolicy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnablePermissionsPolicy_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Controls browser features and APIs (formerly Feature-Policy).</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnablePermittedCrossDomainPolicies_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnablePermittedCrossDomainPolicies*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnablePermittedCrossDomainPolicies" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnablePermittedCrossDomainPolicies">
+  EnablePermittedCrossDomainPolicies
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to set X-Permitted-Cross-Domain-Policies.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnablePermittedCrossDomainPolicies { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnablePermittedCrossDomainPolicies_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Controls cross-domain policy files (e.g., Adobe Flash, PDF).
+Recommended: &quot;none&quot; to prevent cross-domain data loading.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableReferrerPolicy_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableReferrerPolicy*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableReferrerPolicy" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.EnableReferrerPolicy">
+  EnableReferrerPolicy
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to set Referrer-Policy.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableReferrerPolicy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_EnableReferrerPolicy_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Controls how much referrer information is included with requests.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_FrameOptionsValue_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.FrameOptionsValue*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_FrameOptionsValue" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.FrameOptionsValue">
+  FrameOptionsValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the X-Frame-Options value.
+Default: DENY.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FrameOptionsValue { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_FrameOptionsValue_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Options: DENY, SAMEORIGIN, ALLOW-FROM uri.
+DENY is most secure but prevents all iframe embedding.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_HstsIncludeSubDomains_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.HstsIncludeSubDomains*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_HstsIncludeSubDomains" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.HstsIncludeSubDomains">
+  HstsIncludeSubDomains
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to include subdomains in HSTS.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HstsIncludeSubDomains { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_HstsMaxAgeSeconds_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.HstsMaxAgeSeconds*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_HstsMaxAgeSeconds" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.HstsMaxAgeSeconds">
+  HstsMaxAgeSeconds
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the HSTS max-age in seconds.
+Default: 31536000 (1 year).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HstsMaxAgeSeconds { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_HstsPreload_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.HstsPreload*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_HstsPreload" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.HstsPreload">
+  HstsPreload
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to enable HSTS preload.
+Default: false (requires manual submission to HSTS preload list).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HstsPreload { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_PermissionsPolicyValue_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.PermissionsPolicyValue*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_PermissionsPolicyValue" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.PermissionsPolicyValue">
+  PermissionsPolicyValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the Permissions-Policy directive.
+Default: Restrictive policy disabling all features.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PermissionsPolicyValue { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_PermissionsPolicyValue_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Example: &quot;geolocation=(), microphone=(), camera=()&quot;
+For APIs, typically disable all: &quot;geolocation=(), microphone=(), camera=(), payment=(), usb=()&quot;</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_PermittedCrossDomainPoliciesValue_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.PermittedCrossDomainPoliciesValue*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_PermittedCrossDomainPoliciesValue" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.PermittedCrossDomainPoliciesValue">
+  PermittedCrossDomainPoliciesValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the X-Permitted-Cross-Domain-Policies value.
+Default: none.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PermittedCrossDomainPoliciesValue { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ReferrerPolicyValue_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ReferrerPolicyValue*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ReferrerPolicyValue" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ReferrerPolicyValue">
+  ReferrerPolicyValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the Referrer-Policy value.
+Default: strict-origin-when-cross-origin.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReferrerPolicyValue { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ReferrerPolicyValue_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Options: no-referrer, no-referrer-when-downgrade, origin,
+origin-when-cross-origin, same-origin, strict-origin,
+strict-origin-when-cross-origin, unsafe-url.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_RemoveServerHeader_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.RemoveServerHeader*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_RemoveServerHeader" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.RemoveServerHeader">
+  RemoveServerHeader
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to remove the Server header.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RemoveServerHeader { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_RemoveServerHeader_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Removing the Server header reduces information disclosure.
+Prevents attackers from knowing server technology.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_RemoveXPoweredByHeader_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.RemoveXPoweredByHeader*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_RemoveXPoweredByHeader" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.RemoveXPoweredByHeader">
+  RemoveXPoweredByHeader
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to remove the X-Powered-By header.
+Default: true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RemoveXPoweredByHeader { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_RemoveXPoweredByHeader_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Removes technology fingerprinting headers.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ForApi_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ForApi*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ForApi" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ForApi">
+  ForApi()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a default configuration suitable for REST APIs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SecurityHeadersOptions ForApi()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.html">SecurityHeadersOptions</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ForWebApp_" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ForWebApp*"></a>
+
+  <h3 id="Compendium_Adapters_AspNetCore_Security_SecurityHeadersOptions_ForWebApp" data-uid="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.ForWebApp">
+  ForWebApp()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a default configuration suitable for web applications with static content.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SecurityHeadersOptions ForWebApp()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Adapters.AspNetCore.Security.SecurityHeadersOptions.html">SecurityHeadersOptions</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/SecurityHeadersOptions.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

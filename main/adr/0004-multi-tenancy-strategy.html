@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>0004. Multi-tenancy strategy | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="0004. Multi-tenancy strategy | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/blob/main/docs/adr/0004-multi-tenancy-strategy.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="0004-multi-tenancy-strategy">0004. Multi-tenancy strategy</h1>
+
+<ul>
+<li>Status: Accepted</li>
+<li>Date: 2026-04-25</li>
+<li>Deciders: @sassy-solutions/maintainers</li>
+</ul>
+<h2 id="context">Context</h2>
+<p>Compendium is SaaS-first: every domain operation must know which tenant it acts on, and a request from tenant A must never read or write data belonging to tenant B. The tenant identifier shows up in several places that a real request can carry simultaneously:</p>
+<ul>
+<li>An explicit header (<code>X-Tenant-ID</code>) set by an API gateway or SDK.</li>
+<li>A subdomain (<code>acme.example.com</code>) used for branded login and marketing routes.</li>
+<li>One or more JWT claims — Zitadel exposes <code>urn:zitadel:iam:org:id</code>; generic OIDC providers use <code>org_id</code> or <code>tenant_id</code>.</li>
+</ul>
+<p>A real request can carry several of these <em>at once</em> (e.g. JWT + subdomain on a tenant-branded portal). If they disagree, the request is either misconfigured or actively malicious — and we want a default that fails closed.</p>
+<p>The decision lives at the framework layer because every consumer needs the same guarantees. Doing it per-app would mean each consumer re-invents tenant resolution (and at least one would get it subtly wrong).</p>
+<h2 id="decision">Decision</h2>
+<p>The framework provides <code>Compendium.Multitenancy</code> with these moving parts:</p>
+<ul>
+<li><strong><code>TenantContext</code></strong> — a small immutable record carrying <code>TenantId</code> plus its provenance (which source produced it). Registered as a scoped service; one per request.</li>
+<li><strong><code>TenantResolver</code> / <code>JwtClaimTenantResolver</code></strong> — pluggable resolvers that read the tenant from a specific source (header, subdomain, JWT). Multiple resolvers run per request.</li>
+<li><strong><code>TenantConsistencyValidator</code></strong> (<code>ITenantConsistencyValidator</code>) — runs after resolution and rejects the request if two resolvers produced different non-empty tenant IDs. Default policy: <strong>fail closed</strong> — any disagreement → reject.</li>
+<li><strong><code>TenantContextAccessor</code></strong> — the only sanctioned read path for downstream code (handlers, repositories, adapters).</li>
+<li><strong><code>TenantPropagatingDelegatingHandler</code></strong> — propagates the resolved tenant on outbound HTTP calls, so adapter calls (Stripe, Listmonk, …) keep tenant context.</li>
+<li><strong><code>TenantIsolation</code></strong> — guard rails used by the PostgreSQL adapter to scope every query to the resolved tenant.</li>
+</ul>
+<p>The framework does <strong>not</strong> prescribe a physical isolation model (shared DB vs. DB-per-tenant vs. RLS). It enforces <em>logical</em> tenant scoping at every layer it owns; consumers choose physical isolation when they wire the adapter.</p>
+<h2 id="consequences">Consequences</h2>
+<h3 id="positive">Positive</h3>
+<ul>
+<li>Cross-tenant access is impossible by default: any code path that forgets to scope a query reads from <code>TenantContext</code>, and <code>TenantContext</code> is request-scoped and validated.</li>
+<li>Multi-source consistency catches misconfigured gateways (e.g. JWT for tenant A but <code>X-Tenant-ID</code> for tenant B) and trivial token-replay attempts.</li>
+<li>Tenant context is propagated to outbound calls, so audit logs and third-party requests carry the correct identity.</li>
+<li>Consumers stay free to pick the physical isolation model that fits their compliance posture.</li>
+</ul>
+<h3 id="negative--trade-offs">Negative / Trade-offs</h3>
+<ul>
+<li><strong>Detection-side attack surface.</strong> The validator itself is now a security-critical component: a bug that returns &quot;consistent&quot; when sources disagree silently breaks isolation. Mitigated with focused unit tests and contract tests in <code>tests/Architecture</code>.</li>
+<li><strong>Failure mode is loud.</strong> A configuration drift between gateway and IdP rejects every request from that path. We consider this correct behaviour, but it means careful rollout for the multi-source policy.</li>
+<li><strong>Resolver order matters subtly.</strong> When only one source is present, that source wins; this is by design but documented because it surprises newcomers.</li>
+<li>Header-based resolvers must only be trusted when set by an authenticated gateway — explicit warning in <code>CONTRIBUTING.md</code>.</li>
+</ul>
+<h2 id="alternatives-considered">Alternatives considered</h2>
+<ul>
+<li><strong>Single source only (header).</strong> Rejected — fine for trusted-gateway deployments, but doesn't catch the &quot;JWT and gateway disagree&quot; class of bugs, and rules out branded-subdomain login flows.</li>
+<li><strong>Database-per-tenant as the only model.</strong> Rejected — strong isolation but operationally heavy (migrations × tenants), and the framework should not force that cost on small consumers.</li>
+<li><strong>Postgres Row-Level Security as the only mechanism.</strong> Rejected as the <em>sole</em> mechanism — RLS is an excellent backstop and consumers can use it, but framework-level scoping is needed for non-Postgres adapters (Redis, third-party APIs).</li>
+<li><strong>No framework support; let consumers solve it.</strong> Rejected — guarantees inconsistency across consumers and recreates the very class of bugs the framework exists to prevent.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/docs/adr/0004-multi-tenancy-strategy.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
