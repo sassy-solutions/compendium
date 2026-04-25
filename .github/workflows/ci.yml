@@ -47,6 +47,9 @@ jobs:
             --results-directory TestResults/ \
             --collect:"XPlat Code Coverage"
 
+      - name: Build samples
+        run: dotnet build samples/ -c Release
+
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v7
