@@ -73,18 +73,197 @@
         <article data-uid="">
 <h1 id="getting-started">Getting Started</h1>
 
+<p>This page walks you through building a tiny event-sourced service with Compendium: prerequisites, install, define an aggregate, wire DI, dispatch a command, and read a projection. Plan ~10 minutes; longer if it's your first event-sourced .NET app.</p>
+<p>If you'd rather read working code, jump straight to <a href="https://github.com/sassy-solutions/compendium/tree/main/samples/01-QuickStart-OrderAggregate"><code>samples/01-QuickStart-OrderAggregate</code></a>. Everything below is taken from that sample.</p>
+<h2 id="1-prerequisites">1. Prerequisites</h2>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/9.0">.NET 9 SDK</a></li>
+<li>(Optional) Docker — only needed for the multi-tenant + PostgreSQL sample</li>
+<li>A C# project (<code>dotnet new console -o MyService</code>)</li>
+</ul>
 <blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-182">POM-182</a>.</p>
+<p><strong>Note.</strong> Compendium targets <code>net9.0</code>. Older runtimes are not supported.</p>
 </blockquote>
-<p>This page will walk you through:</p>
+<h2 id="2-install-the-packages">2. Install the packages</h2>
+<p>The smallest useful set is <code>Compendium.Core</code> plus <code>Compendium.Application</code>. Add adapters as you need them.</p>
+<pre><code class="lang-bash">dotnet add package Compendium.Core
+dotnet add package Compendium.Abstractions
+dotnet add package Compendium.Application
+
+# Optional adapters
+dotnet add package Compendium.Adapters.PostgreSQL
+dotnet add package Compendium.Multitenancy
+dotnet add package Compendium.Adapters.OpenRouter
+</code></pre>
+<blockquote>
+<p><strong>Status.</strong> Compendium is at <strong><code>v1.0.0-preview.1</code></strong>. APIs in <code>Compendium.Core</code> and <code>Compendium.Abstractions.*</code> are intended to be stable; adapter APIs may evolve.</p>
+</blockquote>
+<h2 id="3-define-an-aggregate">3. Define an aggregate</h2>
+<p>Aggregates inherit from <code>AggregateRoot&lt;TId&gt;</code> (in <code>Compendium.Core.Domain.Primitives</code>). Domain events derive from <code>DomainEventBase</code> (in <code>Compendium.Core.Domain.Events</code>). Both are in zero-dependency <code>Compendium.Core</code>.</p>
+<pre><code class="lang-csharp">using Compendium.Core.Domain.Events;
+using Compendium.Core.Domain.Primitives;
+using Compendium.Core.Results;
+
+public sealed class OrderPlaced : DomainEventBase
+{
+    public OrderPlaced(string orderId, string customerId, decimal totalAmount, long version)
+        : base(orderId, nameof(Order), version)
+    {
+        CustomerId = customerId;
+        TotalAmount = totalAmount;
+    }
+
+    public string CustomerId { get; }
+    public decimal TotalAmount { get; }
+}
+
+public sealed class OrderShipped : DomainEventBase
+{
+    public OrderShipped(string orderId, DateTimeOffset shippedAt, long version)
+        : base(orderId, nameof(Order), version) =&gt; ShippedAt = shippedAt;
+
+    public DateTimeOffset ShippedAt { get; }
+}
+
+public sealed class Order : AggregateRoot&lt;Guid&gt;
+{
+    private Order(Guid id) : base(id) { }
+
+    public string CustomerId { get; private set; } = &quot;&quot;;
+    public decimal TotalAmount { get; private set; }
+    public OrderStatus Status { get; private set; } = OrderStatus.Pending;
+
+    public static Result&lt;Order&gt; Place(Guid id, string customerId, decimal totalAmount)
+    {
+        if (string.IsNullOrWhiteSpace(customerId))
+            return Result.Failure&lt;Order&gt;(Error.Validation(&quot;Order.CustomerId.Empty&quot;, &quot;CustomerId required.&quot;));
+        if (totalAmount &lt;= 0m)
+            return Result.Failure&lt;Order&gt;(Error.Validation(&quot;Order.TotalAmount.NotPositive&quot;, &quot;Total must be &gt; 0.&quot;));
+
+        var order = new Order(id) { CustomerId = customerId, TotalAmount = totalAmount, Status = OrderStatus.Placed };
+        order.AddDomainEvent(new OrderPlaced(id.ToString(), customerId, totalAmount, order.Version + 1));
+        order.IncrementVersion();
+        return Result.Success(order);
+    }
+
+    public Result Ship()
+    {
+        if (Status != OrderStatus.Placed)
+            return Result.Failure(Error.Conflict(&quot;Order.NotPlaced&quot;, $&quot;Cannot ship in status {Status}.&quot;));
+
+        Status = OrderStatus.Shipped;
+        AddDomainEvent(new OrderShipped(Id.ToString(), DateTimeOffset.UtcNow, Version + 1));
+        IncrementVersion();
+        return Result.Success();
+    }
+}
+
+public enum OrderStatus { Pending, Placed, Shipped }
+</code></pre>
+<p>Two things to notice:</p>
 <ol>
-<li>Installing the Compendium NuGet packages</li>
-<li>Defining your first event-sourced aggregate</li>
-<li>Wiring CQRS dispatchers in <code>Program.cs</code></li>
-<li>Dispatching a command and reading a projection</li>
-<li>Running one of the <a href="https://github.com/sassy-solutions/compendium/tree/main/samples">samples</a></li>
+<li>The aggregate <strong>never throws</strong> for expected failures — it returns <code>Result</code> / <code>Result&lt;T&gt;</code>. See <a href="adr/0001-result-pattern.html">ADR 0001</a>.</li>
+<li><code>AddDomainEvent</code> and <code>IncrementVersion</code> are <code>protected</code> on <code>AggregateRoot&lt;TId&gt;</code>; only the aggregate itself can raise events.</li>
 </ol>
-<p>In the meantime, the <a href="https://github.com/sassy-solutions/compendium/blob/main/README.md">README</a> has a Quick Start snippet.</p>
+<h2 id="4-define-a-command-and-a-query">4. Define a command and a query</h2>
+<p>Commands and queries live in <code>Compendium.Abstractions.CQRS</code>; handlers live in <code>Compendium.Abstractions.CQRS.Handlers</code>.</p>
+<pre><code class="lang-csharp">using Compendium.Abstractions.CQRS.Commands;
+using Compendium.Abstractions.CQRS.Handlers;
+using Compendium.Abstractions.CQRS.Queries;
+using Compendium.Core.Results;
+
+public sealed record PlaceOrderCommand(Guid OrderId, string CustomerId, decimal TotalAmount)
+    : ICommand&lt;Guid&gt;;
+
+public sealed record GetOrderSummaryQuery(Guid OrderId) : IQuery&lt;OrderSummary&gt;;
+public sealed record OrderSummary(Guid OrderId, string CustomerId, decimal TotalAmount, string Status);
+
+public sealed class PlaceOrderHandler(OrderSummaryProjection projection)
+    : ICommandHandler&lt;PlaceOrderCommand, Guid&gt;
+{
+    public Task&lt;Result&lt;Guid&gt;&gt; HandleAsync(PlaceOrderCommand cmd, CancellationToken ct = default)
+    {
+        var result = Order.Place(cmd.OrderId, cmd.CustomerId, cmd.TotalAmount);
+        if (result.IsFailure) return Task.FromResult(Result.Failure&lt;Guid&gt;(result.Error));
+
+        projection.Apply(result.Value!.GetUncommittedEvents());
+        return Task.FromResult(Result.Success(result.Value!.Id));
+    }
+}
+
+public sealed class GetOrderSummaryHandler(OrderSummaryProjection projection)
+    : IQueryHandler&lt;GetOrderSummaryQuery, OrderSummary&gt;
+{
+    public Task&lt;Result&lt;OrderSummary&gt;&gt; HandleAsync(GetOrderSummaryQuery q, CancellationToken ct = default)
+    {
+        var s = projection.Get(q.OrderId);
+        return Task.FromResult(s is null
+            ? Result.Failure&lt;OrderSummary&gt;(Error.NotFound(&quot;Order.NotFound&quot;, $&quot;Order {q.OrderId} not found.&quot;))
+            : Result.Success(s));
+    }
+}
+</code></pre>
+<p>The <code>OrderSummaryProjection</code> is just a <code>Dictionary&lt;Guid, OrderSummary&gt;</code> updated from incoming events — see the QuickStart sample for the full implementation.</p>
+<h2 id="5-wire-di">5. Wire DI</h2>
+<p>Compendium ships dispatcher classes (<code>CommandDispatcher</code>, <code>QueryDispatcher</code> in <code>Compendium.Application.CQRS</code>) — register them and your handlers, and you're done.</p>
+<pre><code class="lang-csharp">using Compendium.Abstractions.CQRS.Handlers;
+using Compendium.Application.CQRS;
+using Microsoft.Extensions.DependencyInjection;
+
+var services = new ServiceCollection();
+
+// Compendium dispatchers
+services.AddSingleton&lt;ICommandDispatcher, CommandDispatcher&gt;();
+services.AddSingleton&lt;IQueryDispatcher, QueryDispatcher&gt;();
+
+// Your projection + handlers
+services.AddSingleton&lt;OrderSummaryProjection&gt;();
+services.AddSingleton&lt;ICommandHandler&lt;PlaceOrderCommand, Guid&gt;, PlaceOrderHandler&gt;();
+services.AddSingleton&lt;IQueryHandler&lt;GetOrderSummaryQuery, OrderSummary&gt;, GetOrderSummaryHandler&gt;();
+
+await using var provider = services.BuildServiceProvider();
+</code></pre>
+<blockquote>
+<p><strong>Heads-up.</strong> There is no umbrella <code>AddCompendium(...)</code> extension yet — register dispatchers and handlers explicitly. Each adapter brings its own <code>Add*</code> extension (e.g. <code>AddPostgreSqlEventStore</code>, <code>AddCompendiumMultitenancy</code>, <code>AddOpenRouter</code>).</p>
+</blockquote>
+<h2 id="6-dispatch-a-command">6. Dispatch a command</h2>
+<pre><code class="lang-csharp">var commands = provider.GetRequiredService&lt;ICommandDispatcher&gt;();
+
+var orderId = Guid.NewGuid();
+var result = await commands.DispatchAsync&lt;PlaceOrderCommand, Guid&gt;(
+    new PlaceOrderCommand(orderId, CustomerId: &quot;cust-001&quot;, TotalAmount: 49.95m));
+
+if (result.IsFailure)
+{
+    Console.Error.WriteLine($&quot;{result.Error.Code}: {result.Error.Message}&quot;);
+    return 1;
+}
+
+Console.WriteLine($&quot;Placed order {result.Value}&quot;);
+</code></pre>
+<p>Dispatchers wrap your handler in a pipeline of <code>IPipelineBehavior&lt;TRequest, TResponse&gt;</code> (logging, validation, idempotency, transactions). Out of the box you get distributed tracing and metrics via <code>CompendiumTelemetry</code>.</p>
+<h2 id="7-read-a-projection">7. Read a projection</h2>
+<pre><code class="lang-csharp">var queries = provider.GetRequiredService&lt;IQueryDispatcher&gt;();
+
+var summary = await queries.DispatchAsync&lt;GetOrderSummaryQuery, OrderSummary&gt;(
+    new GetOrderSummaryQuery(orderId));
+
+Console.WriteLine(summary.Value);
+// → OrderSummary { OrderId = ..., CustomerId = cust-001, TotalAmount = 49.95, Status = Placed }
+</code></pre>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><strong><a href="concepts/event-sourcing.html">Concepts</a></strong> — the <em>why</em> behind aggregates, projections, and the result pattern.</li>
+<li><strong><a href="adapters/postgresql.html">Adapters</a></strong> — wire a real event store, multi-tenancy, AI provider, billing, or auth.</li>
+<li><strong><a href="https://github.com/sassy-solutions/compendium/tree/main/samples">Samples</a></strong> — three runnable projects:
+<ul>
+<li><code>01-QuickStart-OrderAggregate</code> — the code on this page, in a single file you can <code>dotnet run</code>.</li>
+<li><code>02-MultiTenant-WithPostgres</code> — same model against a real Postgres event store, scoped per tenant.</li>
+<li><code>03-AI-WithOpenRouter</code> — Compendium's provider-agnostic <code>IAIProvider</code> against OpenRouter (with offline fallback).</li>
+</ul>
+</li>
+<li><strong><a href="adr/README.html">Architecture decisions</a></strong> — the trade-offs we made, and didn't make, in writing this framework.</li>
+</ul>
 
 </article>
 
