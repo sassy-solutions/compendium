@@ -75,32 +75,51 @@ public sealed class ProcessManagerOrchestrator : IProcessManagerOrchestrator
         }
 
         // Mark in-progress before delegating, so a crash mid-execution is observable.
-        await _repository.UpdateStatusAsync(processManagerId, SagaStatus.InProgress, cancellationToken).ConfigureAwait(false);
+        var markInProgress = await _repository.UpdateStatusAsync(processManagerId, SagaStatus.InProgress, cancellationToken).ConfigureAwait(false);
+        if (markInProgress.IsFailure)
+        {
+            return markInProgress;
+        }
 
         var execution = await _stepExecutor.ExecuteAsync(processManager, step, cancellationToken).ConfigureAwait(false);
         if (execution.IsFailure)
         {
-            await _repository.UpdateStepStatusAsync(
+            // Persist the failure status; if persistence itself fails we still want the
+            // execution error to surface (it's the original cause), but log via the result type.
+            var markFailed = await _repository.UpdateStepStatusAsync(
                 processManagerId,
                 step.Id,
                 SagaStepStatus.Failed,
                 execution.Error.Message,
                 cancellationToken).ConfigureAwait(false);
-            return execution;
+            return markFailed.IsFailure ? markFailed : execution;
         }
 
-        await _repository.UpdateStepStatusAsync(
+        var markCompleted = await _repository.UpdateStepStatusAsync(
             processManagerId,
             step.Id,
             SagaStepStatus.Completed,
             errorMessage: null,
             cancellationToken).ConfigureAwait(false);
-
-        // Auto-complete if every step is done.
-        var refreshed = await _repository.GetByIdAsync(processManagerId, cancellationToken).ConfigureAwait(false);
-        if (refreshed.IsSuccess && refreshed.Value.Steps.All(s => s.Status == SagaStepStatus.Completed))
+        if (markCompleted.IsFailure)
         {
-            await _repository.UpdateStatusAsync(processManagerId, SagaStatus.Completed, cancellationToken).ConfigureAwait(false);
+            return markCompleted;
+        }
+
+        // Auto-complete if every step is done. Persistence failures here surface as errors.
+        var refreshed = await _repository.GetByIdAsync(processManagerId, cancellationToken).ConfigureAwait(false);
+        if (refreshed.IsFailure)
+        {
+            return Result.Failure(refreshed.Error);
+        }
+
+        if (refreshed.Value.Steps.All(s => s.Status == SagaStepStatus.Completed))
+        {
+            var markFinished = await _repository.UpdateStatusAsync(processManagerId, SagaStatus.Completed, cancellationToken).ConfigureAwait(false);
+            if (markFinished.IsFailure)
+            {
+                return markFinished;
+            }
         }
 
         return Result.Success();
@@ -121,32 +140,39 @@ public sealed class ProcessManagerOrchestrator : IProcessManagerOrchestrator
             .OrderByDescending(s => s.Order)
             .ToList();
 
-        await _repository.UpdateStatusAsync(processManagerId, SagaStatus.Compensating, cancellationToken).ConfigureAwait(false);
+        var markCompensating = await _repository.UpdateStatusAsync(processManagerId, SagaStatus.Compensating, cancellationToken).ConfigureAwait(false);
+        if (markCompensating.IsFailure)
+        {
+            return markCompensating;
+        }
 
         foreach (var step in completedSteps)
         {
             var compensation = await _stepExecutor.CompensateAsync(processManager, step, cancellationToken).ConfigureAwait(false);
             if (compensation.IsFailure)
             {
-                await _repository.UpdateStepStatusAsync(
+                var markStepFailed = await _repository.UpdateStepStatusAsync(
                     processManagerId,
                     step.Id,
                     SagaStepStatus.Failed,
                     compensation.Error.Message,
                     cancellationToken).ConfigureAwait(false);
-                return compensation;
+                return markStepFailed.IsFailure ? markStepFailed : compensation;
             }
 
-            await _repository.UpdateStepStatusAsync(
+            var markStepCompensated = await _repository.UpdateStepStatusAsync(
                 processManagerId,
                 step.Id,
                 SagaStepStatus.Compensated,
                 errorMessage: null,
                 cancellationToken).ConfigureAwait(false);
+            if (markStepCompensated.IsFailure)
+            {
+                return markStepCompensated;
+            }
         }
 
-        await _repository.UpdateStatusAsync(processManagerId, SagaStatus.Compensated, cancellationToken).ConfigureAwait(false);
-        return Result.Success();
+        return await _repository.UpdateStatusAsync(processManagerId, SagaStatus.Compensated, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc />

@@ -24,12 +24,18 @@ public interface IProcessManagerRepository
     Task<Result<IProcessManager>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Persists the given process manager. Implementations are expected to use
-    /// optimistic concurrency control to detect concurrent modifications.
+    /// Persists the given process manager.
     /// </summary>
+    /// <remarks>
+    /// The contract does not currently expose a version/ETag on <see cref="IProcessManager"/>,
+    /// so optimistic concurrency cannot be expressed at this layer; durable adapters are
+    /// nonetheless encouraged to track an internal version column and surface conflicts as
+    /// <see cref="Error.Conflict"/> when they detect concurrent writes. A future minor
+    /// version may extend the abstraction with an explicit <c>expectedVersion</c> argument.
+    /// </remarks>
     /// <param name="processManager">The process manager to save.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A successful result, or a conflict error if a concurrency violation is detected.</returns>
+    /// <returns>A successful result, or an adapter-defined error (conflict, persistence failure, etc.).</returns>
     Task<Result> SaveAsync(IProcessManager processManager, CancellationToken cancellationToken = default);
 
     /// <summary>

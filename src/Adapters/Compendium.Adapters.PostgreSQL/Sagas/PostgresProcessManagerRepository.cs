@@ -6,6 +6,7 @@
 // -----------------------------------------------------------------------
 
 using System.Data;
+using System.Reflection;
 using System.Text.Json;
 using Compendium.Abstractions.Sagas.Common;
 using Compendium.Abstractions.Sagas.ProcessManagers;
@@ -163,9 +164,15 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
 
             return Result.Success<IProcessManager>(pm);
         }
-        catch (Exception ex)
+        catch (NpgsqlException ex)
         {
-            _logger?.LogError(ex, "Failed to load process manager {Id}", id);
+            _logger?.LogError(ex, "Database failure loading process manager {Id}", id);
+            return Result.Failure<IProcessManager>(Error.Failure("ProcessManager.LoadFailed", ex.Message));
+        }
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException)
+        {
+            // Row mapping or Enum.Parse rejected unexpected data.
+            _logger?.LogError(ex, "Mapping failure loading process manager {Id}", id);
             return Result.Failure<IProcessManager>(Error.Failure("ProcessManager.LoadFailed", ex.Message));
         }
     }
@@ -175,6 +182,9 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
     {
         ArgumentNullException.ThrowIfNull(processManager);
 
+        // Tenant guard on upsert: the WHERE on the conflict branch ensures we never
+        // overwrite a saga that belongs to a different tenant if id collisions happen.
+        // Production deployments should also enforce this at the DB layer with RLS.
         const string upsertSagaSql = """
             INSERT INTO process_managers (id, status, version, state_json, tenant_id, created_at, completed_at)
             VALUES (@Id, @Status, 0, @StateJson::jsonb, @TenantId, @CreatedAt, @CompletedAt)
@@ -182,7 +192,9 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
               SET status = EXCLUDED.status,
                   state_json = EXCLUDED.state_json,
                   completed_at = EXCLUDED.completed_at,
-                  version = process_managers.version + 1;
+                  version = process_managers.version + 1
+              WHERE process_managers.tenant_id IS NOT DISTINCT FROM EXCLUDED.tenant_id
+            RETURNING id;
             """;
 
         const string upsertStepSql = """
@@ -204,7 +216,7 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
             // Best-effort state serialization. If the saga doesn't expose typed state, persist null.
             var stateJson = TrySerializeState(processManager);
 
-            await connection.ExecuteAsync(new CommandDefinition(
+            var upsertedId = await connection.ExecuteScalarAsync<Guid?>(new CommandDefinition(
                 upsertSagaSql,
                 new
                 {
@@ -217,6 +229,16 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
                 },
                 tx,
                 cancellationToken: cancellationToken)).ConfigureAwait(false);
+
+            if (upsertedId is null)
+            {
+                // RETURNING produced no row → either the conflict branch's tenant guard
+                // filtered the update, or no row was inserted. Either way it's a tenant
+                // boundary violation we surface as a conflict.
+                return Result.Failure(Error.Conflict(
+                    "ProcessManager.TenantMismatch",
+                    $"Refusing to upsert process manager {processManager.Id}: it belongs to a different tenant."));
+            }
 
             foreach (var step in processManager.Steps)
             {
@@ -240,9 +262,9 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
             await tx.CommitAsync(cancellationToken).ConfigureAwait(false);
             return Result.Success();
         }
-        catch (Exception ex)
+        catch (NpgsqlException ex)
         {
-            _logger?.LogError(ex, "Failed to save process manager {Id}", processManager.Id);
+            _logger?.LogError(ex, "Database failure saving process manager {Id}", processManager.Id);
             return Result.Failure(Error.Failure("ProcessManager.SaveFailed", ex.Message));
         }
     }
@@ -255,7 +277,7 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
             SET status = @Status,
                 completed_at = CASE WHEN @Status IN ('Completed', 'Compensated') THEN NOW() ELSE completed_at END,
                 version = version + 1
-            WHERE id = @Id;
+            WHERE id = @Id AND (@TenantId IS NULL OR tenant_id = @TenantId);
             """;
 
         try
@@ -263,7 +285,9 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
             await using var connection = new NpgsqlConnection(_connectionString);
             await connection.OpenAsync(cancellationToken).ConfigureAwait(false);
             var rows = await connection.ExecuteAsync(new CommandDefinition(
-                sql, new { Id = id, Status = status.ToString() }, cancellationToken: cancellationToken)).ConfigureAwait(false);
+                sql,
+                new { Id = id, Status = status.ToString(), TenantId = _tenantContext?.TenantId },
+                cancellationToken: cancellationToken)).ConfigureAwait(false);
             if (rows == 0)
             {
                 return Result.Failure(Error.NotFound("ProcessManager.NotFound", $"Process manager {id} not found."));
@@ -271,7 +295,7 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
 
             return Result.Success();
         }
-        catch (Exception ex)
+        catch (NpgsqlException ex)
         {
             return Result.Failure(Error.Failure("ProcessManager.UpdateStatusFailed", ex.Message));
         }
@@ -285,13 +309,20 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
         string? errorMessage,
         CancellationToken cancellationToken = default)
     {
+        // Tenant guard via EXISTS on the parent saga: refuse to mutate a step whose
+        // owning process manager belongs to a different tenant.
         const string sql = """
             UPDATE process_manager_steps
             SET status = @Status,
                 executed_at = CASE WHEN @Status = 'Completed' THEN NOW() ELSE executed_at END,
                 compensated_at = CASE WHEN @Status = 'Compensated' THEN NOW() ELSE compensated_at END,
                 error_message = @ErrorMessage
-            WHERE id = @StepId AND process_manager_id = @ProcessManagerId;
+            WHERE id = @StepId AND process_manager_id = @ProcessManagerId
+              AND EXISTS (
+                  SELECT 1 FROM process_managers pm
+                  WHERE pm.id = @ProcessManagerId
+                    AND (@TenantId IS NULL OR pm.tenant_id = @TenantId)
+              );
             """;
 
         try
@@ -300,7 +331,14 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
             await connection.OpenAsync(cancellationToken).ConfigureAwait(false);
             var rows = await connection.ExecuteAsync(new CommandDefinition(
                 sql,
-                new { ProcessManagerId = processManagerId, StepId = stepId, Status = status.ToString(), ErrorMessage = errorMessage },
+                new
+                {
+                    ProcessManagerId = processManagerId,
+                    StepId = stepId,
+                    Status = status.ToString(),
+                    ErrorMessage = errorMessage,
+                    TenantId = _tenantContext?.TenantId,
+                },
                 cancellationToken: cancellationToken)).ConfigureAwait(false);
 
             if (rows == 0)
@@ -312,7 +350,7 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
 
             return Result.Success();
         }
-        catch (Exception ex)
+        catch (NpgsqlException ex)
         {
             return Result.Failure(Error.Failure("ProcessManager.UpdateStepStatusFailed", ex.Message));
         }
@@ -328,8 +366,14 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
             var state = stateProp?.GetValue(processManager);
             return state is null ? null : JsonSerializer.Serialize(state, JsonOptions);
         }
-        catch
+        catch (JsonException)
         {
+            // Non-serializable state — accept persistence-without-state rather than fail SaveAsync.
+            return null;
+        }
+        catch (Exception ex) when (ex is TargetInvocationException or NotSupportedException or InvalidOperationException)
+        {
+            // Reflection accessor or JsonSerializer rejected the type; same fallback.
             return null;
         }
     }

@@ -26,10 +26,16 @@ public interface IChoreographyContext
     string CausationId { get; }
 
     /// <summary>
-    /// Publishes the next event in the choreography chain. The framework stamps
-    /// <see cref="IIntegrationEvent.CorrelationId"/> and <see cref="IIntegrationEvent.CausationId"/>
-    /// before dispatching to the underlying transport (typically the outbox).
+    /// Publishes the next event in the choreography chain via the underlying integration-event
+    /// publisher (typically a transactional outbox).
     /// </summary>
+    /// <remarks>
+    /// <see cref="IIntegrationEvent"/> exposes <see cref="IIntegrationEvent.CorrelationId"/>
+    /// and <see cref="IIntegrationEvent.CausationId"/> as read-only properties, so callers
+    /// must populate them on the event being constructed — typically by reading
+    /// <see cref="CorrelationId"/> and <see cref="CausationId"/> from this context. Custom
+    /// publishers that prefer envelope-based propagation can override this contract.
+    /// </remarks>
     /// <typeparam name="TEvent">The event type.</typeparam>
     /// <param name="event">The event payload.</param>
     /// <param name="cancellationToken">The cancellation token.</param>

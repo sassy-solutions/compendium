@@ -5,6 +5,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Reflection;
 using Compendium.Abstractions.Sagas.Choreography;
 using Compendium.Core.Domain.Events;
 using Microsoft.Extensions.DependencyInjection;
@@ -73,6 +74,18 @@ public sealed class ChoreographyRouter : IChoreographyRouter
                 {
                     failures.Add(result.Error);
                 }
+            }
+            catch (TargetInvocationException tie) when (tie.InnerException is OperationCanceledException oce)
+            {
+                // Reflection wraps the real exception; rethrow cancellation so callers observe it.
+                throw oce;
+            }
+            catch (TargetInvocationException tie)
+            {
+                var inner = tie.InnerException ?? tie;
+                failures.Add(Error.Failure(
+                    "Choreography.HandlerThrew",
+                    $"Handler {handler.GetType().FullName} threw: {inner.Message}"));
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {

@@ -72,20 +72,27 @@ public static class SagaServiceCollectionExtensions
 
     private static void RegisterHandlers(IServiceCollection services, Assembly assembly)
     {
-        foreach (var type in assembly.GetTypes())
+        // GetTypes() can throw ReflectionTypeLoadException when optional dependencies are
+        // missing or the assembly was trimmed. Fall back to the loadable subset.
+        Type[] types;
+        try
         {
-            if (type.IsAbstract || type.IsInterface)
-            {
-                continue;
-            }
+            types = assembly.GetTypes();
+        }
+        catch (ReflectionTypeLoadException ex)
+        {
+            types = ex.Types.Where(t => t is not null).Cast<Type>().ToArray();
+        }
 
-            foreach (var iface in type.GetInterfaces())
-            {
-                if (iface.IsGenericType && iface.GetGenericTypeDefinition() == typeof(IHandle<>))
-                {
-                    services.AddTransient(iface, type);
-                }
-            }
+        var handlerInterfaces = types
+            .Where(t => !t.IsAbstract && !t.IsInterface)
+            .SelectMany(t => t.GetInterfaces()
+                .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IHandle<>))
+                .Select(i => (Implementation: t, Interface: i)));
+
+        foreach (var (impl, iface) in handlerInterfaces)
+        {
+            services.AddTransient(iface, impl);
         }
     }
 }

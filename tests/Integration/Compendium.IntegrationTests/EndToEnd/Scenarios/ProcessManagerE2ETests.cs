@@ -104,22 +104,25 @@ public sealed class ProcessManagerE2ETests
     }
 
     [Fact]
-    public async Task Orchestrator_MultipleStepsInSequence_TimestampsAreOrdered()
+    public async Task Orchestrator_MultipleStepsInSequence_TimestampsAreNonDecreasing()
     {
+        // Note: assertion uses BeOnOrBefore rather than BeBefore because system-clock
+        // resolution on Windows can be ~15ms, which is coarser than typical step latency.
         var (orchestrator, repository, _) = BuildOrchestrator();
         var pm = OrderProcessManager.Create("order-005", 300.00m);
         await repository.SaveAsync(pm);
 
         await orchestrator.ExecuteStepAsync(pm.Id, "ReserveInventory");
-        await Task.Delay(5);
         await orchestrator.ExecuteStepAsync(pm.Id, "ProcessPayment");
-        await Task.Delay(5);
         await orchestrator.ExecuteStepAsync(pm.Id, "ShipOrder");
 
         var final = await orchestrator.GetAsync(pm.Id);
         var ordered = final.Value.Steps.OrderBy(s => s.Order).ToList();
-        ordered[0].ExecutedAt!.Value.Should().BeBefore(ordered[1].ExecutedAt!.Value);
-        ordered[1].ExecutedAt!.Value.Should().BeBefore(ordered[2].ExecutedAt!.Value);
+
+        ordered.Should().HaveCount(3);
+        ordered.Should().OnlyContain(s => s.ExecutedAt.HasValue);
+        ordered[0].ExecutedAt!.Value.Should().BeOnOrBefore(ordered[1].ExecutedAt!.Value);
+        ordered[1].ExecutedAt!.Value.Should().BeOnOrBefore(ordered[2].ExecutedAt!.Value);
     }
 
     private static (
