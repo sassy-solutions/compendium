@@ -26,6 +26,15 @@ Compendium distills years of building event-sourced SaaS into a small set of foc
 - Looking for a specific adapter? → [Adapters](adapters/aspnetcore.md)
 - Wondering what's next? → [Roadmap](roadmap.md)
 
+## Concepts
+
+The four pages below explain the framework's load-bearing ideas — read them in any order:
+
+- [Event Sourcing](concepts/event-sourcing.md) — append-only log as the source of truth, aggregates, projections, snapshots
+- [Hexagonal Architecture](concepts/hexagonal-architecture.md) — Core / Application / Adapters, ports vs adapters, the zero-dep Core rule
+- [Result Pattern](concepts/result-pattern.md) — `Result<T>` and `Error` instead of exceptions for control flow
+- [Multi-tenancy](concepts/multi-tenancy.md) — tenant context, multi-source resolution, isolation strategies
+
 ## Status
 
 Compendium is at **`v1.0.0-preview.1`**. APIs in `Compendium.Core` and `Compendium.Abstractions.*` are intended to be stable; adapter APIs may evolve based on production feedback. See [CHANGELOG](https://github.com/sassy-solutions/compendium/blob/main/CHANGELOG.md) for what has shipped.
