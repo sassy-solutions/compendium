@@ -1,0 +1,14 @@
+- name: Index
+  href: README.md
+- name: 0001 — Result pattern
+  href: 0001-result-pattern.md
+- name: 0002 — Hexagonal architecture
+  href: 0002-hexagonal-architecture.md
+- name: 0003 — Zero-dependency Core
+  href: 0003-zero-dep-core.md
+- name: 0004 — Multi-tenancy strategy
+  href: 0004-multi-tenancy-strategy.md
+- name: 0005 — Event sourcing
+  href: 0005-event-sourcing-vs-state.md
+- name: Template
+  href: 0000-template.md
