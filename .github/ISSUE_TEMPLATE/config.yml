@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question, usage help, or idea
+    url: https://github.com/sassy-solutions/compendium/discussions
+    about: Please use Discussions for questions, design conversations, and open-ended ideas. Issues are reserved for actionable bugs and concrete feature requests.
+  - name: Security vulnerability
+    url: https://github.com/sassy-solutions/compendium/security/advisories/new
+    about: Please report security vulnerabilities privately via GitHub Security Advisories, not as public Issues.

@@ -1,0 +1,65 @@
+name: Bug report
+description: Report a reproducible bug in a Compendium package
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please fill in enough context that we can reproduce it without asking for follow-ups.
+
+  - type: input
+    id: package
+    attributes:
+      label: Package(s) affected
+      description: Which Compendium.* package(s) does this bug concern?
+      placeholder: "Compendium.Core, Compendium.Adapters.PostgreSQL"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: "1.0.0-preview.1"
+    validations:
+      required: true
+
+  - type: input
+    id: dotnet
+    attributes:
+      label: .NET version
+      placeholder: "9.0.100"
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Smallest possible code snippet that triggers the bug. Include csproj PackageReferences if relevant.
+      render: csharp
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: Include full exception / stack trace if relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Logs, environment details, related issues. Optional.
+    validations:
+      required: false

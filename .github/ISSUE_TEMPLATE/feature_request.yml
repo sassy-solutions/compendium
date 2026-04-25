@@ -1,0 +1,50 @@
+name: Feature request
+description: Propose a new feature, extension, or API change
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a feature. Before opening, consider whether this is better discussed first in [Discussions](https://github.com/sassy-solutions/compendium/discussions) — it usually is, for anything that's not already a concrete plan.
+
+  - type: input
+    id: package
+    attributes:
+      label: Target package
+      description: Which Compendium.* package would own this feature?
+      placeholder: "Compendium.Core, Compendium.Adapters.NewThing"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What pain are you hitting today, and what's your current workaround?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API / behaviour
+      description: Rough sketch is fine. Show the public surface you'd want.
+      render: csharp
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What else did you try, and why wasn't it enough?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: willingness
+    attributes:
+      label: Willingness to contribute
+      options:
+        - label: I'd be willing to open a PR for this feature.
+        - label: I'd be willing to help review a PR for this feature.

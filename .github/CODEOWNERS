@@ -1,0 +1,11 @@
+# CODEOWNERS for sassy-solutions/compendium
+# Every PR requires an approval from someone in this file on all code paths.
+
+*                       @Pomdapis
+
+# Governance, workflows, releases — tighter scope, same owner for now.
+/.github/               @Pomdapis
+/Directory.Build.props  @Pomdapis
+/Directory.Packages.props @Pomdapis
+/Compendium.sln         @Pomdapis
+/LICENSE                @Pomdapis
