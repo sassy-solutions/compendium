@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Adapters.Shared</AssemblyName>
+    <RootNamespace>Compendium.Adapters.Shared</RootNamespace>
+    <PackageId>Compendium.Adapters.Shared</PackageId>
+    <Description>Shared utilities for Compendium adapters: PII masking helpers, logging conventions.</Description>
+  </PropertyGroup>
+
+</Project>

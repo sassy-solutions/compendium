@@ -136,7 +136,7 @@ internal sealed class ZitadelUserService : IIdentityUserService
 
         // POM-170: debug logs also flow into centralised log stores, so use the
         // short hash here as well.
-        _logger.LogDebug("Getting user by email (hash {EmailHashPrefix})", HashPrefix(email));
+        _logger.LogDebug("Getting user by email (hash {HashPrefix})", HashPrefix(email));
 
         var searchRequest = new ZitadelUserSearchRequest
         {

@@ -341,7 +341,7 @@ internal sealed class ListmonkHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling Listmonk API: {Endpoint}", endpoint);
+            _logger.LogError(ex, "HTTP error in Listmonk GetAsync");
             return Error.Failure("Listmonk.HttpError", ex.Message);
         }
     }
@@ -366,7 +366,7 @@ internal sealed class ListmonkHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling Listmonk API: {Endpoint}", endpoint);
+            _logger.LogError(ex, "HTTP error in Listmonk GetListAsync");
             return Error.Failure("Listmonk.HttpError", ex.Message);
         }
     }
@@ -391,7 +391,7 @@ internal sealed class ListmonkHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling Listmonk API: {Endpoint}", endpoint);
+            _logger.LogError(ex, "HTTP error in Listmonk GetPaginatedAsync");
             return Error.Failure("Listmonk.HttpError", ex.Message);
         }
     }
@@ -423,7 +423,7 @@ internal sealed class ListmonkHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling Listmonk API: {Endpoint}", endpoint);
+            _logger.LogError(ex, "HTTP error in Listmonk PostAsync");
             return Error.Failure("Listmonk.HttpError", ex.Message);
         }
     }
@@ -455,7 +455,7 @@ internal sealed class ListmonkHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling Listmonk API: {Endpoint}", endpoint);
+            _logger.LogError(ex, "HTTP error in Listmonk PutAsync");
             return Error.Failure("Listmonk.HttpError", ex.Message);
         }
     }
@@ -479,7 +479,7 @@ internal sealed class ListmonkHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling Listmonk API: {Endpoint}", endpoint);
+            _logger.LogError(ex, "HTTP error in Listmonk PutAsync (no response)");
             return Error.Failure("Listmonk.HttpError", ex.Message);
         }
     }
@@ -501,7 +501,7 @@ internal sealed class ListmonkHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling Listmonk API: {Endpoint}", endpoint);
+            _logger.LogError(ex, "HTTP error in Listmonk DeleteAsync");
             return Error.Failure("Listmonk.HttpError", ex.Message);
         }
     }
