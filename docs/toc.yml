@@ -1,0 +1,14 @@
+- name: Home
+  href: index.md
+- name: Getting Started
+  href: getting-started.md
+- name: Concepts
+  href: concepts/
+- name: Adapters
+  href: adapters/
+- name: Architecture Decisions
+  href: adr/
+- name: Roadmap
+  href: roadmap.md
+- name: API Reference
+  href: api/
