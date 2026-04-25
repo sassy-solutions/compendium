@@ -95,6 +95,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architectur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.ArchitectureTests", "tests\Architecture\Compendium.ArchitectureTests\Compendium.ArchitectureTests.csproj", "{D685E8D8-B3DC-4A65-9ED3-675776610190}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Shared", "src\Adapters\Compendium.Adapters.Shared\Compendium.Adapters.Shared.csproj", "{DE527E82-7509-4E3F-B002-8D53CFAA97DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -232,6 +234,10 @@ Global
 		{D685E8D8-B3DC-4A65-9ED3-675776610190}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D685E8D8-B3DC-4A65-9ED3-675776610190}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D685E8D8-B3DC-4A65-9ED3-675776610190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE527E82-7509-4E3F-B002-8D53CFAA97DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE527E82-7509-4E3F-B002-8D53CFAA97DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE527E82-7509-4E3F-B002-8D53CFAA97DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE527E82-7509-4E3F-B002-8D53CFAA97DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FE421F00-7FFD-4666-A961-F1FF325ECD34} = {E35C8F52-5000-4427-9589-AEB5987C1AC6}
@@ -278,5 +284,6 @@ Global
 		{C4495E66-500F-4582-B56D-C30ED0F41FF3} = {A0005488-4247-4872-9CD5-95696E47BEA5}
 		{72B1C880-12A5-4568-85E0-3800536158DC} = {B23A5693-C266-43DC-8D3E-CBB108131762}
 		{D685E8D8-B3DC-4A65-9ED3-675776610190} = {72B1C880-12A5-4568-85E0-3800536158DC}
+		{DE527E82-7509-4E3F-B002-8D53CFAA97DA} = {73261E87-8FCA-40B6-940B-E25CBDBE33FB}
 	EndGlobalSection
 EndGlobal

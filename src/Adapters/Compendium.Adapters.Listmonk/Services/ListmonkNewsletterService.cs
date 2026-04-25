@@ -5,6 +5,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Diagnostics;
 using Compendium.Adapters.Listmonk.Configuration;
 using Compendium.Adapters.Listmonk.Http;
 using Compendium.Adapters.Listmonk.Http.Models;
@@ -40,7 +41,7 @@ internal sealed class ListmonkNewsletterService : INewsletterService
     {
         ArgumentNullException.ThrowIfNull(request);
 
-        _logger.LogInformation("Subscribing {Email} to newsletter", request.Email);
+        _logger.LogInformation("Subscribing to newsletter (activity {ActivityId})", Activity.Current?.Id);
 
         var listIds = new List<int>();
 
@@ -74,12 +75,12 @@ internal sealed class ListmonkNewsletterService : INewsletterService
 
         if (result.IsFailure)
         {
-            _logger.LogWarning("Failed to subscribe {Email}: {Error}", request.Email, result.Error.Message);
+            _logger.LogWarning("Failed to subscribe (activity {ActivityId}): {Error}", Activity.Current?.Id, result.Error.Message);
             return result.Error;
         }
 
         var subscriber = MapToSubscriber(result.Value);
-        _logger.LogInformation("Subscribed {Email} with ID {SubscriberId}", request.Email, subscriber.Id);
+        _logger.LogInformation("Subscribed with ID {SubscriberId}", subscriber.Id);
 
         return subscriber;
     }
@@ -92,7 +93,7 @@ internal sealed class ListmonkNewsletterService : INewsletterService
     {
         ArgumentNullException.ThrowIfNull(email);
 
-        _logger.LogInformation("Unsubscribing {Email} from list {ListId}", email, listId ?? "all");
+        _logger.LogInformation("Unsubscribing from list {ListId} (activity {ActivityId})", listId ?? "all", Activity.Current?.Id);
 
         // First, find the subscriber by email
         var subscriberResult = await _httpClient.GetSubscriberByEmailAsync(email, cancellationToken);
@@ -111,12 +112,12 @@ internal sealed class ListmonkNewsletterService : INewsletterService
 
             if (result.IsFailure)
             {
-                _logger.LogWarning("Failed to unsubscribe {Email} from list {ListId}: {Error}",
-                    email, listId, result.Error.Message);
+                _logger.LogWarning("Failed to unsubscribe {SubscriberId} from list {ListId}: {Error}",
+                    subscriberId, listId, result.Error.Message);
             }
             else
             {
-                _logger.LogInformation("Unsubscribed {Email} from list {ListId}", email, listId);
+                _logger.LogInformation("Unsubscribed {SubscriberId} from list {ListId}", subscriberId, listId);
             }
 
             return result;
@@ -133,11 +134,11 @@ internal sealed class ListmonkNewsletterService : INewsletterService
 
             if (result.IsFailure)
             {
-                _logger.LogWarning("Failed to unsubscribe {Email}: {Error}", email, result.Error.Message);
+                _logger.LogWarning("Failed to unsubscribe {SubscriberId}: {Error}", subscriberId, result.Error.Message);
             }
             else
             {
-                _logger.LogInformation("Unsubscribed {Email} from all lists", email);
+                _logger.LogInformation("Unsubscribed {SubscriberId} from all lists", subscriberId);
             }
 
             return result.IsSuccess ? Result.Success() : result.Error;
@@ -151,7 +152,7 @@ internal sealed class ListmonkNewsletterService : INewsletterService
     {
         ArgumentNullException.ThrowIfNull(email);
 
-        _logger.LogDebug("Getting subscriber by email {Email}", email);
+        _logger.LogDebug("Getting subscriber by email (activity {ActivityId})", Activity.Current?.Id);
 
         var result = await _httpClient.GetSubscriberByEmailAsync(email, cancellationToken);
 
@@ -172,7 +173,7 @@ internal sealed class ListmonkNewsletterService : INewsletterService
         ArgumentNullException.ThrowIfNull(email);
         ArgumentNullException.ThrowIfNull(attributes);
 
-        _logger.LogInformation("Updating attributes for subscriber {Email}", email);
+        _logger.LogInformation("Updating subscriber attributes (activity {ActivityId})", Activity.Current?.Id);
 
         // First, find the subscriber by email
         var subscriberResult = await _httpClient.GetSubscriberByEmailAsync(email, cancellationToken);
@@ -191,12 +192,12 @@ internal sealed class ListmonkNewsletterService : INewsletterService
 
         if (result.IsFailure)
         {
-            _logger.LogWarning("Failed to update attributes for {Email}: {Error}",
-                email, result.Error.Message);
+            _logger.LogWarning("Failed to update attributes for {SubscriberId}: {Error}",
+                subscriberResult.Value.Id, result.Error.Message);
         }
         else
         {
-            _logger.LogInformation("Updated attributes for subscriber {Email}", email);
+            _logger.LogInformation("Updated attributes for subscriber {SubscriberId}", subscriberResult.Value.Id);
         }
 
         return result.IsSuccess ? Result.Success() : result.Error;
