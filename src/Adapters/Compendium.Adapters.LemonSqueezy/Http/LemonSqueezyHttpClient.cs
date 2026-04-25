@@ -23,13 +23,6 @@ internal sealed class LemonSqueezyHttpClient
     private readonly ILogger<LemonSqueezyHttpClient> _logger;
     private readonly JsonSerializerOptions _jsonOptions;
 
-    private static string SanitizeEndpointForLog(string endpoint)
-    {
-        if (string.IsNullOrEmpty(endpoint)) return endpoint ?? string.Empty;
-        var qIdx = endpoint.IndexOf('?');
-        return qIdx >= 0 ? endpoint[..qIdx] : endpoint;
-    }
-
     /// <summary>
     /// Initializes a new instance of the <see cref="LemonSqueezyHttpClient"/> class.
     /// </summary>
@@ -289,7 +282,7 @@ internal sealed class LemonSqueezyHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling LemonSqueezy API: {Endpoint}", SanitizeEndpointForLog(endpoint));
+            _logger.LogError(ex, "HTTP error in LemonSqueezy GetResourceAsync");
             return Error.Failure("LemonSqueezy.HttpError", ex.Message);
         }
     }
@@ -314,7 +307,7 @@ internal sealed class LemonSqueezyHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling LemonSqueezy API: {Endpoint}", SanitizeEndpointForLog(endpoint));
+            _logger.LogError(ex, "HTTP error in LemonSqueezy GetCollectionAsync");
             return Error.Failure("LemonSqueezy.HttpError", ex.Message);
         }
     }
@@ -350,7 +343,7 @@ internal sealed class LemonSqueezyHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling LemonSqueezy API: {Endpoint}", SanitizeEndpointForLog(endpoint));
+            _logger.LogError(ex, "HTTP error in LemonSqueezy PostResourceAsync");
             return Error.Failure("LemonSqueezy.HttpError", ex.Message);
         }
     }
@@ -386,7 +379,7 @@ internal sealed class LemonSqueezyHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling LemonSqueezy API: {Endpoint}", SanitizeEndpointForLog(endpoint));
+            _logger.LogError(ex, "HTTP error in LemonSqueezy PatchResourceAsync");
             return Error.Failure("LemonSqueezy.HttpError", ex.Message);
         }
     }
@@ -408,7 +401,7 @@ internal sealed class LemonSqueezyHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling LemonSqueezy API: {Endpoint}", SanitizeEndpointForLog(endpoint));
+            _logger.LogError(ex, "HTTP error in LemonSqueezy DeleteAsync");
             return Error.Failure("LemonSqueezy.HttpError", ex.Message);
         }
     }
@@ -439,7 +432,7 @@ internal sealed class LemonSqueezyHttpClient
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "HTTP error calling LemonSqueezy License API: {Endpoint}", SanitizeEndpointForLog(endpoint));
+            _logger.LogError(ex, "HTTP error in LemonSqueezy License PostAsync");
             return Error.Failure("LemonSqueezy.HttpError", ex.Message);
         }
     }
