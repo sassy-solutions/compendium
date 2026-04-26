@@ -13,6 +13,7 @@ Compendium is the framework that powers [Nexus](https://sassy.solutions), Sassy 
 
 - **Zero-dependency Core** — Pure DDD primitives (`AggregateRoot<TId>`, `ValueObject`, `Result<T>`, `Error`) with no external dependencies beyond the .NET BCL.
 - **CQRS + Event Sourcing built-in** — Command/query dispatchers, event store interfaces, and a PostgreSQL adapter wired out of the box.
+- **Sagas, two flavors** — `ProcessManager<TState>` for DDD-style orchestration sagas and `IHandle<TEvent>` for event-driven choreography sagas, each clearly named so you don't have to guess which pattern you're using. See [docs/sagas.md](docs/sagas.md).
 - **Multi-tenancy native** — Tenant context, resolution, and scoping baked into the primitives — not bolted on.
 - **Result pattern everywhere** — No control-flow exceptions. Every fallible operation returns `Result<T>` with structured `Error` values.
 - **Modular adapters** — Pick only what you need: PostgreSQL, Redis, Zitadel, Listmonk, LemonSqueezy, OpenRouter, ASP.NET Core.

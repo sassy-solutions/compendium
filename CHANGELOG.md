@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Saga pattern, two flavors clearly separated.** Compendium now ships two
+  distinct saga abstractions so users don't have to guess which kind they're
+  using:
+  - `Compendium.Abstractions.Sagas.ProcessManagers` — **DDD orchestration saga**
+    (Vaughn Vernon's "Process Manager"): a stateful coordinator that groups
+    aggregate operations inside one bounded context. Includes
+    `ProcessManager<TState>` base class, `ProcessManagerOrchestrator`, and
+    in-memory + PostgreSQL repositories.
+  - `Compendium.Abstractions.Sagas.Choreography` — **Event-driven saga**:
+    `IHandle<TEvent>` handlers, `IChoreographyRouter`, `IChoreographyContext`
+    with correlation/causation propagation, `[Compensation]` metadata.
+- `Compendium.Adapters.PostgreSQL.Sagas` — `PostgresProcessManagerRepository`
+  with auto-schema creation, JSONB state snapshot, multi-tenant aware.
+- DI helpers: `services.AddProcessManagers()`,
+  `services.AddEventChoreography(...)`, and
+  `services.AddPostgreSqlProcessManagerRepository(...)`.
+- `docs/sagas.md` — decision tree, side-by-side comparison, migration guide
+  from the deprecated `ISaga` API.
+
+### Deprecated
+
+- `Compendium.Application.Saga.ISaga`, `ISaga<TData>`, `SagaOrchestrator`,
+  `ISagaOrchestrator`, `ISagaRepository`, `ISagaStepExecutor`,
+  `ISagaFactory<,>` — kept with `[Obsolete]` for one minor version. The legacy
+  API conflated orchestration and choreography; use `IProcessManager` or
+  `IEventChoreography` instead. Removal scheduled for v1.0.
+
 ## [1.0.0-preview.2] - 2026-04-26
 
 ### Changed
