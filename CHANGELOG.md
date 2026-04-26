@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-preview.4] - 2026-04-27
+
 ### Changed
 
 - **Projections can now use DI dependencies.** `IProjectionManager.RegisterProjection<T>()`,
@@ -129,7 +131,8 @@ First public preview release of Compendium, extracted from the
 - Git history preserved from the originating Nexus monorepo via `git filter-repo`.
 - Full MIT license.
 
-[Unreleased]: https://github.com/sassy-solutions/compendium/compare/v1.0.0-preview.3...HEAD
+[Unreleased]: https://github.com/sassy-solutions/compendium/compare/v1.0.0-preview.4...HEAD
+[1.0.0-preview.4]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.4
 [1.0.0-preview.3]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.3
 [1.0.0-preview.2]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.2
 [1.0.0-preview.1]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.1
