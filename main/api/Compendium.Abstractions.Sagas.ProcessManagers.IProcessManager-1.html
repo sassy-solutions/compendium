@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ISaga&lt;TData&gt; | Compendium — .NET event-sourcing framework </title>
+      <title>Interface IProcessManager&lt;TState&gt; | Compendium — .NET event-sourcing framework </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ISaga&lt;TData&gt; | Compendium — .NET event-sourcing framework ">
+      <meta name="title" content="Interface IProcessManager&lt;TState&gt; | Compendium — .NET event-sourcing framework ">
       
-      <meta name="description" content="Represents a saga with associated data of type TData.">
+      <meta name="description" content="Represents a process manager whose internal state is exposed via a strongly-typed state object. This is the primary base contract users will implement (typically by deriving from ProcessManager&amp;lt;TState&amp;gt; in Compendium.Application).">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Application_Saga_ISaga_1.md&amp;value=---%0Auid%3A%20Compendium.Application.Saga.ISaga%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_1.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,34 +84,35 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Compendium.Application.Saga.ISaga`1">
+        <article data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1">
 
 
 
-  <h1 id="Compendium_Application_Saga_ISaga_1" data-uid="Compendium.Application.Saga.ISaga`1" class="text-break">
-Interface ISaga&lt;TData&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_1" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1" class="text-break">
+Interface IProcessManager&lt;TState&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManager.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Application.html">Application</a>.<a class="xref" href="Compendium.Application.Saga.html">Saga</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Compendium.Application.dll</dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Sagas.html">Sagas</a>.<a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.html">ProcessManagers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents a saga with associated data of type <code class="typeparamref">TData</code>.</p>
+  <div class="markdown summary"><p>Represents a process manager whose internal state is exposed via a strongly-typed
+state object. This is the primary base contract users will implement (typically by
+deriving from <code>ProcessManager&lt;TState&gt;</code> in <code>Compendium.Application</code>).</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager{TState} instead. Will be removed in v1.0.&quot;)]
-public interface ISaga&lt;TData&gt; : ISaga where TData : class</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IProcessManager&lt;out TState&gt; : IProcessManager, ISagaInstance where TState : class, new()</code></pre>
   </div>
 
 
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
-    <dt><code>TData</code></dt>
-    <dd><p>The type of data associated with the saga.</p>
+    <dt><code>TState</code></dt>
+    <dd><p>The type of the state carried by the process manager. Must be a class with a parameterless constructor — it is rehydrated from persistence.</p>
 </dd>
   </dl>
 
@@ -122,19 +123,19 @@ public interface ISaga&lt;TData&gt; : ISaga where TData : class</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="Compendium.Application.Saga.ISaga.html#Compendium_Application_Saga_ISaga_Id">ISaga.Id</a>
+      <a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_Steps">IProcessManager.Steps</a>
     </div>
     <div>
-      <a class="xref" href="Compendium.Application.Saga.ISaga.html#Compendium_Application_Saga_ISaga_Status">ISaga.Status</a>
+      <a class="xref" href="Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_Id">ISagaInstance.Id</a>
     </div>
     <div>
-      <a class="xref" href="Compendium.Application.Saga.ISaga.html#Compendium_Application_Saga_ISaga_CreatedAt">ISaga.CreatedAt</a>
+      <a class="xref" href="Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_Status">ISagaInstance.Status</a>
     </div>
     <div>
-      <a class="xref" href="Compendium.Application.Saga.ISaga.html#Compendium_Application_Saga_ISaga_CompletedAt">ISaga.CompletedAt</a>
+      <a class="xref" href="Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_CreatedAt">ISagaInstance.CreatedAt</a>
     </div>
     <div>
-      <a class="xref" href="Compendium.Application.Saga.ISaga.html#Compendium_Application_Saga_ISaga_Steps">ISaga.Steps</a>
+      <a class="xref" href="Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_CompletedAt">ISagaInstance.CompletedAt</a>
     </div>
   </dd></dl>
 
@@ -147,19 +148,20 @@ public interface ISaga&lt;TData&gt; : ISaga where TData : class</code></pre>
 </h2>
 
 
-  <a id="Compendium_Application_Saga_ISaga_1_Data_" data-uid="Compendium.Application.Saga.ISaga`1.Data*"></a>
+  <a id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_1_State_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1.State*"></a>
 
-  <h3 id="Compendium_Application_Saga_ISaga_1_Data" data-uid="Compendium.Application.Saga.ISaga`1.Data">
-  Data
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_1_State" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1.State">
+  State
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManager.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the data associated with this saga.</p>
+  <div class="markdown level1 summary"><p>Gets the current state of the process manager. Mutating this object is the
+process manager's job; the orchestrator only reads it for persistence.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TData Data { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">TState State { get; }</code></pre>
   </div>
 
 
@@ -168,7 +170,7 @@ public interface ISaga&lt;TData&gt; : ISaga where TData : class</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">TData</span></dt>
+    <dt><span class="xref">TState</span></dt>
     <dd></dd>
   </dl>
 
@@ -183,7 +185,7 @@ public interface ISaga&lt;TData&gt; : ISaga where TData : class</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L42" class="edit-link">Edit this page</a>
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManager.cs/#L41" class="edit-link">Edit this page</a>
         </div>
 
 

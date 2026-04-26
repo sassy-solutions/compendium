@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ISaga | Compendium — .NET event-sourcing framework </title>
+      <title>Interface ISagaInstance | Compendium — .NET event-sourcing framework </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ISaga | Compendium — .NET event-sourcing framework ">
+      <meta name="title" content="Interface ISagaInstance | Compendium — .NET event-sourcing framework ">
       
-      <meta name="description" content="Represents a saga (distributed transaction) that coordinates multiple operations with compensation capabilities for failure handling.">
+      <meta name="description" content="Marker interface for any persisted saga instance, regardless of flavor.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Application_Saga_ISaga.md&amp;value=---%0Auid%3A%20Compendium.Application.Saga.ISaga%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Sagas_Common_ISagaInstance.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Sagas.Common.ISagaInstance%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,27 +84,25 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Compendium.Application.Saga.ISaga">
+        <article data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance">
 
 
 
-  <h1 id="Compendium_Application_Saga_ISaga" data-uid="Compendium.Application.Saga.ISaga" class="text-break">
-Interface ISaga  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Compendium_Abstractions_Sagas_Common_ISagaInstance" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance" class="text-break">
+Interface ISagaInstance  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Common/ISagaInstance.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Application.html">Application</a>.<a class="xref" href="Compendium.Application.Saga.html">Saga</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Compendium.Application.dll</dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Sagas.html">Sagas</a>.<a class="xref" href="Compendium.Abstractions.Sagas.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents a saga (distributed transaction) that coordinates multiple operations
-with compensation capabilities for failure handling.</p>
+  <div class="markdown summary"><p>Marker interface for any persisted saga instance, regardless of flavor.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager (orchestration / DDD saga) or Compendium.Abstractions.Sagas.Choreography.IEventChoreography (event-driven saga) instead. ISaga conflated both flavors and is kept only for backward compatibility; it will be removed in v1.0.&quot;)]
-public interface ISaga</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ISagaInstance</code></pre>
   </div>
 
 
@@ -117,20 +115,37 @@ public interface ISaga</code></pre>
 
 
 
+  <h2 id="Compendium_Abstractions_Sagas_Common_ISagaInstance_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Compendium distinguishes two saga flavors:</p>
+<ul><li>
+    <b>Orchestration / DDD</b> — implemented by <code>IProcessManager</code>: a stateful
+    coordinator that groups operations across multiple aggregates within a bounded
+    context. Owns its state, drives the workflow with explicit steps, supports
+    compensation. Use this when the workflow logic is centralized.
+  </li><li>
+    <b>Choreography / Event-driven</b> — implemented by <code>IEventChoreography</code>:
+    no central coordinator. Each handler reacts to integration events and
+    publishes its own. State lives in the aggregates that emit the events. Use
+    this for cross-bounded-context workflows that can tolerate eventual consistency.
+  </li></ul>
+<p>See <code>docs/sagas.md</code> for the decision tree.</p>
+</div>
 
 
   <h2 class="section" id="properties">Properties
 </h2>
 
 
-  <a id="Compendium_Application_Saga_ISaga_CompletedAt_" data-uid="Compendium.Application.Saga.ISaga.CompletedAt*"></a>
+  <a id="Compendium_Abstractions_Sagas_Common_ISagaInstance_CompletedAt_" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt*"></a>
 
-  <h3 id="Compendium_Application_Saga_ISaga_CompletedAt" data-uid="Compendium.Application.Saga.ISaga.CompletedAt">
+  <h3 id="Compendium_Abstractions_Sagas_Common_ISagaInstance_CompletedAt" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt">
   CompletedAt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Common/ISagaInstance.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the timestamp when the saga was completed, if applicable.</p>
+  <div class="markdown level1 summary"><p>Gets the timestamp when the saga reached a terminal state
+(<a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Completed">Completed</a> or <a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Compensated">Compensated</a>),
+or <code>null</code> if still in progress.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -155,11 +170,11 @@ public interface ISaga</code></pre>
 
 
 
-  <a id="Compendium_Application_Saga_ISaga_CreatedAt_" data-uid="Compendium.Application.Saga.ISaga.CreatedAt*"></a>
+  <a id="Compendium_Abstractions_Sagas_Common_ISagaInstance_CreatedAt_" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt*"></a>
 
-  <h3 id="Compendium_Application_Saga_ISaga_CreatedAt" data-uid="Compendium.Application.Saga.ISaga.CreatedAt">
+  <h3 id="Compendium_Abstractions_Sagas_Common_ISagaInstance_CreatedAt" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt">
   CreatedAt
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Common/ISagaInstance.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the timestamp when the saga was created.</p>
@@ -187,14 +202,14 @@ public interface ISaga</code></pre>
 
 
 
-  <a id="Compendium_Application_Saga_ISaga_Id_" data-uid="Compendium.Application.Saga.ISaga.Id*"></a>
+  <a id="Compendium_Abstractions_Sagas_Common_ISagaInstance_Id_" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.Id*"></a>
 
-  <h3 id="Compendium_Application_Saga_ISaga_Id" data-uid="Compendium.Application.Saga.ISaga.Id">
+  <h3 id="Compendium_Abstractions_Sagas_Common_ISagaInstance_Id" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.Id">
   Id
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Common/ISagaInstance.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the unique identifier of the saga.</p>
+  <div class="markdown level1 summary"><p>Gets the unique identifier of the saga instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -219,11 +234,11 @@ public interface ISaga</code></pre>
 
 
 
-  <a id="Compendium_Application_Saga_ISaga_Status_" data-uid="Compendium.Application.Saga.ISaga.Status*"></a>
+  <a id="Compendium_Abstractions_Sagas_Common_ISagaInstance_Status_" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.Status*"></a>
 
-  <h3 id="Compendium_Application_Saga_ISaga_Status" data-uid="Compendium.Application.Saga.ISaga.Status">
+  <h3 id="Compendium_Abstractions_Sagas_Common_ISagaInstance_Status" data-uid="Compendium.Abstractions.Sagas.Common.ISagaInstance.Status">
   Status
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Common/ISagaInstance.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current status of the saga.</p>
@@ -240,39 +255,7 @@ public interface ISaga</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Compendium.Application.Saga.SagaStatus.html">SagaStatus</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Compendium_Application_Saga_ISaga_Steps_" data-uid="Compendium.Application.Saga.ISaga.Steps*"></a>
-
-  <h3 id="Compendium_Application_Saga_ISaga_Steps" data-uid="Compendium.Application.Saga.ISaga.Steps">
-  Steps
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L35"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Gets the read-only list of steps that comprise this saga.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;SagaStep&gt; Steps { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Compendium.Application.Saga.SagaStep.html">SagaStep</a>&gt;</dt>
+    <dt><a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html">SagaStatus</a></dt>
     <dd></dd>
   </dl>
 
@@ -287,7 +270,7 @@ public interface ISaga</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L7" class="edit-link">Edit this page</a>
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Common/ISagaInstance.cs/#L31" class="edit-link">Edit this page</a>
         </div>
 
 

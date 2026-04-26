@@ -1719,6 +1719,258 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Choreography.CompensationAttribute",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.yml\" sourcestartlinenumber=\"1\">Marks a choreography handler class (or one of its <code>HandleAsync</code> overloads) as a\ncompensation handler — i.e. it reacts to a &quot;negative&quot; event (refund, cancellation,\nfailure) that semantically rolls back a previous &quot;positive&quot; event.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Choreography.IChoreographyContext",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.yml\" sourcestartlinenumber=\"1\">Per-invocation context handed to a <xref href=\"Compendium.Abstractions.Sagas.Choreography.IHandle%601\" data-throw-if-not-resolved=\"false\"></xref> to publish forward\nor compensation events while preserving correlation identifiers across the chain.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.yml\" sourcestartlinenumber=\"1\">Dispatches inbound integration events to all registered choreography handlers\n(<xref href=\"Compendium.Abstractions.Sagas.Choreography.IHandle%601\" data-throw-if-not-resolved=\"false\"></xref>) of a matching event type. Wiring is typically\ndone in DI via assembly-scanning extension methods.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IEventChoreography.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IEventChoreography.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Choreography.IEventChoreography",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Choreography.IEventChoreography.yml\" sourcestartlinenumber=\"1\">Marker interface identifying a class as a participant in an event-driven choreography\nsaga (the &quot;Event Saga&quot; flavor: no central orchestrator; services react to integration\nevents and publish further events).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IHandle-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IHandle-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Choreography.IHandle<TEvent>",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Choreography.IHandle-1.yml\" sourcestartlinenumber=\"1\">Handler contract for choreography saga participants. A class can implement\n<xref href=\"Compendium.Abstractions.Sagas.Choreography.IHandle%601\" data-throw-if-not-resolved=\"false\"></xref> several times, once per event type it reacts to.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.yml\" sourcestartlinenumber=\"1\">Underlying transport port used by <xref href=\"Compendium.Abstractions.Sagas.Choreography.IChoreographyContext\" data-throw-if-not-resolved=\"false\"></xref> to publish\nintegration events. Compendium provides an in-memory implementation for tests; in\nproduction this is wired to a transactional outbox + message broker.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Choreography.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Choreography",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Common.ISagaInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Common.ISagaInstance",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Common.ISagaInstance.yml\" sourcestartlinenumber=\"1\">Marker interface for any persisted saga instance, regardless of flavor.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Common.SagaStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Common.SagaStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Common.SagaStatus",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Common.SagaStatus.yml\" sourcestartlinenumber=\"1\">Defines the possible states of a saga during its lifecycle.\nShared by both <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager\" data-throw-if-not-resolved=\"false\"></xref> (orchestration) and\n<xref href=\"Compendium.Abstractions.Sagas.Choreography.IEventChoreography\" data-throw-if-not-resolved=\"false\"></xref> (choreography) flavors.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Common.SagaStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Common.SagaStep.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Common.SagaStep",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Common.SagaStep.yml\" sourcestartlinenumber=\"1\">Represents a single step within an orchestration saga, including its execution state\nand metadata. Steps are owned by an <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager\" data-throw-if-not-resolved=\"false\"></xref> and\nexecuted in declared order; compensation runs in reverse order.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Common.SagaStepStatus",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.yml\" sourcestartlinenumber=\"1\">Defines the possible states of an orchestration saga step during its lifecycle.\nUsed exclusively by <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager\" data-throw-if-not-resolved=\"false\"></xref>; choreography sagas\nhave no concept of named &quot;steps&quot;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.Common.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.Common",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager<TState>",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager-1.yml\" sourcestartlinenumber=\"1\">Represents a process manager whose internal state is exposed via a strongly-typed\nstate object. This is the primary base contract users will implement (typically by\nderiving from <code>ProcessManager&lt;TState&gt;</code> in <code>Compendium.Application</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.yml\" sourcestartlinenumber=\"1\">Represents a DDD-style orchestration saga (&quot;Process Manager&quot; in Vaughn Vernon's\nterminology) — a stateful coordinator that groups operations across multiple\naggregates within a bounded context, drives them through explicit steps, and\nperforms compensation on failure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.yml\" sourcestartlinenumber=\"1\">Drives the lifecycle of process managers: starts new instances, dispatches steps,\nand triggers compensation on failure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.yml\" sourcestartlinenumber=\"1\">Persistence port for <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager\" data-throw-if-not-resolved=\"false\"></xref> instances. Adapters (e.g. PostgreSQL,\nin-memory) implement this contract.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.yml\" sourcestartlinenumber=\"1\">Defines the contract for executing and compensating individual process manager steps.\nImplementations issue commands to aggregates / external systems and report success or\nfailure back to the orchestrator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Sagas.ProcessManagers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Sagas.ProcessManagers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Adapters.AspNetCore.Health.HealthCheckExtensions.yml",
       "output": {
         ".html": {
@@ -2205,6 +2457,62 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Compendium.Adapters.PostgreSQL.Projections",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions",
+      "Summary": "<p sourcefile=\"api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.yml\" sourcestartlinenumber=\"1\">DI helpers to wire the PostgreSQL <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository\" data-throw-if-not-resolved=\"false\"></xref> implementation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository",
+      "Summary": "<p sourcefile=\"api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.yml\" sourcestartlinenumber=\"1\">PostgreSQL implementation of <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository\" data-throw-if-not-resolved=\"false\"></xref>. Persists\nprocess-manager metadata, a JSON snapshot of state (best-effort, optional), and the\nper-step status table. Multi-tenant aware via <xref href=\"Compendium.Multitenancy.ITenantContext\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Adapters.PostgreSQL.Sagas.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Adapters.PostgreSQL.Sagas",
       "Summary": null
     },
     {
@@ -2975,6 +3283,146 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Compendium.Application.Saga",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.Choreography.ChoreographyRouter",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.yml\" sourcestartlinenumber=\"1\">Default <xref href=\"Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter\" data-throw-if-not-resolved=\"false\"></xref> that resolves all registered\n<xref href=\"Compendium.Abstractions.Sagas.Choreography.IHandle%601\" data-throw-if-not-resolved=\"false\"></xref> implementations from DI and dispatches the event to\neach. Failures from individual handlers are aggregated into a single error.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.yml\" sourcestartlinenumber=\"1\">In-memory <xref href=\"Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher\" data-throw-if-not-resolved=\"false\"></xref> intended for tests, samples, and\nquick prototypes. Buffers published events for inspection and optionally re-routes\nthem through a <xref href=\"Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter\" data-throw-if-not-resolved=\"false\"></xref> for end-to-end fan-out.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.Choreography.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.Choreography.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.Choreography",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.yml\" sourcestartlinenumber=\"1\">DI registration helpers for both saga flavors.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.DependencyInjection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.DependencyInjection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.DependencyInjection",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.yml\" sourcestartlinenumber=\"1\">Internal seam used by repositories to push status updates onto a process manager\ninstance held in memory. Implemented by <xref href=\"Compendium.Application.Sagas.ProcessManagers.ProcessManager%601\" data-throw-if-not-resolved=\"false\"></xref>; not\nintended for user code.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.yml\" sourcestartlinenumber=\"1\">In-memory <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository\" data-throw-if-not-resolved=\"false\"></xref> intended for tests and quick\nprototyping. State is process-local and lost on restart — production code should\nuse a durable adapter (e.g. <code>Compendium.Adapters.PostgreSQL</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.yml\" sourcestartlinenumber=\"1\">Base class for DDD-style orchestration sagas (Process Managers). Subclass this to\ndeclare a saga's steps and state shape; the <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator\" data-throw-if-not-resolved=\"false\"></xref>\ndrives execution and compensation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.yml\" sourcestartlinenumber=\"1\">Default <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator\" data-throw-if-not-resolved=\"false\"></xref> implementation. Persists the saga\nvia <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository\" data-throw-if-not-resolved=\"false\"></xref> and delegates step execution / compensation\nto <xref href=\"Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.Sagas.ProcessManagers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.Sagas.ProcessManagers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.Sagas.ProcessManagers",
       "Summary": null
     },
     {
@@ -6597,6 +7045,16 @@
       "output": {
         ".html": {
           "relative_path": "roadmap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "sagas.md",
+      "output": {
+        ".html": {
+          "relative_path": "sagas.html"
         }
       },
       "version": ""

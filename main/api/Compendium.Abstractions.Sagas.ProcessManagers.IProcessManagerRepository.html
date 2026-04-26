@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IProcessManagerRepository | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IProcessManagerRepository | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Persistence port for  instances. Adapters (e.g. PostgreSQL, in-memory) implement this contract.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository">
+
+
+
+  <h1 id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository" class="text-break">
+Interface IProcessManagerRepository  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManagerRepository.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Sagas.html">Sagas</a>.<a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.html">ProcessManagers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Persistence port for <a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html">IProcessManager</a> instances. Adapters (e.g. PostgreSQL,
+in-memory) implement this contract.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IProcessManagerRepository</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_GetByIdAsync_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_GetByIdAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync(System.Guid,System.Threading.CancellationToken)">
+  GetByIdAsync(Guid, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManagerRepository.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a process manager by its unique identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;IProcessManager&gt;&gt; GetByIdAsync(Guid id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>The unique identifier of the process manager.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html">IProcessManager</a>&gt;&gt;</dt>
+    <dd><p>A successful result with the process manager, or a not-found error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_SaveAsync_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_SaveAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)">
+  SaveAsync(IProcessManager, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManagerRepository.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persists the given process manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; SaveAsync(IProcessManager processManager, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>processManager</code> <a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html">IProcessManager</a></dt>
+    <dd><p>The process manager to save.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A successful result, or an adapter-defined error (conflict, persistence failure, etc.).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_SaveAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The contract does not currently expose a version/ETag on <a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html">IProcessManager</a>,
+so optimistic concurrency cannot be expressed at this layer; durable adapters are
+nonetheless encouraged to track an internal version column and surface conflicts as
+<a class="xref" href="Compendium.Core.Results.Error.html#Compendium_Core_Results_Error_Conflict_System_String_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__">Conflict(string, string, IReadOnlyDictionary&lt;string, object&gt;?)</a> when they detect concurrent writes. A future minor
+version may extend the abstraction with an explicit <code>expectedVersion</code> argument.</p>
+</div>
+
+
+
+
+  <a id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStatusAsync_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStatusAsync_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStatus_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStatus,System.Threading.CancellationToken)">
+  UpdateStatusAsync(Guid, SagaStatus, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManagerRepository.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the overall status of a process manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; UpdateStatusAsync(Guid id, SagaStatus status, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>The process manager identifier.</p>
+</dd>
+    <dt><code>status</code> <a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html">SagaStatus</a></dt>
+    <dd><p>The new status.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A successful result, or an error if the process manager was not found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStepStatusAsync_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStepStatusAsync_System_Guid_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStepStatus_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync(System.Guid,System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String,System.Threading.CancellationToken)">
+  UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, string?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManagerRepository.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the status of a single step within a process manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; UpdateStepStatusAsync(Guid processManagerId, Guid stepId, SagaStepStatus status, string? errorMessage, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>processManagerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>The process manager identifier.</p>
+</dd>
+    <dt><code>stepId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>The step identifier.</p>
+</dd>
+    <dt><code>status</code> <a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStepStatus.html">SagaStepStatus</a></dt>
+    <dd><p>The new step status.</p>
+</dd>
+    <dt><code>errorMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional error message, if the step failed.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A successful result, or an error if the saga or step was not found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/ProcessManagers/IProcessManagerRepository.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

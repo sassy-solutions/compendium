@@ -8514,6 +8514,640 @@ references:
   fullName.vb: Compendium.Abstractions.Persistence.IRepository(Of TAggregate, TId).UpdateAsync
   nameWithType: IRepository<TAggregate, TId>.UpdateAsync
   nameWithType.vb: IRepository(Of TAggregate, TId).UpdateAsync
+- uid: Compendium.Abstractions.Sagas.Choreography
+  name: Compendium.Abstractions.Sagas.Choreography
+  href: api/Compendium.Abstractions.Sagas.Choreography.html
+  commentId: N:Compendium.Abstractions.Sagas.Choreography
+  fullName: Compendium.Abstractions.Sagas.Choreography
+  nameWithType: Compendium.Abstractions.Sagas.Choreography
+- uid: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute
+  name: CompensationAttribute
+  href: api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.html
+  commentId: T:Compendium.Abstractions.Sagas.Choreography.CompensationAttribute
+  fullName: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute
+  nameWithType: CompensationAttribute
+- uid: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.#ctor(System.Type)
+  name: CompensationAttribute(Type)
+  href: api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.html#Compendium_Abstractions_Sagas_Choreography_CompensationAttribute__ctor_System_Type_
+  commentId: M:Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.#ctor(System.Type)
+  name.vb: New(Type)
+  fullName: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensationAttribute(System.Type)
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.New(System.Type)
+  nameWithType: CompensationAttribute.CompensationAttribute(Type)
+  nameWithType.vb: CompensationAttribute.New(Type)
+- uid: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.#ctor*
+  name: CompensationAttribute
+  href: api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.html#Compendium_Abstractions_Sagas_Choreography_CompensationAttribute__ctor_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensationAttribute
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.New
+  nameWithType: CompensationAttribute.CompensationAttribute
+  nameWithType.vb: CompensationAttribute.New
+- uid: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensatesEvent
+  name: CompensatesEvent
+  href: api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.html#Compendium_Abstractions_Sagas_Choreography_CompensationAttribute_CompensatesEvent
+  commentId: P:Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensatesEvent
+  fullName: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensatesEvent
+  nameWithType: CompensationAttribute.CompensatesEvent
+- uid: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensatesEvent*
+  name: CompensatesEvent
+  href: api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.html#Compendium_Abstractions_Sagas_Choreography_CompensationAttribute_CompensatesEvent_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensatesEvent
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.CompensatesEvent
+  nameWithType: CompensationAttribute.CompensatesEvent
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext
+  name: IChoreographyContext
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html
+  commentId: T:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext
+  nameWithType: IChoreographyContext
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CausationId
+  name: CausationId
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_CausationId
+  commentId: P:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CausationId
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CausationId
+  nameWithType: IChoreographyContext.CausationId
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CausationId*
+  name: CausationId
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_CausationId_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CausationId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CausationId
+  nameWithType: IChoreographyContext.CausationId
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CorrelationId
+  name: CorrelationId
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_CorrelationId
+  commentId: P:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CorrelationId
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CorrelationId
+  nameWithType: IChoreographyContext.CorrelationId
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CorrelationId*
+  name: CorrelationId
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_CorrelationId_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CorrelationId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.CorrelationId
+  nameWithType: IChoreographyContext.CorrelationId
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishAsync*
+  name: PublishAsync
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_PublishAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishAsync
+  nameWithType: IChoreographyContext.PublishAsync
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishAsync``1(``0,System.Threading.CancellationToken)
+  name: PublishAsync<TEvent>(TEvent, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_PublishAsync__1___0_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishAsync``1(``0,System.Threading.CancellationToken)
+  name.vb: PublishAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  nameWithType: IChoreographyContext.PublishAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType.vb: IChoreographyContext.PublishAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishCompensationAsync*
+  name: PublishCompensationAsync
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_PublishCompensationAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishCompensationAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishCompensationAsync
+  nameWithType: IChoreographyContext.PublishCompensationAsync
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishCompensationAsync``1(``0,System.Threading.CancellationToken)
+  name: PublishCompensationAsync<TEvent>(TEvent, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_PublishCompensationAsync__1___0_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishCompensationAsync``1(``0,System.Threading.CancellationToken)
+  name.vb: PublishCompensationAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishCompensationAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.PublishCompensationAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  nameWithType: IChoreographyContext.PublishCompensationAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType.vb: IChoreographyContext.PublishCompensationAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter
+  name: IChoreographyRouter
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.html
+  commentId: T:Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter
+  nameWithType: IChoreographyRouter
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.DispatchAsync*
+  name: DispatchAsync
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyRouter_DispatchAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.DispatchAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.DispatchAsync
+  nameWithType: IChoreographyRouter.DispatchAsync
+- uid: Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.DispatchAsync``1(``0,System.Threading.CancellationToken)
+  name: DispatchAsync<TEvent>(TEvent, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.html#Compendium_Abstractions_Sagas_Choreography_IChoreographyRouter_DispatchAsync__1___0_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.DispatchAsync``1(``0,System.Threading.CancellationToken)
+  name.vb: DispatchAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.DispatchAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter.DispatchAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  nameWithType: IChoreographyRouter.DispatchAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType.vb: IChoreographyRouter.DispatchAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.Choreography.IEventChoreography
+  name: IEventChoreography
+  href: api/Compendium.Abstractions.Sagas.Choreography.IEventChoreography.html
+  commentId: T:Compendium.Abstractions.Sagas.Choreography.IEventChoreography
+  fullName: Compendium.Abstractions.Sagas.Choreography.IEventChoreography
+  nameWithType: IEventChoreography
+- uid: Compendium.Abstractions.Sagas.Choreography.IHandle`1
+  name: IHandle<TEvent>
+  href: api/Compendium.Abstractions.Sagas.Choreography.IHandle-1.html
+  commentId: T:Compendium.Abstractions.Sagas.Choreography.IHandle`1
+  name.vb: IHandle(Of TEvent)
+  fullName: Compendium.Abstractions.Sagas.Choreography.IHandle<TEvent>
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.IHandle(Of TEvent)
+  nameWithType: IHandle<TEvent>
+  nameWithType.vb: IHandle(Of TEvent)
+- uid: Compendium.Abstractions.Sagas.Choreography.IHandle`1.HandleAsync(`0,Compendium.Abstractions.Sagas.Choreography.IChoreographyContext,System.Threading.CancellationToken)
+  name: HandleAsync(TEvent, IChoreographyContext, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.Choreography.IHandle-1.html#Compendium_Abstractions_Sagas_Choreography_IHandle_1_HandleAsync__0_Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.Choreography.IHandle`1.HandleAsync(`0,Compendium.Abstractions.Sagas.Choreography.IChoreographyContext,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.Choreography.IHandle<TEvent>.HandleAsync(TEvent, Compendium.Abstractions.Sagas.Choreography.IChoreographyContext, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.IHandle(Of TEvent).HandleAsync(TEvent, Compendium.Abstractions.Sagas.Choreography.IChoreographyContext, System.Threading.CancellationToken)
+  nameWithType: IHandle<TEvent>.HandleAsync(TEvent, IChoreographyContext, CancellationToken)
+  nameWithType.vb: IHandle(Of TEvent).HandleAsync(TEvent, IChoreographyContext, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.Choreography.IHandle`1.HandleAsync*
+  name: HandleAsync
+  href: api/Compendium.Abstractions.Sagas.Choreography.IHandle-1.html#Compendium_Abstractions_Sagas_Choreography_IHandle_1_HandleAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.IHandle`1.HandleAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.IHandle<TEvent>.HandleAsync
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.IHandle(Of TEvent).HandleAsync
+  nameWithType: IHandle<TEvent>.HandleAsync
+  nameWithType.vb: IHandle(Of TEvent).HandleAsync
+- uid: Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher
+  name: IIntegrationEventPublisher
+  href: api/Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.html
+  commentId: T:Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher
+  fullName: Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher
+  nameWithType: IIntegrationEventPublisher
+- uid: Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.PublishAsync*
+  name: PublishAsync
+  href: api/Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.html#Compendium_Abstractions_Sagas_Choreography_IIntegrationEventPublisher_PublishAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.PublishAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.PublishAsync
+  nameWithType: IIntegrationEventPublisher.PublishAsync
+- uid: Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.PublishAsync``1(``0,System.Threading.CancellationToken)
+  name: PublishAsync<TEvent>(TEvent, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.html#Compendium_Abstractions_Sagas_Choreography_IIntegrationEventPublisher_PublishAsync__1___0_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.PublishAsync``1(``0,System.Threading.CancellationToken)
+  name.vb: PublishAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.PublishAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher.PublishAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  nameWithType: IIntegrationEventPublisher.PublishAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType.vb: IIntegrationEventPublisher.PublishAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.Common
+  name: Compendium.Abstractions.Sagas.Common
+  href: api/Compendium.Abstractions.Sagas.Common.html
+  commentId: N:Compendium.Abstractions.Sagas.Common
+  fullName: Compendium.Abstractions.Sagas.Common
+  nameWithType: Compendium.Abstractions.Sagas.Common
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance
+  name: ISagaInstance
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html
+  commentId: T:Compendium.Abstractions.Sagas.Common.ISagaInstance
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance
+  nameWithType: ISagaInstance
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt
+  name: CompletedAt
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_CompletedAt
+  commentId: P:Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt
+  nameWithType: ISagaInstance.CompletedAt
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt*
+  name: CompletedAt
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_CompletedAt_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.CompletedAt
+  nameWithType: ISagaInstance.CompletedAt
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt
+  name: CreatedAt
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_CreatedAt
+  commentId: P:Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt
+  nameWithType: ISagaInstance.CreatedAt
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt*
+  name: CreatedAt
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_CreatedAt_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.CreatedAt
+  nameWithType: ISagaInstance.CreatedAt
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.Id
+  name: Id
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_Id
+  commentId: P:Compendium.Abstractions.Sagas.Common.ISagaInstance.Id
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.Id
+  nameWithType: ISagaInstance.Id
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.Id*
+  name: Id
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_Id_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.ISagaInstance.Id
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.Id
+  nameWithType: ISagaInstance.Id
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.Status
+  name: Status
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_Status
+  commentId: P:Compendium.Abstractions.Sagas.Common.ISagaInstance.Status
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.Status
+  nameWithType: ISagaInstance.Status
+- uid: Compendium.Abstractions.Sagas.Common.ISagaInstance.Status*
+  name: Status
+  href: api/Compendium.Abstractions.Sagas.Common.ISagaInstance.html#Compendium_Abstractions_Sagas_Common_ISagaInstance_Status_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.ISagaInstance.Status
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.ISagaInstance.Status
+  nameWithType: ISagaInstance.Status
+- uid: Compendium.Abstractions.Sagas.Common.SagaStatus
+  name: SagaStatus
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStatus.html
+  commentId: T:Compendium.Abstractions.Sagas.Common.SagaStatus
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStatus
+  nameWithType: SagaStatus
+- uid: Compendium.Abstractions.Sagas.Common.SagaStatus.Compensated
+  name: Compensated
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Compensated
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStatus.Compensated
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStatus.Compensated
+  nameWithType: SagaStatus.Compensated
+- uid: Compendium.Abstractions.Sagas.Common.SagaStatus.Compensating
+  name: Compensating
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Compensating
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStatus.Compensating
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStatus.Compensating
+  nameWithType: SagaStatus.Compensating
+- uid: Compendium.Abstractions.Sagas.Common.SagaStatus.Completed
+  name: Completed
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Completed
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStatus.Completed
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStatus.Completed
+  nameWithType: SagaStatus.Completed
+- uid: Compendium.Abstractions.Sagas.Common.SagaStatus.Failed
+  name: Failed
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Failed
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStatus.Failed
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStatus.Failed
+  nameWithType: SagaStatus.Failed
+- uid: Compendium.Abstractions.Sagas.Common.SagaStatus.InProgress
+  name: InProgress
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_InProgress
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStatus.InProgress
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStatus.InProgress
+  nameWithType: SagaStatus.InProgress
+- uid: Compendium.Abstractions.Sagas.Common.SagaStatus.NotStarted
+  name: NotStarted
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_NotStarted
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStatus.NotStarted
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStatus.NotStarted
+  nameWithType: SagaStatus.NotStarted
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep
+  name: SagaStep
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html
+  commentId: T:Compendium.Abstractions.Sagas.Common.SagaStep
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep
+  nameWithType: SagaStep
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.CompensatedAt
+  name: CompensatedAt
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_CompensatedAt
+  commentId: P:Compendium.Abstractions.Sagas.Common.SagaStep.CompensatedAt
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.CompensatedAt
+  nameWithType: SagaStep.CompensatedAt
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.CompensatedAt*
+  name: CompensatedAt
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_CompensatedAt_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.SagaStep.CompensatedAt
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.CompensatedAt
+  nameWithType: SagaStep.CompensatedAt
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.ErrorMessage
+  name: ErrorMessage
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_ErrorMessage
+  commentId: P:Compendium.Abstractions.Sagas.Common.SagaStep.ErrorMessage
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.ErrorMessage
+  nameWithType: SagaStep.ErrorMessage
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.ErrorMessage*
+  name: ErrorMessage
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_ErrorMessage_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.SagaStep.ErrorMessage
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.ErrorMessage
+  nameWithType: SagaStep.ErrorMessage
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.ExecutedAt
+  name: ExecutedAt
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_ExecutedAt
+  commentId: P:Compendium.Abstractions.Sagas.Common.SagaStep.ExecutedAt
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.ExecutedAt
+  nameWithType: SagaStep.ExecutedAt
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.ExecutedAt*
+  name: ExecutedAt
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_ExecutedAt_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.SagaStep.ExecutedAt
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.ExecutedAt
+  nameWithType: SagaStep.ExecutedAt
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Id
+  name: Id
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Id
+  commentId: P:Compendium.Abstractions.Sagas.Common.SagaStep.Id
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Id
+  nameWithType: SagaStep.Id
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Id*
+  name: Id
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Id_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.SagaStep.Id
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Id
+  nameWithType: SagaStep.Id
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Name
+  name: Name
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Name
+  commentId: P:Compendium.Abstractions.Sagas.Common.SagaStep.Name
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Name
+  nameWithType: SagaStep.Name
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Name*
+  name: Name
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Name_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.SagaStep.Name
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Name
+  nameWithType: SagaStep.Name
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Order
+  name: Order
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Order
+  commentId: P:Compendium.Abstractions.Sagas.Common.SagaStep.Order
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Order
+  nameWithType: SagaStep.Order
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Order*
+  name: Order
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Order_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.SagaStep.Order
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Order
+  nameWithType: SagaStep.Order
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Status
+  name: Status
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Status
+  commentId: P:Compendium.Abstractions.Sagas.Common.SagaStep.Status
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Status
+  nameWithType: SagaStep.Status
+- uid: Compendium.Abstractions.Sagas.Common.SagaStep.Status*
+  name: Status
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Status_
+  commentId: Overload:Compendium.Abstractions.Sagas.Common.SagaStep.Status
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStep.Status
+  nameWithType: SagaStep.Status
+- uid: Compendium.Abstractions.Sagas.Common.SagaStepStatus
+  name: SagaStepStatus
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html
+  commentId: T:Compendium.Abstractions.Sagas.Common.SagaStepStatus
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStepStatus
+  nameWithType: SagaStepStatus
+- uid: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Compensated
+  name: Compensated
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html#Compendium_Abstractions_Sagas_Common_SagaStepStatus_Compensated
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStepStatus.Compensated
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Compensated
+  nameWithType: SagaStepStatus.Compensated
+- uid: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Compensating
+  name: Compensating
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html#Compendium_Abstractions_Sagas_Common_SagaStepStatus_Compensating
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStepStatus.Compensating
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Compensating
+  nameWithType: SagaStepStatus.Compensating
+- uid: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Completed
+  name: Completed
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html#Compendium_Abstractions_Sagas_Common_SagaStepStatus_Completed
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStepStatus.Completed
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Completed
+  nameWithType: SagaStepStatus.Completed
+- uid: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Executing
+  name: Executing
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html#Compendium_Abstractions_Sagas_Common_SagaStepStatus_Executing
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStepStatus.Executing
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Executing
+  nameWithType: SagaStepStatus.Executing
+- uid: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Failed
+  name: Failed
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html#Compendium_Abstractions_Sagas_Common_SagaStepStatus_Failed
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStepStatus.Failed
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Failed
+  nameWithType: SagaStepStatus.Failed
+- uid: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Pending
+  name: Pending
+  href: api/Compendium.Abstractions.Sagas.Common.SagaStepStatus.html#Compendium_Abstractions_Sagas_Common_SagaStepStatus_Pending
+  commentId: F:Compendium.Abstractions.Sagas.Common.SagaStepStatus.Pending
+  fullName: Compendium.Abstractions.Sagas.Common.SagaStepStatus.Pending
+  nameWithType: SagaStepStatus.Pending
+- uid: Compendium.Abstractions.Sagas.ProcessManagers
+  name: Compendium.Abstractions.Sagas.ProcessManagers
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.html
+  commentId: N:Compendium.Abstractions.Sagas.ProcessManagers
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers
+  nameWithType: Compendium.Abstractions.Sagas.ProcessManagers
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager
+  name: IProcessManager
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html
+  commentId: T:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager
+  nameWithType: IProcessManager
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.Steps
+  name: Steps
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_Steps
+  commentId: P:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.Steps
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.Steps
+  nameWithType: IProcessManager.Steps
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.Steps*
+  name: Steps
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_Steps_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.Steps
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.Steps
+  nameWithType: IProcessManager.Steps
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator
+  name: IProcessManagerOrchestrator
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html
+  commentId: T:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator
+  nameWithType: IProcessManagerOrchestrator
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.CompensateAsync(System.Guid,System.Threading.CancellationToken)
+  name: CompensateAsync(Guid, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_CompensateAsync_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.CompensateAsync(System.Guid,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.CompensateAsync(System.Guid, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerOrchestrator.CompensateAsync(Guid, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.CompensateAsync*
+  name: CompensateAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_CompensateAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.CompensateAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.CompensateAsync
+  nameWithType: IProcessManagerOrchestrator.CompensateAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.ExecuteStepAsync(System.Guid,System.String,System.Threading.CancellationToken)
+  name: ExecuteStepAsync(Guid, string, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_ExecuteStepAsync_System_Guid_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.ExecuteStepAsync(System.Guid,System.String,System.Threading.CancellationToken)
+  name.vb: ExecuteStepAsync(Guid, String, CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.ExecuteStepAsync(System.Guid, string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.ExecuteStepAsync(System.Guid, String, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerOrchestrator.ExecuteStepAsync(Guid, string, CancellationToken)
+  nameWithType.vb: IProcessManagerOrchestrator.ExecuteStepAsync(Guid, String, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.ExecuteStepAsync*
+  name: ExecuteStepAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_ExecuteStepAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.ExecuteStepAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.ExecuteStepAsync
+  nameWithType: IProcessManagerOrchestrator.ExecuteStepAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.GetAsync(System.Guid,System.Threading.CancellationToken)
+  name: GetAsync(Guid, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_GetAsync_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.GetAsync(System.Guid,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.GetAsync(System.Guid, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerOrchestrator.GetAsync(Guid, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.GetAsync*
+  name: GetAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_GetAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.GetAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.GetAsync
+  nameWithType: IProcessManagerOrchestrator.GetAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.StartAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  name: StartAsync(IProcessManager, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_StartAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.StartAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.StartAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerOrchestrator.StartAsync(IProcessManager, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.StartAsync*
+  name: StartAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerOrchestrator_StartAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.StartAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.StartAsync
+  nameWithType: IProcessManagerOrchestrator.StartAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository
+  name: IProcessManagerRepository
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html
+  commentId: T:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository
+  nameWithType: IProcessManagerRepository
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync(System.Guid,System.Threading.CancellationToken)
+  name: GetByIdAsync(Guid, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_GetByIdAsync_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync(System.Guid,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync(System.Guid, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerRepository.GetByIdAsync(Guid, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync*
+  name: GetByIdAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_GetByIdAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync
+  nameWithType: IProcessManagerRepository.GetByIdAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  name: SaveAsync(IProcessManager, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_SaveAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerRepository.SaveAsync(IProcessManager, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync*
+  name: SaveAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_SaveAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync
+  nameWithType: IProcessManagerRepository.SaveAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStatus,System.Threading.CancellationToken)
+  name: UpdateStatusAsync(Guid, SagaStatus, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStatusAsync_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStatus_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStatus,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync(System.Guid, Compendium.Abstractions.Sagas.Common.SagaStatus, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerRepository.UpdateStatusAsync(Guid, SagaStatus, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync*
+  name: UpdateStatusAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStatusAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStatusAsync
+  nameWithType: IProcessManagerRepository.UpdateStatusAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync(System.Guid,System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String,System.Threading.CancellationToken)
+  name: UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, string?, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStepStatusAsync_System_Guid_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStepStatus_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync(System.Guid,System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String,System.Threading.CancellationToken)
+  name.vb: UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, String, CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync(System.Guid, System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, string?, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync(System.Guid, System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, String, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerRepository.UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, string?, CancellationToken)
+  nameWithType.vb: IProcessManagerRepository.UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, String, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync*
+  name: UpdateStepStatusAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_UpdateStepStatusAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.UpdateStepStatusAsync
+  nameWithType: IProcessManagerRepository.UpdateStepStatusAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor
+  name: IProcessManagerStepExecutor
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.html
+  commentId: T:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor
+  nameWithType: IProcessManagerStepExecutor
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.CompensateAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,Compendium.Abstractions.Sagas.Common.SagaStep,System.Threading.CancellationToken)
+  name: CompensateAsync(IProcessManager, SagaStep, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerStepExecutor_CompensateAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_Compendium_Abstractions_Sagas_Common_SagaStep_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.CompensateAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,Compendium.Abstractions.Sagas.Common.SagaStep,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.CompensateAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager, Compendium.Abstractions.Sagas.Common.SagaStep, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerStepExecutor.CompensateAsync(IProcessManager, SagaStep, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.CompensateAsync*
+  name: CompensateAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerStepExecutor_CompensateAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.CompensateAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.CompensateAsync
+  nameWithType: IProcessManagerStepExecutor.CompensateAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.ExecuteAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,Compendium.Abstractions.Sagas.Common.SagaStep,System.Threading.CancellationToken)
+  name: ExecuteAsync(IProcessManager, SagaStep, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerStepExecutor_ExecuteAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_Compendium_Abstractions_Sagas_Common_SagaStep_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.ExecuteAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,Compendium.Abstractions.Sagas.Common.SagaStep,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.ExecuteAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager, Compendium.Abstractions.Sagas.Common.SagaStep, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerStepExecutor.ExecuteAsync(IProcessManager, SagaStep, CancellationToken)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.ExecuteAsync*
+  name: ExecuteAsync
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerStepExecutor_ExecuteAsync_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.ExecuteAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor.ExecuteAsync
+  nameWithType: IProcessManagerStepExecutor.ExecuteAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1
+  name: IProcessManager<TState>
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager-1.html
+  commentId: T:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1
+  name.vb: IProcessManager(Of TState)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager<TState>
+  fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager(Of TState)
+  nameWithType: IProcessManager<TState>
+  nameWithType.vb: IProcessManager(Of TState)
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1.State
+  name: State
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager-1.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_1_State
+  commentId: P:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1.State
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager<TState>.State
+  fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager(Of TState).State
+  nameWithType: IProcessManager<TState>.State
+  nameWithType.vb: IProcessManager(Of TState).State
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1.State*
+  name: State
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager-1.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_1_State_
+  commentId: Overload:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager`1.State
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager<TState>.State
+  fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager(Of TState).State
+  nameWithType: IProcessManager<TState>.State
+  nameWithType.vb: IProcessManager(Of TState).State
 - uid: Compendium.Adapters.AspNetCore.Health
   name: Compendium.Adapters.AspNetCore.Health
   href: api/Compendium.Adapters.AspNetCore.Health.html
@@ -10801,6 +11435,133 @@ references:
   fullName.vb: Compendium.Adapters.PostgreSQL.Projections.PostgreSqlProjectionStore.SaveSnapshotAsync(Of TProjection)(TProjection, System.Threading.CancellationToken)
   nameWithType: PostgreSqlProjectionStore.SaveSnapshotAsync<TProjection>(TProjection, CancellationToken)
   nameWithType.vb: PostgreSqlProjectionStore.SaveSnapshotAsync(Of TProjection)(TProjection, CancellationToken)
+- uid: Compendium.Adapters.PostgreSQL.Sagas
+  name: Compendium.Adapters.PostgreSQL.Sagas
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.html
+  commentId: N:Compendium.Adapters.PostgreSQL.Sagas
+  fullName: Compendium.Adapters.PostgreSQL.Sagas
+  nameWithType: Compendium.Adapters.PostgreSQL.Sagas
+- uid: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection
+  name: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.html
+  commentId: N:Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection
+  nameWithType: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection
+- uid: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions
+  name: PostgreSqlSagaServiceCollectionExtensions
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.html
+  commentId: T:Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions
+  nameWithType: PostgreSqlSagaServiceCollectionExtensions
+- uid: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions})
+  name: AddPostgreSqlProcessManagerRepository(IServiceCollection, Action<PostgreSqlOptions>?)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.html#Compendium_Adapters_PostgreSQL_Sagas_DependencyInjection_PostgreSqlSagaServiceCollectionExtensions_AddPostgreSqlProcessManagerRepository_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Compendium_Adapters_PostgreSQL_Configuration_PostgreSqlOptions__
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions})
+  name.vb: AddPostgreSqlProcessManagerRepository(IServiceCollection, Action(Of PostgreSqlOptions))
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action<Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions>?)
+  fullName.vb: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action(Of Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions))
+  nameWithType: PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository(IServiceCollection, Action<PostgreSqlOptions>?)
+  nameWithType.vb: PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository(IServiceCollection, Action(Of PostgreSqlOptions))
+- uid: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository*
+  name: AddPostgreSqlProcessManagerRepository
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.html#Compendium_Adapters_PostgreSQL_Sagas_DependencyInjection_PostgreSqlSagaServiceCollectionExtensions_AddPostgreSqlProcessManagerRepository_
+  commentId: Overload:Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository
+  isSpec: "True"
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.DependencyInjection.PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository
+  nameWithType: PostgreSqlSagaServiceCollectionExtensions.AddPostgreSqlProcessManagerRepository
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository
+  name: PostgresProcessManagerRepository
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html
+  commentId: T:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository
+  nameWithType: PostgresProcessManagerRepository
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.#ctor(Microsoft.Extensions.Options.IOptions{Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions},Compendium.Multitenancy.ITenantContext,Microsoft.Extensions.Logging.ILogger{Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository})
+  name: PostgresProcessManagerRepository(IOptions<PostgreSqlOptions>, ITenantContext?, ILogger<PostgresProcessManagerRepository>?)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository__ctor_Microsoft_Extensions_Options_IOptions_Compendium_Adapters_PostgreSQL_Configuration_PostgreSqlOptions__Compendium_Multitenancy_ITenantContext_Microsoft_Extensions_Logging_ILogger_Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository__
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.#ctor(Microsoft.Extensions.Options.IOptions{Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions},Compendium.Multitenancy.ITenantContext,Microsoft.Extensions.Logging.ILogger{Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository})
+  name.vb: New(IOptions(Of PostgreSqlOptions), ITenantContext, ILogger(Of PostgresProcessManagerRepository))
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.PostgresProcessManagerRepository(Microsoft.Extensions.Options.IOptions<Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions>, Compendium.Multitenancy.ITenantContext?, Microsoft.Extensions.Logging.ILogger<Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository>?)
+  fullName.vb: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.New(Microsoft.Extensions.Options.IOptions(Of Compendium.Adapters.PostgreSQL.Configuration.PostgreSqlOptions), Compendium.Multitenancy.ITenantContext, Microsoft.Extensions.Logging.ILogger(Of Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository))
+  nameWithType: PostgresProcessManagerRepository.PostgresProcessManagerRepository(IOptions<PostgreSqlOptions>, ITenantContext?, ILogger<PostgresProcessManagerRepository>?)
+  nameWithType.vb: PostgresProcessManagerRepository.New(IOptions(Of PostgreSqlOptions), ITenantContext, ILogger(Of PostgresProcessManagerRepository))
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.#ctor*
+  name: PostgresProcessManagerRepository
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository__ctor_
+  commentId: Overload:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.PostgresProcessManagerRepository
+  fullName.vb: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.New
+  nameWithType: PostgresProcessManagerRepository.PostgresProcessManagerRepository
+  nameWithType.vb: PostgresProcessManagerRepository.New
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync(System.Guid,System.Threading.CancellationToken)
+  name: GetByIdAsync(Guid, CancellationToken)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_GetByIdAsync_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync(System.Guid,System.Threading.CancellationToken)
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync(System.Guid, System.Threading.CancellationToken)
+  nameWithType: PostgresProcessManagerRepository.GetByIdAsync(Guid, CancellationToken)
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync*
+  name: GetByIdAsync
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_GetByIdAsync_
+  commentId: Overload:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync
+  isSpec: "True"
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync
+  nameWithType: PostgresProcessManagerRepository.GetByIdAsync
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.InitializeAsync(System.Threading.CancellationToken)
+  name: InitializeAsync(CancellationToken)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_InitializeAsync_System_Threading_CancellationToken_
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.InitializeAsync(System.Threading.CancellationToken)
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.InitializeAsync(System.Threading.CancellationToken)
+  nameWithType: PostgresProcessManagerRepository.InitializeAsync(CancellationToken)
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.InitializeAsync*
+  name: InitializeAsync
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_InitializeAsync_
+  commentId: Overload:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.InitializeAsync
+  isSpec: "True"
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.InitializeAsync
+  nameWithType: PostgresProcessManagerRepository.InitializeAsync
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  name: SaveAsync(IProcessManager, CancellationToken)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_SaveAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager, System.Threading.CancellationToken)
+  nameWithType: PostgresProcessManagerRepository.SaveAsync(IProcessManager, CancellationToken)
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.SaveAsync*
+  name: SaveAsync
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_SaveAsync_
+  commentId: Overload:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.SaveAsync
+  isSpec: "True"
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.SaveAsync
+  nameWithType: PostgresProcessManagerRepository.SaveAsync
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStatusAsync(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStatus,System.Threading.CancellationToken)
+  name: UpdateStatusAsync(Guid, SagaStatus, CancellationToken)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_UpdateStatusAsync_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStatus_System_Threading_CancellationToken_
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStatusAsync(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStatus,System.Threading.CancellationToken)
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStatusAsync(System.Guid, Compendium.Abstractions.Sagas.Common.SagaStatus, System.Threading.CancellationToken)
+  nameWithType: PostgresProcessManagerRepository.UpdateStatusAsync(Guid, SagaStatus, CancellationToken)
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStatusAsync*
+  name: UpdateStatusAsync
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_UpdateStatusAsync_
+  commentId: Overload:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStatusAsync
+  isSpec: "True"
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStatusAsync
+  nameWithType: PostgresProcessManagerRepository.UpdateStatusAsync
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStepStatusAsync(System.Guid,System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String,System.Threading.CancellationToken)
+  name: UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, string?, CancellationToken)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_UpdateStepStatusAsync_System_Guid_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStepStatus_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStepStatusAsync(System.Guid,System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String,System.Threading.CancellationToken)
+  name.vb: UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, String, CancellationToken)
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStepStatusAsync(System.Guid, System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, string?, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStepStatusAsync(System.Guid, System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, String, System.Threading.CancellationToken)
+  nameWithType: PostgresProcessManagerRepository.UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, string?, CancellationToken)
+  nameWithType.vb: PostgresProcessManagerRepository.UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, String, CancellationToken)
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStepStatusAsync*
+  name: UpdateStepStatusAsync
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_UpdateStepStatusAsync_
+  commentId: Overload:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStepStatusAsync
+  isSpec: "True"
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.UpdateStepStatusAsync
+  nameWithType: PostgresProcessManagerRepository.UpdateStepStatusAsync
 - uid: Compendium.Adapters.PostgreSQL.Security
   name: Compendium.Adapters.PostgreSQL.Security
   href: api/Compendium.Adapters.PostgreSQL.Security.html
@@ -13412,6 +14173,495 @@ references:
   commentId: F:Compendium.Application.Saga.SagaStepStatus.Pending
   fullName: Compendium.Application.Saga.SagaStepStatus.Pending
   nameWithType: SagaStepStatus.Pending
+- uid: Compendium.Application.Sagas.Choreography
+  name: Compendium.Application.Sagas.Choreography
+  href: api/Compendium.Application.Sagas.Choreography.html
+  commentId: N:Compendium.Application.Sagas.Choreography
+  fullName: Compendium.Application.Sagas.Choreography
+  nameWithType: Compendium.Application.Sagas.Choreography
+- uid: Compendium.Application.Sagas.Choreography.ChoreographyRouter
+  name: ChoreographyRouter
+  href: api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.html
+  commentId: T:Compendium.Application.Sagas.Choreography.ChoreographyRouter
+  fullName: Compendium.Application.Sagas.Choreography.ChoreographyRouter
+  nameWithType: ChoreographyRouter
+- uid: Compendium.Application.Sagas.Choreography.ChoreographyRouter.#ctor(System.IServiceProvider,Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher)
+  name: ChoreographyRouter(IServiceProvider, IIntegrationEventPublisher)
+  href: api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.html#Compendium_Application_Sagas_Choreography_ChoreographyRouter__ctor_System_IServiceProvider_Compendium_Abstractions_Sagas_Choreography_IIntegrationEventPublisher_
+  commentId: M:Compendium.Application.Sagas.Choreography.ChoreographyRouter.#ctor(System.IServiceProvider,Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher)
+  name.vb: New(IServiceProvider, IIntegrationEventPublisher)
+  fullName: Compendium.Application.Sagas.Choreography.ChoreographyRouter.ChoreographyRouter(System.IServiceProvider, Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher)
+  fullName.vb: Compendium.Application.Sagas.Choreography.ChoreographyRouter.New(System.IServiceProvider, Compendium.Abstractions.Sagas.Choreography.IIntegrationEventPublisher)
+  nameWithType: ChoreographyRouter.ChoreographyRouter(IServiceProvider, IIntegrationEventPublisher)
+  nameWithType.vb: ChoreographyRouter.New(IServiceProvider, IIntegrationEventPublisher)
+- uid: Compendium.Application.Sagas.Choreography.ChoreographyRouter.#ctor*
+  name: ChoreographyRouter
+  href: api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.html#Compendium_Application_Sagas_Choreography_ChoreographyRouter__ctor_
+  commentId: Overload:Compendium.Application.Sagas.Choreography.ChoreographyRouter.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Application.Sagas.Choreography.ChoreographyRouter.ChoreographyRouter
+  fullName.vb: Compendium.Application.Sagas.Choreography.ChoreographyRouter.New
+  nameWithType: ChoreographyRouter.ChoreographyRouter
+  nameWithType.vb: ChoreographyRouter.New
+- uid: Compendium.Application.Sagas.Choreography.ChoreographyRouter.DispatchAsync*
+  name: DispatchAsync
+  href: api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.html#Compendium_Application_Sagas_Choreography_ChoreographyRouter_DispatchAsync_
+  commentId: Overload:Compendium.Application.Sagas.Choreography.ChoreographyRouter.DispatchAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.Choreography.ChoreographyRouter.DispatchAsync
+  nameWithType: ChoreographyRouter.DispatchAsync
+- uid: Compendium.Application.Sagas.Choreography.ChoreographyRouter.DispatchAsync``1(``0,System.Threading.CancellationToken)
+  name: DispatchAsync<TEvent>(TEvent, CancellationToken)
+  href: api/Compendium.Application.Sagas.Choreography.ChoreographyRouter.html#Compendium_Application_Sagas_Choreography_ChoreographyRouter_DispatchAsync__1___0_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.Choreography.ChoreographyRouter.DispatchAsync``1(``0,System.Threading.CancellationToken)
+  name.vb: DispatchAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName: Compendium.Application.Sagas.Choreography.ChoreographyRouter.DispatchAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Application.Sagas.Choreography.ChoreographyRouter.DispatchAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  nameWithType: ChoreographyRouter.DispatchAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType.vb: ChoreographyRouter.DispatchAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher
+  name: InMemoryIntegrationEventPublisher
+  href: api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html
+  commentId: T:Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher
+  fullName: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher
+  nameWithType: InMemoryIntegrationEventPublisher
+- uid: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.#ctor(System.Func{Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter})
+  name: InMemoryIntegrationEventPublisher(Func<IChoreographyRouter?>?)
+  href: api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html#Compendium_Application_Sagas_Choreography_InMemoryIntegrationEventPublisher__ctor_System_Func_Compendium_Abstractions_Sagas_Choreography_IChoreographyRouter__
+  commentId: M:Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.#ctor(System.Func{Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter})
+  name.vb: New(Func(Of IChoreographyRouter))
+  fullName: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.InMemoryIntegrationEventPublisher(System.Func<Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter?>?)
+  fullName.vb: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.New(System.Func(Of Compendium.Abstractions.Sagas.Choreography.IChoreographyRouter))
+  nameWithType: InMemoryIntegrationEventPublisher.InMemoryIntegrationEventPublisher(Func<IChoreographyRouter?>?)
+  nameWithType.vb: InMemoryIntegrationEventPublisher.New(Func(Of IChoreographyRouter))
+- uid: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.#ctor*
+  name: InMemoryIntegrationEventPublisher
+  href: api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html#Compendium_Application_Sagas_Choreography_InMemoryIntegrationEventPublisher__ctor_
+  commentId: Overload:Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.InMemoryIntegrationEventPublisher
+  fullName.vb: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.New
+  nameWithType: InMemoryIntegrationEventPublisher.InMemoryIntegrationEventPublisher
+  nameWithType.vb: InMemoryIntegrationEventPublisher.New
+- uid: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.PublishAsync*
+  name: PublishAsync
+  href: api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html#Compendium_Application_Sagas_Choreography_InMemoryIntegrationEventPublisher_PublishAsync_
+  commentId: Overload:Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.PublishAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.PublishAsync
+  nameWithType: InMemoryIntegrationEventPublisher.PublishAsync
+- uid: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.PublishAsync``1(``0,System.Threading.CancellationToken)
+  name: PublishAsync<TEvent>(TEvent, CancellationToken)
+  href: api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html#Compendium_Application_Sagas_Choreography_InMemoryIntegrationEventPublisher_PublishAsync__1___0_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.PublishAsync``1(``0,System.Threading.CancellationToken)
+  name.vb: PublishAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.PublishAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.PublishAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  nameWithType: InMemoryIntegrationEventPublisher.PublishAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType.vb: InMemoryIntegrationEventPublisher.PublishAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.Published
+  name: Published
+  href: api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html#Compendium_Application_Sagas_Choreography_InMemoryIntegrationEventPublisher_Published
+  commentId: P:Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.Published
+  fullName: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.Published
+  nameWithType: InMemoryIntegrationEventPublisher.Published
+- uid: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.Published*
+  name: Published
+  href: api/Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.html#Compendium_Application_Sagas_Choreography_InMemoryIntegrationEventPublisher_Published_
+  commentId: Overload:Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.Published
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.Choreography.InMemoryIntegrationEventPublisher.Published
+  nameWithType: InMemoryIntegrationEventPublisher.Published
+- uid: Compendium.Application.Sagas.DependencyInjection
+  name: Compendium.Application.Sagas.DependencyInjection
+  href: api/Compendium.Application.Sagas.DependencyInjection.html
+  commentId: N:Compendium.Application.Sagas.DependencyInjection
+  fullName: Compendium.Application.Sagas.DependencyInjection
+  nameWithType: Compendium.Application.Sagas.DependencyInjection
+- uid: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions
+  name: SagaServiceCollectionExtensions
+  href: api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.html
+  commentId: T:Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions
+  fullName: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions
+  nameWithType: SagaServiceCollectionExtensions
+- uid: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddEventChoreography(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name: AddEventChoreography(IServiceCollection, params Assembly[])
+  href: api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.html#Compendium_Application_Sagas_DependencyInjection_SagaServiceCollectionExtensions_AddEventChoreography_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly___
+  commentId: M:Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddEventChoreography(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])
+  name.vb: AddEventChoreography(IServiceCollection, ParamArray Assembly())
+  fullName: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddEventChoreography(Microsoft.Extensions.DependencyInjection.IServiceCollection, params System.Reflection.Assembly[])
+  fullName.vb: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddEventChoreography(Microsoft.Extensions.DependencyInjection.IServiceCollection, ParamArray System.Reflection.Assembly())
+  nameWithType: SagaServiceCollectionExtensions.AddEventChoreography(IServiceCollection, params Assembly[])
+  nameWithType.vb: SagaServiceCollectionExtensions.AddEventChoreography(IServiceCollection, ParamArray Assembly())
+- uid: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddEventChoreography*
+  name: AddEventChoreography
+  href: api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.html#Compendium_Application_Sagas_DependencyInjection_SagaServiceCollectionExtensions_AddEventChoreography_
+  commentId: Overload:Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddEventChoreography
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddEventChoreography
+  nameWithType: SagaServiceCollectionExtensions.AddEventChoreography
+- uid: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddProcessManagers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddProcessManagers(IServiceCollection)
+  href: api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.html#Compendium_Application_Sagas_DependencyInjection_SagaServiceCollectionExtensions_AddProcessManagers_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddProcessManagers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddProcessManagers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: SagaServiceCollectionExtensions.AddProcessManagers(IServiceCollection)
+- uid: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddProcessManagers*
+  name: AddProcessManagers
+  href: api/Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.html#Compendium_Application_Sagas_DependencyInjection_SagaServiceCollectionExtensions_AddProcessManagers_
+  commentId: Overload:Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddProcessManagers
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.DependencyInjection.SagaServiceCollectionExtensions.AddProcessManagers
+  nameWithType: SagaServiceCollectionExtensions.AddProcessManagers
+- uid: Compendium.Application.Sagas.ProcessManagers
+  name: Compendium.Application.Sagas.ProcessManagers
+  href: api/Compendium.Application.Sagas.ProcessManagers.html
+  commentId: N:Compendium.Application.Sagas.ProcessManagers
+  fullName: Compendium.Application.Sagas.ProcessManagers
+  nameWithType: Compendium.Application.Sagas.ProcessManagers
+- uid: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager
+  name: IMutableProcessManager
+  href: api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.html
+  commentId: T:Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager
+  fullName: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager
+  nameWithType: IMutableProcessManager
+- uid: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionStep(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String)
+  name: TransitionStep(Guid, SagaStepStatus, string?)
+  href: api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.html#Compendium_Application_Sagas_ProcessManagers_IMutableProcessManager_TransitionStep_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStepStatus_System_String_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionStep(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String)
+  name.vb: TransitionStep(Guid, SagaStepStatus, String)
+  fullName: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionStep(System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, string?)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionStep(System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, String)
+  nameWithType: IMutableProcessManager.TransitionStep(Guid, SagaStepStatus, string?)
+  nameWithType.vb: IMutableProcessManager.TransitionStep(Guid, SagaStepStatus, String)
+- uid: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionStep*
+  name: TransitionStep
+  href: api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.html#Compendium_Application_Sagas_ProcessManagers_IMutableProcessManager_TransitionStep_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionStep
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionStep
+  nameWithType: IMutableProcessManager.TransitionStep
+- uid: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)
+  name: TransitionTo(SagaStatus)
+  href: api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.html#Compendium_Application_Sagas_ProcessManagers_IMutableProcessManager_TransitionTo_Compendium_Abstractions_Sagas_Common_SagaStatus_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)
+  fullName: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)
+  nameWithType: IMutableProcessManager.TransitionTo(SagaStatus)
+- uid: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionTo*
+  name: TransitionTo
+  href: api/Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.html#Compendium_Application_Sagas_ProcessManagers_IMutableProcessManager_TransitionTo_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionTo
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.TransitionTo
+  nameWithType: IMutableProcessManager.TransitionTo
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository
+  name: InMemoryProcessManagerRepository
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html
+  commentId: T:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository
+  nameWithType: InMemoryProcessManagerRepository
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync(System.Guid,System.Threading.CancellationToken)
+  name: GetByIdAsync(Guid, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_GetByIdAsync_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync(System.Guid,System.Threading.CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync(System.Guid, System.Threading.CancellationToken)
+  nameWithType: InMemoryProcessManagerRepository.GetByIdAsync(Guid, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync*
+  name: GetByIdAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_GetByIdAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync
+  nameWithType: InMemoryProcessManagerRepository.GetByIdAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  name: SaveAsync(IProcessManager, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_SaveAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager, System.Threading.CancellationToken)
+  nameWithType: InMemoryProcessManagerRepository.SaveAsync(IProcessManager, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.SaveAsync*
+  name: SaveAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_SaveAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.SaveAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.SaveAsync
+  nameWithType: InMemoryProcessManagerRepository.SaveAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStatusAsync(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStatus,System.Threading.CancellationToken)
+  name: UpdateStatusAsync(Guid, SagaStatus, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_UpdateStatusAsync_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStatus_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStatusAsync(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStatus,System.Threading.CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStatusAsync(System.Guid, Compendium.Abstractions.Sagas.Common.SagaStatus, System.Threading.CancellationToken)
+  nameWithType: InMemoryProcessManagerRepository.UpdateStatusAsync(Guid, SagaStatus, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStatusAsync*
+  name: UpdateStatusAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_UpdateStatusAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStatusAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStatusAsync
+  nameWithType: InMemoryProcessManagerRepository.UpdateStatusAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStepStatusAsync(System.Guid,System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String,System.Threading.CancellationToken)
+  name: UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, string?, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_UpdateStepStatusAsync_System_Guid_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStepStatus_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStepStatusAsync(System.Guid,System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String,System.Threading.CancellationToken)
+  name.vb: UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, String, CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStepStatusAsync(System.Guid, System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, string?, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStepStatusAsync(System.Guid, System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, String, System.Threading.CancellationToken)
+  nameWithType: InMemoryProcessManagerRepository.UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, string?, CancellationToken)
+  nameWithType.vb: InMemoryProcessManagerRepository.UpdateStepStatusAsync(Guid, Guid, SagaStepStatus, String, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStepStatusAsync*
+  name: UpdateStepStatusAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_UpdateStepStatusAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStepStatusAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.UpdateStepStatusAsync
+  nameWithType: InMemoryProcessManagerRepository.UpdateStepStatusAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator
+  name: ProcessManagerOrchestrator
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html
+  commentId: T:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator
+  nameWithType: ProcessManagerOrchestrator
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.#ctor(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository,Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor)
+  name: ProcessManagerOrchestrator(IProcessManagerRepository, IProcessManagerStepExecutor)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator__ctor_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerStepExecutor_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.#ctor(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository,Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor)
+  name.vb: New(IProcessManagerRepository, IProcessManagerStepExecutor)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ProcessManagerOrchestrator(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository, Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.New(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository, Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor)
+  nameWithType: ProcessManagerOrchestrator.ProcessManagerOrchestrator(IProcessManagerRepository, IProcessManagerStepExecutor)
+  nameWithType.vb: ProcessManagerOrchestrator.New(IProcessManagerRepository, IProcessManagerStepExecutor)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.#ctor*
+  name: ProcessManagerOrchestrator
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator__ctor_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ProcessManagerOrchestrator
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.New
+  nameWithType: ProcessManagerOrchestrator.ProcessManagerOrchestrator
+  nameWithType.vb: ProcessManagerOrchestrator.New
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.CompensateAsync(System.Guid,System.Threading.CancellationToken)
+  name: CompensateAsync(Guid, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_CompensateAsync_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.CompensateAsync(System.Guid,System.Threading.CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.CompensateAsync(System.Guid, System.Threading.CancellationToken)
+  nameWithType: ProcessManagerOrchestrator.CompensateAsync(Guid, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.CompensateAsync*
+  name: CompensateAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_CompensateAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.CompensateAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.CompensateAsync
+  nameWithType: ProcessManagerOrchestrator.CompensateAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ExecuteStepAsync(System.Guid,System.String,System.Threading.CancellationToken)
+  name: ExecuteStepAsync(Guid, string, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_ExecuteStepAsync_System_Guid_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ExecuteStepAsync(System.Guid,System.String,System.Threading.CancellationToken)
+  name.vb: ExecuteStepAsync(Guid, String, CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ExecuteStepAsync(System.Guid, string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ExecuteStepAsync(System.Guid, String, System.Threading.CancellationToken)
+  nameWithType: ProcessManagerOrchestrator.ExecuteStepAsync(Guid, string, CancellationToken)
+  nameWithType.vb: ProcessManagerOrchestrator.ExecuteStepAsync(Guid, String, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ExecuteStepAsync*
+  name: ExecuteStepAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_ExecuteStepAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ExecuteStepAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.ExecuteStepAsync
+  nameWithType: ProcessManagerOrchestrator.ExecuteStepAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.GetAsync(System.Guid,System.Threading.CancellationToken)
+  name: GetAsync(Guid, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_GetAsync_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.GetAsync(System.Guid,System.Threading.CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.GetAsync(System.Guid, System.Threading.CancellationToken)
+  nameWithType: ProcessManagerOrchestrator.GetAsync(Guid, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.GetAsync*
+  name: GetAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_GetAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.GetAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.GetAsync
+  nameWithType: ProcessManagerOrchestrator.GetAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.StartAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  name: StartAsync(IProcessManager, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_StartAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.StartAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.StartAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager, System.Threading.CancellationToken)
+  nameWithType: ProcessManagerOrchestrator.StartAsync(IProcessManager, CancellationToken)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.StartAsync*
+  name: StartAsync
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.html#Compendium_Application_Sagas_ProcessManagers_ProcessManagerOrchestrator_StartAsync_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.StartAsync
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator.StartAsync
+  nameWithType: ProcessManagerOrchestrator.StartAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1
+  name: ProcessManager<TState>
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html
+  commentId: T:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1
+  name.vb: ProcessManager(Of TState)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState)
+  nameWithType: ProcessManager<TState>
+  nameWithType.vb: ProcessManager(Of TState)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.#ctor(System.Guid,`0,System.Collections.Generic.IEnumerable{System.String})
+  name: ProcessManager(Guid, TState, IEnumerable<string>)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1__ctor_System_Guid__0_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.#ctor(System.Guid,`0,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: New(Guid, TState, IEnumerable(Of String))
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.ProcessManager(System.Guid, TState, System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).New(System.Guid, TState, System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: ProcessManager<TState>.ProcessManager(Guid, TState, IEnumerable<string>)
+  nameWithType.vb: ProcessManager(Of TState).New(Guid, TState, IEnumerable(Of String))
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.#ctor*
+  name: ProcessManager
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1__ctor_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.ProcessManager
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).New
+  nameWithType: ProcessManager<TState>.ProcessManager
+  nameWithType.vb: ProcessManager(Of TState).New
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CompletedAt
+  name: CompletedAt
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CompletedAt
+  commentId: P:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CompletedAt
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.CompletedAt
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).CompletedAt
+  nameWithType: ProcessManager<TState>.CompletedAt
+  nameWithType.vb: ProcessManager(Of TState).CompletedAt
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CompletedAt*
+  name: CompletedAt
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CompletedAt_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CompletedAt
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.CompletedAt
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).CompletedAt
+  nameWithType: ProcessManager<TState>.CompletedAt
+  nameWithType.vb: ProcessManager(Of TState).CompletedAt
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CreatedAt
+  name: CreatedAt
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CreatedAt
+  commentId: P:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CreatedAt
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.CreatedAt
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).CreatedAt
+  nameWithType: ProcessManager<TState>.CreatedAt
+  nameWithType.vb: ProcessManager(Of TState).CreatedAt
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CreatedAt*
+  name: CreatedAt
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CreatedAt_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CreatedAt
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.CreatedAt
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).CreatedAt
+  nameWithType: ProcessManager<TState>.CreatedAt
+  nameWithType.vb: ProcessManager(Of TState).CreatedAt
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Id
+  name: Id
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Id
+  commentId: P:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Id
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.Id
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).Id
+  nameWithType: ProcessManager<TState>.Id
+  nameWithType.vb: ProcessManager(Of TState).Id
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Id*
+  name: Id
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Id_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Id
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.Id
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).Id
+  nameWithType: ProcessManager<TState>.Id
+  nameWithType.vb: ProcessManager(Of TState).Id
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.State
+  name: State
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_State
+  commentId: P:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.State
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.State
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).State
+  nameWithType: ProcessManager<TState>.State
+  nameWithType.vb: ProcessManager(Of TState).State
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.State*
+  name: State
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_State_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.State
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.State
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).State
+  nameWithType: ProcessManager<TState>.State
+  nameWithType.vb: ProcessManager(Of TState).State
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Status
+  name: Status
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Status
+  commentId: P:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Status
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.Status
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).Status
+  nameWithType: ProcessManager<TState>.Status
+  nameWithType.vb: ProcessManager(Of TState).Status
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Status*
+  name: Status
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Status_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Status
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.Status
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).Status
+  nameWithType: ProcessManager<TState>.Status
+  nameWithType.vb: ProcessManager(Of TState).Status
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Steps
+  name: Steps
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Steps
+  commentId: P:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Steps
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.Steps
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).Steps
+  nameWithType: ProcessManager<TState>.Steps
+  nameWithType.vb: ProcessManager(Of TState).Steps
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Steps*
+  name: Steps
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Steps_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Steps
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.Steps
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).Steps
+  nameWithType: ProcessManager<TState>.Steps
+  nameWithType.vb: ProcessManager(Of TState).Steps
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionStep(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String)
+  name: TransitionStep(Guid, SagaStepStatus, string?)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionStep_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStepStatus_System_String_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionStep(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String)
+  name.vb: TransitionStep(Guid, SagaStepStatus, String)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.TransitionStep(System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, string?)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).TransitionStep(System.Guid, Compendium.Abstractions.Sagas.Common.SagaStepStatus, String)
+  nameWithType: ProcessManager<TState>.TransitionStep(Guid, SagaStepStatus, string?)
+  nameWithType.vb: ProcessManager(Of TState).TransitionStep(Guid, SagaStepStatus, String)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionStep*
+  name: TransitionStep
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionStep_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionStep
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.TransitionStep
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).TransitionStep
+  nameWithType: ProcessManager<TState>.TransitionStep
+  nameWithType.vb: ProcessManager(Of TState).TransitionStep
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)
+  name: TransitionTo(SagaStatus)
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionTo_Compendium_Abstractions_Sagas_Common_SagaStatus_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)
+  nameWithType: ProcessManager<TState>.TransitionTo(SagaStatus)
+  nameWithType.vb: ProcessManager(Of TState).TransitionTo(SagaStatus)
+- uid: Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionTo*
+  name: TransitionTo
+  href: api/Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html#Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionTo_
+  commentId: Overload:Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionTo
+  isSpec: "True"
+  fullName: Compendium.Application.Sagas.ProcessManagers.ProcessManager<TState>.TransitionTo
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.ProcessManager(Of TState).TransitionTo
+  nameWithType: ProcessManager<TState>.TransitionTo
+  nameWithType.vb: ProcessManager(Of TState).TransitionTo
 - uid: Compendium.Core.Domain.Events
   name: Compendium.Core.Domain.Events
   href: api/Compendium.Core.Domain.Events.html

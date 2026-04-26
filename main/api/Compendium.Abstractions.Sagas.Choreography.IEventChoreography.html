@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum SagaStatus | Compendium — .NET event-sourcing framework </title>
+      <title>Interface IEventChoreography | Compendium — .NET event-sourcing framework </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum SagaStatus | Compendium — .NET event-sourcing framework ">
+      <meta name="title" content="Interface IEventChoreography | Compendium — .NET event-sourcing framework ">
       
-      <meta name="description" content="Defines the possible states of a saga during its lifecycle.">
+      <meta name="description" content="Marker interface identifying a class as a participant in an event-driven choreography saga (the &amp;quot;Event Saga&amp;quot; flavor: no central orchestrator; services react to integration events and publish further events).">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Application_Saga_SagaStatus.md&amp;value=---%0Auid%3A%20Compendium.Application.Saga.SagaStatus%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Sagas_Choreography_IEventChoreography.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Sagas.Choreography.IEventChoreography%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,26 +84,27 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Compendium.Application.Saga.SagaStatus">
+        <article data-uid="Compendium.Abstractions.Sagas.Choreography.IEventChoreography">
 
 
 
-
-  <h1 id="Compendium_Application_Saga_SagaStatus" data-uid="Compendium.Application.Saga.SagaStatus" class="text-break">
-Enum SagaStatus  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Compendium_Abstractions_Sagas_Choreography_IEventChoreography" data-uid="Compendium.Abstractions.Sagas.Choreography.IEventChoreography" class="text-break">
+Interface IEventChoreography  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Choreography/IEventChoreography.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Application.html">Application</a>.<a class="xref" href="Compendium.Application.Saga.html">Saga</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Compendium.Application.dll</dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Sagas.html">Sagas</a>.<a class="xref" href="Compendium.Abstractions.Sagas.Choreography.html">Choreography</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Defines the possible states of a saga during its lifecycle.</p>
+  <div class="markdown summary"><p>Marker interface identifying a class as a participant in an event-driven choreography
+saga (the &quot;Event Saga&quot; flavor: no central orchestrator; services react to integration
+events and publish further events).</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum SagaStatus</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IEventChoreography</code></pre>
   </div>
 
 
@@ -114,41 +115,21 @@ Enum SagaStatus  <a class="header-action link-secondary" title="View source" hre
 
 
 
-  <h2 id="fields">Fields
-</h2>
-  <dl class="parameters">
-    <dt id="Compendium_Application_Saga_SagaStatus_Compensated"><code>Compensated = 5</code></dt>
-  
-  <dd><p>The saga has successfully completed all compensation actions.</p>
-</dd>
-    <dt id="Compendium_Application_Saga_SagaStatus_Compensating"><code>Compensating = 4</code></dt>
-  
-  <dd><p>The saga is currently executing compensation actions due to a failure.</p>
-</dd>
-    <dt id="Compendium_Application_Saga_SagaStatus_Completed"><code>Completed = 2</code></dt>
-  
-  <dd><p>The saga has successfully completed all its steps.</p>
-</dd>
-    <dt id="Compendium_Application_Saga_SagaStatus_Failed"><code>Failed = 3</code></dt>
-  
-  <dd><p>The saga has failed and cannot proceed.</p>
-</dd>
-    <dt id="Compendium_Application_Saga_SagaStatus_InProgress"><code>InProgress = 1</code></dt>
-  
-  <dd><p>The saga is currently executing its steps.</p>
-</dd>
-    <dt id="Compendium_Application_Saga_SagaStatus_NotStarted"><code>NotStarted = 0</code></dt>
-  
-  <dd><p>The saga has been created but not yet started.</p>
-</dd>
-  </dl>
+
+
+  <h2 id="Compendium_Abstractions_Sagas_Choreography_IEventChoreography_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Choose choreography over a <code>ProcessManager</code> when:</p>
+<ul><li>The workflow spans multiple bounded contexts that should remain loosely coupled.</li><li>Eventual consistency is acceptable.</li><li>You'd rather not introduce a central component that knows about every step.</li></ul>
+<p>In contrast, choose <code>IProcessManager</code> when the workflow is owned by one bounded
+context and you need centralized step tracking and compensation.</p>
+</div>
 
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/ISaga.cs/#L56" class="edit-link">Edit this page</a>
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Choreography/IEventChoreography.cs/#L25" class="edit-link">Edit this page</a>
         </div>
 
 

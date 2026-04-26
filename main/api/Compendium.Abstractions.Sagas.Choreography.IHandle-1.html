@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ISagaFactory&lt;TSaga, TData&gt; | Compendium — .NET event-sourcing framework </title>
+      <title>Interface IHandle&lt;TEvent&gt; | Compendium — .NET event-sourcing framework </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ISagaFactory&lt;TSaga, TData&gt; | Compendium — .NET event-sourcing framework ">
+      <meta name="title" content="Interface IHandle&lt;TEvent&gt; | Compendium — .NET event-sourcing framework ">
       
-      <meta name="description" content="Defines a factory for creating saga instances with associated data.">
+      <meta name="description" content="Handler contract for choreography saga participants. A class can implement  several times, once per event type it reacts to.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Application_Saga_ISagaFactory_2.md&amp;value=---%0Auid%3A%20Compendium.Application.Saga.ISagaFactory%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Sagas_Choreography_IHandle_1.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Sagas.Choreography.IHandle%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,37 +84,34 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Compendium.Application.Saga.ISagaFactory`2">
+        <article data-uid="Compendium.Abstractions.Sagas.Choreography.IHandle`1">
 
 
 
-  <h1 id="Compendium_Application_Saga_ISagaFactory_2" data-uid="Compendium.Application.Saga.ISagaFactory`2" class="text-break">
-Interface ISagaFactory&lt;TSaga, TData&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/SagaOrchestrator.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Compendium_Abstractions_Sagas_Choreography_IHandle_1" data-uid="Compendium.Abstractions.Sagas.Choreography.IHandle`1" class="text-break">
+Interface IHandle&lt;TEvent&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Choreography/IHandle.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Application.html">Application</a>.<a class="xref" href="Compendium.Application.Saga.html">Saga</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Compendium.Application.dll</dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Sagas.html">Sagas</a>.<a class="xref" href="Compendium.Abstractions.Sagas.Choreography.html">Choreography</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Defines a factory for creating saga instances with associated data.</p>
+  <div class="markdown summary"><p>Handler contract for choreography saga participants. A class can implement
+<a class="xref" href="Compendium.Abstractions.Sagas.Choreography.IHandle-1.html">IHandle&lt;TEvent&gt;</a> several times, once per event type it reacts to.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Process Managers are now constructed directly via static factory methods on the saga class (see Compendium.Application.Sagas.ProcessManagers.ProcessManager{TState}). Will be removed in v1.0.&quot;)]
-public interface ISagaFactory&lt;TSaga, TData&gt; where TSaga : class, ISaga&lt;TData&gt; where TData : class</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IHandle&lt;in TEvent&gt; : IEventChoreography where TEvent : IIntegrationEvent</code></pre>
   </div>
 
 
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
-    <dt><code>TSaga</code></dt>
-    <dd><p>The type of saga to create.</p>
-</dd>
-    <dt><code>TData</code></dt>
-    <dd><p>The type of data associated with the saga.</p>
+    <dt><code>TEvent</code></dt>
+    <dd><p>The integration event type this handler reacts to.</p>
 </dd>
   </dl>
 
@@ -131,32 +128,42 @@ public interface ISagaFactory&lt;TSaga, TData&gt; where TSaga : class, ISaga&lt;
 </h2>
 
 
-  <a id="Compendium_Application_Saga_ISagaFactory_2_Create_" data-uid="Compendium.Application.Saga.ISagaFactory`2.Create*"></a>
+  <a id="Compendium_Abstractions_Sagas_Choreography_IHandle_1_HandleAsync_" data-uid="Compendium.Abstractions.Sagas.Choreography.IHandle`1.HandleAsync*"></a>
 
-  <h3 id="Compendium_Application_Saga_ISagaFactory_2_Create__1_" data-uid="Compendium.Application.Saga.ISagaFactory`2.Create(`1)">
-  Create(TData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/SagaOrchestrator.cs/#L303"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Compendium_Abstractions_Sagas_Choreography_IHandle_1_HandleAsync__0_Compendium_Abstractions_Sagas_Choreography_IChoreographyContext_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Sagas.Choreography.IHandle`1.HandleAsync(`0,Compendium.Abstractions.Sagas.Choreography.IChoreographyContext,System.Threading.CancellationToken)">
+  HandleAsync(TEvent, IChoreographyContext, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Choreography/IHandle.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Creates a new saga instance with the provided data.</p>
+  <div class="markdown level1 summary"><p>Handle an inbound integration event. Implementations may publish further events
+(forward progression) or compensation events (backward progression) via
+<code class="paramref">context</code>. The orchestrator does not interpret the result;
+returning a failure surfaces the error to telemetry but does not retry — implement
+retry/backoff at the message-broker level or via a transactional outbox.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TSaga Create(TData data)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; HandleAsync(TEvent @event, IChoreographyContext context, CancellationToken cancellationToken = default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>data</code> <span class="xref">TData</span></dt>
-    <dd><p>The data to initialize the saga with.</p>
+    <dt><code>event</code> <span class="xref">TEvent</span></dt>
+    <dd><p>The inbound event.</p>
+</dd>
+    <dt><code>context</code> <a class="xref" href="Compendium.Abstractions.Sagas.Choreography.IChoreographyContext.html">IChoreographyContext</a></dt>
+    <dd><p>Publishing/correlation context.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><span class="xref">TSaga</span></dt>
-    <dd><p>A new saga instance.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A successful result on completion; failures are surfaced to telemetry.</p>
 </dd>
   </dl>
 
@@ -174,7 +181,7 @@ public interface ISagaFactory&lt;TSaga, TData&gt; where TSaga : class, ISaga&lt;
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Application/Compendium.Application/Saga/SagaOrchestrator.cs/#L292" class="edit-link">Edit this page</a>
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions/Sagas/Choreography/IHandle.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 
