@@ -39,22 +39,39 @@ services.AddProjections(options =>
 // Add PostgreSQL projection store
 services.AddPostgreSqlProjections();
 
-// Register your projections
+// Register your projections in DI. The runner resolves projections via IServiceProvider,
+// so they MUST be registered as services. AddProjection<T>() does TryAddSingleton<T>()
+// for projections without ctor args; for projections that need DI, register a factory
+// first (see below) and then call AddProjection<T>() to wire it into the runner.
+services.AddSingleton<OrderSummaryProjection>(sp =>
+    new OrderSummaryProjection(
+        connectionString,
+        sp.GetRequiredService<ILogger<OrderSummaryProjection>>()));
 services.AddProjection<OrderSummaryProjection>();
 services.AddProjection<CustomerStatsProjection>();
 ```
 
 ### 2. Create a Projection
 
+Projections can use any DI dependency (logger, connection string, cache, metrics).
+
 ```csharp
 public class OrderSummaryProjection : IProjection<OrderPlacedEvent>, IProjection<OrderShippedEvent>
 {
+    private readonly string _connectionString;
+    private readonly ILogger<OrderSummaryProjection> _logger;
+    private readonly Dictionary<Guid, OrderSummary> _summaries = new();
+
+    public OrderSummaryProjection(string connectionString, ILogger<OrderSummaryProjection> logger)
+    {
+        _connectionString = connectionString;
+        _logger = logger;
+    }
+
     public string ProjectionName => "OrderSummary";
     public int Version => 1;
-    
-    private readonly Dictionary<Guid, OrderSummary> _summaries = new();
     public IReadOnlyDictionary<Guid, OrderSummary> Summaries => _summaries;
-    
+
     public Task ApplyAsync(OrderPlacedEvent @event, EventMetadata metadata, CancellationToken cancellationToken = default)
     {
         _summaries[@event.OrderId] = new OrderSummary
@@ -66,7 +83,8 @@ public class OrderSummaryProjection : IProjection<OrderPlacedEvent>, IProjection
             PlacedAt = @event.OccurredOn.DateTime,
             TenantId = metadata.TenantId
         };
-        
+
+        _logger.LogDebug("Projected OrderPlaced for {OrderId}", @event.OrderId);
         return Task.CompletedTask;
     }
     
@@ -172,7 +190,7 @@ public class ResilientProjectionService
     private readonly IProjectionManager _projectionManager;
     private readonly ILogger<ResilientProjectionService> _logger;
     
-    public async Task SafeRebuildAsync<TProjection>() where TProjection : IProjection, new()
+    public async Task SafeRebuildAsync<TProjection>() where TProjection : IProjection
     {
         var retryCount = 0;
         const int maxRetries = 3;

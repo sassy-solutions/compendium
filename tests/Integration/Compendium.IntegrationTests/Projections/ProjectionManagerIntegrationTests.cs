@@ -99,6 +99,10 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
         services.AddSingleton<IProjectionManager, EnhancedProjectionManager>();
         services.AddSingleton<ILiveProjectionProcessor, LiveProjectionProcessor>();
 
+        // Projections must be DI-registered so the manager can resolve them
+        services.AddSingleton<TestCounterProjection>();
+        services.AddSingleton<TestSummaryProjection>();
+
         var provider = services.BuildServiceProvider();
 
         _eventStore = provider.GetRequiredService<IStreamingEventStore>();

@@ -9,6 +9,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 namespace Compendium.Infrastructure.Projections;
@@ -60,9 +61,9 @@ public class EnhancedProjectionManager : IProjectionManager, IDisposable
         string? streamId = null,
         DateTime? fromTimestamp = null,
         IProgress<RebuildProgress>? progress = null,
-        CancellationToken cancellationToken = default) where TProjection : IProjection, new()
+        CancellationToken cancellationToken = default) where TProjection : IProjection
     {
-        var projection = new TProjection();
+        var projection = _serviceProvider.GetRequiredService<TProjection>();
         var projectionName = projection.ProjectionName;
 
         await _rebuildSemaphore.WaitAsync(cancellationToken);
@@ -270,9 +271,9 @@ public class EnhancedProjectionManager : IProjectionManager, IDisposable
     }
 
     /// <inheritdoc />
-    public void RegisterProjection<TProjection>() where TProjection : IProjection, new()
+    public void RegisterProjection<TProjection>() where TProjection : IProjection
     {
-        var projection = new TProjection();
+        var projection = _serviceProvider.GetRequiredService<TProjection>();
         _registeredProjections.TryAdd(projection.ProjectionName, typeof(TProjection));
         _logger.LogInformation("Registered projection {ProjectionName}", projection.ProjectionName);
     }

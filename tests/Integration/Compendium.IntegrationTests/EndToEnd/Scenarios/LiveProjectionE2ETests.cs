@@ -96,6 +96,9 @@ public sealed class LiveProjectionE2ETests : IAsyncLifetime
         services.AddSingleton<IStreamingEventStore, PostgreSqlStreamingEventStore>();
         services.AddSingleton<IProjectionStore, PostgreSqlProjectionStore>();
 
+        // Projections must be DI-registered so the manager can resolve them
+        services.AddSingleton<OrderSummaryProjection>();
+
         var provider = services.BuildServiceProvider();
 
         _eventStore = provider.GetRequiredService<PostgreSqlEventStore>();

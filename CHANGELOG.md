@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Projections can now use DI dependencies.** `IProjectionManager.RegisterProjection<T>()`,
+  `IProjectionManager.RebuildProjectionAsync<T>()`,
+  `ILiveProjectionProcessor.RegisterProjection<T>()`, and
+  `ServiceCollectionExtensions.AddProjection<T>()` no longer require
+  `where TProjection : IProjection, new()`. Projections are resolved through the
+  injected `IServiceProvider`, so any constructor dependency (logger, connection
+  string, cache, metrics) is supported. Existing parameterless projections keep
+  working as long as they are registered in DI; `AddProjection<T>()` now uses
+  `TryAddSingleton<T>()` to register them automatically. Resolves #35.
+
 ### Added
 
 - **Saga pattern, two flavors clearly separated.** Compendium now ships two

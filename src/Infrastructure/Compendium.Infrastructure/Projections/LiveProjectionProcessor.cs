@@ -7,6 +7,7 @@
 
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
@@ -32,10 +33,12 @@ public interface ILiveProjectionProcessor
     Task StopAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Registers a projection for live processing.
+    /// Registers a projection for live processing. The projection instance is resolved
+    /// from the DI container, so <typeparamref name="TProjection"/> must be registered as
+    /// a service (typically a singleton) before this call.
     /// </summary>
     /// <typeparam name="TProjection">The type of projection to register.</typeparam>
-    void RegisterProjection<TProjection>() where TProjection : IProjection, new();
+    void RegisterProjection<TProjection>() where TProjection : IProjection;
 
     /// <summary>
     /// Unregisters a projection from live processing.
@@ -99,9 +102,9 @@ public class LiveProjectionProcessor : BackgroundService, ILiveProjectionProcess
     }
 
     /// <inheritdoc />
-    public void RegisterProjection<TProjection>() where TProjection : IProjection, new()
+    public void RegisterProjection<TProjection>() where TProjection : IProjection
     {
-        var projection = new TProjection();
+        var projection = _serviceProvider.GetRequiredService<TProjection>();
         _registeredProjections.TryAdd(projection.ProjectionName, typeof(TProjection));
         _logger.LogInformation("Registered projection {ProjectionName} for live processing", projection.ProjectionName);
     }
@@ -204,7 +207,7 @@ public class LiveProjectionProcessor : BackgroundService, ILiveProjectionProcess
         {
             try
             {
-                var projection = (IProjection)Activator.CreateInstance(projectionType)!;
+                var projection = (IProjection)_serviceProvider.GetRequiredService(projectionType);
 
                 // Load snapshot if available and enabled
                 if (_options.EnableSnapshots)

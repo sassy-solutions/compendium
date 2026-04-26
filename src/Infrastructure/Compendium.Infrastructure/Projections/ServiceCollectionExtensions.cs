@@ -6,6 +6,7 @@
 // -----------------------------------------------------------------------
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
 namespace Compendium.Infrastructure.Projections;
@@ -59,15 +60,19 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Registers a projection for processing.
+    /// Registers a projection for processing. The projection is also registered as a
+    /// singleton in the DI container if it has not been registered already; consumers
+    /// that need a custom factory (e.g. to inject a connection string) should call
+    /// <c>services.AddSingleton&lt;TProjection&gt;(sp =&gt; ...)</c> explicitly first and
+    /// then call this method.
     /// </summary>
     /// <typeparam name="TProjection">The type of projection to register.</typeparam>
     /// <param name="services">The service collection.</param>
     /// <returns>The service collection for chaining.</returns>
     public static IServiceCollection AddProjection<TProjection>(this IServiceCollection services)
-        where TProjection : class, IProjection, new()
+        where TProjection : class, IProjection
     {
-        services.AddSingleton<TProjection>();
+        services.TryAddSingleton<TProjection>();
 
         // Register projection with the manager during startup
         services.Configure<ProjectionRegistrationOptions>(options =>
