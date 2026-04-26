@@ -36,6 +36,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   API conflated orchestration and choreography; use `IProcessManager` or
   `IEventChoreography` instead. Removal scheduled for v1.0.
 
+## [1.0.0-preview.2] - 2026-04-26
+
+### Changed
+
+- CodeQL Default Setup switched from `default` to `extended` query suite — adds maintainability/quality queries on top of security (csharp + actions).
+
+### Security
+
+- Pinned `softprops/action-gh-release` to commit SHA in `.github/workflows/release.yml` (CodeQL `actions/unpinned-tag`, CWE-829). 3rd-party action refs are now immutable.
+
 ## [1.0.0-preview.1] - 2026-04-24
 
 ### Added
@@ -80,5 +90,6 @@ First public preview release of Compendium, extracted from the
 - Git history preserved from the originating Nexus monorepo via `git filter-repo`.
 - Full MIT license.
 
-[Unreleased]: https://github.com/sassy-solutions/compendium/compare/v1.0.0-preview.1...HEAD
+[Unreleased]: https://github.com/sassy-solutions/compendium/compare/v1.0.0-preview.2...HEAD
+[1.0.0-preview.2]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.2
 [1.0.0-preview.1]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.1
