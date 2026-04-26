@@ -37,7 +37,7 @@ Related discussion: open a thread under the `Roadmap` category if you have a use
 
 ### 2026 Q3 — New adapters
 
-Additional adapters will be announced as the quarter approaches. Priorities are informed by Discussions and by demand signals from production deployments. If you have a strong need for a specific integration, please open a Discussion with the `roadmap-input` label.
+Additional adapters will be announced as the quarter approaches. Priorities are informed by Discussions and by demand signals from production deployments. If you have a strong need for a specific integration, please open a Discussion describing the use case; maintainers may create or label a tracking issue as `roadmap-input`.
 
 ### 2026 Q4 — New adapters
 
