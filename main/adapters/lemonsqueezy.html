@@ -87,10 +87,96 @@
         <article data-uid="">
 <h1 id="compendiumadapterslemonsqueezy">Compendium.Adapters.LemonSqueezy</h1>
 
-<blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-184">POM-184</a>.</p>
-</blockquote>
-<p>LemonSqueezy billing adapter.</p>
+<p><a href="https://www.lemonsqueezy.com/">LemonSqueezy</a> billing adapter — alternative to Stripe, focused on merchant-of-record billing and license-key delivery for software products. Implements the same <code>Compendium.Abstractions.Billing</code> port as the Stripe adapter, so swapping between them is a DI change.</p>
+<h2 id="install">Install</h2>
+<pre><code class="lang-bash">dotnet add package Compendium.Adapters.LemonSqueezy
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<pre><code class="lang-json">{
+  &quot;LemonSqueezy&quot;: {
+    &quot;ApiKey&quot;: &quot;eyJ0eXAi...&quot;,
+    &quot;StoreId&quot;: &quot;12345&quot;,
+    &quot;WebhookSigningSecret&quot;: &quot;your-webhook-secret&quot;,
+    &quot;BaseUrl&quot;: &quot;https://api.lemonsqueezy.com/v1/&quot;,
+    &quot;TimeoutSeconds&quot;: 30
+  }
+}
+</code></pre>
+<p>Options (<code>LemonSqueezyOptions</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ApiKey</code></td>
+<td><em>required</em></td>
+<td>LemonSqueezy API key (Bearer token)</td>
+</tr>
+<tr>
+<td><code>StoreId</code></td>
+<td><em>required</em></td>
+<td>Your store ID</td>
+</tr>
+<tr>
+<td><code>WebhookSigningSecret</code></td>
+<td><em>required for webhooks</em></td>
+<td>HMAC-SHA256 secret used by the webhook endpoint</td>
+</tr>
+<tr>
+<td><code>BaseUrl</code></td>
+<td><code>https://api.lemonsqueezy.com/v1/</code></td>
+<td>API base URL</td>
+</tr>
+<tr>
+<td><code>TimeoutSeconds</code></td>
+<td><code>30</code></td>
+<td>HTTP timeout</td>
+</tr>
+<tr>
+<td><code>MaxRetries</code></td>
+<td><code>3</code></td>
+<td>Retry attempts on transient failures</td>
+</tr>
+<tr>
+<td><code>TestMode</code></td>
+<td><code>false</code></td>
+<td>Whether to flag operations as test</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<p>The adapter exposes:</p>
+<ul>
+<li><code>IBillingService</code> — customers, subscriptions, checkouts (same shape as Stripe)</li>
+<li><code>ILicenseService</code> — license key validation, activation, deactivation (LS-specific feature)</li>
+</ul>
+<pre><code class="lang-csharp">public sealed class ValidateLicenseHandler(ILicenseService licenses)
+    : IQueryHandler&lt;ValidateLicenseQuery, LicenseValidationResult&gt;
+{
+    public Task&lt;Result&lt;LicenseValidationResult&gt;&gt; Handle(
+        ValidateLicenseQuery q, CancellationToken ct)
+        =&gt; licenses.ValidateLicenseAsync(q.LicenseKey, q.InstanceId, ct);
+}
+</code></pre>
+<p>The license API is used for software activation flows — when you want to ship a downloadable app and gate it behind a key.</p>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li><strong>JSON:API for resources, plain JSON for license endpoints.</strong> LemonSqueezy uses JSON:API for customers/subscriptions/checkouts, but its license endpoints (<code>/licenses/validate</code>, <code>/licenses/activate</code>, <code>/licenses/deactivate</code>) return plain JSON. The adapter handles both internally; don't be surprised if you debug the wire format and see two shapes.</li>
+<li><strong>License keys are secrets — <code>licenseKeyId</code> is not.</strong> The <code>licenseKeyId</code> returned by the API identifies a license record (like a customer ID) and is fine to log. The <code>licenseKey</code> itself is sensitive; Compendium masks it via <code>GetKeyShort</code> in service-layer logs and never includes it in URL paths.</li>
+<li><strong>Activation limits.</strong> A license key can only be activated on N machines (configured per product variant). Hitting the limit returns a specific error code; your UX should distinguish &quot;invalid key&quot; from &quot;limit reached.&quot;</li>
+<li><strong>Webhook signature.</strong> Set <code>WebhookSigningSecret</code> and verify HMAC in your webhook endpoint. Without it, anyone can POST events to your service.</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../api/Compendium.Adapters.LemonSqueezy.Configuration.html">API Reference: Compendium.Adapters.LemonSqueezy.Configuration</a></li>
+<li><a href="https://docs.lemonsqueezy.com/">LemonSqueezy docs</a></li>
+<li><a href="stripe.html">Stripe adapter</a> — same port, different provider</li>
+</ul>
 
 </article>
 

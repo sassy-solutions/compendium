@@ -87,10 +87,108 @@
         <article data-uid="">
 <h1 id="compendiumadaptersredis">Compendium.Adapters.Redis</h1>
 
-<blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-184">POM-184</a>.</p>
-</blockquote>
-<p>Redis cache adapter.</p>
+<p>Redis adapter for caching and (where useful) cross-instance coordination. Built on <code>StackExchange.Redis</code>.</p>
+<h2 id="install">Install</h2>
+<pre><code class="lang-bash">dotnet add package Compendium.Adapters.Redis
+</code></pre>
+<p>You need a Redis 6+ instance.</p>
+<h2 id="configuration">Configuration</h2>
+<pre><code class="lang-json">{
+  &quot;Compendium&quot;: {
+    &quot;Redis&quot;: {
+      &quot;ConnectionString&quot;: &quot;localhost:6379&quot;,
+      &quot;KeyPrefix&quot;: &quot;compendium&quot;,
+      &quot;DefaultDatabase&quot;: 0
+    }
+  }
+}
+</code></pre>
+<pre><code class="lang-csharp">builder.Services.Configure&lt;RedisOptions&gt;(
+    builder.Configuration.GetSection(RedisOptions.SectionName));
+</code></pre>
+<p>Options (<code>RedisOptions</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ConnectionString</code></td>
+<td><code>localhost:6379</code></td>
+<td>StackExchange.Redis connection string</td>
+</tr>
+<tr>
+<td><code>DefaultDatabase</code></td>
+<td><code>0</code></td>
+<td>Redis logical DB number</td>
+</tr>
+<tr>
+<td><code>ConnectTimeout</code></td>
+<td><code>5000ms</code></td>
+<td>Initial connect timeout</td>
+</tr>
+<tr>
+<td><code>CommandTimeout</code></td>
+<td><code>5000ms</code></td>
+<td>Per-command timeout</td>
+</tr>
+<tr>
+<td><code>RetryCount</code></td>
+<td><code>3</code></td>
+<td>Retries on transient failures</td>
+</tr>
+<tr>
+<td><code>RetryDelayMs</code></td>
+<td><code>1000ms</code></td>
+<td>Delay between retries</td>
+</tr>
+<tr>
+<td><code>KeyPrefix</code></td>
+<td><code>compendium</code></td>
+<td>Prefix added to every key</td>
+</tr>
+<tr>
+<td><code>ValidateConnectionString</code></td>
+<td><code>true</code></td>
+<td>Validate string at startup</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-csharp">public sealed class CachedOrderRepository(ICacheStore cache, IOrderRepository inner)
+    : IOrderRepository
+{
+    public async Task&lt;Order?&gt; FindAsync(OrderId id, CancellationToken ct)
+    {
+        var key = $&quot;order:{id}&quot;;
+        var cached = await cache.GetAsync&lt;Order&gt;(key, ct);
+        if (cached is not null) return cached;
+
+        var order = await inner.FindAsync(id, ct);
+        if (order is not null)
+            await cache.SetAsync(key, order, TimeSpan.FromMinutes(5), ct);
+
+        return order;
+    }
+}
+</code></pre>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li><strong>Multi-tenancy in Redis is your responsibility.</strong> A flat key namespace shared across tenants is a leak waiting to happen. Always include the tenant ID in the cache key (e.g. <code>order:{tenantId}:{orderId}</code>).</li>
+<li><strong><code>KeyPrefix</code> is per-application, not per-tenant.</strong> Use it for environment isolation (<code>compendium-prod</code>, <code>compendium-staging</code>) — not for tenancy.</li>
+<li><strong>Don't store secrets in Redis without TLS.</strong> The default <code>ConnectionString</code> does not enable TLS; in production, use <code>rediss://</code> or set <code>ssl=true</code>.</li>
+<li><strong><code>SkipSslValidation</code> style flags do not exist here on purpose.</strong> If your cluster uses a self-signed cert, terminate it at a sidecar/proxy or import the CA properly.</li>
+<li><strong>AOF vs RDB.</strong> If you use Redis as a durable store (rare for cache), set the persistence mode in the Redis config — Compendium can't influence what happens after the data leaves your service.</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../api/Compendium.Adapters.Redis.Configuration.html">API Reference: Compendium.Adapters.Redis.Configuration</a></li>
+<li><a href="../concepts/multi-tenancy.html">Multi-tenancy concept</a></li>
+</ul>
 
 </article>
 

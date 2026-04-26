@@ -87,10 +87,110 @@
         <article data-uid="">
 <h1 id="compendiumadapterslistmonk">Compendium.Adapters.Listmonk</h1>
 
-<blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-184">POM-184</a>.</p>
-</blockquote>
-<p>Listmonk newsletter adapter.</p>
+<p><a href="https://listmonk.app/">Listmonk</a> is a self-hosted newsletter and mailing list manager. This adapter implements the email-provider and newsletter-management ports from <code>Compendium.Abstractions.Email</code> against a Listmonk instance.</p>
+<h2 id="install">Install</h2>
+<pre><code class="lang-bash">dotnet add package Compendium.Adapters.Listmonk
+</code></pre>
+<p>You need a Listmonk instance reachable from your service.</p>
+<h2 id="configuration">Configuration</h2>
+<pre><code class="lang-json">{
+  &quot;Listmonk&quot;: {
+    &quot;BaseUrl&quot;: &quot;https://listmonk.example.com&quot;,
+    &quot;Username&quot;: &quot;api-user&quot;,
+    &quot;Password&quot;: &quot;&lt;long-random-secret&gt;&quot;,
+    &quot;DefaultFromEmail&quot;: &quot;noreply@example.com&quot;,
+    &quot;DefaultFromName&quot;: &quot;Acme&quot;,
+    &quot;DefaultListId&quot;: 1
+  }
+}
+</code></pre>
+<p>Options (<code>ListmonkOptions</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BaseUrl</code></td>
+<td><em>required</em></td>
+<td>URL of the Listmonk instance</td>
+</tr>
+<tr>
+<td><code>Username</code></td>
+<td><em>required</em></td>
+<td>Basic-auth username</td>
+</tr>
+<tr>
+<td><code>Password</code></td>
+<td><em>required</em></td>
+<td>Basic-auth password (Listmonk does not expose API tokens — use a strong password)</td>
+</tr>
+<tr>
+<td><code>DefaultFromEmail</code></td>
+<td><em>empty</em></td>
+<td>Sender address for transactional emails</td>
+</tr>
+<tr>
+<td><code>DefaultFromName</code></td>
+<td><em>empty</em></td>
+<td>Sender display name</td>
+</tr>
+<tr>
+<td><code>DefaultListId</code></td>
+<td><code>null</code></td>
+<td>Default list new subscribers are added to</td>
+</tr>
+<tr>
+<td><code>TimeoutSeconds</code></td>
+<td><code>30</code></td>
+<td>HTTP timeout</td>
+</tr>
+<tr>
+<td><code>MaxRetries</code></td>
+<td><code>3</code></td>
+<td>Retry attempts on transient failures</td>
+</tr>
+<tr>
+<td><code>SkipSslValidation</code></td>
+<td><code>false</code></td>
+<td>Dev-only — never enable in production</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-csharp">public sealed class SubscribeHandler(INewsletterService newsletter)
+    : ICommandHandler&lt;SubscribeCommand&gt;
+{
+    public async Task&lt;Result&gt; Handle(SubscribeCommand cmd, CancellationToken ct)
+    {
+        var subResult = await newsletter.SubscribeAsync(
+            email: cmd.Email,
+            listId: cmd.ListId.ToString(),
+            attributes: new Dictionary&lt;string, object&gt; { [&quot;source&quot;] = &quot;checkout&quot; },
+            ct);
+
+        return subResult.IsSuccess ? Result.Success() : subResult.Error;
+    }
+}
+</code></pre>
+<p>The adapter also exposes <code>IEmailService</code> for transactional sends, list management (<code>ListMailingListsAsync</code>, etc.), and bulk operations.</p>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li><strong>PII in logs.</strong> Subscriber emails are sent to Listmonk (intended), but Compendium does not log raw emails server-side after <a href="https://github.com/sassy-solutions/compendium/pull/3">POM-178</a>. When extending this adapter, mirror the pattern: log <code>subscriber_id</code> post-lookup, never the raw email.</li>
+<li><strong>List IDs are integers.</strong> Listmonk uses numeric list IDs; the adapter accepts <code>string</code> for portability and parses internally. Pass numeric strings.</li>
+<li><strong>Basic auth over HTTPS only.</strong> Listmonk credentials over plain HTTP leak the password on every request. If <code>BaseUrl</code> starts with <code>http://</code>, fail fast in production.</li>
+<li><strong>Bulk operations are paginated.</strong> Listing more than ~100 subscribers requires pagination — use the <code>page</code>/<code>per_page</code> parameters in the underlying client.</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../api/Compendium.Adapters.Listmonk.Configuration.html">API Reference: Compendium.Adapters.Listmonk.Configuration</a></li>
+<li><a href="https://listmonk.app/docs/">Listmonk docs</a></li>
+<li><a href="../api/Compendium.Abstractions.Email.html"><code>Compendium.Abstractions.Email</code></a> — port contracts</li>
+</ul>
 
 </article>
 

@@ -87,10 +87,91 @@
         <article data-uid="">
 <h1 id="compendiumadaptersstripe">Compendium.Adapters.Stripe</h1>
 
-<blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-184">POM-184</a>.</p>
-</blockquote>
-<p>Stripe billing adapter.</p>
+<p><a href="https://stripe.com/">Stripe</a> billing adapter. Implements the billing-provider port from <code>Compendium.Abstractions.Billing</code>: customers, subscriptions, checkout sessions, and webhook handling with HMAC validation.</p>
+<h2 id="install">Install</h2>
+<pre><code class="lang-bash">dotnet add package Compendium.Adapters.Stripe
+</code></pre>
+<p>You need a Stripe account and a secret API key.</p>
+<h2 id="configuration">Configuration</h2>
+<pre><code class="lang-json">{
+  &quot;Stripe&quot;: {
+    &quot;SecretKey&quot;: &quot;sk_test_...&quot;,
+    &quot;PublishableKey&quot;: &quot;pk_test_...&quot;,
+    &quot;WebhookSigningSecret&quot;: &quot;whsec_...&quot;,
+    &quot;ApiVersion&quot;: &quot;2024-06-20&quot;
+  }
+}
+</code></pre>
+<p>Options (<code>StripeOptions</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SecretKey</code></td>
+<td><em>required</em></td>
+<td>Stripe secret key (<code>sk_live_…</code> or <code>sk_test_…</code>)</td>
+</tr>
+<tr>
+<td><code>PublishableKey</code></td>
+<td><code>null</code></td>
+<td>Frontend-safe key; surfaced for clients</td>
+</tr>
+<tr>
+<td><code>WebhookSigningSecret</code></td>
+<td><em>strongly recommended</em></td>
+<td><code>whsec_…</code> — when empty, signature validation is skipped (dev only)</td>
+</tr>
+<tr>
+<td><code>ApiVersion</code></td>
+<td><code>null</code></td>
+<td>Pin a specific API version (e.g. <code>2024-06-20</code>)</td>
+</tr>
+<tr>
+<td><code>TestMode</code></td>
+<td><code>false</code></td>
+<td>Convenience flag; the actual mode is determined by the secret-key prefix</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-csharp">public sealed class StartSubscriptionHandler(IBillingService billing)
+    : ICommandHandler&lt;StartSubscriptionCommand&gt;
+{
+    public async Task&lt;Result&gt; Handle(StartSubscriptionCommand cmd, CancellationToken ct)
+    {
+        var customerResult = await billing.EnsureCustomerAsync(
+            email: cmd.Email,
+            tenantId: cmd.TenantId,
+            ct);
+        if (customerResult.IsFailure) return customerResult.Error;
+
+        var subResult = await billing.StartSubscriptionAsync(
+            customerResult.Value.Id, cmd.PriceId, ct);
+        return subResult.IsSuccess ? Result.Success() : subResult.Error;
+    }
+}
+</code></pre>
+<p>For webhook handling, Compendium provides a webhook handler that validates the signature using <code>WebhookSigningSecret</code> and emits domain integration events (<code>SubscriptionCreatedEvent</code>, <code>PaymentSucceededEvent</code>, <code>InvoicePaidEvent</code>, etc.) — listed in <a href="https://github.com/sassy-solutions/compendium/tree/main/src/Core/Compendium.Core/Domain/Events/Integration"><code>src/Core/Compendium.Core/Domain/Events/Integration/</code></a>.</p>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li><strong>Empty <code>WebhookSigningSecret</code> skips validation.</strong> That is fine for local development with the Stripe CLI but a security hole in any other environment. The library warns at startup; do not ignore it.</li>
+<li><strong>Pin <code>ApiVersion</code>.</strong> Stripe occasionally ships breaking changes to the default version. Pinning insulates you from surprise behavior changes; bump deliberately.</li>
+<li><strong>PII in logs.</strong> Customer emails are sent to Stripe (the whole point of the call), but they should <em>not</em> be logged on your side. Compendium's logging pattern uses <code>customer_id</code> post-creation and <code>MaskEmail()</code> from <code>Compendium.Adapters.Shared</code> for pre-creation logs. See <a href="https://github.com/sassy-solutions/compendium/pull/3">POM-178</a> for the GDPR rationale.</li>
+<li><strong>Idempotency keys.</strong> Stripe supports them; pass through <code>Stripe-Idempotency-Key</code> (via <code>IdempotencyOptions</code> in your call) on writes that you might retry.</li>
+<li><strong>Test vs live mode.</strong> A <code>sk_test_…</code> key cannot read <code>sk_live_…</code> data — fully separate environments. The <code>TestMode</code> flag is informational only; the SDK derives the actual mode from the key.</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../api/Compendium.Adapters.Stripe.Configuration.html">API Reference: Compendium.Adapters.Stripe.Configuration</a></li>
+<li><a href="https://stripe.com/docs">Stripe docs</a></li>
+<li><a href="../api/Compendium.Abstractions.Billing.html"><code>Compendium.Abstractions.Billing</code></a> — port contracts</li>
+</ul>
 
 </article>
 

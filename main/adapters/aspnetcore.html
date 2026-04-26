@@ -87,10 +87,85 @@
         <article data-uid="">
 <h1 id="compendiumadaptersaspnetcore">Compendium.Adapters.AspNetCore</h1>
 
-<blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-184">POM-184</a>.</p>
-</blockquote>
-<p>ASP.NET Core integration: tenant validation middleware, problem details, auth helpers.</p>
+<p>ASP.NET Core integration: tenant validation middleware, security headers, problem-details mapping, and authentication helpers.</p>
+<h2 id="install">Install</h2>
+<pre><code class="lang-bash">dotnet add package Compendium.Adapters.AspNetCore
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>The adapter exposes several middleware and helper registrations. Most projects wire the tenant middleware first.</p>
+<pre><code class="lang-csharp">using Compendium.Adapters.AspNetCore.Security;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure&lt;TenantValidationMiddlewareOptions&gt;(
+    builder.Configuration.GetSection(&quot;Compendium:Tenant&quot;));
+
+var app = builder.Build();
+
+app.UseMiddleware&lt;TenantValidationMiddleware&gt;();
+// ...
+app.Run();
+</code></pre>
+<p><code>TenantValidationMiddlewareOptions</code> (see <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Adapters/Compendium.Adapters.AspNetCore/Security/TenantValidationMiddleware.cs"><code>TenantValidationMiddleware.cs</code></a>):</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TenantHeaderName</code></td>
+<td><code>X-Tenant-ID</code></td>
+<td>HTTP header to read the tenant from</td>
+</tr>
+<tr>
+<td><code>EnableSubdomainResolution</code></td>
+<td><code>true</code></td>
+<td>Whether to fall back to the host's subdomain</td>
+</tr>
+<tr>
+<td><code>IgnoredSubdomains</code></td>
+<td><code>www, api, admin, app, dashboard, console, portal, staging, dev, test</code></td>
+<td>Subdomains <em>not</em> treated as tenant identifiers</td>
+</tr>
+<tr>
+<td><code>TenantClaimTypes</code></td>
+<td><code>tenant_id, tid, org_id, organization_id, urn:zitadel:iam:org:id</code></td>
+<td>JWT claim names checked, in order</td>
+</tr>
+<tr>
+<td><code>ExcludedPaths</code></td>
+<td><code>/health, /healthz, /ready, /live, /metrics, /.well-known, /swagger, /api-docs</code></td>
+<td>Paths skipped by tenant validation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<p>The middleware extracts the tenant from header / subdomain / JWT, validates that all sources agree, looks up the tenant via <code>ITenantStore</code>, and sets <code>TenantContext</code> for the rest of the pipeline. See <a href="../concepts/multi-tenancy.html">the multi-tenancy concept page</a> for the full data flow.</p>
+<p>Downstream handlers receive the tenant via DI:</p>
+<pre><code class="lang-csharp">public sealed class GetOrdersHandler(TenantContext tenant, IOrderRepository repo)
+    : IQueryHandler&lt;GetOrdersQuery, IReadOnlyList&lt;Order&gt;&gt;
+{
+    public Task&lt;IReadOnlyList&lt;Order&gt;&gt; Handle(GetOrdersQuery q, CancellationToken ct)
+        =&gt; repo.ListAsync(tenant.Current.Id, ct);
+}
+</code></pre>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li><strong>Order matters.</strong> Place the tenant middleware <em>after</em> authentication (so the JWT claim is available) but <em>before</em> authorization (so policies can read <code>TenantContext</code>).</li>
+<li><strong><code>ExcludedPaths</code> are prefix matches.</strong> <code>/health</code> matches <code>/health</code> and <code>/healthz</code> and <code>/health-check</code>. Pick paths intentionally.</li>
+<li><strong>CRLF in <code>Path</code>.</strong> The middleware sanitizes user-controlled paths before logging (POM-175). If you mirror the pattern in your own middleware, do the same.</li>
+<li><strong>Subdomain resolution requires at least 3 host parts.</strong> <code>acme.example.com</code> works; <code>localhost</code>, IPs, and bare-domain (<code>example.com</code>) don't.</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../api/Compendium.Adapters.AspNetCore.Security.html">API Reference: Compendium.Adapters.AspNetCore.Security</a></li>
+<li><a href="../concepts/multi-tenancy.html">Multi-tenancy concept</a></li>
+<li><a href="../adr/0004-multi-tenancy-strategy.html">ADR 0004 — Multi-tenancy strategy</a></li>
+</ul>
 
 </article>
 
