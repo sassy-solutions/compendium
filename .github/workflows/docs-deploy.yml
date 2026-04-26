@@ -31,7 +31,7 @@ jobs:
       is_release: ${{ steps.version.outputs.is_release }}
       version_tag: ${{ steps.version.outputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
