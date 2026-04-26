@@ -11,6 +11,18 @@ updates:
     open-pull-requests-limit: 5
     reviewers:
       - "Pomdapis"
+    # Defer .NET 10 major bumps until Nexus (downstream consumer) is also
+    # ready to move; otherwise transitive System.Text.Json / Configuration.Binder
+    # downgrades break the build (NU1605). Lift this once Nexus pins .NET 10.
+    ignore:
+      - dependency-name: "Microsoft.Extensions.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Microsoft.AspNetCore.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Serilog.Settings.Configuration"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "System.Text.Json"
+        update-types: ["version-update:semver-major"]
     groups:
       microsoft-extensions:
         patterns:

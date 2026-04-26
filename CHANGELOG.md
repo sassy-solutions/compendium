@@ -50,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - CodeQL Default Setup switched from `default` to `extended` query suite — adds maintainability/quality queries on top of security (csharp + actions).
+- Dependabot now skips semver-major bumps on `Microsoft.Extensions.*`, `Microsoft.AspNetCore.*`, `Serilog.Settings.Configuration`, and `System.Text.Json` until the project moves to .NET 10 alongside Nexus (#25). Patch and minor bumps continue to flow.
 
 ### Security
 
