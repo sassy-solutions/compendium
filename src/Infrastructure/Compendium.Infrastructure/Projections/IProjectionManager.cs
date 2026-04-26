@@ -25,7 +25,7 @@ public interface IProjectionManager
         string? streamId = null,
         DateTime? fromTimestamp = null,
         IProgress<RebuildProgress>? progress = null,
-        CancellationToken cancellationToken = default) where TProjection : IProjection, new();
+        CancellationToken cancellationToken = default) where TProjection : IProjection;
 
     /// <summary>
     /// Gets the current state of a projection.
@@ -60,10 +60,12 @@ public interface IProjectionManager
     Task DeleteProjectionAsync(string projectionName, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Registers a projection for live processing.
+    /// Registers a projection for live processing. The projection instance is resolved
+    /// from the DI container, so <typeparamref name="TProjection"/> must be registered as
+    /// a service (typically a singleton) before this call.
     /// </summary>
     /// <typeparam name="TProjection">The type of projection to register.</typeparam>
-    void RegisterProjection<TProjection>() where TProjection : IProjection, new();
+    void RegisterProjection<TProjection>() where TProjection : IProjection;
 
     /// <summary>
     /// Gets statistics about all registered projections.
