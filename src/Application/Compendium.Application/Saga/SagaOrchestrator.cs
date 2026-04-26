@@ -3,6 +3,8 @@ namespace Compendium.Application.Saga;
 /// <summary>
 /// Orchestrates the execution of sagas, managing their lifecycle, step execution, and compensation.
 /// </summary>
+[Obsolete("Use Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator instead. " +
+    "Will be removed in v1.0.")]
 public interface ISagaOrchestrator
 {
     /// <summary>
@@ -46,6 +48,8 @@ public interface ISagaOrchestrator
 /// <summary>
 /// Default implementation of the saga orchestrator that manages saga lifecycle and coordination.
 /// </summary>
+[Obsolete("Use Compendium.Application.Sagas.ProcessManagers.ProcessManagerOrchestrator instead. " +
+    "Will be removed in v1.0.")]
 public sealed class SagaOrchestrator : ISagaOrchestrator
 {
     private readonly ISagaRepository _repository;
@@ -213,6 +217,8 @@ public sealed class SagaOrchestrator : ISagaOrchestrator
 /// <summary>
 /// Defines the contract for saga persistence operations.
 /// </summary>
+[Obsolete("Use Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository instead. " +
+    "Will be removed in v1.0.")]
 public interface ISagaRepository
 {
     /// <summary>
@@ -255,6 +261,8 @@ public interface ISagaRepository
 /// <summary>
 /// Defines the contract for executing and compensating saga steps.
 /// </summary>
+[Obsolete("Use Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerStepExecutor instead. " +
+    "Will be removed in v1.0.")]
 public interface ISagaStepExecutor
 {
     /// <summary>
@@ -281,6 +289,8 @@ public interface ISagaStepExecutor
 /// </summary>
 /// <typeparam name="TSaga">The type of saga to create.</typeparam>
 /// <typeparam name="TData">The type of data associated with the saga.</typeparam>
+[Obsolete("Process Managers are now constructed directly via static factory methods on the saga class " +
+    "(see Compendium.Application.Sagas.ProcessManagers.ProcessManager{TState}). Will be removed in v1.0.")]
 public interface ISagaFactory<TSaga, TData>
     where TSaga : class, ISaga<TData>
     where TData : class
