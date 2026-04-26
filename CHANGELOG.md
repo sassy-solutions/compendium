@@ -36,7 +36,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   API conflated orchestration and choreography; use `IProcessManager` or
   `IEventChoreography` instead. Removal scheduled for v1.0.
 
-## [1.0.0-preview.2] - 2026-04-26
+## [1.0.0-preview.3] - 2026-04-26
+
+### Added
+
+- Documentation site (DocFX, multi-version, GitHub Pages) (#17).
+- 5 Architecture Decision Records (#14).
+- Public `ROADMAP.md` (#15).
+- Getting-started guide and 3 runnable samples (#20).
+- 4 concept pages: event sourcing, hexagonal architecture, Result pattern, multi-tenancy (#21).
+- 8 adapter how-to guides (AspNetCore, LemonSqueezy, Listmonk, OpenRouter, PostgreSQL, Redis, Stripe, Zitadel) (#22).
 
 ### Changed
 
@@ -44,7 +53,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
-- Pinned `softprops/action-gh-release` to commit SHA in `.github/workflows/release.yml` (CodeQL `actions/unpinned-tag`, CWE-829). 3rd-party action refs are now immutable.
+- Pinned `softprops/action-gh-release` to commit SHA in `.github/workflows/release.yml` (#16, CodeQL `actions/unpinned-tag`, CWE-829, alert #28). 3rd-party action refs are now immutable.
+
+## [1.0.0-preview.2] - 2026-04-25
+
+### Added
+
+- `Compendium.Adapters.Shared` — PII masking utilities used across adapters (introduced in #3).
+
+### Changed
+
+- Dependabot updates: `actions/upload-artifact` 4→7 (#4), `softprops/action-gh-release` 2→3 (#5), `actions/checkout` 4→6 (#6), `actions/cache` 4→5 (#7).
+- OSS governance: CODEOWNERS, PR/issue templates, `SECURITY.md`, Code of Conduct, Dependabot config.
+
+### Security
+
+- CI: minimal `permissions:` block on workflows (#1, CodeQL `actions/missing-workflow-permissions`).
+- Sanitize user-controlled path in tenant validation logs (#2, CodeQL `cs/log-forging`).
+- Remove email from adapter logs for GDPR data minimization (#3, CodeQL `cs/exposure-of-sensitive-information`, 14 alerts closed).
 
 ## [1.0.0-preview.1] - 2026-04-24
 
@@ -90,6 +116,7 @@ First public preview release of Compendium, extracted from the
 - Git history preserved from the originating Nexus monorepo via `git filter-repo`.
 - Full MIT license.
 
-[Unreleased]: https://github.com/sassy-solutions/compendium/compare/v1.0.0-preview.2...HEAD
+[Unreleased]: https://github.com/sassy-solutions/compendium/compare/v1.0.0-preview.3...HEAD
+[1.0.0-preview.3]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.3
 [1.0.0-preview.2]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.2
 [1.0.0-preview.1]: https://github.com/sassy-solutions/compendium/releases/tag/v1.0.0-preview.1
