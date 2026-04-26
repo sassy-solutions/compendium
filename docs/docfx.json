@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": ["**/*.csproj"],
+          "src": "../src",
+          "exclude": ["**/Compendium.Adapters.Shared.csproj"]
+        }
+      ],
+      "dest": "api",
+      "includePrivateMembers": false,
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
+      "noRestore": false,
+      "namespaceLayout": "flattened",
+      "memberLayout": "samePage",
+      "EnumSortOrder": "alphabetic",
+      "allowCompilationErrors": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["**/*.{md,yml}"],
+        "exclude": ["_site/**", "obj/**"]
+      }
+    ],
+    "resource": [
+      {
+        "files": ["images/**"]
+      }
+    ],
+    "output": "_site",
+    "globalMetadata": {
+      "_appName": "Compendium",
+      "_appTitle": "Compendium — .NET event-sourcing framework",
+      "_enableSearch": true,
+      "_appFooter": "Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href=\"https://github.com/sassy-solutions/compendium\">View on GitHub</a>.",
+      "_appLogoPath": "images/logo.svg",
+      "_appFaviconPath": "images/favicon.ico",
+      "_gitContribute": {
+        "repo": "https://github.com/sassy-solutions/compendium",
+        "branch": "main"
+      },
+      "_disableContribution": false
+    },
+    "template": ["default", "modern"],
+    "postProcessors": ["ExtractSearchIndex"],
+    "keepFileLink": false,
+    "disableGitFeatures": false,
+    "sitemap": {
+      "baseUrl": "https://sassy-solutions.github.io/compendium/",
+      "priority": 0.5,
+      "changefreq": "weekly"
+    }
+  }
+}

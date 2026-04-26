@@ -5,6 +5,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Diagnostics;
 using Compendium.Adapters.LemonSqueezy.Configuration;
 using Compendium.Adapters.LemonSqueezy.Http;
 using Compendium.Adapters.LemonSqueezy.Http.Models;
@@ -130,7 +131,7 @@ internal sealed class LemonSqueezyBillingService : IBillingService
     {
         ArgumentNullException.ThrowIfNull(email);
 
-        _logger.LogDebug("Getting customer by email {Email}", email);
+        _logger.LogDebug("Getting customer by email (activity {ActivityId})", Activity.Current?.Id);
 
         var result = await _httpClient.ListCustomersAsync(email, cancellationToken);
 
