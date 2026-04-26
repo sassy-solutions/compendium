@@ -87,10 +87,80 @@
         <article data-uid="">
 <h1 id="result-pattern">Result Pattern</h1>
 
-<blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-183">POM-183</a>.</p>
-</blockquote>
-<p><code>Result&lt;T&gt;</code>, <code>Error</code>, and why Compendium does not use exceptions for control flow. See also <a href="../adr/0001-result-pattern.html">ADR 0001</a>.</p>
+<p>Compendium does not throw exceptions for control flow. Operations that can fail return a <code>Result&lt;T&gt;</code> (or <code>Result</code> for void) carrying a typed <code>Error</code>. Exceptions are reserved for situations that are genuinely exceptional — bugs, infrastructure crashes, things you do not expect to recover from.</p>
+<h2 id="why-a-result-type">Why a Result type?</h2>
+<p>Three reasons:</p>
+<ol>
+<li><p><strong>Exceptions are invisible at the call site</strong>. <code>await SaveOrder(...)</code> looks identical whether it can fail with <code>OrderNotFoundException</code>, <code>OptimisticConcurrencyException</code>, or nothing at all. <code>Result&lt;T&gt;</code> makes the <em>possibility of failure</em> part of the type, which the compiler can enforce.</p>
+</li>
+<li><p><strong>Errors carry structure, not just text</strong>. A <code>404 NotFound</code> is not the same as a <code>409 Conflict</code> is not the same as a <code>validation failure</code>. Compendium's <code>Error</code> records that distinction explicitly so adapters (e.g. ASP.NET Core problem-details middleware) can map it to the right HTTP status without parsing strings.</p>
+</li>
+<li><p><strong>Performance</strong>. Throwing exceptions is expensive on .NET — stack capture, type lookup, finally blocks. For hot paths (event replay, command dispatching), explicit returns are dramatically cheaper.</p>
+</li>
+</ol>
+<p>The trade-off is verbosity: every fallible call now has an explicit branch. We accept that. For the long discussion, see <a href="../adr/0001-result-pattern.html">ADR 0001 — Result pattern over exceptions</a>.</p>
+<h2 id="the-shape">The shape</h2>
+<p>From <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Results/Result.cs"><code>src/Core/Compendium.Core/Results/Result.cs</code></a>:</p>
+<pre><code class="lang-csharp">public class Result
+{
+    public bool IsSuccess { get; }
+    public bool IsFailure =&gt; !IsSuccess;
+    public Error Error { get; }   // Error.None on success
+
+    public static Result Success();
+    public static Result&lt;T&gt; Success&lt;T&gt;(T value);
+    public static Result Failure(Error error);
+    // ...
+}
+</code></pre>
+<p><code>Result&lt;T&gt;</code> adds <code>Value</code> (only safe to read when <code>IsSuccess</code>).</p>
+<h2 id="errors-are-values">Errors are values</h2>
+<p>From <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Results/Error.cs"><code>src/Core/Compendium.Core/Results/Error.cs</code></a>:</p>
+<pre><code class="lang-csharp">public sealed class Error : ValueObject
+{
+    public static readonly Error None = new(string.Empty, string.Empty, ErrorType.None);
+
+    public string Code { get; }       // e.g. &quot;Order.NotFound&quot;
+    public string Message { get; }    // human-readable
+    public ErrorType Type { get; }    // NotFound | Validation | Conflict | Failure | ...
+    public IReadOnlyDictionary&lt;string, object&gt; Metadata { get; }
+}
+</code></pre>
+<p><code>ErrorType</code> lets generic infrastructure (HTTP layer, logging, retries) make decisions without knowing the specific business domain.</p>
+<h2 id="typical-usage">Typical usage</h2>
+<pre><code class="lang-csharp">public async Task&lt;Result&lt;Order&gt;&gt; GetOrderAsync(OrderId id, CancellationToken ct)
+{
+    var order = await _repository.FindAsync(id, ct);
+    if (order is null)
+        return Error.NotFound(&quot;Order.NotFound&quot;, $&quot;Order {id} not found&quot;);
+
+    return order;   // implicit conversion to Result&lt;Order&gt;.Success(order)
+}
+</code></pre>
+<p>Composing several fallible calls without nested ifs:</p>
+<pre><code class="lang-csharp">var customerResult = await EnsureCustomer(email, ct);
+if (customerResult.IsFailure) return customerResult.Error;
+
+var orderResult = await PlaceOrder(customerResult.Value, items, ct);
+if (orderResult.IsFailure) return orderResult.Error;
+
+return Result.Success();
+</code></pre>
+<p>For richer composition (<code>Map</code>, <code>Bind</code>, <code>Tap</code>, etc.) see <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Results/"><code>Result.Extensions.cs</code></a> — but use them sparingly. Loud explicit branching is usually clearer than a chain of monadic operators.</p>
+<h2 id="anti-patterns">Anti-patterns</h2>
+<p>A few mistakes to avoid:</p>
+<ul>
+<li><strong>Wrapping arbitrary exceptions in <code>Result.Failure</code></strong>. If an exception is genuinely unexpected (out of disk, null reference in your code), let it bubble. Catching everything to &quot;return a clean Result&quot; hides bugs.</li>
+<li><strong>Reading <code>result.Value</code> without checking <code>IsSuccess</code></strong>. <code>Result&lt;T&gt;.Value</code> on a failed result throws. Always guard.</li>
+<li><strong>Returning <code>Result&lt;bool&gt;</code></strong>. If the answer is just &quot;did this succeed?&quot;, use <code>Result</code> (no value). <code>Result&lt;bool&gt;.Success(false)</code> is almost never what you want — that is a <em>successful</em> operation that returned false, which is rarely the correct semantic.</li>
+<li><strong>Generic <code>Error.Failure(&quot;Something went wrong&quot;)</code></strong>. Pick a specific code. Future-you, or your HTTP layer, will need it.</li>
+</ul>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="hexagonal-architecture.html">Hexagonal Architecture</a> — Result types flow through every layer</li>
+<li><a href="event-sourcing.html">Event Sourcing</a> — aggregates return <code>Result&lt;T&gt;</code> when business rules reject a command</li>
+<li><a href="../adr/0001-result-pattern.html">ADR 0001</a> — the rationale and alternatives considered</li>
+</ul>
 
 </article>
 

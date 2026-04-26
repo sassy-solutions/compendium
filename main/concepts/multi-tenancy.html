@@ -87,10 +87,89 @@
         <article data-uid="">
 <h1 id="multi-tenancy">Multi-tenancy</h1>
 
-<blockquote>
-<p>Coming soon — tracked in <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+POM-183">POM-183</a>.</p>
-</blockquote>
-<p><code>TenantContext</code>, multi-source resolution (header / subdomain / JWT), and consistency validation. See also <a href="../adr/0004-multi-tenancy-strategy.html">ADR 0004</a>.</p>
+<p>Compendium treats multi-tenancy as a first-class concern, not a bolt-on. Every operation flows through a <code>TenantContext</code> that is set at the request boundary, validated for consistency, and propagated to every adapter that needs it (event store, projections, billing, identity).</p>
+<p>The goal: cross-tenant data leaks are <em>impossible by construction</em>, not merely &quot;policed by code reviews.&quot;</p>
+<p>For the design rationale, see <a href="../adr/0004-multi-tenancy-strategy.html">ADR 0004 — Multi-tenancy strategy</a>.</p>
+<h2 id="tenant-identity-comes-from-multiple-sources">Tenant identity comes from multiple sources</h2>
+<p>In a real SaaS, the tenant identifier can arrive via several paths in the same request:</p>
+<ul>
+<li>An explicit <code>X-Tenant-ID</code> header (machine-to-machine APIs)</li>
+<li>A subdomain (<code>acme.example.com</code> → tenant <code>acme</code>)</li>
+<li>A claim in the JWT (<code>tenant_id</code>, <code>org_id</code>, or in our case <code>urn:zitadel:iam:org:id</code>)</li>
+</ul>
+<p>When more than one source is present, Compendium <strong>requires them to agree</strong>. A request with <code>X-Tenant-ID: acme</code> and a JWT for tenant <code>globex</code> is rejected outright — that combination usually means a misconfigured proxy or a confused-deputy attack.</p>
+<p>The middleware that enforces this lives in <code>Compendium.Adapters.AspNetCore</code>. From <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Adapters/Compendium.Adapters.AspNetCore/Security/TenantValidationMiddleware.cs"><code>TenantValidationMiddleware.cs</code></a>:</p>
+<pre><code class="lang-csharp">// Extract tenant identifiers from all sources
+var sources = ExtractTenantSources(context);
+
+// Validate consistency across sources
+var validationResult = validator.Validate(sources);
+
+if (validationResult.IsFailure)
+{
+    _logger.LogWarning(
+        &quot;Tenant validation failed: {Error}. Path: {Path}&quot;,
+        validationResult.Error.Message,
+        SanitizeForLog(context.Request.Path));
+    await WriteErrorResponse(context, validationResult.Error.Message,
+        StatusCodes.Status403Forbidden);
+    return;
+}
+</code></pre>
+<p>The configurable bits (which header, which JWT claims, which paths to skip) live on <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Adapters/Compendium.Adapters.AspNetCore/Security/TenantValidationMiddleware.cs#L226"><code>TenantValidationMiddlewareOptions</code></a>.</p>
+<h2 id="tenantcontext-is-per-request-scoped-di">TenantContext is per-request, scoped DI</h2>
+<p>Once validated, the resolved tenant lives on a scoped <code>TenantContext</code>:</p>
+<pre><code>HTTP Request
+    │
+    ▼
+[TenantValidationMiddleware]
+    │  extracts header / subdomain / JWT
+    │  validates consistency
+    │  loads Tenant from ITenantStore
+    │  sets tenantContext.SetTenant(tenant)
+    │
+    ▼
+[Endpoint / Command Handler]
+    │  receives TenantContext via DI
+    │  passes Tenant.Id to adapters
+    │
+    ▼
+[Adapters: PostgreSQL, Stripe, Listmonk, ...]
+       └─ scope queries / API calls by tenant
+</code></pre>
+<p>Adapters that touch persistence read the tenant from <code>TenantContext</code> and scope every query accordingly. The contract is: <strong>if you forgot to scope, the operation should fail loudly</strong>, not silently return data from another tenant.</p>
+<h2 id="isolation-strategies">Isolation strategies</h2>
+<p>Compendium does not force you into one isolation model. Three are common:</p>
+<ol>
+<li><strong>Schema-per-tenant</strong> in a shared database. Cheap, easy to operate, decent isolation. Default for <code>Compendium.Adapters.PostgreSQL</code> setups.</li>
+<li><strong>Database-per-tenant</strong>. Strongest isolation, more operational overhead. Compendium supports it by switching the connection string per <code>TenantContext</code>.</li>
+<li><strong>Row-level security (RLS)</strong>. All tenants share tables; Postgres RLS enforces isolation. Cheapest at scale but harder to debug.</li>
+</ol>
+<p>The choice is made at infrastructure setup time, not in the domain. The domain code is identical across the three.</p>
+<h2 id="excluded-paths">Excluded paths</h2>
+<p>Some paths legitimately need to run without a tenant: health checks, OpenAPI specs, login endpoints. The middleware accepts an explicit allow-list:</p>
+<pre><code class="lang-csharp">public string[] ExcludedPaths { get; set; } = new[]
+{
+    &quot;/health&quot;, &quot;/healthz&quot;, &quot;/ready&quot;, &quot;/live&quot;,
+    &quot;/metrics&quot;,
+    &quot;/.well-known&quot;,
+    &quot;/swagger&quot;, &quot;/api-docs&quot;
+};
+</code></pre>
+<p>Anything else without a resolvable tenant is rejected.</p>
+<h2 id="pitfalls-to-avoid">Pitfalls to avoid</h2>
+<ul>
+<li><strong>Trusting only one source</strong>. If you read just the header and ignore the JWT, an attacker with a valid token for tenant A can pass <code>X-Tenant-ID: B</code> and you have a leak. Compendium rejects the mismatch.</li>
+<li><strong>Logging the tenant ID and user email together</strong> without thinking about retention. See the GDPR-driven <code>PiiMasking</code> helper in <code>Compendium.Adapters.Shared</code> and the related work in POM-178 / <a href="../adr/0004-multi-tenancy-strategy.html">ADR 0004</a>.</li>
+<li><strong>Forgetting to scope a new query</strong>. Make it a code-review checklist item: every new repository method must take a <code>TenantId</code> (or read it from <code>TenantContext</code>). Compendium's existing adapters set the precedent — follow it.</li>
+</ul>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="hexagonal-architecture.html">Hexagonal Architecture</a> — <code>TenantContext</code> is itself a port, with concrete implementations in adapters</li>
+<li><a href="event-sourcing.html">Event Sourcing</a> — events carry <code>AggregateId</code>; tenancy is enforced by the store, not by the event</li>
+<li><a href="../adr/0004-multi-tenancy-strategy.html">ADR 0004</a> — the decision and trade-offs</li>
+<li><a href="https://github.com/sassy-solutions/compendium/tree/main/samples/02-MultiTenant-WithPostgres"><code>samples/02-MultiTenant-WithPostgres</code></a> — runnable two-tenant example</li>
+</ul>
 
 </article>
 
