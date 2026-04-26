@@ -89,7 +89,7 @@
 
 
   <h1 id="Compendium_Infrastructure_Projections_ServiceCollectionExtensions" data-uid="Compendium.Infrastructure.Projections.ServiceCollectionExtensions" class="text-break">
-Class ServiceCollectionExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L16"><i class="bi bi-code-slash"></i></a>
+Class ServiceCollectionExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,7 +157,7 @@ Class ServiceCollectionExtensions  <a class="header-action link-secondary" title
 
   <h3 id="Compendium_Infrastructure_Projections_ServiceCollectionExtensions_AddPostgreSqlProjections_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="Compendium.Infrastructure.Projections.ServiceCollectionExtensions.AddPostgreSqlProjections(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
   AddPostgreSqlProjections(IServiceCollection)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds PostgreSQL projection store to the service collection.</p>
@@ -196,15 +196,19 @@ Class ServiceCollectionExtensions  <a class="header-action link-secondary" title
 
   <h3 id="Compendium_Infrastructure_Projections_ServiceCollectionExtensions_AddProjection__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="Compendium.Infrastructure.Projections.ServiceCollectionExtensions.AddProjection``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
   AddProjection&lt;TProjection&gt;(IServiceCollection)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Registers a projection for processing.</p>
+  <div class="markdown level1 summary"><p>Registers a projection for processing. The projection is also registered as a
+singleton in the DI container if it has not been registered already; consumers
+that need a custom factory (e.g. to inject a connection string) should call
+<code>services.AddSingleton&lt;TProjection&gt;(sp =&gt; ...)</code> explicitly first and
+then call this method.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddProjection&lt;TProjection&gt;(this IServiceCollection services) where TProjection : class, IProjection, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddProjection&lt;TProjection&gt;(this IServiceCollection services) where TProjection : class, IProjection</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -241,7 +245,7 @@ Class ServiceCollectionExtensions  <a class="header-action link-secondary" title
 
   <h3 id="Compendium_Infrastructure_Projections_ServiceCollectionExtensions_AddProjections_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Compendium_Infrastructure_Projections_ProjectionOptions__" data-uid="Compendium.Infrastructure.Projections.ServiceCollectionExtensions.AddProjections(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Compendium.Infrastructure.Projections.ProjectionOptions})">
   AddProjections(IServiceCollection, Action&lt;ProjectionOptions&gt;?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds projection management services to the service collection.</p>
@@ -283,7 +287,7 @@ Class ServiceCollectionExtensions  <a class="header-action link-secondary" title
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L16" class="edit-link">Edit this page</a>
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ServiceCollectionExtensions.cs/#L17" class="edit-link">Edit this page</a>
         </div>
 
 

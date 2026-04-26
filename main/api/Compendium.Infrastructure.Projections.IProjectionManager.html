@@ -209,7 +209,7 @@ Interface IProjectionManager  <a class="header-action link-secondary" title="Vie
 
   <h3 id="Compendium_Infrastructure_Projections_IProjectionManager_GetStatisticsAsync_System_Threading_CancellationToken_" data-uid="Compendium.Infrastructure.Projections.IProjectionManager.GetStatisticsAsync(System.Threading.CancellationToken)">
   GetStatisticsAsync(CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/IProjectionManager.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/IProjectionManager.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets statistics about all registered projections.</p>
@@ -298,7 +298,7 @@ Interface IProjectionManager  <a class="header-action link-secondary" title="Vie
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task RebuildProjectionAsync&lt;TProjection&gt;(string? streamId = null, DateTime? fromTimestamp = null, IProgress&lt;RebuildProgress&gt;? progress = null, CancellationToken cancellationToken = default) where TProjection : IProjection, new()</code></pre>
+    <pre><code class="lang-csharp hljs">Task RebuildProjectionAsync&lt;TProjection&gt;(string? streamId = null, DateTime? fromTimestamp = null, IProgress&lt;RebuildProgress&gt;? progress = null, CancellationToken cancellationToken = default) where TProjection : IProjection</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -344,15 +344,17 @@ Interface IProjectionManager  <a class="header-action link-secondary" title="Vie
 
   <h3 id="Compendium_Infrastructure_Projections_IProjectionManager_RegisterProjection__1" data-uid="Compendium.Infrastructure.Projections.IProjectionManager.RegisterProjection``1">
   RegisterProjection&lt;TProjection&gt;()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/IProjectionManager.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/IProjectionManager.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Registers a projection for live processing.</p>
+  <div class="markdown level1 summary"><p>Registers a projection for live processing. The projection instance is resolved
+from the DI container, so <code class="typeparamref">TProjection</code> must be registered as
+a service (typically a singleton) before this call.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RegisterProjection&lt;TProjection&gt;() where TProjection : IProjection, new()</code></pre>
+    <pre><code class="lang-csharp hljs">void RegisterProjection&lt;TProjection&gt;() where TProjection : IProjection</code></pre>
   </div>
 
 
