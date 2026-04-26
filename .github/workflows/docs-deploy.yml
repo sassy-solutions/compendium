@@ -1,0 +1,193 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "src/**/*.cs"
+      - "src/**/*.csproj"
+      - "Directory.Build.props"
+      - "Directory.Packages.props"
+      - "*.md"
+      - ".github/workflows/docs-deploy.yml"
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      version_path: ${{ steps.version.outputs.path }}
+      is_release: ${{ steps.version.outputs.is_release }}
+      version_tag: ${{ steps.version.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/Directory.Packages.props') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: Restore solution
+        run: dotnet restore Compendium.sln
+
+      - name: Install DocFX
+        run: dotnet tool install -g docfx
+
+      - name: Determine target version path
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TAG="${{ github.event.release.tag_name }}"
+            VERSION_NUM="${TAG#v}"
+            MAJOR_MINOR=$(echo "$VERSION_NUM" | cut -d. -f1-2)
+            echo "path=v$MAJOR_MINOR" >> "$GITHUB_OUTPUT"
+            echo "is_release=true" >> "$GITHUB_OUTPUT"
+            echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=main" >> "$GITHUB_OUTPUT"
+            echo "is_release=false" >> "$GITHUB_OUTPUT"
+            echo "tag=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync ROADMAP into docs (if present)
+        run: |
+          if [ -f ROADMAP.md ]; then
+            {
+              echo '---'
+              echo 'uid: roadmap'
+              echo 'title: Roadmap'
+              echo '---'
+              echo
+              cat ROADMAP.md
+            } > docs/roadmap.md
+            echo "ROADMAP.md inlined into docs/roadmap.md"
+          else
+            echo "ROADMAP.md not found — keeping docs/roadmap.md placeholder"
+          fi
+
+      - name: Generate API metadata
+        run: docfx metadata docs/docfx.json
+
+      - name: Build documentation site
+        run: docfx build docs/docfx.json
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-site
+          path: docs/_site/
+          retention-days: 7
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-site
+          path: site/
+
+      - name: Checkout or initialize gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p gh-pages
+          cd gh-pages
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch origin gh-pages --depth=1 2>/dev/null; then
+            git reset --hard origin/gh-pages
+            echo "Existing gh-pages checked out."
+          else
+            echo "No gh-pages branch yet — bootstrapping."
+          fi
+
+      - name: Deploy site to versioned path
+        env:
+          TARGET: ${{ needs.build.outputs.version_path }}
+          IS_RELEASE: ${{ needs.build.outputs.is_release }}
+          TAG: ${{ needs.build.outputs.version_tag }}
+        run: |
+          set -euo pipefail
+          cd gh-pages
+
+          # 1. Replace target subdir
+          rm -rf "$TARGET"
+          mkdir -p "$TARGET"
+          cp -r ../site/. "$TARGET/"
+
+          # 2. On release: also refresh latest/ and append to versions.json
+          if [ "$IS_RELEASE" = "true" ]; then
+            rm -rf latest
+            mkdir -p latest
+            cp -r ../site/. latest/
+
+            if [ ! -f versions.json ]; then
+              echo "[]" > versions.json
+            fi
+            jq --arg target "$TARGET" --arg tag "$TAG" \
+              'map(select(.version != $target)) | [{"version": $target, "title": $tag, "aliases": []}] + .' \
+              versions.json > versions.json.new
+            mv versions.json.new versions.json
+          fi
+
+          # 3. Ensure root redirect (latest > main)
+          if [ -d "latest" ]; then
+            REDIRECT_TARGET="latest/"
+          else
+            REDIRECT_TARGET="main/"
+          fi
+          cat > index.html <<HTML
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <title>Compendium documentation</title>
+              <meta http-equiv="refresh" content="0; url=./${REDIRECT_TARGET}" />
+              <link rel="canonical" href="https://sassy-solutions.github.io/compendium/${REDIRECT_TARGET}" />
+            </head>
+            <body>
+              <p>Redirecting to <a href="./${REDIRECT_TARGET}">./${REDIRECT_TARGET}</a>…</p>
+            </body>
+          </html>
+          HTML
+
+          # 4. Initial files
+          [ -f versions.json ] || echo "[]" > versions.json
+          touch .nojekyll
+
+      - name: Commit and push gh-pages
+        run: |
+          set -euo pipefail
+          cd gh-pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+            exit 0
+          fi
+          git commit -m "docs: deploy ${{ needs.build.outputs.version_path }} from ${{ github.sha }}"
+          git push origin gh-pages

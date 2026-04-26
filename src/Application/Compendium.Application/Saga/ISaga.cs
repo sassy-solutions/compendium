@@ -4,6 +4,9 @@ namespace Compendium.Application.Saga;
 /// Represents a saga (distributed transaction) that coordinates multiple operations
 /// with compensation capabilities for failure handling.
 /// </summary>
+[Obsolete("Use Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager (orchestration / DDD saga) " +
+    "or Compendium.Abstractions.Sagas.Choreography.IEventChoreography (event-driven saga) instead. " +
+    "ISaga conflated both flavors and is kept only for backward compatibility; it will be removed in v1.0.")]
 public interface ISaga
 {
     /// <summary>
@@ -36,6 +39,8 @@ public interface ISaga
 /// Represents a saga with associated data of type <typeparamref name="TData"/>.
 /// </summary>
 /// <typeparam name="TData">The type of data associated with the saga.</typeparam>
+[Obsolete("Use Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager{TState} instead. " +
+    "Will be removed in v1.0.")]
 public interface ISaga<TData> : ISaga
     where TData : class
 {

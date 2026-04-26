@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # MinVer needs full history
 
@@ -27,7 +27,7 @@ jobs:
           dotnet-version: "9.0.x"
 
       - name: Cache NuGet packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.nuget/packages
           key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/Directory.Packages.props') }}
@@ -47,9 +47,12 @@ jobs:
             --results-directory TestResults/ \
             --collect:"XPlat Code Coverage"
 
+      - name: Build samples
+        run: dotnet build samples/ -c Release
+
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-results
           path: TestResults/
