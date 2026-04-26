@@ -5,6 +5,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Diagnostics;
 using Compendium.Adapters.Stripe.Configuration;
 using Stripe.Checkout;
 
@@ -131,7 +132,7 @@ internal sealed class StripeBillingService : IBillingService
         }
         catch (StripeException ex)
         {
-            _logger.LogError(ex, "Stripe customer lookup by email failed for {Email}", email);
+            _logger.LogError(ex, "Stripe customer lookup by email failed (activity {ActivityId})", Activity.Current?.Id);
             return Result.Failure<BillingCustomer>(
                 Error.Failure("Billing.Stripe.GetCustomerByEmailFailed", ex.Message));
         }
@@ -184,7 +185,7 @@ internal sealed class StripeBillingService : IBillingService
         }
         catch (StripeException ex)
         {
-            _logger.LogError(ex, "Stripe customer upsert failed for {Email}", request.Email);
+            _logger.LogError(ex, "Stripe customer upsert failed (activity {ActivityId})", Activity.Current?.Id);
             return Result.Failure<BillingCustomer>(
                 Error.Failure("Billing.Stripe.UpsertCustomerFailed", ex.Message));
         }
