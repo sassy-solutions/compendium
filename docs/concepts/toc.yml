@@ -1,0 +1,8 @@
+- name: Event Sourcing
+  href: event-sourcing.md
+- name: Hexagonal Architecture
+  href: hexagonal-architecture.md
+- name: Result Pattern
+  href: result-pattern.md
+- name: Multi-tenancy
+  href: multi-tenancy.md
