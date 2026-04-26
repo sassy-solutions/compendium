@@ -71,13 +71,59 @@
         </div>
 
         <article data-uid="roadmap">
-<h1 id="roadmap">Roadmap</h1>
+<h1 id="compendium-roadmap">Compendium Roadmap</h1>
 
-<p>The canonical, living roadmap is at <a href="https://github.com/sassy-solutions/compendium/blob/main/ROADMAP.md"><code>ROADMAP.md</code></a> in the repository root, alongside the source. It captures vision, themes, what's next, and what is intentionally out of scope.</p>
-<p>A copy is rendered below at build time when available; otherwise visit GitHub for the latest.</p>
 <blockquote>
-<p>If you'd like to influence the roadmap, please vote (👍) on issues tagged <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+label%3Aroadmap-input"><code>roadmap-input</code></a> or open a <a href="https://github.com/sassy-solutions/compendium/discussions">Discussion</a>.</p>
+<p>Last updated: 2026-04-25</p>
 </blockquote>
+<p>This document captures where Compendium is heading. It is a <strong>living document</strong>: priorities may shift as we learn from production usage and community feedback. <strong>No date here is a commitment.</strong> If you depend on a specific item, please open a Discussion to talk about it.</p>
+<h2 id="vision">Vision</h2>
+<p>Compendium exists to make event-sourced, multi-tenant SaaS development on .NET pragmatic and boring — in the best sense. We've built the same plumbing too many times across products: aggregate base classes, an event store, projection runners, tenant resolution, billing adapters, identity glue. Compendium is that plumbing extracted, hardened, and made reusable so that domain-focused teams can spend their time on the actual product.</p>
+<p>The framework will stay small, hexagonal, and dependency-light. We optimize for the <strong>second product</strong> built on Compendium, not the first — meaning patterns must compose, abstractions must be honest, and breaking changes must be rare and well-signaled.</p>
+<h2 id="themes">Themes</h2>
+<p>The roadmap is organized around five durable themes:</p>
+<ul>
+<li><strong>Stable foundations</strong> — Core APIs in <code>Compendium.Core</code> and <code>Compendium.Abstractions.*</code> reach 1.0 and follow strict semantic versioning. Breaking changes only on major bumps, with migration notes.</li>
+<li><strong>Multi-tenancy first-class</strong> — Every adapter and infrastructure piece is tenant-aware by default. Cross-tenant leaks are bugs, not edge cases.</li>
+<li><strong>Adapter ecosystem</strong> — Cover the SaaS-essentials surface (billing, identity, AI, email, observability) with first-party adapters, plus a clear extension model for community-built ones.</li>
+<li><strong>Production-grade observability</strong> — Structured logs without PII (see <a href="docs/adr/0004-multi-tenancy-strategy.md">ADR 0004</a> and the GDPR work in <code>PiiMasking</code>), OpenTelemetry traces, and meaningful metrics out of the box.</li>
+<li><strong>Developer experience</strong> — Runnable samples for every major adapter, copy-pasteable snippets in docs, conventional patterns documented as ADRs.</li>
+</ul>
+<h2 id="whats-next">What's next</h2>
+<h3 id="2026-q2--saga-pattern">2026 Q2 — Saga pattern</h3>
+<p>Durable workflows for orchestrating multi-aggregate business processes. Today, coordinating &quot;place order → reserve inventory → charge card → notify customer&quot; across boundaries requires hand-rolled state machines. The saga pattern brings this in-framework.</p>
+<p>Scope under consideration:</p>
+<ul>
+<li><strong>Process managers</strong> — Long-running, event-driven coordinators with their own state.</li>
+<li><strong>Compensation</strong> — Distributed rollback when a step in the saga fails.</li>
+<li><strong>Persistence</strong> — Saga state stored in PostgreSQL (primary), with Redis evaluated for high-throughput cases.</li>
+<li><strong>Idempotency primitives</strong> — Saga steps must be re-runnable without side effects.</li>
+<li><strong>Observability</strong> — First-class traces and timelines for in-flight sagas.</li>
+</ul>
+<p>Related discussion: open a thread under the <code>Roadmap</code> category if you have a use case you'd like considered.</p>
+<h3 id="2026-q3--new-adapters">2026 Q3 — New adapters</h3>
+<p>Additional adapters will be announced as the quarter approaches. Priorities are informed by Discussions and by demand signals from production deployments. If you have a strong need for a specific integration, please open a Discussion describing the use case; maintainers may create or label a tracking issue as <code>roadmap-input</code>.</p>
+<h3 id="2026-q4--new-adapters">2026 Q4 — New adapters</h3>
+<p>The cadence of new adapters continues. Specifics will be sharpened during Q3 based on what landed and what didn't.</p>
+<h2 id="out-of-scope-current">Out of scope (current)</h2>
+<p>We say no often, and we say it on purpose. The following are <strong>not</strong> planned, in the interest of keeping Compendium focused:</p>
+<ul>
+<li><strong>Built-in UI / dashboard</strong> — Bring your own. Compendium exposes the data; rendering it is your stack's job.</li>
+<li><strong>Message broker abstraction</strong> — If you need Kafka, RabbitMQ, NATS, or similar, use those libraries directly. Compendium will not ship a lowest-common-denominator broker interface.</li>
+<li><strong>Multi-language SDK</strong> — .NET only. Server boundaries are HTTP/JSON; clients can be in any language.</li>
+<li><strong>ORM replacement</strong> — Compendium is not an ORM. Read models that need rich querying should use the right tool (EF Core, Dapper, raw SQL) for that read model.</li>
+<li><strong>Legacy framework support</strong> — <code>.NET Standard 2.0</code>, <code>.NET Framework</code>, etc. are not targets. Compendium tracks the latest LTS / current .NET.</li>
+</ul>
+<h2 id="how-to-influence-the-roadmap">How to influence the roadmap</h2>
+<ul>
+<li><strong>Open a Discussion</strong> under the <a href="https://github.com/sassy-solutions/compendium/discussions/categories/roadmap">Roadmap</a> category (or under <code>Ideas</code> if Roadmap doesn't exist yet).</li>
+<li><strong>Vote with 👍</strong> on issues tagged <a href="https://github.com/sassy-solutions/compendium/issues?q=is%3Aissue+label%3Aroadmap-input"><code>roadmap-input</code></a>.</li>
+<li><strong>Contribute</strong> — see <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>. Roadmap items are open to community implementation; coordinate via the relevant Discussion or issue first.</li>
+</ul>
+<h2 id="past-releases">Past releases</h2>
+<p>See <a href="CHANGELOG.md">CHANGELOG.md</a> for what has shipped.</p>
+<hr>
+<p>This roadmap is a living document. No date here is a commitment.</p>
 
 </article>
 
