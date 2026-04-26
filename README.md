@@ -13,6 +13,7 @@ Compendium is the framework that powers [Nexus](https://sassy.solutions), Sassy 
 
 - **Zero-dependency Core** — Pure DDD primitives (`AggregateRoot<TId>`, `ValueObject`, `Result<T>`, `Error`) with no external dependencies beyond the .NET BCL.
 - **CQRS + Event Sourcing built-in** — Command/query dispatchers, event store interfaces, and a PostgreSQL adapter wired out of the box.
+- **Sagas, two flavors** — `ProcessManager<TState>` for DDD-style orchestration sagas and `IHandle<TEvent>` for event-driven choreography sagas, each clearly named so you don't have to guess which pattern you're using. See [docs/sagas.md](docs/sagas.md).
 - **Multi-tenancy native** — Tenant context, resolution, and scoping baked into the primitives — not bolted on.
 - **Result pattern everywhere** — No control-flow exceptions. Every fallible operation returns `Result<T>` with structured `Error` values.
 - **Modular adapters** — Pick only what you need: PostgreSQL, Redis, Zitadel, Listmonk, LemonSqueezy, OpenRouter, ASP.NET Core.
@@ -118,7 +119,12 @@ Core (zero deps) → Abstractions → Application → Infrastructure → Adapter
 
 ## Documentation
 
-_Docs and samples will be populated when the package is extracted to its own repo. In the meantime, browse the source under `src/Framework/` or the Nexus consumer code for end-to-end examples._
+The full documentation site is being built at [sassy-solutions.github.io/compendium](https://sassy-solutions.github.io/compendium/) (DocFX-powered). In the meantime:
+
+- [ROADMAP.md](ROADMAP.md) — themes, what's next, and what's out of scope
+- [CONTRIBUTING.md](CONTRIBUTING.md) — build, test, conventions
+- [docs/adr/](docs/adr/) — architecture decision records
+- Source under `src/` and the Nexus consumer code for end-to-end examples
 
 ## Who's using Compendium?
 
