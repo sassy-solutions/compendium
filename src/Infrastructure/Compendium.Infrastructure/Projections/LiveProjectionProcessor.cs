@@ -201,7 +201,7 @@ public class LiveProjectionProcessor : BackgroundService, ILiveProjectionProcess
     /// <summary>
     /// Initializes all registered projections by loading snapshots and determining starting positions.
     /// </summary>
-    private async Task InitializeProjectionsAsync(CancellationToken cancellationToken)
+    internal async Task InitializeProjectionsAsync(CancellationToken cancellationToken)
     {
         foreach (var (projectionName, projectionType) in _registeredProjections)
         {
@@ -249,11 +249,25 @@ public class LiveProjectionProcessor : BackgroundService, ILiveProjectionProcess
             }
         }
 
-        // If no checkpoints exist, start from the current end of the stream
+        // If no checkpoints exist, decide where to start. Two policies:
+        //   - jump to the current head (default — avoids replaying weeks of events on
+        //     every cold restart)
+        //   - backfill from position 0 (opt-in via BackfillFromBeginningOnEmptyCheckpoint
+        //     — required when projections are the *only* writers to the read model)
         if (_lastProcessedPosition == 0)
         {
-            _lastProcessedPosition = await _eventStore.GetMaxGlobalPositionAsync(cancellationToken);
-            _logger.LogInformation("Starting live processing from current position: {Position}", _lastProcessedPosition);
+            if (_options.BackfillFromBeginningOnEmptyCheckpoint)
+            {
+                _logger.LogInformation(
+                    "No projection checkpoints found; backfilling from position 0 (BackfillFromBeginningOnEmptyCheckpoint=true)");
+                // Leave _lastProcessedPosition at 0 — the polling loop will read from
+                // position > 0 and apply every event in the store.
+            }
+            else
+            {
+                _lastProcessedPosition = await _eventStore.GetMaxGlobalPositionAsync(cancellationToken);
+                _logger.LogInformation("Starting live processing from current position: {Position}", _lastProcessedPosition);
+            }
         }
     }
 
