@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTenant.WithPostgres", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI.WithOpenRouter", "03-AI-WithOpenRouter\AI.WithOpenRouter.csproj", "{5F1A6F3B-8A39-4386-9610-02F9DA9913AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI.Agent", "04-AI-Agent\AI.Agent.csproj", "{CC947753-5A17-4F61-803A-8A386689CCDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{5F1A6F3B-8A39-4386-9610-02F9DA9913AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F1A6F3B-8A39-4386-9610-02F9DA9913AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F1A6F3B-8A39-4386-9610-02F9DA9913AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC947753-5A17-4F61-803A-8A386689CCDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC947753-5A17-4F61-803A-8A386689CCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC947753-5A17-4F61-803A-8A386689CCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC947753-5A17-4F61-803A-8A386689CCDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

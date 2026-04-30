@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions.AI\Compendium.Abstractions.AI.csproj" />
     <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
   </ItemGroup>
 
