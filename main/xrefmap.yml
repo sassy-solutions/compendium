@@ -30680,6 +30680,19 @@ references:
   commentId: T:Compendium.Infrastructure.Projections.ProjectionOptions
   fullName: Compendium.Infrastructure.Projections.ProjectionOptions
   nameWithType: ProjectionOptions
+- uid: Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint
+  name: BackfillFromBeginningOnEmptyCheckpoint
+  href: api/Compendium.Infrastructure.Projections.ProjectionOptions.html#Compendium_Infrastructure_Projections_ProjectionOptions_BackfillFromBeginningOnEmptyCheckpoint
+  commentId: P:Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint
+  fullName: Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint
+  nameWithType: ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint
+- uid: Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint*
+  name: BackfillFromBeginningOnEmptyCheckpoint
+  href: api/Compendium.Infrastructure.Projections.ProjectionOptions.html#Compendium_Infrastructure_Projections_ProjectionOptions_BackfillFromBeginningOnEmptyCheckpoint_
+  commentId: Overload:Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint
+  isSpec: "True"
+  fullName: Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint
+  nameWithType: ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint
 - uid: Compendium.Infrastructure.Projections.ProjectionOptions.CheckpointInterval
   name: CheckpointInterval
   href: api/Compendium.Infrastructure.Projections.ProjectionOptions.html#Compendium_Infrastructure_Projections_ProjectionOptions_CheckpointInterval

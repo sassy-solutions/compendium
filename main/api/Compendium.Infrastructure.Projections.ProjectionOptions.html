@@ -188,6 +188,53 @@ Class ProjectionOptions  <a class="header-action link-secondary" title="View sou
 </h2>
 
 
+  <a id="Compendium_Infrastructure_Projections_ProjectionOptions_BackfillFromBeginningOnEmptyCheckpoint_" data-uid="Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_ProjectionOptions_BackfillFromBeginningOnEmptyCheckpoint" data-uid="Compendium.Infrastructure.Projections.ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint">
+  BackfillFromBeginningOnEmptyCheckpoint
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Infrastructure/Compendium.Infrastructure/Projections/ProjectionOptions.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets whether <a class="xref" href="Compendium.Infrastructure.Projections.ILiveProjectionProcessor.html">ILiveProjectionProcessor</a> should backfill from
+position 0 on first start, when no checkpoints exist for any registered projection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool BackfillFromBeginningOnEmptyCheckpoint { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Compendium_Infrastructure_Projections_ProjectionOptions_BackfillFromBeginningOnEmptyCheckpoint_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+<b>Default <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a></b> — preserves the historical behaviour where the
+processor jumps to the current head of the event stream on a cold start, so a fresh
+deploy doesn't re-replay weeks of events on every restart.
+</p>
+<p>
+Set to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when projections are the <i>only</i> writers to the
+read model (no manual writers, no parallel materialisers): otherwise a cold-start
+processor leaves the read model permanently behind the event store. The flag only
+affects the very first start — once any projection persists a checkpoint, that
+checkpoint takes over and this option is ignored.
+</p>
+</div>
+
+
+
+
   <a id="Compendium_Infrastructure_Projections_ProjectionOptions_CheckpointInterval_" data-uid="Compendium.Infrastructure.Projections.ProjectionOptions.CheckpointInterval*"></a>
 
   <h3 id="Compendium_Infrastructure_Projections_ProjectionOptions_CheckpointInterval" data-uid="Compendium.Infrastructure.Projections.ProjectionOptions.CheckpointInterval">
