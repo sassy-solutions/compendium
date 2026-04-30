@@ -79,6 +79,41 @@ public sealed class LiveProjectionProcessorBackfillTests
         await eventStore.DidNotReceive().GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>());
     }
 
+    [Fact]
+    public async Task CheckpointPersistedAtZero_DefaultOptions_StaysAtZero_NoHeadJump()
+    {
+        // Edge case: a projection legitimately persisted checkpoint=0 (just started, no
+        // events yet, but the row exists). The cold-start policy must NOT fire — we
+        // distinguish "checkpoint absent" from "checkpoint = 0".
+        var (eventStore, projectionStore) = SetupStores(headPosition: 999L, checkpoint: 0L);
+
+        var processor = CreateProcessor(eventStore, projectionStore, backfill: false);
+        processor.RegisterProjection<TestProjection>();
+
+        await processor.InitializeProjectionsAsync(CancellationToken.None);
+
+        processor.GetStatus().LastProcessedPosition.Should().Be(0L,
+            "an explicit checkpoint at 0 means the projection trusts the persisted state, even with the legacy default flag");
+        await eventStore.DidNotReceive().GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>());
+    }
+
+    [Fact]
+    public async Task CheckpointPersistedAtZero_BackfillFlagOn_StaysAtZero()
+    {
+        // Same edge case under the opt-in flag — the persisted state still wins.
+        // No head-jump (already covered by the assertion above) and no warning needed:
+        // backfill flag is only a *cold start* policy, not "always start at 0".
+        var (eventStore, projectionStore) = SetupStores(headPosition: 999L, checkpoint: 0L);
+
+        var processor = CreateProcessor(eventStore, projectionStore, backfill: true);
+        processor.RegisterProjection<TestProjection>();
+
+        await processor.InitializeProjectionsAsync(CancellationToken.None);
+
+        processor.GetStatus().LastProcessedPosition.Should().Be(0L);
+        await eventStore.DidNotReceive().GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>());
+    }
+
     private static (IStreamingEventStore eventStore, IProjectionStore projectionStore) SetupStores(
         long headPosition,
         long? checkpoint)
