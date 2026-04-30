@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Abstractions\Compendium.Abstractions.AI\Compendium.Abstractions.AI.csproj" />
+    <ProjectReference Include="..\..\..\src\Application\Compendium.Application\Compendium.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

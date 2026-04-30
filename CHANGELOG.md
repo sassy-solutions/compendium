@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **AI agent loop primitives.** New `Compendium.Abstractions.AI.Agents` namespace
+  introduces `IAgent`, `IAgentToolRegistry`, and the supporting models
+  (`AgentRequest`, `AgentResult`, `AgentTurn`, `AgentTool`, `AgentToolInvocation`,
+  `AgentLoopOptions`, `AgentTerminationReason`). The default
+  `Compendium.Application.AI.Agents.StandardAgent` implements a ReAct-style loop
+  on top of any `IAIProvider`: tool descriptions and an action grammar are
+  rendered into the system prompt, and the agent parses an `\`\`\`action` JSON
+  block out of each response to dispatch tool calls through the registry. Works
+  with any chat-capable model, no native tool-calling format required.
+- `ReActPromptBuilder` and `ReActActionParser` are exposed publicly so callers
+  can build custom agents that share the same grammar.
+- New sample `samples/04-AI-Agent` demonstrates a two-tool loop end-to-end and
+  ships a scripted offline provider so it runs without an API key.
+
+### Notes
+
+- `Compendium.Application` now references `Compendium.Abstractions.AI` so
+  `StandardAgent` can sit in the application layer without forcing every
+  consumer to add the project reference manually. No transitive contract change
+  for existing CQRS / Saga / Idempotency users.
+
 ## [1.0.0-preview.4] - 2026-04-27
 
 ### Changed
