@@ -235,6 +235,70 @@ public sealed class StandardAgentTests
     }
 
     [Fact]
+    public async Task RunAsync_TimeoutZero_ReturnsValidation()
+    {
+        var agent = CreateAgent();
+        var result = await agent.RunAsync(new AgentRequest
+        {
+            UserPrompt = "x",
+            Model = "x",
+            Options = new AgentLoopOptions { Timeout = TimeSpan.Zero },
+        });
+        result.IsFailure.Should().BeTrue();
+        result.Error.Code.Should().Be("Agent.TimeoutInvalid");
+    }
+
+    [Fact]
+    public async Task RunAsync_NoToolsInRequest_FallsBackToRegistryDiscover()
+    {
+        // Arrange: registry advertises one tool; request.Tools is null.
+        _tools.Discover().Returns(new[] { new AgentTool("only-from-registry", "the only tool") });
+
+        // Provider responds with an action calling that tool, then a final answer.
+        var responses = new Queue<string>();
+        responses.Enqueue("```action\n{\"tool\":\"only-from-registry\",\"args\":{}}\n```");
+        responses.Enqueue("done");
+        _provider.CompleteAsync(Arg.Any<CompletionRequest>(), Arg.Any<CancellationToken>())
+            .Returns(_ => CompletionFromQueue(responses));
+
+        _tools.InvokeAsync("only-from-registry", Arg.Any<string>(), Arg.Any<CancellationToken>())
+            .Returns(Result.Success(new AgentToolResult("ok")));
+
+        var agent = CreateAgent();
+        var result = await agent.RunAsync(new AgentRequest
+        {
+            UserPrompt = "x",
+            Model = "x",
+            // No Tools field — registry should be consulted.
+        });
+
+        result.IsSuccess.Should().BeTrue();
+        result.Value.Turns[0].ToolInvocations.Should().ContainSingle()
+            .Which.IsError.Should().BeFalse();
+    }
+
+    [Fact]
+    public async Task RunAsync_NoToolsAtAll_UnknownToolMessageNotEmpty()
+    {
+        // Neither request nor registry advertises tools. The model still emits an
+        // action — the unknown-tool feedback must not end with "Choose one of:".
+        _tools.Discover().Returns(Array.Empty<AgentTool>());
+        var responses = new Queue<string>();
+        responses.Enqueue("```action\n{\"tool\":\"nope\",\"args\":{}}\n```");
+        responses.Enqueue("ok then");
+        _provider.CompleteAsync(Arg.Any<CompletionRequest>(), Arg.Any<CancellationToken>())
+            .Returns(_ => CompletionFromQueue(responses));
+
+        var agent = CreateAgent();
+        var result = await agent.RunAsync(new AgentRequest { UserPrompt = "x", Model = "x" });
+
+        result.IsSuccess.Should().BeTrue();
+        var inv = result.Value.Turns[0].ToolInvocations.Should().ContainSingle().Subject;
+        inv.IsError.Should().BeTrue();
+        inv.ResultText.Should().Contain("No tools are available");
+    }
+
+    [Fact]
     public async Task RunAsync_OnTurnCompletedCallback_FiresPerTurn()
     {
         SetupProvider("done", 1, 1);

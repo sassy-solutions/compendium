@@ -112,11 +112,22 @@ public static class Program
 
 /// <summary>
 /// Two demo tools exposed in-process. <c>now</c> takes no args; <c>echo</c> takes
-/// <c>{"text":"…"}</c>.
+/// <c>{"text":"…"}</c>. <see cref="Discover"/> is the catalog source — when the
+/// caller does not pass <c>request.Tools</c>, the agent will fall back to it.
 /// </summary>
 internal sealed class InMemoryToolRegistry : IAgentToolRegistry
 {
-    public IReadOnlyList<AgentTool> Discover() => Array.Empty<AgentTool>();
+    public IReadOnlyList<AgentTool> Discover() => new[]
+    {
+        new AgentTool(
+            "now",
+            "Returns the current UTC timestamp in ISO-8601 format.",
+            """{"type":"object","properties":{},"additionalProperties":false}"""),
+        new AgentTool(
+            "echo",
+            "Echoes the given text back.",
+            """{"type":"object","properties":{"text":{"type":"string","description":"The text to echo back."}},"required":["text"],"additionalProperties":false}"""),
+    };
 
     public Task<Result<AgentToolResult>> InvokeAsync(string toolName, string argumentsJson, CancellationToken cancellationToken = default)
     {

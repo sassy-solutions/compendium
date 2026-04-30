@@ -127,4 +127,18 @@ public sealed class ReActActionParserTests
         action.Should().BeNull();
         err.Should().BeNull();
     }
+
+    [Fact]
+    public void TryParse_InlineFormat_OnSingleLine_Succeeds()
+    {
+        // Some models emit ```action {"tool":"x"} ``` without a leading newline.
+        var content = "Trying it: ```action {\"tool\":\"echo\",\"args\":{\"text\":\"hi\"}}```";
+
+        var ok = ReActActionParser.TryParse(content, out var action, out var err);
+
+        ok.Should().BeTrue();
+        err.Should().BeNull();
+        action.Should().NotBeNull();
+        action!.ToolName.Should().Be("echo");
+    }
 }

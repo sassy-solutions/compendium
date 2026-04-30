@@ -26,15 +26,28 @@ public static class ReActActionParser
     public sealed record ParsedAction(string ToolName, string ArgumentsJson);
 
     /// <summary>
-    /// Tries to extract an action from <paramref name="content"/>. Returns
-    /// <see langword="null"/> when no action block is present (the model's response is
-    /// the final answer).
+    /// Tries to extract an action from <paramref name="content"/>. If no action block
+    /// is present, the method returns <see langword="false"/> with both
+    /// <paramref name="action"/> and <paramref name="parseError"/> set to
+    /// <see langword="null"/>.
     /// </summary>
     /// <param name="content">The raw assistant message content.</param>
-    /// <param name="action">The parsed action when the call returns <see langword="true"/>.</param>
-    /// <param name="parseError">A user-facing description of the parse failure when the call returns <see langword="false"/> for a malformed block.</param>
+    /// <param name="action">
+    /// The parsed action when the method returns <see langword="true"/>; otherwise
+    /// <see langword="null"/>.
+    /// </param>
+    /// <param name="parseError">
+    /// A user-facing description of the parse failure when the method returns
+    /// <see langword="false"/> for a malformed block; otherwise
+    /// <see langword="null"/>.
+    /// </param>
     /// <returns>
-    /// <see langword="true"/> when an action was successfully parsed; <see langword="false"/> when the block is present but malformed (caller should surface <paramref name="parseError"/> to the model so it can retry); <see langword="null"/> via the <paramref name="action"/> being <see langword="null"/> when there's no block at all.
+    /// <see langword="true"/> when an action block was found and successfully parsed;
+    /// otherwise <see langword="false"/>. When this method returns
+    /// <see langword="false"/>, <paramref name="parseError"/> is non-<see langword="null"/>
+    /// if a block was present but malformed, and both <paramref name="action"/> and
+    /// <paramref name="parseError"/> are <see langword="null"/> if no action block was
+    /// found at all.
     /// </returns>
     public static bool TryParse(string content, out ParsedAction? action, out string? parseError)
     {
@@ -47,23 +60,23 @@ public static class ReActActionParser
         }
 
         // Find the fence that opens with `action` (after the triple-backtick).
-        // We look for "```action" optionally followed by a newline.
+        // We look for "```action" optionally followed by inline whitespace, then either
+        // a newline (block-form) or JSON immediately on the same line (inline-form).
         var span = content.AsSpan();
         var fenceIndex = -1;
+        var afterTagOffset = -1;
         for (var i = 0; i <= span.Length - (Fence.Length + ActionTag.Length); i++)
         {
             if (!span.Slice(i, Fence.Length).SequenceEqual(Fence)) continue;
             var rest = span[(i + Fence.Length)..];
-            // Skip optional whitespace/CR before the tag.
             var afterFence = SkipInlineWhitespace(rest);
-            if (afterFence.StartsWith(ActionTag, StringComparison.OrdinalIgnoreCase))
-            {
+            if (afterFence.StartsWith(ActionTag, StringComparison.OrdinalIgnoreCase)
                 // Make sure the tag is followed by a non-letter (so "actionable" doesn't match).
-                if (afterFence.Length == ActionTag.Length || !char.IsLetterOrDigit(afterFence[ActionTag.Length]))
-                {
-                    fenceIndex = i;
-                    break;
-                }
+                && (afterFence.Length == ActionTag.Length || !char.IsLetterOrDigit(afterFence[ActionTag.Length])))
+            {
+                fenceIndex = i;
+                afterTagOffset = (i + Fence.Length) + (rest.Length - afterFence.Length) + ActionTag.Length;
+                break;
             }
         }
 
@@ -73,13 +86,15 @@ public static class ReActActionParser
         }
 
         // Locate the body: from after the opening fence + tag, up to the next ```.
-        var bodyStart = content.IndexOf('\n', fenceIndex);
-        if (bodyStart < 0)
-        {
-            parseError = "Action block is not terminated with a newline after the opening fence.";
-            return false;
-        }
-        bodyStart += 1;
+        // Tolerate either a newline OR inline JSON on the same line — some models emit
+        // ```action { … } ``` without breaks, especially when the response is short.
+        var bodyStart = afterTagOffset;
+        // Skip inline whitespace after the tag.
+        while (bodyStart < content.Length && (content[bodyStart] == ' ' || content[bodyStart] == '\t'))
+            bodyStart++;
+        // Skip a single optional newline (CR / LF / CRLF).
+        if (bodyStart < content.Length && content[bodyStart] == '\r') bodyStart++;
+        if (bodyStart < content.Length && content[bodyStart] == '\n') bodyStart++;
 
         var closeIndex = content.IndexOf(Fence, bodyStart, StringComparison.Ordinal);
         if (closeIndex < 0)

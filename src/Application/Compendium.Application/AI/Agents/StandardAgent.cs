@@ -74,8 +74,17 @@ public sealed class StandardAgent : IAgent
         var options = request.Options ?? new AgentLoopOptions();
         if (options.MaxTurns <= 0)
             return Result.Failure<AgentResult>(Error.Validation("Agent.MaxTurnsInvalid", "MaxTurns must be > 0."));
+        if (options.Timeout != Timeout.InfiniteTimeSpan && options.Timeout <= TimeSpan.Zero)
+            return Result.Failure<AgentResult>(Error.Validation("Agent.TimeoutInvalid", "Timeout must be > 0 or Timeout.InfiniteTimeSpan."));
 
-        var tools = request.Tools ?? Array.Empty<AgentTool>();
+        // Tool sources: the request takes precedence (per-call narrowing) and the registry
+        // acts as a fallback (caller-of-record). Merging by name keeps either source as the
+        // source of truth without duplicating entries.
+        var requestTools = request.Tools ?? Array.Empty<AgentTool>();
+        var registryTools = _toolRegistry.Discover() ?? Array.Empty<AgentTool>();
+        var tools = requestTools.Count > 0
+            ? requestTools
+            : registryTools;
         var basePrompt = await ResolveBasePromptAsync(request, cancellationToken).ConfigureAwait(false);
         var systemPrompt = ReActPromptBuilder.Build(basePrompt, tools, request.SystemPromptAddendum);
 
@@ -91,7 +100,6 @@ public sealed class StandardAgent : IAgent
 
         using var loopCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         loopCts.CancelAfter(options.Timeout);
-        var loopStart = DateTime.UtcNow;
 
         for (var turnIndex = 1; turnIndex <= options.MaxTurns; turnIndex++)
         {
@@ -155,7 +163,9 @@ public sealed class StandardAgent : IAgent
                 if (tools.All(t => !string.Equals(t.Name, action.ToolName, StringComparison.Ordinal)))
                 {
                     // Unknown tool — feed the error back to the model so it can recover.
-                    var msg = $"Unknown tool '{action.ToolName}'. Choose one of: {string.Join(", ", tools.Select(t => t.Name))}";
+                    var msg = tools.Count == 0
+                        ? $"Unknown tool '{action.ToolName}'. No tools are available for this run."
+                        : $"Unknown tool '{action.ToolName}'. Choose one of: {string.Join(", ", tools.Select(t => t.Name))}";
                     toolInvocations.Add(new AgentToolInvocation(action.ToolName, action.ArgumentsJson, msg, IsError: true, swTurn.Elapsed));
                     messages.Add(Message.Assistant(response.Content));
                     messages.Add(Message.User(BuildToolFeedback(action.ToolName, msg, isError: true)));
@@ -206,8 +216,12 @@ public sealed class StandardAgent : IAgent
             {
                 options.OnTurnCompleted?.Invoke(turn);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is not OutOfMemoryException
+                                       and not StackOverflowException
+                                       and not AccessViolationException)
             {
+                // Critical exceptions are NOT swallowed — let the runtime tear down the
+                // process. Everything else is per-callback noise we can keep going past.
                 _logger?.LogWarning(ex, "OnTurnCompleted callback threw on turn {Turn}; ignoring", turnIndex);
             }
 
@@ -252,7 +266,21 @@ public sealed class StandardAgent : IAgent
             request.PromptTemplateKey,
             request.PromptVariables ?? new Dictionary<string, object>(),
             ct).ConfigureAwait(false);
-        return resolved.IsSuccess ? resolved.Value : null;
+
+        if (resolved.IsSuccess)
+        {
+            return resolved.Value;
+        }
+
+        // Fall back to the default base prompt rather than failing the run, so a
+        // misconfigured key doesn't take the agent down — but log+tag so the failure
+        // is observable in production.
+        _logger?.LogWarning(
+            "Failed to render prompt template '{PromptTemplateKey}' ({Code}: {Message}); falling back to default base prompt.",
+            request.PromptTemplateKey, resolved.Error.Code, resolved.Error.Message);
+        Activity.Current?.SetTag("ai.agent.prompt_template.key", request.PromptTemplateKey);
+        Activity.Current?.SetTag("ai.agent.prompt_template.render_failed", true);
+        return null;
     }
 
     private static string BuildToolFeedback(string toolName, string content, bool isError)
