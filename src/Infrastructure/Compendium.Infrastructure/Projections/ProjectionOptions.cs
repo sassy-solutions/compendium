@@ -70,4 +70,24 @@ public class ProjectionOptions
     /// Default is 1 second.
     /// </summary>
     public TimeSpan RetryDelay { get; set; } = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// Gets or sets whether <see cref="ILiveProjectionProcessor"/> should backfill from
+    /// position 0 on first start, when no checkpoints exist for any registered projection.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// <b>Default <see langword="false"/></b> — preserves the historical behaviour where the
+    /// processor jumps to the current head of the event stream on a cold start, so a fresh
+    /// deploy doesn't re-replay weeks of events on every restart.
+    /// </para>
+    /// <para>
+    /// Set to <see langword="true"/> when projections are the <i>only</i> writers to the
+    /// read model (no manual writers, no parallel materialisers): otherwise a cold-start
+    /// processor leaves the read model permanently behind the event store. The flag only
+    /// affects the very first start — once any projection persists a checkpoint, that
+    /// checkpoint takes over and this option is ignored.
+    /// </para>
+    /// </remarks>
+    public bool BackfillFromBeginningOnEmptyCheckpoint { get; set; }
 }

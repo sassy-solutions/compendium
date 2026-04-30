@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `ProjectionOptions.BackfillFromBeginningOnEmptyCheckpoint` (default `false`).
+  Controls the cold-start behaviour of `LiveProjectionProcessor` when no
+  projection has a persisted checkpoint:
+  - `false` (legacy default) — jump to the current head of the event stream.
+    Avoids replaying weeks of events on every restart.
+  - `true` — start from position 0 and replay every event. Required when
+    projections are the *only* writers to the read model; without it the read
+    model stays empty and never catches up to the event store.
+  Once any projection persists a checkpoint, that checkpoint takes over and
+  this option is ignored.
+
 ## [1.0.0-preview.4] - 2026-04-27
 
 ### Changed
