@@ -207,6 +207,174 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.IAgent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.IAgent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.IAgent",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.IAgent.yml\" sourcestartlinenumber=\"1\">An AI agent: takes a user prompt + a tool registry, runs a multi-turn loop with\nthe underlying <xref href=\"Compendium.Abstractions.AI.IAIProvider\" data-throw-if-not-resolved=\"false\"></xref>, and returns the final answer plus a\nturn-by-turn audit trail.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.IAgentToolRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.IAgentToolRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.IAgentToolRegistry",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.IAgentToolRegistry.yml\" sourcestartlinenumber=\"1\">Source of tools an agent can call during its loop. Implementations may aggregate\ntools from multiple providers (e.g. a Nexus MCP-backed registry, an in-process\nHTTP-tool registry, etc.).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentLoopOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentLoopOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentLoopOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentLoopOptions.yml\" sourcestartlinenumber=\"1\">Bounds + observability hooks for an agent loop. Defaults are conservative enough\nto be safe in tests and small demos; production callers should tune them per\nworkload.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentRequest",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentRequest.yml\" sourcestartlinenumber=\"1\">Input to <xref href=\"Compendium.Abstractions.AI.Agents.IAgent.RunAsync(Compendium.Abstractions.AI.Agents.Models.AgentRequest%2cSystem.Threading.CancellationToken)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentResult.yml\" sourcestartlinenumber=\"1\">Outcome of an <xref href=\"Compendium.Abstractions.AI.Agents.IAgent\" data-throw-if-not-resolved=\"false\"></xref> run.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentTerminationReason.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentTerminationReason.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentTerminationReason",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentTerminationReason.yml\" sourcestartlinenumber=\"1\">Why an agent loop terminated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentTool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentTool.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentTool",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentTool.yml\" sourcestartlinenumber=\"1\">Description of a tool that an <xref href=\"Compendium.Abstractions.AI.Agents.IAgent\" data-throw-if-not-resolved=\"false\"></xref> may invoke. Rendered into the\nsystem prompt so the model can decide when to call it.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentToolInvocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentToolInvocation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentToolInvocation",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentToolInvocation.yml\" sourcestartlinenumber=\"1\">Audit record for a single tool call performed during one <xref href=\"Compendium.Abstractions.AI.Agents.Models.AgentTurn\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentToolResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentToolResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentToolResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentToolResult.yml\" sourcestartlinenumber=\"1\">Output of <xref href=\"Compendium.Abstractions.AI.Agents.IAgentToolRegistry.InvokeAsync(System.String%2cSystem.String%2cSystem.Threading.CancellationToken)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentTurn.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.AgentTurn.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models.AgentTurn",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Agents.Models.AgentTurn.yml\" sourcestartlinenumber=\"1\">One round of the agent loop: an assistant response, optionally followed by tool\ninvocations whose results were fed back into the next turn.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Agents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Agents.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Agents",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.AI.ContextData.yml",
       "output": {
         ".html": {
@@ -2835,6 +3003,76 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Compendium.Adapters.Zitadel.Health",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.AI.Agents.ReActActionParser.ParsedAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.AI.Agents.ReActActionParser.ParsedAction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.AI.Agents.ReActActionParser.ParsedAction",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.AI.Agents.ReActActionParser.ParsedAction.yml\" sourcestartlinenumber=\"1\">Extracted action: the tool to call and its raw JSON arguments.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.AI.Agents.ReActActionParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.AI.Agents.ReActActionParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.AI.Agents.ReActActionParser",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.AI.Agents.ReActActionParser.yml\" sourcestartlinenumber=\"1\">Parses an <code><code sourcefile=\"api/Compendium.Application.AI.Agents.ReActActionParser.yml\" sourcestartlinenumber=\"1\">action ... </code></code> block out of an assistant message. Tolerant of\nsurrounding prose and of the model's preferred whitespace conventions; intolerant\nof malformed JSON inside the block (we surface those as parse errors rather than\nguessing). Public so callers can build custom agents that share the same grammar.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.AI.Agents.ReActPromptBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.AI.Agents.ReActPromptBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.AI.Agents.ReActPromptBuilder",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.AI.Agents.ReActPromptBuilder.yml\" sourcestartlinenumber=\"1\">Builds the system prompt that turns a vanilla LLM into a tool-using ReAct agent.\nThe model is told to emit an <code>```action</code> JSON block when it wants to call a\ntool; the agent parses that block, dispatches to the registry, feeds the result\nback, and loops. Public so callers can build custom agents that share the same\ngrammar.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.AI.Agents.StandardAgent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.AI.Agents.StandardAgent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.AI.Agents.StandardAgent",
+      "Summary": "<p sourcefile=\"api/Compendium.Application.AI.Agents.StandardAgent.yml\" sourcestartlinenumber=\"1\">Default <xref href=\"Compendium.Abstractions.AI.Agents.IAgent\" data-throw-if-not-resolved=\"false\"></xref> implementation: ReAct-style loop on top of\n<xref href=\"Compendium.Abstractions.AI.IAIProvider\" data-throw-if-not-resolved=\"false\"></xref>. The model receives a system prompt that explains how\nto call tools (an <code>```action</code> JSON block); the agent parses each response,\ndispatches matching invocations through <xref href=\"Compendium.Abstractions.AI.Agents.IAgentToolRegistry\" data-throw-if-not-resolved=\"false\"></xref>, feeds\nthe results back, and loops up to <xref href=\"Compendium.Abstractions.AI.Agents.Models.AgentLoopOptions.MaxTurns\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Application.AI.Agents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Application.AI.Agents.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Application.AI.Agents",
       "Summary": null
     },
     {
