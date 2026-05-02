@@ -89,7 +89,7 @@
 
 
   <h1 id="Compendium_Adapters_PostgreSQL_Security_RowLevelSecurityExtensions" data-uid="Compendium.Adapters.PostgreSQL.Security.RowLevelSecurityExtensions" class="text-break">
-Class RowLevelSecurityExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L27"><i class="bi bi-code-slash"></i></a>
+Class RowLevelSecurityExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.8/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -167,7 +167,7 @@ already enforces 100% tenant isolation at the application level.</p>
 
   <h3 id="Compendium_Adapters_PostgreSQL_Security_RowLevelSecurityExtensions_ClearTenantContextAsync_Npgsql_NpgsqlConnection_System_Threading_CancellationToken_" data-uid="Compendium.Adapters.PostgreSQL.Security.RowLevelSecurityExtensions.ClearTenantContextAsync(Npgsql.NpgsqlConnection,System.Threading.CancellationToken)">
   ClearTenantContextAsync(NpgsqlConnection, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.8/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L160"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Clears the tenant context for this database session.
@@ -223,7 +223,7 @@ After clearing context, the connection can access ALL tenants' data.</p>
 
   <h3 id="Compendium_Adapters_PostgreSQL_Security_RowLevelSecurityExtensions_CreateTenantFilter_System_String_System_String_" data-uid="Compendium.Adapters.PostgreSQL.Security.RowLevelSecurityExtensions.CreateTenantFilter(System.String,System.String)">
   CreateTenantFilter(string?, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.8/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L245"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a safe tenant filtering WHERE clause for SQL queries.
@@ -285,7 +285,7 @@ It handles both single-tenant and multi-tenant (NULL tenant_id) scenarios.</p>
 
   <h3 id="Compendium_Adapters_PostgreSQL_Security_RowLevelSecurityExtensions_GetTenantContextAsync_Npgsql_NpgsqlConnection_System_Threading_CancellationToken_" data-uid="Compendium.Adapters.PostgreSQL.Security.RowLevelSecurityExtensions.GetTenantContextAsync(Npgsql.NpgsqlConnection,System.Threading.CancellationToken)">
   GetTenantContextAsync(NpgsqlConnection, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.8/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L111"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the current tenant context from the database session.</p>
@@ -334,7 +334,7 @@ Console.WriteLine($"Current tenant: {currentTenant}");</code></pre>
 
   <h3 id="Compendium_Adapters_PostgreSQL_Security_RowLevelSecurityExtensions_IsValidTenantId_System_String_" data-uid="Compendium.Adapters.PostgreSQL.Security.RowLevelSecurityExtensions.IsValidTenantId(System.String)">
   IsValidTenantId(string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L207"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.8/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L207"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Validates a tenant ID format for security.
@@ -388,7 +388,7 @@ Prevents SQL injection and path traversal attacks.</p>
 
   <h3 id="Compendium_Adapters_PostgreSQL_Security_RowLevelSecurityExtensions_SetTenantContextAsync_Npgsql_NpgsqlConnection_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Adapters.PostgreSQL.Security.RowLevelSecurityExtensions.SetTenantContextAsync(Npgsql.NpgsqlConnection,System.String,System.Threading.CancellationToken)">
   SetTenantContextAsync(NpgsqlConnection, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.8/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the tenant context for Row-Level Security on this connection.
@@ -451,7 +451,7 @@ var events = await connection.QueryAsync("SELECT * FROM event_store WHERE stream
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L27" class="edit-link">Edit this page</a>
+          <a href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.8/src/Adapters/Compendium.Adapters.PostgreSQL/Security/RowLevelSecurityExtensions.cs/#L27" class="edit-link">Edit this page</a>
         </div>
 
 

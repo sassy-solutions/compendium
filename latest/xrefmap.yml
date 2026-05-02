@@ -6656,6 +6656,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationAsync
   nameWithType: IOrganizationService.GetOrganizationAsync
+- uid: Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationByNameAsync(System.String,System.Threading.CancellationToken)
+  name: GetOrganizationByNameAsync(string, CancellationToken)
+  href: api/Compendium.Abstractions.Identity.IOrganizationService.html#Compendium_Abstractions_Identity_IOrganizationService_GetOrganizationByNameAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationByNameAsync(System.String,System.Threading.CancellationToken)
+  name.vb: GetOrganizationByNameAsync(String, CancellationToken)
+  fullName: Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationByNameAsync(string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationByNameAsync(String, System.Threading.CancellationToken)
+  nameWithType: IOrganizationService.GetOrganizationByNameAsync(string, CancellationToken)
+  nameWithType.vb: IOrganizationService.GetOrganizationByNameAsync(String, CancellationToken)
+- uid: Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationByNameAsync*
+  name: GetOrganizationByNameAsync
+  href: api/Compendium.Abstractions.Identity.IOrganizationService.html#Compendium_Abstractions_Identity_IOrganizationService_GetOrganizationByNameAsync_
+  commentId: Overload:Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationByNameAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Identity.IOrganizationService.GetOrganizationByNameAsync
+  nameWithType: IOrganizationService.GetOrganizationByNameAsync
 - uid: Compendium.Abstractions.Identity.IOrganizationService.ListMembersAsync(System.String,System.Threading.CancellationToken)
   name: ListMembersAsync(string, CancellationToken)
   href: api/Compendium.Abstractions.Identity.IOrganizationService.html#Compendium_Abstractions_Identity_IOrganizationService_ListMembersAsync_System_String_System_Threading_CancellationToken_
@@ -6873,6 +6889,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFound
   nameWithType: IdentityErrors.OrganizationNotFound
+- uid: Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFoundByName(System.String)
+  name: OrganizationNotFoundByName(string)
+  href: api/Compendium.Abstractions.Identity.IdentityErrors.html#Compendium_Abstractions_Identity_IdentityErrors_OrganizationNotFoundByName_System_String_
+  commentId: M:Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFoundByName(System.String)
+  name.vb: OrganizationNotFoundByName(String)
+  fullName: Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFoundByName(string)
+  fullName.vb: Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFoundByName(String)
+  nameWithType: IdentityErrors.OrganizationNotFoundByName(string)
+  nameWithType.vb: IdentityErrors.OrganizationNotFoundByName(String)
+- uid: Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFoundByName*
+  name: OrganizationNotFoundByName
+  href: api/Compendium.Abstractions.Identity.IdentityErrors.html#Compendium_Abstractions_Identity_IdentityErrors_OrganizationNotFoundByName_
+  commentId: Overload:Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFoundByName
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Identity.IdentityErrors.OrganizationNotFoundByName
+  nameWithType: IdentityErrors.OrganizationNotFoundByName
 - uid: Compendium.Abstractions.Identity.IdentityErrors.ProviderUnavailable
   name: ProviderUnavailable
   href: api/Compendium.Abstractions.Identity.IdentityErrors.html#Compendium_Abstractions_Identity_IdentityErrors_ProviderUnavailable
