@@ -633,3 +633,167 @@ internal sealed record ZitadelErrorDetail
     [JsonPropertyName("message")]
     public string? Message { get; init; }
 }
+
+/// <summary>
+/// Search request for organizations (POST /v2/organizations/_search).
+/// </summary>
+internal sealed record ZitadelOrganizationSearchRequest
+{
+    [JsonPropertyName("query")]
+    public ZitadelSearchQuery? Query { get; init; }
+
+    [JsonPropertyName("queries")]
+    public List<ZitadelOrganizationQuery>? Queries { get; init; }
+}
+
+/// <summary>
+/// Single query filter for organization search.
+/// </summary>
+internal sealed record ZitadelOrganizationQuery
+{
+    [JsonPropertyName("nameQuery")]
+    public ZitadelOrgNameQuery? NameQuery { get; init; }
+}
+
+/// <summary>
+/// Name query filter for organization search.
+/// </summary>
+internal sealed record ZitadelOrgNameQuery
+{
+    [JsonPropertyName("name")]
+    public required string Name { get; init; }
+
+    [JsonPropertyName("method")]
+    public string? Method { get; init; }
+}
+
+/// <summary>
+/// Search response wrapping a list of organizations.
+/// </summary>
+internal sealed record ZitadelOrganizationSearchResponse
+{
+    [JsonPropertyName("details")]
+    public ZitadelListDetails? Details { get; init; }
+
+    [JsonPropertyName("result")]
+    public List<ZitadelOrganization>? Result { get; init; }
+}
+
+/// <summary>
+/// Search request for projects (POST /management/v1/projects/_search).
+/// </summary>
+internal sealed record ZitadelProjectSearchRequest
+{
+    [JsonPropertyName("query")]
+    public ZitadelSearchQuery? Query { get; init; }
+
+    [JsonPropertyName("queries")]
+    public List<ZitadelProjectQuery>? Queries { get; init; }
+}
+
+/// <summary>
+/// Single query filter for project search.
+/// </summary>
+internal sealed record ZitadelProjectQuery
+{
+    [JsonPropertyName("nameQuery")]
+    public ZitadelProjectNameQuery? NameQuery { get; init; }
+}
+
+/// <summary>
+/// Name query filter for project search.
+/// </summary>
+internal sealed record ZitadelProjectNameQuery
+{
+    [JsonPropertyName("name")]
+    public required string Name { get; init; }
+
+    [JsonPropertyName("method")]
+    public string? Method { get; init; }
+}
+
+/// <summary>
+/// Search response wrapping a list of projects.
+/// </summary>
+internal sealed record ZitadelProjectSearchResponse
+{
+    [JsonPropertyName("details")]
+    public ZitadelListDetails? Details { get; init; }
+
+    [JsonPropertyName("result")]
+    public List<ZitadelProject>? Result { get; init; }
+}
+
+/// <summary>
+/// Search request for OIDC applications within a project
+/// (POST /management/v1/projects/{projectId}/apps/_search).
+/// </summary>
+internal sealed record ZitadelAppSearchRequest
+{
+    [JsonPropertyName("query")]
+    public ZitadelSearchQuery? Query { get; init; }
+
+    [JsonPropertyName("queries")]
+    public List<ZitadelAppQuery>? Queries { get; init; }
+}
+
+/// <summary>
+/// Single query filter for application search.
+/// </summary>
+internal sealed record ZitadelAppQuery
+{
+    [JsonPropertyName("nameQuery")]
+    public ZitadelAppNameQuery? NameQuery { get; init; }
+}
+
+/// <summary>
+/// Name query filter for application search.
+/// </summary>
+internal sealed record ZitadelAppNameQuery
+{
+    [JsonPropertyName("name")]
+    public required string Name { get; init; }
+
+    [JsonPropertyName("method")]
+    public string? Method { get; init; }
+}
+
+/// <summary>
+/// Search response wrapping a list of applications.
+/// </summary>
+internal sealed record ZitadelAppSearchResponse
+{
+    [JsonPropertyName("details")]
+    public ZitadelListDetails? Details { get; init; }
+
+    [JsonPropertyName("result")]
+    public List<ZitadelApp>? Result { get; init; }
+}
+
+/// <summary>
+/// Application list item returned from app search
+/// (subset — does not include client_secret, which Zitadel only returns once at creation).
+/// </summary>
+internal sealed record ZitadelApp
+{
+    [JsonPropertyName("id")]
+    public string? Id { get; init; }
+
+    [JsonPropertyName("name")]
+    public string? Name { get; init; }
+
+    [JsonPropertyName("state")]
+    public string? State { get; init; }
+
+    [JsonPropertyName("oidcConfig")]
+    public ZitadelAppOidcConfigSummary? OidcConfig { get; init; }
+}
+
+/// <summary>
+/// Subset of OIDC config returned by app search — notably without client_secret.
+/// </summary>
+internal sealed record ZitadelAppOidcConfigSummary
+{
+    [JsonPropertyName("clientId")]
+    public string? ClientId { get; init; }
+}

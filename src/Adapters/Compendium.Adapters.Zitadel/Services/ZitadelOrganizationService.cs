@@ -87,6 +87,31 @@ internal sealed class ZitadelOrganizationService : IOrganizationService
     }
 
     /// <inheritdoc />
+    public async Task<Result<IdentityOrganization>> GetOrganizationByNameAsync(
+        string name,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(name);
+
+        _logger.LogDebug("Getting organization by name {Name}", name);
+
+        var result = await _httpClient.SearchOrganizationsByNameAsync(name, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return result.Error;
+        }
+
+        var match = result.Value.Result?.FirstOrDefault();
+        if (match is null)
+        {
+            return IdentityErrors.OrganizationNotFoundByName(name);
+        }
+
+        return MapToIdentityOrganization(match);
+    }
+
+    /// <inheritdoc />
     public async Task<Result> AddMemberAsync(
         string organizationId,
         string userId,

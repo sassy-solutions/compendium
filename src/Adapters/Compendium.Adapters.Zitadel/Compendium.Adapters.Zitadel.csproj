@@ -24,6 +24,13 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="Compendium.Adapters.Zitadel.Tests" />
+    <!--
+      Castle DynamicProxy (used by NSubstitute) generates proxy types in a runtime
+      assembly named "DynamicProxyGenAssembly2". The Zitadel test suite partial-mocks
+      ZitadelHttpClient (an internal, non-sealed class with virtual methods) to avoid
+      having to mock raw HTTP, so we must grant DynamicProxyGen access to internals.
+    -->
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
 
 </Project>
