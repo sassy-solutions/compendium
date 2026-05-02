@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `Compendium.Adapters.Zitadel.ZitadelOrganizationIdentityProvisioner` now treats
+  the "user already exists" conflict from Zitadel as a recoverable state. When
+  `IUserService.CreateUserAsync` returns `ErrorType.Conflict`, the provisioner
+  falls back to `GetUserByEmailAsync` and reuses the existing user id for the
+  org-membership step. Without this, every subsequent organization provision
+  for the same admin email left an orphan Zitadel org behind and stuck the
+  upstream Nexus aggregate in `Provisioning` state. Other failure types
+  (validation, unauthorized, network) still propagate as before.
+
 ### Added
 
 - **AI agent loop primitives.** New `Compendium.Abstractions.AI.Agents` namespace

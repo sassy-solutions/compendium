@@ -149,7 +149,13 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
         _logger.LogInformation("Created OIDC app with clientId {ClientId} for project {ProjectId}",
             clientId, projectId);
 
-        // Step 4: Create admin user
+        // Step 4: Create admin user (idempotent — reuse existing user if present)
+        // Zitadel usernames are unique across the entire instance; the same human can
+        // legitimately be admin of multiple orgs. When CreateUserAsync returns a
+        // conflict, fall back to GetUserByEmailAsync and reuse the existing user id
+        // for the membership step. Without this, every subsequent Org provisioning
+        // for the same admin email leaves an orphan Zitadel org behind and gets
+        // stuck in `Provisioning` on the Nexus side.
         var userResult = await _userService.CreateUserAsync(
             new CreateUserRequest
             {
@@ -162,17 +168,43 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
             },
             cancellationToken);
 
+        string adminUserId;
         if (userResult.IsFailure)
         {
-            _logger.LogWarning(
-                "Failed to create admin user {Email} for organization {ZitadelOrgId}: {Error}",
-                request.AdminUser.Email, zitadelOrgId, userResult.Error.Message);
-            return userResult.Error;
-        }
+            // Conflict on user creation → look up the existing user by email and reuse it.
+            // Any other failure (auth, network, validation) propagates as before.
+            if (userResult.Error.Type != ErrorType.Conflict)
+            {
+                _logger.LogWarning(
+                    "Failed to create admin user for organization {ZitadelOrgId}: {Error}",
+                    zitadelOrgId, userResult.Error.Message);
+                return userResult.Error;
+            }
 
-        var adminUserId = userResult.Value.Id;
-        _logger.LogInformation("Created admin user {AdminUserId} for organization {ZitadelOrgId}",
-            adminUserId, zitadelOrgId);
+            _logger.LogInformation(
+                "Admin user already exists in Zitadel for organization {ZitadelOrgId}; looking up to reuse",
+                zitadelOrgId);
+
+            var existing = await _userService.GetUserByEmailAsync(request.AdminUser.Email, cancellationToken);
+            if (existing.IsFailure)
+            {
+                _logger.LogWarning(
+                    "Admin user creation reported conflict but lookup by email failed: {Error}",
+                    existing.Error.Message);
+                return existing.Error;
+            }
+
+            adminUserId = existing.Value.Id;
+            _logger.LogInformation(
+                "Reusing existing admin user {AdminUserId} for organization {ZitadelOrgId}",
+                adminUserId, zitadelOrgId);
+        }
+        else
+        {
+            adminUserId = userResult.Value.Id;
+            _logger.LogInformation("Created admin user {AdminUserId} for organization {ZitadelOrgId}",
+                adminUserId, zitadelOrgId);
+        }
 
         // Step 5: Add user as organization member with ORG_OWNER role
         var memberResult = await _organizationService.AddMemberAsync(
