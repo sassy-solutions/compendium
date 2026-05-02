@@ -74,27 +74,61 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
             return postLogoutUriResult.Error;
         }
 
-        // Step 1: Create Zitadel organization
+        // Step 1: Create Zitadel organization (idempotent — reuse on Conflict).
+        // Mirrors Step 4's user-conflict handling: if the org already exists in
+        // Zitadel (typical when a previous saga run created the org but failed
+        // later, e.g. on the project step), look it up by name and reuse the id.
+        // Without this, every retry leaks an orphan org because each create
+        // generates a new id even when Zitadel rejects the request.
+        var displayName = request.DisplayName ?? request.Name;
         var orgResult = await _organizationService.CreateOrganizationAsync(
-            new CreateOrganizationRequest { Name = request.DisplayName ?? request.Name },
+            new CreateOrganizationRequest { Name = displayName },
             cancellationToken);
 
+        string zitadelOrgId;
         if (orgResult.IsFailure)
         {
-            _logger.LogWarning(
-                "Failed to create Zitadel organization for {OrganizationName}: {Error}",
-                request.Name, orgResult.Error.Message);
-            return orgResult.Error;
+            if (orgResult.Error.Type != ErrorType.Conflict)
+            {
+                _logger.LogWarning(
+                    "Failed to create Zitadel organization for {OrganizationName}: {Error}",
+                    request.Name, orgResult.Error.Message);
+                return orgResult.Error;
+            }
+
+            _logger.LogInformation(
+                "Zitadel organization already exists for {OrganizationName}; looking up to reuse",
+                request.Name);
+
+            var existingOrg = await _organizationService.GetOrganizationByNameAsync(
+                displayName, cancellationToken);
+            if (existingOrg.IsFailure)
+            {
+                _logger.LogWarning(
+                    "Organization create reported conflict but lookup by name failed: {Error}",
+                    existingOrg.Error.Message);
+                return existingOrg.Error;
+            }
+
+            zitadelOrgId = existingOrg.Value.Id;
+            _logger.LogInformation(
+                "Reusing existing Zitadel organization {ZitadelOrgId} for {OrganizationName}",
+                zitadelOrgId, request.Name);
+        }
+        else
+        {
+            zitadelOrgId = orgResult.Value.Id;
+            _logger.LogInformation("Created Zitadel organization {ZitadelOrgId}", zitadelOrgId);
         }
 
-        var zitadelOrgId = orgResult.Value.Id;
-        _logger.LogInformation("Created Zitadel organization {ZitadelOrgId}", zitadelOrgId);
-
-        // Step 2: Create project
+        // Step 2: Create project (idempotent — reuse on Conflict).
+        // Same shape as Step 1: project names within an org are unique in Zitadel,
+        // so a Conflict here means the project survives from a previous saga run.
+        var projectName = $"nexus-{request.Name}";
         var projectResult = await _httpClient.CreateProjectAsync(
             new ZitadelCreateProjectRequest
             {
-                Name = $"nexus-{request.Name}",
+                Name = projectName,
                 ProjectRoleAssertion = true,
                 ProjectRoleCheck = true,
                 HasProjectCheck = true
@@ -102,26 +136,60 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
             zitadelOrgId,
             cancellationToken);
 
+        string projectId;
         if (projectResult.IsFailure)
         {
-            _logger.LogWarning(
-                "Failed to create project for organization {ZitadelOrgId}: {Error}",
-                zitadelOrgId, projectResult.Error.Message);
-            return projectResult.Error;
+            if (projectResult.Error.Type != ErrorType.Conflict)
+            {
+                _logger.LogWarning(
+                    "Failed to create project for organization {ZitadelOrgId}: {Error}",
+                    zitadelOrgId, projectResult.Error.Message);
+                return projectResult.Error;
+            }
+
+            _logger.LogInformation(
+                "Project {ProjectName} already exists in Zitadel organization {ZitadelOrgId}; looking up to reuse",
+                projectName, zitadelOrgId);
+
+            var existingProject = await _httpClient.GetProjectByNameAsync(
+                projectName, zitadelOrgId, cancellationToken);
+            if (existingProject.IsFailure)
+            {
+                _logger.LogWarning(
+                    "Project create reported conflict but lookup by name failed: {Error}",
+                    existingProject.Error.Message);
+                return existingProject.Error;
+            }
+
+            projectId = existingProject.Value.Id ?? string.Empty;
+            _logger.LogInformation(
+                "Reusing existing project {ProjectId} in organization {ZitadelOrgId}",
+                projectId, zitadelOrgId);
+        }
+        else
+        {
+            projectId = projectResult.Value.Details?.ResourceOwner is not null
+                ? projectResult.Value.Id ?? projectResult.Value.Details.ResourceOwner
+                : projectResult.Value.Id ?? string.Empty;
+            _logger.LogInformation("Created project {ProjectId} for organization {ZitadelOrgId}",
+                projectId, zitadelOrgId);
         }
 
-        var projectId = projectResult.Value.Details?.ResourceOwner is not null
-            ? projectResult.Value.Id ?? projectResult.Value.Details.ResourceOwner
-            : projectResult.Value.Id ?? string.Empty;
-        _logger.LogInformation("Created project {ProjectId} for organization {ZitadelOrgId}",
-            projectId, zitadelOrgId);
-
-        // Step 3: Create OIDC application using URIs resolved in Step 0
+        // Step 3: Create OIDC application using URIs resolved in Step 0.
+        // Conflict here is NOT recoverable the same way as Steps 1, 2, 4.
+        // Zitadel returns the OIDC client_secret only once, at creation time. If
+        // we silently reused a found app, the saga's downstream secrets step
+        // would persist an empty/wrong secret, leaving the OIDC app permanently
+        // broken from the platform's point of view. Fail fast with a clearly
+        // labelled error so an operator knows to rotate the secret in Zitadel
+        // and re-run provisioning. Cleanup of the org/project created above is
+        // the saga's responsibility — the provisioner does not roll back.
+        var appName = $"nexus-{request.Name}-app";
         var oidcResult = await _httpClient.CreateOidcApplicationAsync(
             projectId,
             new ZitadelCreateOidcAppRequest
             {
-                Name = $"nexus-{request.Name}-app",
+                Name = appName,
                 RedirectUris = [redirectUriResult.Value],
                 PostLogoutRedirectUris = [postLogoutUriResult.Value],
                 ResponseTypes = ["OIDC_RESPONSE_TYPE_CODE"],
@@ -138,6 +206,20 @@ internal sealed class ZitadelOrganizationIdentityProvisioner : IOrganizationIden
 
         if (oidcResult.IsFailure)
         {
+            if (oidcResult.Error.Type == ErrorType.Conflict)
+            {
+                _logger.LogWarning(
+                    "OIDC application {AppName} already exists in project {ProjectId}: client_secret " +
+                    "is no longer recoverable. Operator must rotate the OIDC secret in Zitadel and retry.",
+                    appName, projectId);
+                return Error.Conflict(
+                    "Zitadel.OidcAppExistsButSecretLost",
+                    $"OIDC application '{appName}' already exists in project '{projectId}'. " +
+                    "Zitadel only returns the client_secret at creation time, so it cannot be " +
+                    "recovered by lookup. Rotate the OIDC client secret for this application in " +
+                    "Zitadel (or delete the application) and re-run provisioning.");
+            }
+
             _logger.LogWarning(
                 "Failed to create OIDC application for project {ProjectId}: {Error}",
                 projectId, oidcResult.Error.Message);

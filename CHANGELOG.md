@@ -17,6 +17,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the same admin email left an orphan Zitadel org behind and stuck the
   upstream Nexus aggregate in `Provisioning` state. Other failure types
   (validation, unauthorized, network) still propagate as before.
+- `Compendium.Adapters.Zitadel.ZitadelOrganizationIdentityProvisioner` now also
+  treats "resource already exists" conflicts on the Organization, Project, and
+  OIDC App creation steps as recoverable, mirroring the user-conflict handling
+  already in place. On Conflict for org/project, the provisioner falls back to
+  a lookup by name and reuses the existing id. For OIDC apps, the provisioner
+  fails fast with `Zitadel.OidcAppExistsButSecretLost` because the client
+  secret is only returned once by Zitadel and cannot be safely re-derived from
+  a lookup. Operators must manually rotate the OIDC secret in Zitadel and
+  re-run provisioning. Without these changes, every retry of a saga that got
+  past the user step but failed later left orphan Zitadel resources behind.
+  Adds `IOrganizationService.GetOrganizationByNameAsync` to the public
+  identity-abstractions surface so consumers can implement the same idempotent
+  pattern against other identity providers.
 
 ### Added
 

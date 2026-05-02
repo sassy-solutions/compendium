@@ -14,7 +14,12 @@ namespace Compendium.Adapters.Zitadel.Http;
 /// HTTP client for communicating with Zitadel REST API.
 /// Handles authentication, token management, and API calls.
 /// </summary>
-internal sealed class ZitadelHttpClient : IDisposable
+/// <remarks>
+/// Non-sealed and selected methods are <c>virtual</c> so unit tests can substitute
+/// a fake without spinning up a real <see cref="HttpClient"/>. Production behaviour
+/// is unchanged — the class still implements the same contract.
+/// </remarks>
+internal class ZitadelHttpClient : IDisposable
 {
     private readonly HttpClient _httpClient;
     private readonly ZitadelOptions _options;
@@ -323,7 +328,7 @@ internal sealed class ZitadelHttpClient : IDisposable
     /// <summary>
     /// Creates a project within an organization.
     /// </summary>
-    public async Task<Result<ZitadelProject>> CreateProjectAsync(
+    public virtual async Task<Result<ZitadelProject>> CreateProjectAsync(
         ZitadelCreateProjectRequest request,
         string organizationId,
         CancellationToken cancellationToken = default)
@@ -336,9 +341,56 @@ internal sealed class ZitadelHttpClient : IDisposable
     }
 
     /// <summary>
+    /// Looks up a project within an organization by name (case-insensitive equals).
+    /// </summary>
+    /// <remarks>
+    /// Used by <c>ZitadelOrganizationIdentityProvisioner</c> to recover from
+    /// Conflict on <see cref="CreateProjectAsync"/>. Returns
+    /// <see cref="Error.NotFound"/> when no project matches.
+    /// </remarks>
+    public virtual async Task<Result<ZitadelProject>> GetProjectByNameAsync(
+        string projectName,
+        string organizationId,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(projectName);
+        ArgumentNullException.ThrowIfNull(organizationId);
+        const string url = "management/v1/projects/_search";
+
+        var searchRequest = new ZitadelProjectSearchRequest
+        {
+            Query = new ZitadelSearchQuery { Limit = 1 },
+            Queries = new List<ZitadelProjectQuery>
+            {
+                new()
+                {
+                    NameQuery = new ZitadelProjectNameQuery
+                    {
+                        Name = projectName,
+                        Method = "TEXT_QUERY_METHOD_EQUALS_IGNORE_CASE"
+                    }
+                }
+            }
+        };
+
+        var result = await PostAsync<ZitadelProjectSearchResponse>(
+            url, searchRequest, organizationId, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return result.Error;
+        }
+
+        var project = result.Value.Result?.FirstOrDefault();
+        return project is null
+            ? Error.NotFound("Zitadel.ProjectNotFound", $"No project with name '{projectName}' found in organization '{organizationId}'.")
+            : Result.Success(project);
+    }
+
+    /// <summary>
     /// Creates an OIDC application within a project.
     /// </summary>
-    public async Task<Result<ZitadelOidcApp>> CreateOidcApplicationAsync(
+    public virtual async Task<Result<ZitadelOidcApp>> CreateOidcApplicationAsync(
         string projectId,
         ZitadelCreateOidcAppRequest request,
         string organizationId,
@@ -350,6 +402,95 @@ internal sealed class ZitadelHttpClient : IDisposable
         var url = $"management/v1/projects/{projectId}/apps/oidc";
 
         return await PostAsync<ZitadelOidcApp>(url, request, organizationId, cancellationToken);
+    }
+
+    /// <summary>
+    /// Looks up an OIDC application within a project by name (case-insensitive equals).
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Used by <c>ZitadelOrganizationIdentityProvisioner</c> to surface a clear error when
+    /// <see cref="CreateOidcApplicationAsync"/> reports Conflict.
+    /// </para>
+    /// <para>
+    /// Note: the response from this endpoint <b>does not include the client_secret</b>.
+    /// Zitadel only returns the client_secret once, at creation time. Callers must not
+    /// silently reuse a found application as if creation had succeeded.
+    /// </para>
+    /// </remarks>
+    public virtual async Task<Result<ZitadelApp>> GetOidcApplicationByNameAsync(
+        string projectId,
+        string appName,
+        string organizationId,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(projectId);
+        ArgumentNullException.ThrowIfNull(appName);
+        ArgumentNullException.ThrowIfNull(organizationId);
+        var url = $"management/v1/projects/{projectId}/apps/_search";
+
+        var searchRequest = new ZitadelAppSearchRequest
+        {
+            Query = new ZitadelSearchQuery { Limit = 1 },
+            Queries = new List<ZitadelAppQuery>
+            {
+                new()
+                {
+                    NameQuery = new ZitadelAppNameQuery
+                    {
+                        Name = appName,
+                        Method = "TEXT_QUERY_METHOD_EQUALS_IGNORE_CASE"
+                    }
+                }
+            }
+        };
+
+        var result = await PostAsync<ZitadelAppSearchResponse>(
+            url, searchRequest, organizationId, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return result.Error;
+        }
+
+        var app = result.Value.Result?.FirstOrDefault();
+        return app is null
+            ? Error.NotFound("Zitadel.AppNotFound", $"No application with name '{appName}' found in project '{projectId}'.")
+            : Result.Success(app);
+    }
+
+    /// <summary>
+    /// Searches organizations by name (case-insensitive equals).
+    /// </summary>
+    /// <remarks>
+    /// Used by <c>ZitadelOrganizationService.GetOrganizationByNameAsync</c>
+    /// to recover from Conflict on <see cref="CreateOrganizationAsync"/>.
+    /// </remarks>
+    public virtual async Task<Result<ZitadelOrganizationSearchResponse>> SearchOrganizationsByNameAsync(
+        string name,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(name);
+        const string url = "v2/organizations/_search";
+
+        var searchRequest = new ZitadelOrganizationSearchRequest
+        {
+            Query = new ZitadelSearchQuery { Limit = 1 },
+            Queries = new List<ZitadelOrganizationQuery>
+            {
+                new()
+                {
+                    NameQuery = new ZitadelOrgNameQuery
+                    {
+                        Name = name,
+                        Method = "TEXT_QUERY_METHOD_EQUALS_IGNORE_CASE"
+                    }
+                }
+            }
+        };
+
+        return await PostAsync<ZitadelOrganizationSearchResponse>(
+            url, searchRequest, null, cancellationToken);
     }
 
     /// <summary>
