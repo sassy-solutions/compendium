@@ -104,6 +104,46 @@ public sealed class ProcessManagerE2ETests
     }
 
     [Fact]
+    public async Task Repository_TypedGetByIdAsync_ReturnsSameInstanceWithTypedState()
+    {
+        var (_, repository, _) = BuildOrchestrator();
+        var pm = OrderProcessManager.Create("order-typed", 99.99m);
+        await repository.SaveAsync(pm);
+
+        var typed = await repository.GetByIdAsync<OrderProcessState>(pm.Id);
+
+        typed.IsSuccess.Should().BeTrue();
+        typed.Value.Id.Should().Be(pm.Id);
+        typed.Value.State.OrderId.Should().Be("order-typed");
+        typed.Value.State.Amount.Should().Be(99.99m);
+    }
+
+    [Fact]
+    public async Task Repository_TypedGetByIdAsync_StateTypeMismatch_ReturnsConflict()
+    {
+        var (_, repository, _) = BuildOrchestrator();
+        var pm = OrderProcessManager.Create("order-mismatch", 1.0m);
+        await repository.SaveAsync(pm);
+
+        var wrongType = await repository.GetByIdAsync<UnrelatedState>(pm.Id);
+
+        wrongType.IsFailure.Should().BeTrue();
+        wrongType.Error.Type.Should().Be(ErrorType.Conflict);
+        wrongType.Error.Code.Should().Be("ProcessManager.StateTypeMismatch");
+    }
+
+    [Fact]
+    public async Task Repository_TypedGetByIdAsync_NotFound_ReturnsNotFound()
+    {
+        var (_, repository, _) = BuildOrchestrator();
+
+        var loaded = await repository.GetByIdAsync<OrderProcessState>(Guid.NewGuid());
+
+        loaded.IsFailure.Should().BeTrue();
+        loaded.Error.Type.Should().Be(ErrorType.NotFound);
+    }
+
+    [Fact]
     public async Task Orchestrator_MultipleStepsInSequence_TimestampsAreNonDecreasing()
     {
         // Note: assertion uses BeOnOrBefore rather than BeBefore because system-clock
@@ -141,6 +181,11 @@ public sealed class ProcessManagerE2ETests
         public string OrderId { get; set; } = string.Empty;
 
         public decimal Amount { get; set; }
+    }
+
+    private sealed class UnrelatedState
+    {
+        public string Anything { get; set; } = string.Empty;
     }
 
     private sealed class OrderProcessManager : ProcessManager<OrderProcessState>
