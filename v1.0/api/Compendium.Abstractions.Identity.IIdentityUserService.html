@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IIdentityUserService | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IIdentityUserService | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Provides operations for managing identity users. This interface is provider-agnostic and can be implemented by various identity providers such as Zitadel, Auth0, Keycloak, or Azure AD B2C.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Identity_IIdentityUserService.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Identity.IIdentityUserService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Abstractions.Identity.IIdentityUserService">
+
+
+
+  <h1 id="Compendium_Abstractions_Identity_IIdentityUserService" data-uid="Compendium.Abstractions.Identity.IIdentityUserService" class="text-break">
+Interface IIdentityUserService  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Identity.html">Identity</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.Identity.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides operations for managing identity users.
+This interface is provider-agnostic and can be implemented by various identity providers
+such as Zitadel, Auth0, Keycloak, or Azure AD B2C.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IIdentityUserService</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_CreateUserAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.CreateUserAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_CreateUserAsync_Compendium_Abstractions_Identity_Models_Requests_CreateUserRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.CreateUserAsync(Compendium.Abstractions.Identity.Models.Requests.CreateUserRequest,System.Threading.CancellationToken)">
+  CreateUserAsync(CreateUserRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new user in the identity system.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;IdentityUser&gt;&gt; CreateUserAsync(CreateUserRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.Models.Requests.CreateUserRequest.html">CreateUserRequest</a></dt>
+    <dd><p>The create user request containing user details.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.Models.IdentityUser.html">IdentityUser</a>&gt;&gt;</dt>
+    <dd><p>A result containing the created user or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_DeactivateUserAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.DeactivateUserAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_DeactivateUserAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.DeactivateUserAsync(System.String,System.Threading.CancellationToken)">
+  DeactivateUserAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deactivates a user account, preventing them from logging in.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; DeactivateUserAsync(string userId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the user to deactivate.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A result indicating success or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_DeleteUserAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.DeleteUserAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_DeleteUserAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.DeleteUserAsync(System.String,System.Threading.CancellationToken)">
+  DeleteUserAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes a user from the identity system.
+This is typically a destructive operation and should be used with caution.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; DeleteUserAsync(string userId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the user to delete.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A result indicating success or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_GetUserByEmailAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.GetUserByEmailAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_GetUserByEmailAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.GetUserByEmailAsync(System.String,System.Threading.CancellationToken)">
+  GetUserByEmailAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a user by their email address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;IdentityUser&gt;&gt; GetUserByEmailAsync(string email, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>email</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The email address of the user.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.Models.IdentityUser.html">IdentityUser</a>&gt;&gt;</dt>
+    <dd><p>A result containing the user or an error if not found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_GetUserByIdAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.GetUserByIdAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_GetUserByIdAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.GetUserByIdAsync(System.String,System.Threading.CancellationToken)">
+  GetUserByIdAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a user by their unique identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;IdentityUser&gt;&gt; GetUserByIdAsync(string userId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the user.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.Models.IdentityUser.html">IdentityUser</a>&gt;&gt;</dt>
+    <dd><p>A result containing the user or an error if not found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_InitiatePasswordResetAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.InitiatePasswordResetAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_InitiatePasswordResetAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.InitiatePasswordResetAsync(System.String,System.Threading.CancellationToken)">
+  InitiatePasswordResetAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initiates a password reset for a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; InitiatePasswordResetAsync(string userId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the user.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A result indicating success or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_ListUsersAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.ListUsersAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_ListUsersAsync_Compendium_Abstractions_Identity_Models_Requests_ListUsersRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.ListUsersAsync(Compendium.Abstractions.Identity.Models.Requests.ListUsersRequest,System.Threading.CancellationToken)">
+  ListUsersAsync(ListUsersRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lists users with pagination and optional filtering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;PagedResult&lt;IdentityUser&gt;&gt;&gt; ListUsersAsync(ListUsersRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.Models.Requests.ListUsersRequest.html">ListUsersRequest</a></dt>
+    <dd><p>The list request containing pagination and filter parameters.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.Models.PagedResult-1.html">PagedResult</a>&lt;<a class="xref" href="Compendium.Abstractions.Identity.Models.IdentityUser.html">IdentityUser</a>&gt;&gt;&gt;</dt>
+    <dd><p>A result containing a paginated list of users or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_ReactivateUserAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.ReactivateUserAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_ReactivateUserAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.ReactivateUserAsync(System.String,System.Threading.CancellationToken)">
+  ReactivateUserAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reactivates a previously deactivated user account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; ReactivateUserAsync(string userId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the user to reactivate.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A result indicating success or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Identity_IIdentityUserService_UpdateUserAsync_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.UpdateUserAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Identity_IIdentityUserService_UpdateUserAsync_System_String_Compendium_Abstractions_Identity_Models_Requests_UpdateUserRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Identity.IIdentityUserService.UpdateUserAsync(System.String,Compendium.Abstractions.Identity.Models.Requests.UpdateUserRequest,System.Threading.CancellationToken)">
+  UpdateUserAsync(string, UpdateUserRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates an existing user's information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&gt; UpdateUserAsync(string userId, UpdateUserRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the user to update.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Identity.Models.Requests.UpdateUserRequest.html">UpdateUserRequest</a></dt>
+    <dd><p>The update request containing the fields to update.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result.html">Result</a>&gt;</dt>
+    <dd><p>A result indicating success or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Identity/IIdentityUserService.cs/#L18" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

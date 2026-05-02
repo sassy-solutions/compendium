@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AggregateRoot&lt;TId&gt; | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AggregateRoot&lt;TId&gt; | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Base class for aggregate roots in the domain. Provides domain event management and optimistic concurrency control.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Core_Domain_Primitives_AggregateRoot_1.md&amp;value=---%0Auid%3A%20Compendium.Core.Domain.Primitives.AggregateRoot%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1">
+
+
+
+  <h1 id="Compendium_Core_Domain_Primitives_AggregateRoot_1" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1" class="text-break">
+Class AggregateRoot&lt;TId&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Core.html">Core</a>.<a class="xref" href="Compendium.Core.Domain.html">Domain</a>.<a class="xref" href="Compendium.Core.Domain.Primitives.html">Primitives</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Core.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class for aggregate roots in the domain.
+Provides domain event management and optimistic concurrency control.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class AggregateRoot&lt;TId&gt; : Entity&lt;TId&gt;, IEquatable&lt;Entity&lt;TId&gt;&gt;, IDisposable where TId : notnull</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TId</code></dt>
+    <dd><p>The type of the aggregate root identifier.</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html">Entity</a>&lt;TId&gt;</div>
+      <div><span class="xref">AggregateRoot&lt;TId&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html">Entity</a>&lt;TId&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_Id">Entity&lt;TId&gt;.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_CreatedAt">Entity&lt;TId&gt;.CreatedAt</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_ModifiedAt">Entity&lt;TId&gt;.ModifiedAt</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_IsTransient">Entity&lt;TId&gt;.IsTransient</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_BrokenRules">Entity&lt;TId&gt;.BrokenRules</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_HasBrokenRules">Entity&lt;TId&gt;.HasBrokenRules</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_CheckRule_Compendium_Core_Domain_Rules_IBusinessRule_">Entity&lt;TId&gt;.CheckRule(IBusinessRule)</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_Touch">Entity&lt;TId&gt;.Touch()</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_ClearBrokenRules">Entity&lt;TId&gt;.ClearBrokenRules()</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_Equals_Compendium_Core_Domain_Primitives_Entity__0__">Entity&lt;TId&gt;.Equals(Entity&lt;TId&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_Equals_System_Object_">Entity&lt;TId&gt;.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Compendium.Core.Domain.Primitives.Entity-1.html#Compendium_Core_Domain_Primitives_Entity_1_GetHashCode">Entity&lt;TId&gt;.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1__ctor_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.#ctor*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1__ctor__0_Compendium_Core_Domain_Primitives_ILockingStrategy_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.#ctor(`0,Compendium.Core.Domain.Primitives.ILockingStrategy)">
+  AggregateRoot(TId, ILockingStrategy?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Compendium.Core.Domain.Primitives.AggregateRoot-1.html">AggregateRoot&lt;TId&gt;</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected AggregateRoot(TId id, ILockingStrategy? lockingStrategy = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <span class="xref">TId</span></dt>
+    <dd><p>The aggregate root identifier.</p>
+</dd>
+    <dt><code>lockingStrategy</code> <a class="xref" href="Compendium.Core.Domain.Primitives.ILockingStrategy.html">ILockingStrategy</a></dt>
+    <dd><p>The locking strategy to use. If null, uses ReaderWriterLockStrategy.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_DomainEvents_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.DomainEvents*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_DomainEvents" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.DomainEvents">
+  DomainEvents
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the collection of uncommitted domain events.
+Uses frozen collections for efficient reads and caching.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;IDomainEvent&gt; DomainEvents { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Compendium.Core.Domain.Events.IDomainEvent.html">IDomainEvent</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_HasDomainEvents_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.HasDomainEvents*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_HasDomainEvents" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.HasDomainEvents">
+  HasDomainEvents
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a value indicating whether there are uncommitted domain events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasDomainEvents { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_Version_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.Version*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_Version" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.Version">
+  Version
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the version for optimistic concurrency control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Version { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_AddDomainEvent_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.AddDomainEvent*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_AddDomainEvent_Compendium_Core_Domain_Events_IDomainEvent_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.AddDomainEvent(Compendium.Core.Domain.Events.IDomainEvent)">
+  AddDomainEvent(IDomainEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a domain event to the aggregate.
+Prevents duplicate events using content-based deduplication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void AddDomainEvent(IDomainEvent domainEvent)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainEvent</code> <a class="xref" href="Compendium.Core.Domain.Events.IDomainEvent.html">IDomainEvent</a></dt>
+    <dd><p>The domain event to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_ClearDomainEvents_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.ClearDomainEvents*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_ClearDomainEvents" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.ClearDomainEvents">
+  ClearDomainEvents()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears all domain events from the aggregate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearDomainEvents()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_Dispose_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.Dispose*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_Dispose" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L207"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes the aggregate root and its resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_Dispose_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.Dispose*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_Dispose_System_Boolean_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes the aggregate root and its resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if disposing managed resources.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_GetUncommittedEvents_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.GetUncommittedEvents*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_GetUncommittedEvents" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.GetUncommittedEvents">
+  GetUncommittedEvents()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets all uncommitted domain events and clears the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;IDomainEvent&gt; GetUncommittedEvents()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Compendium.Core.Domain.Events.IDomainEvent.html">IDomainEvent</a>&gt;</dt>
+    <dd><p>The collection of uncommitted domain events.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_IncrementVersion_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.IncrementVersion*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_IncrementVersion" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.IncrementVersion">
+  IncrementVersion()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Increments the version for optimistic concurrency control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void IncrementVersion()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_MarkEventsAsCommitted_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.MarkEventsAsCommitted*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_MarkEventsAsCommitted" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.MarkEventsAsCommitted">
+  MarkEventsAsCommitted()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Marks all uncommitted domain events as committed by clearing them.
+This method should be called after successfully persisting events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkEventsAsCommitted()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_RemoveDomainEvent_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.RemoveDomainEvent*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_RemoveDomainEvent_Compendium_Core_Domain_Events_IDomainEvent_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.RemoveDomainEvent(Compendium.Core.Domain.Events.IDomainEvent)">
+  RemoveDomainEvent(IDomainEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes a domain event from the aggregate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RemoveDomainEvent(IDomainEvent domainEvent)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainEvent</code> <a class="xref" href="Compendium.Core.Domain.Events.IDomainEvent.html">IDomainEvent</a></dt>
+    <dd><p>The domain event to remove.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Core_Domain_Primitives_AggregateRoot_1_SetVersion_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.SetVersion*"></a>
+
+  <h3 id="Compendium_Core_Domain_Primitives_AggregateRoot_1_SetVersion_System_Int64_" data-uid="Compendium.Core.Domain.Primitives.AggregateRoot`1.SetVersion(System.Int64)">
+  SetVersion(long)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the version explicitly (used during rehydration from event store).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetVersion(long version)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>version</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The version to set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs/#L18" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

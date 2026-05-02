@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace Compendium.Multitenancy | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace Compendium.Multitenancy | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Multitenancy">
+
+  <h1 id="Compendium_Multitenancy" data-uid="Compendium.Multitenancy" class="text-break">Namespace Compendium.Multitenancy</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.CompositeTenantResolver.html">CompositeTenantResolver</a></dt>
+      <dd><p>A composite tenant resolver that tries multiple resolution strategies in sequence.
+Returns the result from the first resolver that successfully identifies a tenant.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.DatabaseIsolationOptions.html">DatabaseIsolationOptions</a></dt>
+      <dd><p>Configuration options for database-level tenant isolation strategy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.DatabaseIsolationStrategy.html">DatabaseIsolationStrategy</a></dt>
+      <dd><p>Implements tenant isolation by providing each tenant with a separate database.
+This strategy offers the highest level of isolation but requires more database resources.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.HeaderTenantResolver.html">HeaderTenantResolver</a></dt>
+      <dd><p>A tenant resolver that identifies tenants based on HTTP headers.
+Looks for tenant identifier in a specified header and resolves the tenant from storage.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.HeaderTenantResolverOptions.html">HeaderTenantResolverOptions</a></dt>
+      <dd><p>Configuration options for header-based tenant resolution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.HostTenantResolver.html">HostTenantResolver</a></dt>
+      <dd><p>A tenant resolver that identifies tenants based on the request host/domain.
+Can resolve tenants from subdomains or full domain names.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.HostTenantResolverOptions.html">HostTenantResolverOptions</a></dt>
+      <dd><p>Configuration options for host-based tenant resolution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.JwtClaimTenantResolver.html">JwtClaimTenantResolver</a></dt>
+      <dd><p>A tenant resolver that identifies tenants based on JWT claims.
+Extracts tenant identifier from a specified claim in the authenticated user's token.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.JwtClaimTenantResolverOptions.html">JwtClaimTenantResolverOptions</a></dt>
+      <dd><p>Configuration options for JWT claim-based tenant resolution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.SchemaIsolationOptions.html">SchemaIsolationOptions</a></dt>
+      <dd><p>Configuration options for schema-level tenant isolation strategy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.SchemaIsolationStrategy.html">SchemaIsolationStrategy</a></dt>
+      <dd><p>Implements tenant isolation by providing each tenant with a separate schema within a shared database.
+This strategy balances isolation with resource efficiency.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantConsistencyOptions.html">TenantConsistencyOptions</a></dt>
+      <dd><p>Configuration options for tenant consistency validation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantConsistencyValidator.html">TenantConsistencyValidator</a></dt>
+      <dd><p>Default implementation of <a class="xref" href="Compendium.Multitenancy.ITenantConsistencyValidator.html">ITenantConsistencyValidator</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantContext.html">TenantContext</a></dt>
+      <dd><p>Default implementation of tenant context using AsyncLocal for thread-safe tenant isolation.
+Maintains tenant information per async context, ensuring proper isolation in concurrent scenarios.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantContextAccessor.html">TenantContextAccessor</a></dt>
+      <dd><p>Default implementation of the tenant context accessor.
+Uses AsyncLocal to maintain tenant context per async context.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantErrors.html">TenantErrors</a></dt>
+      <dd><p>Standard tenant-related errors.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantInfo.html">TenantInfo</a></dt>
+      <dd><p>Represents information about a tenant in a multi-tenant application.
+Contains all necessary data to identify and configure tenant-specific behavior.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantResolutionContext.html">TenantResolutionContext</a></dt>
+      <dd><p>Contains context information used for tenant resolution.
+Aggregates various request properties that tenant resolvers can use to identify tenants.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantScope.html">TenantScope</a></dt>
+      <dd><p>Provides a disposable scope for temporarily setting a tenant context.
+When disposed, restores the previous tenant context, enabling nested tenant contexts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.TenantSourceIdentifiers.html">TenantSourceIdentifiers</a></dt>
+      <dd><p>Contains tenant identifiers from various sources for consistency validation.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.ITenantConsistencyValidator.html">ITenantConsistencyValidator</a></dt>
+      <dd><p>Validates that tenant identifiers from multiple sources are consistent.
+Ensures header, subdomain, and JWT claim all reference the same tenant.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.ITenantContext.html">ITenantContext</a></dt>
+      <dd><p>Provides access to the current tenant context information.
+Enables applications to operate in a multi-tenant environment by tracking the active tenant.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.ITenantContextAccessor.html">ITenantContextAccessor</a></dt>
+      <dd><p>Provides access to the current tenant context in a thread-safe manner.
+This is the primary interface for reading tenant information from any layer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.ITenantContextSetter.html">ITenantContextSetter</a></dt>
+      <dd><p>Provides access to the tenant context and allows modification.
+This interface is used by middleware and tenant resolution components.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.ITenantIsolationStrategy.html">ITenantIsolationStrategy</a></dt>
+      <dd><p>Defines a strategy for isolating tenant data in a multi-tenant application.
+Implementations determine how tenants are separated at the database level.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.ITenantResolver.html">ITenantResolver</a></dt>
+      <dd><p>Defines a strategy for resolving tenant information from request context.
+Implementations can resolve tenants from various sources like headers, domains, or paths.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.ITenantStore.html">ITenantStore</a></dt>
+      <dd><p>Defines the contract for storing and retrieving tenant information.
+Provides persistent storage capabilities for multi-tenant applications.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Multitenancy.IsolationLevel.html">IsolationLevel</a></dt>
+      <dd><p>Defines the levels of data isolation supported in multi-tenant applications.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

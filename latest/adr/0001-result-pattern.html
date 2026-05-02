@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>0001. Result pattern over exceptions for business errors | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="0001. Result pattern over exceptions for business errors | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/blob/main/docs/adr/0001-result-pattern.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="0001-result-pattern-over-exceptions-for-business-errors">0001. Result pattern over exceptions for business errors</h1>
+
+<ul>
+<li>Status: Accepted</li>
+<li>Date: 2026-04-25</li>
+<li>Deciders: @sassy-solutions/maintainers</li>
+</ul>
+<h2 id="context">Context</h2>
+<p>The .NET ecosystem traditionally signals failure with exceptions. For a framework powering long-lived multi-tenant SaaS, throwing on every business rule violation has three concrete drawbacks we care about:</p>
+<ol>
+<li><strong>CPU cost on the hot path.</strong> Exception construction captures a stack trace; under load (CQRS handlers running tens of thousands of validations per second) this is measurable and avoidable.</li>
+<li><strong>Flow readability.</strong> Business errors expressed as <code>throw</code> are invisible to the type system. A reader of a handler cannot tell, without reading every called method, which failures are recoverable and which are bugs.</li>
+<li><strong>Typing of business errors.</strong> We need rich, structured errors (code, message, kind) that can be serialised at the API boundary, mapped to ProblemDetails, and asserted on in tests. Exceptions push us toward stringly-typed <code>Message</code> parsing or proliferating exception subclasses.</li>
+</ol>
+<p>We also need a clear separation between <em>expected business outcomes</em> (validation failed, not found, conflict) and <em>unexpected situations</em> (database is down, OOM, programmer mistake) so observability and retry policies can treat them differently.</p>
+<h2 id="decision">Decision</h2>
+<p>Every fallible business operation returns <code>Result&lt;T&gt;</code> (or <code>Result</code> for void). Errors are represented as <code>Error</code> records with a stable <code>Code</code>, a human-readable <code>Message</code>, and a kind discriminator (validation, not-found, conflict, unauthorized, …).</p>
+<ul>
+<li><code>Compendium.Core.Results.Result&lt;T&gt;</code> and <code>Error</code> live in the zero-dependency Core (see <a href="0003-zero-dep-core.html">ADR 0003</a>).</li>
+<li>Command and query handlers, domain factories, and adapter operations all return <code>Result&lt;T&gt;</code>.</li>
+<li>Exceptions are reserved for: programmer bugs (assertion failures, never-meant-to-happen branches), infrastructure that genuinely cannot be a <code>Result</code> (cancellation, OOM), and a thin translation layer at the HTTP edge.</li>
+<li><code>Result.Failure(...)</code> and <code>Result.Success(...)</code> are the only sanctioned construction paths. No <code>null</code> for &quot;absent value&quot; — use <code>Result.Failure(Error.NotFound(...))</code>.</li>
+</ul>
+<h2 id="consequences">Consequences</h2>
+<h3 id="positive">Positive</h3>
+<ul>
+<li>Errors are part of the type signature → handler contracts are self-describing.</li>
+<li>Cheaper than <code>throw</code> on validation-heavy hot paths.</li>
+<li>Trivial to map at the boundary: one <code>Result.Match</code> → ProblemDetails or HTTP status.</li>
+<li>Tests assert on <code>Error.Code</code>, not on string-matched exception messages.</li>
+<li>Forces authors to think about each failure mode at the call site.</li>
+</ul>
+<h3 id="negative--trade-offs">Negative / Trade-offs</h3>
+<ul>
+<li>More verbose than throwing — every call site decides to bubble up, recover, or transform.</li>
+<li>Learning curve for .NET developers used to exceptions; PR review must enforce the pattern.</li>
+<li>Mixing <code>Result</code> and <code>try/catch</code> in the same method requires discipline; we accept the boilerplate.</li>
+<li>No language-level <code>?</code> operator like Rust — composition relies on extension methods (<code>Map</code>, <code>Bind</code>, <code>Match</code>).</li>
+</ul>
+<h2 id="alternatives-considered">Alternatives considered</h2>
+<ul>
+<li><strong>Exceptions everywhere.</strong> Rejected: hides failure modes from the type system, expensive on hot paths, conflates bugs with business outcomes.</li>
+<li><strong>LanguageExt <code>Either&lt;L, R&gt;</code>.</strong> Rejected: large dependency surface, opinionated FP idioms, and pulls a non-trivial transitive graph into Core — incompatible with <a href="0003-zero-dep-core.html">ADR 0003</a>.</li>
+<li><strong>OneOf discriminated unions.</strong> Rejected: flexible but unopinionated; we want a single canonical <code>Error</code> shape across the framework, not per-operation union types.</li>
+<li><strong>Nullable reference types as the &quot;failure&quot; signal.</strong> Rejected: can express absence but not <em>why</em> — and silent <code>null</code>s are exactly what we want to eliminate.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/docs/adr/0001-result-pattern.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

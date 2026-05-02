@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Hexagonal Architecture | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Hexagonal Architecture | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/blob/main/docs/concepts/hexagonal-architecture.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="hexagonal-architecture">Hexagonal Architecture</h1>
+
+<p>Compendium is built around a strict hexagonal (also known as <em>ports and adapters</em>) architecture. The domain code does not know that PostgreSQL, Stripe, or ASP.NET Core exist — it only knows about <em>interfaces it needs</em>. Concrete integrations plug in from the outside.</p>
+<h2 id="why-hexagonal">Why hexagonal?</h2>
+<p>The first reason is <strong>testability</strong>: a Core that depends on nothing external is trivially unit-testable. No database fixtures, no HTTP mocks, no dependency injection containers needed for a domain test.</p>
+<p>The second reason is <strong>swap-ability</strong>: when you discover that your billing provider needs to change, or that you need a Redis-backed projection store instead of in-memory, the domain stays untouched. You write a new adapter and re-wire DI.</p>
+<p>The third reason is <strong>clarity of dependencies</strong>: when an arrow points the wrong way (e.g. domain code references <code>Microsoft.Data.SqlClient</code>), the linter / project reference setup tells you immediately.</p>
+<p>For why we picked strict hexagonal over related styles (Onion, Clean), see <a href="../adr/0002-hexagonal-architecture.html">ADR 0002 — Hexagonal architecture</a>. For why <code>Compendium.Core</code> has zero NuGet dependencies, see <a href="../adr/0003-zero-dep-core.html">ADR 0003 — Zero-dependency Core</a>.</p>
+<h2 id="the-layers">The layers</h2>
+<pre><code>                ┌──────────────────────────────────────────────┐
+                │             Adapters (outermost)             │
+                │  Compendium.Adapters.PostgreSQL, .Stripe,    │
+                │  .Redis, .Zitadel, .AspNetCore, .Listmonk... │
+                └────────────────────┬─────────────────────────┘
+                                     │ implement
+                                     ▼
+                ┌──────────────────────────────────────────────┐
+                │            Abstractions (ports)              │
+                │  IBillingService, IIdentityProvider,         │
+                │  IEventStore, IEmailSender, IAIProvider...   │
+                └────────────────────┬─────────────────────────┘
+                                     │ used by
+                                     ▼
+                ┌──────────────────────────────────────────────┐
+                │       Application (orchestration)            │
+                │  Command/Query handlers, dispatchers,        │
+                │  policies, pipeline behaviors                │
+                └────────────────────┬─────────────────────────┘
+                                     │ operates on
+                                     ▼
+                ┌──────────────────────────────────────────────┐
+                │           Core (innermost, zero-dep)         │
+                │  AggregateRoot, ValueObject, Result,         │
+                │  Error, IDomainEvent — pure DDD primitives   │
+                └──────────────────────────────────────────────┘
+</code></pre>
+<p>Dependencies only point <strong>inward</strong>. <code>Core</code> knows about nothing else; <code>Application</code> references <code>Core</code> and <code>Abstractions</code>; adapters reference <code>Abstractions</code> (and possibly <code>Core</code> for entity types) but never the other way around.</p>
+<h2 id="what-lives-where">What lives where</h2>
+<h3 id="compendiumcore--pure-domain-primitives"><code>Compendium.Core</code> — Pure domain primitives</h3>
+<p>Zero NuGet dependencies. Only the .NET BCL.</p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs"><code>AggregateRoot&lt;TId&gt;</code></a> — write-side base class</li>
+<li><a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Domain/Primitives/ValueObject.cs"><code>ValueObject</code></a> — equality by component</li>
+<li><a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Results/Result.cs"><code>Result&lt;T&gt;</code></a> — typed success/failure</li>
+<li><a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Domain/Events/IDomainEvent.cs"><code>IDomainEvent</code></a> — event contract</li>
+</ul>
+<h3 id="compendiumabstractions--ports"><code>Compendium.Abstractions.*</code> — Ports</h3>
+<p>Interfaces that the domain needs to do its job, but does not implement itself.</p>
+<ul>
+<li><code>Compendium.Abstractions</code> — generic infrastructure ports (event store, projection store, etc.)</li>
+<li><code>Compendium.Abstractions.Identity</code> — identity-provider contracts</li>
+<li><code>Compendium.Abstractions.Billing</code> — billing-provider contracts</li>
+<li><code>Compendium.Abstractions.Email</code> — email-provider contracts</li>
+<li><code>Compendium.Abstractions.AI</code> — AI-provider contracts</li>
+</ul>
+<p>Adapters implement these. Application code consumes them. The domain typically does not (the domain talks to <em>the application</em>, not to ports directly — that boundary keeps the Core pure).</p>
+<h3 id="compendiumapplication--orchestration"><code>Compendium.Application</code> — Orchestration</h3>
+<p>CQRS dispatchers, command/query handlers, pipeline behaviors. Knows about Core and Abstractions, never about a specific adapter.</p>
+<h3 id="compendiumadapters--adapters"><code>Compendium.Adapters.*</code> — Adapters</h3>
+<p>Concrete integrations. Each adapter is an opt-in NuGet package: pick <code>PostgreSQL</code> if you want the Postgres event store; pick <code>Stripe</code> if you bill through Stripe; pick <code>Zitadel</code> for OIDC. See <a href="../adapters/aspnetcore.html">Adapters</a> for the per-adapter how-tos.</p>
+<h2 id="a-worked-example">A worked example</h2>
+<p>Suppose you have a billing flow. The Application layer code looks roughly like:</p>
+<pre><code class="lang-csharp">public sealed class PlaceOrderHandler(
+    IBillingService billing,        // ← port from Abstractions.Billing
+    IEventStore eventStore)         // ← port from Abstractions
+    : ICommandHandler&lt;PlaceOrderCommand&gt;
+{
+    public async Task&lt;Result&gt; Handle(PlaceOrderCommand cmd, CancellationToken ct)
+    {
+        var customerResult = await billing.EnsureCustomerAsync(cmd.Email, ct);
+        if (customerResult.IsFailure) return customerResult.Error;
+
+        // ... business logic on aggregate ...
+        // ... persist domain events via eventStore ...
+    }
+}
+</code></pre>
+<p>Notice what the handler does <em>not</em> know: that <code>billing</code> is implemented by <code>StripeBillingService</code> (or <code>LemonSqueezyBillingService</code>), or that <code>eventStore</code> is backed by Postgres. Those are wiring decisions made in <code>Program.cs</code>. Replacing Stripe with LemonSqueezy is a one-line DI change — the handler does not move.</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="result-pattern.html">Result Pattern</a> — the return type of all those handlers</li>
+<li><a href="event-sourcing.html">Event Sourcing</a> — what <code>IEventStore</code> actually persists</li>
+<li><a href="multi-tenancy.html">Multi-tenancy</a> — how tenant scope crosses all layers</li>
+<li><a href="../adr/0002-hexagonal-architecture.html">ADR 0002</a> and <a href="../adr/0003-zero-dep-core.html">ADR 0003</a> — the original decisions</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/docs/concepts/hexagonal-architecture.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>0002. Hexagonal architecture (strict) | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="0002. Hexagonal architecture (strict) | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/blob/main/docs/adr/0002-hexagonal-architecture.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="0002-hexagonal-architecture-strict">0002. Hexagonal architecture (strict)</h1>
+
+<ul>
+<li>Status: Accepted</li>
+<li>Date: 2026-04-25</li>
+<li>Deciders: @sassy-solutions/maintainers</li>
+</ul>
+<h2 id="context">Context</h2>
+<p>Compendium powers an event-sourced, multi-tenant SaaS (Nexus). The codebase has to remain testable and replaceable across a long horizon: identity providers change (Zitadel today, something else tomorrow), billing providers change, persistence may evolve, and consumers integrate with a long tail of external systems.</p>
+<p>Two forces dominate:</p>
+<ol>
+<li><strong>Domain stability.</strong> The event-sourced domain — aggregates, invariants, events — should be immune to churn from any specific HTTP framework, ORM, or third-party SDK.</li>
+<li><strong>Adapter swappability.</strong> We ship multiple adapters for the same port (PostgreSQL today, others foreseeable; Listmonk, LemonSqueezy, OpenRouter, …). Consumers must be able to pick a subset, swap one out, or stub one in tests without touching domain code.</li>
+</ol>
+<p>A naive &quot;layered&quot; architecture where <code>Application</code> references EF Core, or where <code>Core</code> knows about HTTP, would couple us to those choices for the lifetime of the framework.</p>
+<h2 id="decision">Decision</h2>
+<p>Strict hexagonal (ports &amp; adapters):</p>
+<ul>
+<li><strong>Core</strong> (<code>Compendium.Core</code>) — domain primitives, aggregates, value objects, <code>Result&lt;T&gt;</code>, <code>Error</code>, domain events. Zero NuGet dependencies (see <a href="0003-zero-dep-core.html">ADR 0003</a>).</li>
+<li><strong>Abstractions</strong> (<code>Compendium.Abstractions.*</code>) — ports as interfaces only. One assembly per concern: <code>Identity</code>, <code>Billing</code>, <code>Email</code>, <code>AI</code>. No implementations, no transitive SDK dependencies.</li>
+<li><strong>Application</strong> (<code>Compendium.Application</code>) — orchestration: CQRS dispatchers, handlers, pipelines. Depends on Core + Abstractions, never on a concrete adapter.</li>
+<li><strong>Infrastructure</strong> (<code>Compendium.Infrastructure</code>) — generic infrastructure building blocks (projections, outbox, caching primitives) that aren't tied to a specific vendor.</li>
+<li><strong>Adapters</strong> (<code>Compendium.Adapters.*</code>) — concrete implementations: PostgreSQL event store, Redis cache, Zitadel OIDC, ASP.NET Core middleware, Listmonk, LemonSqueezy, OpenRouter. Each adapter implements ports from <code>Abstractions.*</code>.</li>
+<li><strong>Multitenancy</strong> (<code>Compendium.Multitenancy</code>) — cross-cutting tenant resolution and scoping (see <a href="0004-multi-tenancy-strategy.html">ADR 0004</a>).</li>
+</ul>
+<p>Direction of dependency is enforced: <strong>Adapters → Application → Abstractions → Core</strong>. Core never knows that adapters exist. The dependency rule is checked by the architecture tests in <code>tests/Architecture</code>.</p>
+<h2 id="consequences">Consequences</h2>
+<h3 id="positive">Positive</h3>
+<ul>
+<li>Unit tests for handlers and aggregates run in-memory with fakes — no database, no HTTP, no Docker.</li>
+<li>Replacing an adapter (e.g. swapping email provider) is a one-line registration change; nothing in <code>Core</code>, <code>Abstractions</code>, or <code>Application</code> moves.</li>
+<li>Clear extension story: a consumer ships its own <code>Compendium.Adapters.*</code> package and registers it.</li>
+<li>The boundary forces designers to name each port explicitly, which surfaces missing abstractions early.</li>
+</ul>
+<h3 id="negative--trade-offs">Negative / Trade-offs</h3>
+<ul>
+<li>More boilerplate than a &quot;just call EF Core directly&quot; style: DI registration, mapping between domain and persistence shapes, port definitions before any code runs.</li>
+<li>More projects in the solution → slower cold builds, more <code>csproj</code> files to maintain.</li>
+<li>Newcomers need to learn &quot;where does this go?&quot; (port vs. adapter vs. application service). Documented in <code>CONTRIBUTING.md</code>.</li>
+<li>Some integrations are awkward to fit into a port (e.g. webhooks initiated by the third party); we accept adapter-specific surface there.</li>
+</ul>
+<h2 id="alternatives-considered">Alternatives considered</h2>
+<ul>
+<li><strong>Onion architecture.</strong> Rejected — semantically close, but the canonical layering is fuzzier about whether infrastructure depends on application or vice versa. We want the boundary explicit, not &quot;concentric&quot;.</li>
+<li><strong>Clean Architecture (Uncle Bob).</strong> Rejected — adds a <code>UseCases</code> layer between application and entities that, for a framework (not an application), duplicates what handlers already do.</li>
+<li><strong>Layered &quot;N-tier&quot; (Web → Service → Data).</strong> Rejected — couples the domain to a persistence shape and bakes the HTTP framework into the dependency graph.</li>
+<li><strong>No architectural boundary; one assembly.</strong> Rejected — fine for a single app, fatal for a framework whose users will pick adapters à la carte.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/docs/adr/0002-hexagonal-architecture.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

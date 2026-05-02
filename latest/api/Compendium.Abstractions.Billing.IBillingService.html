@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IBillingService | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IBillingService | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Provides operations for billing and checkout functionality. This interface is provider-agnostic and can be implemented by various billing providers such as LemonSqueezy, Stripe, Paddle, or Chargebee.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Billing_IBillingService.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Billing.IBillingService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Abstractions.Billing.IBillingService">
+
+
+
+  <h1 id="Compendium_Abstractions_Billing_IBillingService" data-uid="Compendium.Abstractions.Billing.IBillingService" class="text-break">
+Interface IBillingService  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Billing/IBillingService.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Billing.html">Billing</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.Billing.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides operations for billing and checkout functionality.
+This interface is provider-agnostic and can be implemented by various billing providers
+such as LemonSqueezy, Stripe, Paddle, or Chargebee.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IBillingService</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Abstractions_Billing_IBillingService_CreateCheckoutSessionAsync_" data-uid="Compendium.Abstractions.Billing.IBillingService.CreateCheckoutSessionAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Billing_IBillingService_CreateCheckoutSessionAsync_Compendium_Abstractions_Billing_Models_CreateCheckoutRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Billing.IBillingService.CreateCheckoutSessionAsync(Compendium.Abstractions.Billing.Models.CreateCheckoutRequest,System.Threading.CancellationToken)">
+  CreateCheckoutSessionAsync(CreateCheckoutRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Billing/IBillingService.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a checkout session for purchasing a product or subscription.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;CheckoutSession&gt;&gt; CreateCheckoutSessionAsync(CreateCheckoutRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Billing.Models.CreateCheckoutRequest.html">CreateCheckoutRequest</a></dt>
+    <dd><p>The checkout request details.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Billing.Models.CheckoutSession.html">CheckoutSession</a>&gt;&gt;</dt>
+    <dd><p>A result containing the checkout session or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Billing_IBillingService_CreateCustomerPortalUrlAsync_" data-uid="Compendium.Abstractions.Billing.IBillingService.CreateCustomerPortalUrlAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Billing_IBillingService_CreateCustomerPortalUrlAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Billing.IBillingService.CreateCustomerPortalUrlAsync(System.String,System.String,System.Threading.CancellationToken)">
+  CreateCustomerPortalUrlAsync(string, string?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Billing/IBillingService.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a URL for the customer portal where customers can manage their subscriptions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;string&gt;&gt; CreateCustomerPortalUrlAsync(string customerId, string? returnUrl = null, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the customer.</p>
+</dd>
+    <dt><code>returnUrl</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional URL to redirect to after the customer is done.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>A result containing the portal URL or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Billing_IBillingService_GetCustomerAsync_" data-uid="Compendium.Abstractions.Billing.IBillingService.GetCustomerAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Billing_IBillingService_GetCustomerAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Billing.IBillingService.GetCustomerAsync(System.String,System.Threading.CancellationToken)">
+  GetCustomerAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Billing/IBillingService.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a customer by their unique identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;BillingCustomer&gt;&gt; GetCustomerAsync(string customerId, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique identifier of the customer.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Billing.Models.BillingCustomer.html">BillingCustomer</a>&gt;&gt;</dt>
+    <dd><p>A result containing the customer or an error if not found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Billing_IBillingService_GetCustomerByEmailAsync_" data-uid="Compendium.Abstractions.Billing.IBillingService.GetCustomerByEmailAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Billing_IBillingService_GetCustomerByEmailAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Billing.IBillingService.GetCustomerByEmailAsync(System.String,System.Threading.CancellationToken)">
+  GetCustomerByEmailAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Billing/IBillingService.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a customer by their email address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;BillingCustomer&gt;&gt; GetCustomerByEmailAsync(string email, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>email</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The email address of the customer.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Billing.Models.BillingCustomer.html">BillingCustomer</a>&gt;&gt;</dt>
+    <dd><p>A result containing the customer or an error if not found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Billing_IBillingService_UpsertCustomerAsync_" data-uid="Compendium.Abstractions.Billing.IBillingService.UpsertCustomerAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_Billing_IBillingService_UpsertCustomerAsync_Compendium_Abstractions_Billing_Models_UpsertCustomerRequest_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.Billing.IBillingService.UpsertCustomerAsync(Compendium.Abstractions.Billing.Models.UpsertCustomerRequest,System.Threading.CancellationToken)">
+  UpsertCustomerAsync(UpsertCustomerRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Billing/IBillingService.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates or updates a customer in the billing system.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;BillingCustomer&gt;&gt; UpsertCustomerAsync(UpsertCustomerRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Compendium.Abstractions.Billing.Models.UpsertCustomerRequest.html">UpsertCustomerRequest</a></dt>
+    <dd><p>The customer details.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.Billing.Models.BillingCustomer.html">BillingCustomer</a>&gt;&gt;</dt>
+    <dd><p>A result containing the created or updated customer or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Abstractions/Compendium.Abstractions.Billing/IBillingService.cs/#L17" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

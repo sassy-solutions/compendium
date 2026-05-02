@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Sagas in Compendium | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Sagas in Compendium | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="images/favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/blob/main/docs/sagas.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="sagas-in-compendium">Sagas in Compendium</h1>
+
+<blockquote>
+<p>Two patterns share the name &quot;Saga&quot;. Compendium gives each its own type so you don't
+have to guess which one you're using. This document explains the difference, helps
+you pick the right flavor, and shows how to use both.</p>
+</blockquote>
+<h2 id="tldr">TL;DR</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Process Manager (DDD)</th>
+<th>Event Choreography</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td><code>ProcessManager&lt;TState&gt;</code> / <code>IProcessManager</code></td>
+<td><code>IHandle&lt;TEvent&gt;</code> / <code>IEventChoreography</code></td>
+</tr>
+<tr>
+<td>Coordination</td>
+<td>Centralized (the saga drives)</td>
+<td>Distributed (services react)</td>
+</tr>
+<tr>
+<td>State</td>
+<td>Owned by the saga, persisted</td>
+<td>Lives in aggregates; saga state is implicit</td>
+</tr>
+<tr>
+<td>Best when</td>
+<td>A workflow inside one bounded context</td>
+<td>A chain across many bounded contexts</td>
+</tr>
+<tr>
+<td>Compensation</td>
+<td>Explicit step-by-step rollback</td>
+<td>Compensation events published by participants</td>
+</tr>
+<tr>
+<td>Visibility</td>
+<td>Single record, one place to look</td>
+<td>Spread across logs / tracing</td>
+</tr>
+<tr>
+<td>Trade-off</td>
+<td>Coupling concentrated in one component</td>
+<td>Hard to see the full workflow at a glance</td>
+</tr>
+</tbody>
+</table>
+<p>If you're not sure: start with a <strong>Process Manager</strong> when the work is in one service,
+and reach for <strong>Event Choreography</strong> when the work crosses services and you don't want
+a central component to know about every step.</p>
+<h2 id="why-two-flavors">Why two flavors?</h2>
+<p>The original <a href="https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf">Sagas paper (Garcia-Molina, 1987)</a>
+defined sagas as long-lived transactions composed of local transactions with
+compensations. Modern usage has split into two distinct patterns that both inherit
+the name:</p>
+<ol>
+<li><p><strong>Orchestration / Process Manager</strong> — Vaughn Vernon's preferred term in <em>DDD
+Distilled</em>. A central, stateful coordinator drives a workflow across multiple
+aggregates inside one bounded context.</p>
+</li>
+<li><p><strong>Choreography / Event-driven Saga</strong> — Chris Richardson's
+<a href="https://microservices.io/patterns/data/saga.html">microservices.io</a>. No central
+coordinator: each service reacts to integration events and publishes its own.</p>
+</li>
+</ol>
+<p>Frameworks like MassTransit, NServiceBus and Wolverine all use the bare word &quot;Saga&quot;
+and disagree subtly on what it means. Compendium uses two distinct types so you
+always know which pattern you're committing to.</p>
+<h2 id="process-manager-orchestration">Process Manager (orchestration)</h2>
+<p>A <code>ProcessManager&lt;TState&gt;</code> is a stateful aggregate-coordinator: it receives events,
+decides what to do next, and emits commands or further events. The saga's state is
+persisted, so it can survive restarts and resume from where it left off.</p>
+<h3 id="when-to-use-it">When to use it</h3>
+<ul>
+<li>The workflow lives inside a single bounded context.</li>
+<li>You want one place to look to see &quot;where is order #123 in the fulfillment process?&quot;</li>
+<li>Steps are sequential and the failure / compensation logic is non-trivial.</li>
+<li>You need timeouts (&quot;if no payment within 24h, cancel the reservation&quot;).</li>
+</ul>
+<h3 id="shape">Shape</h3>
+<pre><code class="lang-csharp">using Compendium.Application.Sagas.ProcessManagers;
+
+public sealed class OrderProcessState
+{
+    public string OrderId { get; set; } = string.Empty;
+    public decimal Amount { get; set; }
+}
+
+public sealed class OrderProcessManager : ProcessManager&lt;OrderProcessState&gt;
+{
+    private OrderProcessManager(Guid id, OrderProcessState state)
+        : base(id, state, new[] { &quot;ReserveInventory&quot;, &quot;ProcessPayment&quot;, &quot;ShipOrder&quot; })
+    {
+    }
+
+    public static OrderProcessManager Create(string orderId, decimal amount) =&gt;
+        new(Guid.NewGuid(), new OrderProcessState { OrderId = orderId, Amount = amount });
+}
+</code></pre>
+<h3 id="driving-it">Driving it</h3>
+<pre><code class="lang-csharp">services.AddProcessManagers();
+services.AddPostgreSqlProcessManagerRepository(o =&gt; o.ConnectionString = &quot;...&quot;);
+services.AddSingleton&lt;IProcessManagerStepExecutor, OrderStepExecutor&gt;();
+
+// Somewhere in the application:
+var pm = OrderProcessManager.Create(&quot;order-123&quot;, 250m);
+await orchestrator.StartAsync(pm);
+await orchestrator.ExecuteStepAsync(pm.Id, &quot;ReserveInventory&quot;);
+await orchestrator.ExecuteStepAsync(pm.Id, &quot;ProcessPayment&quot;);
+// On failure:
+await orchestrator.CompensateAsync(pm.Id);
+</code></pre>
+<p>The <code>IProcessManagerStepExecutor</code> is your hook to issue real commands per step
+(e.g. send a <code>ReserveInventoryCommand</code> via the CQRS dispatcher) and roll them back in
+<code>CompensateAsync</code>. Compendium does not auto-compensate on step failure — that decision
+is yours, so you can choose to retry transient errors first.</p>
+<h2 id="event-choreography">Event Choreography</h2>
+<p><code>IHandle&lt;TEvent&gt;</code> is for the choreography flavor: every participant reacts to the
+events it cares about and publishes the next event in the chain. There is no central
+saga record. The &quot;saga&quot; emerges from the chain of events.</p>
+<h3 id="when-to-use-it-1">When to use it</h3>
+<ul>
+<li>The workflow crosses multiple bounded contexts.</li>
+<li>You want services to remain loosely coupled.</li>
+<li>Eventual consistency is acceptable.</li>
+<li>You don't want one component to know about every step of the workflow.</li>
+</ul>
+<h3 id="shape-1">Shape</h3>
+<pre><code class="lang-csharp">using Compendium.Abstractions.Sagas.Choreography;
+
+public sealed class ShipmentChoreography :
+    IHandle&lt;PaymentCaptured&gt;,
+    IHandle&lt;PaymentRefunded&gt;
+{
+    public Task&lt;Result&gt; HandleAsync(PaymentCaptured @event, IChoreographyContext ctx, CancellationToken ct = default)
+        =&gt; ctx.PublishAsync(new PrepareShipmentRequested(@event.OrderId), ct);
+
+    [Compensation(typeof(PaymentCaptured))]
+    public Task&lt;Result&gt; HandleAsync(PaymentRefunded @event, IChoreographyContext ctx, CancellationToken ct = default)
+        =&gt; ctx.PublishCompensationAsync(new ShipmentCancelled(@event.OrderId), ct);
+}
+</code></pre>
+<h3 id="wiring-it">Wiring it</h3>
+<pre><code class="lang-csharp">services.AddEventChoreography(typeof(ShipmentChoreography).Assembly);
+
+// Anywhere — typically the integration-event consumer of your bus / outbox:
+await router.DispatchAsync(integrationEvent);
+</code></pre>
+<p><code>AddEventChoreography</code> scans the supplied assemblies for <code>IHandle&lt;TEvent&gt;</code>
+implementations and registers them transiently. The default in-memory publisher
+fans events back through the router so the chain runs end-to-end in tests and
+samples; in production you replace <code>IIntegrationEventPublisher</code> with your outbox
+adapter.</p>
+<p>The <code>[Compensation(typeof(...))]</code> attribute is metadata only — it tags handlers as
+compensation steps for telemetry and documentation. It does not change runtime
+behavior.</p>
+<h2 id="decision-tree">Decision tree</h2>
+<pre><code>Is the workflow inside ONE bounded context?
+├── Yes → Do you need centralized progress tracking and step-by-step compensation?
+│         ├── Yes → ProcessManager&lt;TState&gt;
+│         └── No  → Plain CommandHandler / domain events suffice — you don't need a saga.
+└── No  → Are services loosely coupled and can tolerate eventual consistency?
+          ├── Yes → EventChoreography (IHandle&lt;TEvent&gt;)
+          └── No  → Reconsider the boundary: a workflow that needs strong consistency
+                    across services is a smell. Consider merging the contexts or
+                    introducing an integration ProcessManager that owns the cross-context
+                    coordination explicitly.
+</code></pre>
+<h2 id="migrating-from-isaga-deprecated">Migrating from <code>ISaga</code> (deprecated)</h2>
+<p>The old <code>Compendium.Application.Saga.ISaga</code> and <code>SagaOrchestrator</code> types are kept for
+one minor version with <code>[Obsolete]</code> warnings and will be removed in v1.0. Mapping:</p>
+<table>
+<thead>
+<tr>
+<th>Old (<code>Compendium.Application.Saga</code>)</th>
+<th>New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ISaga</code>, <code>ISaga&lt;TData&gt;</code></td>
+<td><code>IProcessManager</code>, <code>IProcessManager&lt;TState&gt;</code></td>
+</tr>
+<tr>
+<td><code>SagaOrchestrator</code></td>
+<td><code>ProcessManagerOrchestrator</code></td>
+</tr>
+<tr>
+<td><code>ISagaRepository</code></td>
+<td><code>IProcessManagerRepository</code></td>
+</tr>
+<tr>
+<td><code>ISagaStepExecutor</code></td>
+<td><code>IProcessManagerStepExecutor</code></td>
+</tr>
+<tr>
+<td><code>ISagaFactory&lt;,&gt;</code></td>
+<td>(removed — use a static <code>Create(...)</code> method on your saga class)</td>
+</tr>
+<tr>
+<td><code>SagaStatus</code>, <code>SagaStep</code>, <code>SagaStepStatus</code></td>
+<td>Same names, now in <code>Compendium.Abstractions.Sagas.Common</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>EventChoreography</code> is genuinely new — there was no equivalent in the old API.</p>
+<h2 id="limits-and-caveats">Limits and caveats</h2>
+<ul>
+<li><strong>Timeouts</strong> — not yet built into the orchestrator. If your saga needs &quot;fire after
+24h&quot; behavior, use a separate scheduler (e.g. Quartz, Hangfire) that calls back
+into the orchestrator.</li>
+<li><strong>Visibility for choreography</strong> — there's no single &quot;saga&quot; record to query. Wire
+up distributed tracing (the <code>CorrelationId</code> on every event is propagated for you)
+and consume integration events into a dedicated read model if you need a UI.</li>
+<li><strong>PostgreSQL adapter</strong> — the schema is created on first use of
+<code>PostgresProcessManagerRepository.InitializeAsync()</code>. In production, manage
+migrations explicitly rather than relying on auto-create.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Vaughn Vernon, <em>Domain-Driven Design Distilled</em> — chapter on Process Managers.</li>
+<li>Chris Richardson, <a href="https://microservices.io/patterns/data/saga.html">Saga pattern on microservices.io</a>.</li>
+<li>Hector Garcia-Molina &amp; Kenneth Salem, <a href="https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf">Sagas (1987)</a>.</li>
+<li><a href="https://masstransit.io/documentation/patterns/saga">MassTransit Saga State Machines</a>.</li>
+<li><a href="https://docs.particular.net/nservicebus/sagas/">NServiceBus Sagas</a>.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/docs/sagas.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

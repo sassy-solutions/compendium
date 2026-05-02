@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ProcessManager&lt;TState&gt; | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ProcessManager&lt;TState&gt; | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Base class for DDD-style orchestration sagas (Process Managers). Subclass this to declare a saga&#39;s steps and state shape; the  drives execution and compensation.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Application_Sagas_ProcessManagers_ProcessManager_1.md&amp;value=---%0Auid%3A%20Compendium.Application.Sagas.ProcessManagers.ProcessManager%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1">
+
+
+
+  <h1 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1" class="text-break">
+Class ProcessManager&lt;TState&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Application.html">Application</a>.<a class="xref" href="Compendium.Application.Sagas.html">Sagas</a>.<a class="xref" href="Compendium.Application.Sagas.ProcessManagers.html">ProcessManagers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Application.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class for DDD-style orchestration sagas (Process Managers). Subclass this to
+declare a saga's steps and state shape; the <a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerOrchestrator.html">IProcessManagerOrchestrator</a>
+drives execution and compensation.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ProcessManager&lt;TState&gt; : IProcessManager&lt;TState&gt;, IProcessManager, ISagaInstance, IMutableProcessManager where TState : class, new()</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TState</code></dt>
+    <dd><p>Shape of the saga's persisted state.</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ProcessManager&lt;TState&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager-1.html">IProcessManager</a>&lt;TState&gt;</div>
+      <div><a class="xref" href="Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager.html">IProcessManager</a></div>
+      <div><a class="xref" href="Compendium.Abstractions.Sagas.Common.ISagaInstance.html">ISagaInstance</a></div>
+      <div><a class="xref" href="Compendium.Application.Sagas.ProcessManagers.IMutableProcessManager.html">IMutableProcessManager</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+  <h2 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_examples">Examples</h2>
+  <pre><code class="lang-csharp">public sealed class OrderProcessManager : ProcessManager&lt;OrderProcessState&gt;
+{
+    private OrderProcessManager(Guid id, OrderProcessState state)
+        : base(id, state, new[] { "ReserveInventory", "ProcessPayment", "ShipOrder" })
+    {
+    }
+
+    public static OrderProcessManager Create(string orderId, decimal amount) =&gt;
+        new(Guid.NewGuid(), new OrderProcessState { OrderId = orderId, Amount = amount });
+}</code></pre>
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1__ctor_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.#ctor*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1__ctor_System_Guid__0_System_Collections_Generic_IEnumerable_System_String__" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.#ctor(System.Guid,`0,System.Collections.Generic.IEnumerable{System.String})">
+  ProcessManager(Guid, TState, IEnumerable&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Compendium.Application.Sagas.ProcessManagers.ProcessManager-1.html">ProcessManager&lt;TState&gt;</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ProcessManager(Guid id, TState state, IEnumerable&lt;string&gt; stepNames)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>The unique identifier of the saga instance.</p>
+</dd>
+    <dt><code>state</code> <span class="xref">TState</span></dt>
+    <dd><p>The initial state.</p>
+</dd>
+    <dt><code>stepNames</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The ordered list of step names that comprise this saga.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CompletedAt_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CompletedAt*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CompletedAt" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CompletedAt">
+  CompletedAt
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the timestamp when the saga reached a terminal state
+(<a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Completed">Completed</a> or <a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html#Compendium_Abstractions_Sagas_Common_SagaStatus_Compensated">Compensated</a>),
+or <code>null</code> if still in progress.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime? CompletedAt { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CreatedAt_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CreatedAt*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_CreatedAt" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.CreatedAt">
+  CreatedAt
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the timestamp when the saga was created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime CreatedAt { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Id_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Id*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Id" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the unique identifier of the saga instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_State_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.State*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_State" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.State">
+  State
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current state of the process manager. Mutating this object is the
+process manager's job; the orchestrator only reads it for persistence.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TState State { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TState</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Status_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Status*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Status" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Status">
+  Status
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current status of the saga.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SagaStatus Status { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html">SagaStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Steps_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Steps*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_Steps" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.Steps">
+  Steps
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the read-only list of steps that comprise this process manager.
+Steps execute in <a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStep.html#Compendium_Abstractions_Sagas_Common_SagaStep_Order">Order</a>; compensation runs in reverse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;SagaStep&gt; Steps { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStep.html">SagaStep</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionStep_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionStep*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionStep_System_Guid_Compendium_Abstractions_Sagas_Common_SagaStepStatus_System_String_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionStep(System.Guid,Compendium.Abstractions.Sagas.Common.SagaStepStatus,System.String)">
+  TransitionStep(Guid, SagaStepStatus, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates a step's status. Called by the orchestrator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TransitionStep(Guid stepId, SagaStepStatus status, string? errorMessage = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stepId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></dt>
+    <dd><p>The step identifier.</p>
+</dd>
+    <dt><code>status</code> <a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStepStatus.html">SagaStepStatus</a></dt>
+    <dd><p>The new step status.</p>
+</dd>
+    <dt><code>errorMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional error message.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionTo_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionTo*"></a>
+
+  <h3 id="Compendium_Application_Sagas_ProcessManagers_ProcessManager_1_TransitionTo_Compendium_Abstractions_Sagas_Common_SagaStatus_" data-uid="Compendium.Application.Sagas.ProcessManagers.ProcessManager`1.TransitionTo(Compendium.Abstractions.Sagas.Common.SagaStatus)">
+  TransitionTo(SagaStatus)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the overall status. Called by the orchestrator; should not be invoked
+directly by user code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TransitionTo(SagaStatus status)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>status</code> <a class="xref" href="Compendium.Abstractions.Sagas.Common.SagaStatus.html">SagaStatus</a></dt>
+    <dd><p>The new status.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Application/Compendium.Application/Sagas/ProcessManagers/ProcessManager.cs/#L33" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

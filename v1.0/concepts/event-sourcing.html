@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Event Sourcing | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Event Sourcing | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/blob/main/docs/concepts/event-sourcing.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="event-sourcing">Event Sourcing</h1>
+
+<p>Compendium models domain state as an <strong>append-only log of events</strong> rather than a mutable row in a database. Every change is recorded as a fact that happened, never lost, never overwritten.</p>
+<h2 id="why-event-sourcing">Why event sourcing?</h2>
+<p>Most CRUD systems store the <em>current state</em> and lose the history of how that state came to be. Event sourcing flips that: state is <em>derived</em> from a sequence of events, and the events themselves are the source of truth.</p>
+<p>The trade-off is real — there is more upfront machinery (events, aggregates, projections) — but it pays back in:</p>
+<ul>
+<li><strong>Audit by construction</strong>: you get a tamper-evident timeline for free, which is gold for SaaS, billing, identity, and anywhere compliance matters.</li>
+<li><strong>Time travel</strong>: replay the log up to any point to debug, reproduce a customer issue, or back-test a new business rule.</li>
+<li><strong>Multiple read models</strong>: the same events can feed many projections (search index, dashboard, ML feature store) without polluting the write model.</li>
+<li><strong>Better domain modeling</strong>: events name what <em>happened in the business</em> (e.g. <code>OrderPlaced</code>, <code>LicenseRevoked</code>) rather than what was set in a column.</li>
+</ul>
+<p>For when <em>not</em> to use it, see <a href="../adr/0005-event-sourcing-vs-state.html">ADR 0005 — Event sourcing over state-stored</a>.</p>
+<h2 id="the-shape-of-an-event-sourced-system">The shape of an event-sourced system</h2>
+<pre><code>                ┌──────────────┐
+   Command ───▶ │  Aggregate   │ ──▶ produces ──▶ IDomainEvent[]
+                │ (write model)│
+                └──────┬───────┘
+                       │ persisted to
+                       ▼
+                ┌──────────────┐
+                │  Event Store │ (append-only)
+                └──────┬───────┘
+                       │ replayed by
+            ┌──────────┴──────────┐
+            ▼                     ▼
+     ┌─────────────┐       ┌─────────────┐
+     │ Projection A│       │ Projection B│  ← read models
+     └─────────────┘       └─────────────┘
+</code></pre>
+<p>The aggregate decides <em>whether</em> an action is allowed and emits the events describing what happened. The event store guarantees durable, ordered persistence. Projections rebuild the read shapes the rest of the application needs.</p>
+<h2 id="the-primitives-compendium-gives-you">The primitives Compendium gives you</h2>
+<h3 id="idomainevent"><code>IDomainEvent</code></h3>
+<p>A small, mandatory contract for everything written to the log. From <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Domain/Events/IDomainEvent.cs"><code>src/Core/Compendium.Core/Domain/Events/IDomainEvent.cs</code></a>:</p>
+<pre><code class="lang-csharp">public interface IDomainEvent
+{
+    Guid EventId { get; }
+    string AggregateId { get; }
+    string AggregateType { get; }
+    DateTimeOffset OccurredOn { get; }
+    long AggregateVersion { get; }
+    int EventVersion { get; }   // schema version — see &quot;Versioning&quot;
+}
+</code></pre>
+<p>Every event carries enough metadata to be replayed deterministically and to resolve concurrency conflicts via <code>AggregateVersion</code>.</p>
+<h3 id="aggregateroottid"><code>AggregateRoot&lt;TId&gt;</code></h3>
+<p>The write model base class. From <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs"><code>src/Core/Compendium.Core/Domain/Primitives/AggregateRoot.cs</code></a>:</p>
+<pre><code class="lang-csharp">public abstract class AggregateRoot&lt;TId&gt; : Entity&lt;TId&gt;, IDisposable
+    where TId : notnull
+{
+    private readonly List&lt;IDomainEvent&gt; _domainEvents = [];
+
+    public long Version { get; private set; }
+    public IReadOnlyCollection&lt;IDomainEvent&gt; DomainEvents { get; }
+
+    // Aggregates raise events through AddDomainEvent / RaiseEvent on subclasses.
+}
+</code></pre>
+<p>Aggregates raise events when business rules are satisfied and never write to a database directly. The infrastructure layer is responsible for persisting <code>DomainEvents</code> after a successful command.</p>
+<h3 id="projections">Projections</h3>
+<p>Projections are the read side. They consume events from the store and write to whatever shape your queries need (a SQL table, a Redis key, an in-memory dictionary). Compendium ships projection scaffolding under <code>Compendium.Infrastructure.Projections</code> — see <a href="https://github.com/sassy-solutions/compendium/blob/ca25347/src/Infrastructure/Compendium.Infrastructure/Projections/README.md"><code>src/Infrastructure/Compendium.Infrastructure/Projections/README.md</code></a> for details.</p>
+<p>A projection should be <strong>idempotent</strong>: replaying the same event twice must not corrupt the read model. This is what makes safe rebuilds, retries, and disaster recovery possible.</p>
+<h2 id="versioning">Versioning</h2>
+<p>Real systems evolve. The <code>EventVersion</code> field on <code>IDomainEvent</code> lets you ship breaking event-schema changes without rewriting history:</p>
+<ul>
+<li>New events are written at the current version.</li>
+<li>Old events stay on disk at their original version.</li>
+<li><code>IEventUpcaster</code> implementations transform old versions into the latest shape <em>at read time</em>.</li>
+</ul>
+<p>See <a href="https://github.com/sassy-solutions/compendium/tree/ca25347/src/Core/Compendium.Core/EventSourcing"><code>src/Core/Compendium.Core/EventSourcing/</code></a> for the upcaster contracts.</p>
+<h2 id="snapshots">Snapshots</h2>
+<p>For aggregates with very long histories, replaying every event on every load is wasteful. Compendium supports periodic snapshots — capture the materialized aggregate state at version <em>N</em>, and only replay events after <em>N</em> on subsequent loads. This is opt-in: most aggregates do not need it.</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="result-pattern.html">Result Pattern</a> — how Compendium reports success/failure without exceptions</li>
+<li><a href="hexagonal-architecture.html">Hexagonal Architecture</a> — how aggregates stay decoupled from infrastructure</li>
+<li><a href="multi-tenancy.html">Multi-tenancy</a> — how events stay scoped to the right tenant</li>
+<li><a href="../adr/0005-event-sourcing-vs-state.html">ADR 0005 — Event sourcing over state-stored</a> — the decision and trade-offs</li>
+<li><a href="https://github.com/sassy-solutions/compendium/tree/main/samples/01-QuickStart-OrderAggregate"><code>samples/01-QuickStart-OrderAggregate</code></a> — a runnable in-memory example</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/docs/concepts/event-sourcing.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

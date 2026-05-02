@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EnhancedProjectionManager | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EnhancedProjectionManager | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Enhanced projection manager with advanced rebuild capabilities, progress tracking, and performance optimization.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Infrastructure_Projections_EnhancedProjectionManager.md&amp;value=---%0Auid%3A%20Compendium.Infrastructure.Projections.EnhancedProjectionManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager">
+
+
+
+  <h1 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager" class="text-break">
+Class EnhancedProjectionManager  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Infrastructure.html">Infrastructure</a>.<a class="xref" href="Compendium.Infrastructure.Projections.html">Projections</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Infrastructure.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Enhanced projection manager with advanced rebuild capabilities, progress tracking, and performance optimization.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EnhancedProjectionManager : IProjectionManager, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">EnhancedProjectionManager</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Compendium.Infrastructure.Projections.IProjectionManager.html">IProjectionManager</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager__ctor_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.#ctor*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager__ctor_Compendium_Infrastructure_Projections_IStreamingEventStore_Compendium_Infrastructure_Projections_IProjectionStore_System_IServiceProvider_Microsoft_Extensions_Logging_ILogger_Compendium_Infrastructure_Projections_EnhancedProjectionManager__Microsoft_Extensions_Options_IOptions_Compendium_Infrastructure_Projections_ProjectionOptions__" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.#ctor(Compendium.Infrastructure.Projections.IStreamingEventStore,Compendium.Infrastructure.Projections.IProjectionStore,System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{Compendium.Infrastructure.Projections.EnhancedProjectionManager},Microsoft.Extensions.Options.IOptions{Compendium.Infrastructure.Projections.ProjectionOptions})">
+  EnhancedProjectionManager(IStreamingEventStore, IProjectionStore, IServiceProvider, ILogger&lt;EnhancedProjectionManager&gt;, IOptions&lt;ProjectionOptions&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Compendium.Infrastructure.Projections.EnhancedProjectionManager.html">EnhancedProjectionManager</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnhancedProjectionManager(IStreamingEventStore eventStore, IProjectionStore projectionStore, IServiceProvider serviceProvider, ILogger&lt;EnhancedProjectionManager&gt; logger, IOptions&lt;ProjectionOptions&gt; options)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>eventStore</code> <a class="xref" href="Compendium.Infrastructure.Projections.IStreamingEventStore.html">IStreamingEventStore</a></dt>
+    <dd><p>The streaming event store.</p>
+</dd>
+    <dt><code>projectionStore</code> <a class="xref" href="Compendium.Infrastructure.Projections.IProjectionStore.html">IProjectionStore</a></dt>
+    <dd><p>The projection store for checkpoints and snapshots.</p>
+</dd>
+    <dt><code>serviceProvider</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iserviceprovider">IServiceProvider</a></dt>
+    <dd><p>The service provider for dependency injection.</p>
+</dd>
+    <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Compendium.Infrastructure.Projections.EnhancedProjectionManager.html">EnhancedProjectionManager</a>&gt;</dt>
+    <dd><p>The logger instance.</p>
+</dd>
+    <dt><code>options</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.options.ioptions-1">IOptions</a>&lt;<a class="xref" href="Compendium.Infrastructure.Projections.ProjectionOptions.html">ProjectionOptions</a>&gt;</dt>
+    <dd><p>The projection configuration options.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_DeleteProjectionAsync_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.DeleteProjectionAsync*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_DeleteProjectionAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.DeleteProjectionAsync(System.String,System.Threading.CancellationToken)">
+  DeleteProjectionAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L254"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes a projection and all its associated data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteProjectionAsync(string projectionName, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>projectionName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the projection to delete.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_Dispose_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.Dispose*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_Dispose" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L391"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes the projection manager and releases resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_GetProjectionStateAsync_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.GetProjectionStateAsync*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_GetProjectionStateAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.GetProjectionStateAsync(System.String,System.Threading.CancellationToken)">
+  GetProjectionStateAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current state of a projection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ProjectionState&gt; GetProjectionStateAsync(string projectionName, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>projectionName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the projection.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Infrastructure.Projections.ProjectionState.html">ProjectionState</a>&gt;</dt>
+    <dd><p>The current projection state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_GetStatisticsAsync_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.GetStatisticsAsync*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_GetStatisticsAsync_System_Threading_CancellationToken_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.GetStatisticsAsync(System.Threading.CancellationToken)">
+  GetStatisticsAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L282"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets statistics about all registered projections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ProjectionManagerStatistics&gt; GetStatisticsAsync(CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Infrastructure.Projections.ProjectionManagerStatistics.html">ProjectionManagerStatistics</a>&gt;</dt>
+    <dd><p>Projection manager statistics.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_PauseProjectionAsync_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.PauseProjectionAsync*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_PauseProjectionAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.PauseProjectionAsync(System.String,System.Threading.CancellationToken)">
+  PauseProjectionAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pauses a projection, stopping it from processing new events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task PauseProjectionAsync(string projectionName, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>projectionName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the projection to pause.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_RebuildProjectionAsync_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.RebuildProjectionAsync*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_RebuildProjectionAsync__1_System_String_System_Nullable_System_DateTime__System_IProgress_Compendium_Infrastructure_Projections_RebuildProgress__System_Threading_CancellationToken_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.RebuildProjectionAsync``1(System.String,System.Nullable{System.DateTime},System.IProgress{Compendium.Infrastructure.Projections.RebuildProgress},System.Threading.CancellationToken)">
+  RebuildProjectionAsync&lt;TProjection&gt;(string?, DateTime?, IProgress&lt;RebuildProgress&gt;?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rebuilds a projection from a specific point in time or from the beginning.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RebuildProjectionAsync&lt;TProjection&gt;(string? streamId = null, DateTime? fromTimestamp = null, IProgress&lt;RebuildProgress&gt;? progress = null, CancellationToken cancellationToken = default) where TProjection : IProjection</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>streamId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional stream identifier to rebuild from specific stream.</p>
+</dd>
+    <dt><code>fromTimestamp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</dt>
+    <dd><p>Optional timestamp to start rebuild from.</p>
+</dd>
+    <dt><code>progress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iprogress-1">IProgress</a>&lt;<a class="xref" href="Compendium.Infrastructure.Projections.RebuildProgress.html">RebuildProgress</a>&gt;</dt>
+    <dd><p>Optional progress reporter for real-time feedback.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous rebuild operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TProjection</code></dt>
+    <dd><p>The type of projection to rebuild.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_RegisterProjection_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.RegisterProjection*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_RegisterProjection__1" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.RegisterProjection``1">
+  RegisterProjection&lt;TProjection&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L274"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a projection for live processing. The projection instance is resolved
+from the DI container, so <code class="typeparamref">TProjection</code> must be registered as
+a service (typically a singleton) before this call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterProjection&lt;TProjection&gt;() where TProjection : IProjection</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TProjection</code></dt>
+    <dd><p>The type of projection to register.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_ResumeProjectionAsync_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.ResumeProjectionAsync*"></a>
+
+  <h3 id="Compendium_Infrastructure_Projections_EnhancedProjectionManager_ResumeProjectionAsync_System_String_System_Threading_CancellationToken_" data-uid="Compendium.Infrastructure.Projections.EnhancedProjectionManager.ResumeProjectionAsync(System.String,System.Threading.CancellationToken)">
+  ResumeProjectionAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resumes a paused projection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResumeProjectionAsync(string projectionName, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>projectionName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the projection to resume.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A task representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/v1.0.0-preview.7/src/Infrastructure/Compendium.Infrastructure/Projections/EnhancedProjectionManager.cs/#L20" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
