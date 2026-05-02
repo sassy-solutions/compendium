@@ -9691,6 +9691,15 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync
   nameWithType: IProcessManagerRepository.GetByIdAsync
+- uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync``1(System.Guid,System.Threading.CancellationToken)
+  name: GetByIdAsync<TState>(Guid, CancellationToken)
+  href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_GetByIdAsync__1_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync``1(System.Guid,System.Threading.CancellationToken)
+  name.vb: GetByIdAsync(Of TState)(Guid, CancellationToken)
+  fullName: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync<TState>(System.Guid, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.GetByIdAsync(Of TState)(System.Guid, System.Threading.CancellationToken)
+  nameWithType: IProcessManagerRepository.GetByIdAsync<TState>(Guid, CancellationToken)
+  nameWithType.vb: IProcessManagerRepository.GetByIdAsync(Of TState)(Guid, CancellationToken)
 - uid: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
   name: SaveAsync(IProcessManager, CancellationToken)
   href: api/Compendium.Abstractions.Sagas.ProcessManagers.IProcessManagerRepository.html#Compendium_Abstractions_Sagas_ProcessManagers_IProcessManagerRepository_SaveAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_
@@ -12150,6 +12159,15 @@ references:
   isSpec: "True"
   fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync
   nameWithType: PostgresProcessManagerRepository.GetByIdAsync
+- uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync``1(System.Guid,System.Threading.CancellationToken)
+  name: GetByIdAsync<TState>(Guid, CancellationToken)
+  href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_GetByIdAsync__1_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync``1(System.Guid,System.Threading.CancellationToken)
+  name.vb: GetByIdAsync(Of TState)(Guid, CancellationToken)
+  fullName: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync<TState>(System.Guid, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.GetByIdAsync(Of TState)(System.Guid, System.Threading.CancellationToken)
+  nameWithType: PostgresProcessManagerRepository.GetByIdAsync<TState>(Guid, CancellationToken)
+  nameWithType.vb: PostgresProcessManagerRepository.GetByIdAsync(Of TState)(Guid, CancellationToken)
 - uid: Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.InitializeAsync(System.Threading.CancellationToken)
   name: InitializeAsync(CancellationToken)
   href: api/Compendium.Adapters.PostgreSQL.Sagas.PostgresProcessManagerRepository.html#Compendium_Adapters_PostgreSQL_Sagas_PostgresProcessManagerRepository_InitializeAsync_System_Threading_CancellationToken_
@@ -15169,6 +15187,15 @@ references:
   isSpec: "True"
   fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync
   nameWithType: InMemoryProcessManagerRepository.GetByIdAsync
+- uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync``1(System.Guid,System.Threading.CancellationToken)
+  name: GetByIdAsync<TState>(Guid, CancellationToken)
+  href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_GetByIdAsync__1_System_Guid_System_Threading_CancellationToken_
+  commentId: M:Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync``1(System.Guid,System.Threading.CancellationToken)
+  name.vb: GetByIdAsync(Of TState)(Guid, CancellationToken)
+  fullName: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync<TState>(System.Guid, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.GetByIdAsync(Of TState)(System.Guid, System.Threading.CancellationToken)
+  nameWithType: InMemoryProcessManagerRepository.GetByIdAsync<TState>(Guid, CancellationToken)
+  nameWithType.vb: InMemoryProcessManagerRepository.GetByIdAsync(Of TState)(Guid, CancellationToken)
 - uid: Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.SaveAsync(Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager,System.Threading.CancellationToken)
   name: SaveAsync(IProcessManager, CancellationToken)
   href: api/Compendium.Application.Sagas.ProcessManagers.InMemoryProcessManagerRepository.html#Compendium_Application_Sagas_ProcessManagers_InMemoryProcessManagerRepository_SaveAsync_Compendium_Abstractions_Sagas_ProcessManagers_IProcessManager_System_Threading_CancellationToken_
