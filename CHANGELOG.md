@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Typed state reload on `IProcessManagerRepository`.** New
+  `Task<Result<IProcessManager<TState>>> GetByIdAsync<TState>(Guid id, ct)` overload
+  rehydrates a saga's persisted state into the original typed shape so resumed steps
+  can detect already-completed external work (the foundation for idempotent saga
+  retries). Implemented for `PostgresProcessManagerRepository`
+  (deserializes the existing `state_json` column) and `InMemoryProcessManagerRepository`
+  (returns the original instance, with a `Conflict` error on type mismatch).
+  Existing untyped `GetByIdAsync(Guid id, ct)` is unchanged.
+
 ### Fixed
 
 - `Compendium.Adapters.Zitadel.ZitadelOrganizationIdentityProvisioner` now treats

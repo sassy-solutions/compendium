@@ -24,6 +24,22 @@ public interface IProcessManagerRepository
     Task<Result<IProcessManager>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Retrieves a process manager by id, deserializing its persisted <typeparamref name="TState"/>
+    /// snapshot. Required for resuming a saga from any step with full typed state access — e.g.
+    /// to detect already-completed external work and stay idempotent.
+    /// </summary>
+    /// <typeparam name="TState">The state shape persisted by the saga. Must match the type used at <see cref="SaveAsync"/> time.</typeparam>
+    /// <param name="id">The unique identifier of the process manager.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>
+    /// A successful result with the process manager and rehydrated state, a not-found error,
+    /// or a deserialization error if the persisted state cannot be decoded into <typeparamref name="TState"/>.
+    /// If no state has been persisted yet, a default-constructed <typeparamref name="TState"/> is returned.
+    /// </returns>
+    Task<Result<IProcessManager<TState>>> GetByIdAsync<TState>(Guid id, CancellationToken cancellationToken = default)
+        where TState : class, new();
+
+    /// <summary>
     /// Persists the given process manager.
     /// </summary>
     /// <remarks>
