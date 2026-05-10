@@ -102,6 +102,94 @@ public class SpeechErrorsTests
     }
 
     [Fact]
+    public void InvalidVoiceId_WithVoiceId_ReturnsValidationError()
+    {
+        // Arrange
+        const string voiceId = "voice-unknown";
+
+        // Act
+        var error = SpeechErrors.InvalidVoiceId(voiceId);
+
+        // Assert
+        error.Code.Should().Be("Speech.InvalidVoiceId");
+        error.Type.Should().Be(ErrorType.Validation);
+        error.Message.Should().Contain($"'{voiceId}'");
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("21m00Tcm4TlvDq8ikWAM")]
+    [InlineData("voice-123")]
+    public void InvalidVoiceId_WithVariousIds_EmbedsIdInMessage(string voiceId)
+    {
+        // Act
+        var error = SpeechErrors.InvalidVoiceId(voiceId);
+
+        // Assert
+        error.Code.Should().Be("Speech.InvalidVoiceId");
+        error.Message.Should().Contain($"'{voiceId}'");
+    }
+
+    [Fact]
+    public void TextTooLong_WithLengths_ReturnsValidationError()
+    {
+        // Arrange
+        const int length = 5000;
+        const int maximum = 2500;
+
+        // Act
+        var error = SpeechErrors.TextTooLong(length, maximum);
+
+        // Assert
+        error.Code.Should().Be("Speech.TextTooLong");
+        error.Type.Should().Be(ErrorType.Validation);
+        error.Message.Should().Contain("5000");
+        error.Message.Should().Contain("2500");
+    }
+
+    [Theory]
+    [InlineData(1, 0)]
+    [InlineData(10000, 9999)]
+    [InlineData(int.MaxValue, 1)]
+    public void TextTooLong_WithBoundaryValues_EmbedsBothInMessage(int length, int maximum)
+    {
+        // Act
+        var error = SpeechErrors.TextTooLong(length, maximum);
+
+        // Assert
+        error.Message.Should().Contain(length.ToString());
+        error.Message.Should().Contain(maximum.ToString());
+    }
+
+    [Fact]
+    public void UnsupportedLanguage_WithLanguage_ReturnsValidationError()
+    {
+        // Arrange
+        const string language = "xx-XX";
+
+        // Act
+        var error = SpeechErrors.UnsupportedLanguage(language);
+
+        // Assert
+        error.Code.Should().Be("Speech.UnsupportedLanguage");
+        error.Type.Should().Be(ErrorType.Validation);
+        error.Message.Should().Contain($"'{language}'");
+    }
+
+    [Theory]
+    [InlineData("fr-FR")]
+    [InlineData("de-DE")]
+    [InlineData("klingon")]
+    public void UnsupportedLanguage_WithVariousLanguages_EmbedsLanguageInMessage(string language)
+    {
+        // Act
+        var error = SpeechErrors.UnsupportedLanguage(language);
+
+        // Assert
+        error.Message.Should().Contain($"'{language}'");
+    }
+
+    [Fact]
     public void AllErrorFactories_ReturnNonNullErrorInstances()
     {
         // Act / Assert
@@ -109,6 +197,9 @@ public class SpeechErrorsTests
         SpeechErrors.AudioTooLong(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2)).Should().NotBeNull();
         SpeechErrors.ProviderUnreachable("r").Should().NotBeNull();
         SpeechErrors.RateLimited("r").Should().NotBeNull();
+        SpeechErrors.InvalidVoiceId("v").Should().NotBeNull();
+        SpeechErrors.TextTooLong(1, 0).Should().NotBeNull();
+        SpeechErrors.UnsupportedLanguage("l").Should().NotBeNull();
     }
 
     [Fact]
@@ -121,6 +212,9 @@ public class SpeechErrorsTests
             SpeechErrors.AudioTooLong(TimeSpan.Zero, TimeSpan.Zero).Code,
             SpeechErrors.ProviderUnreachable("r").Code,
             SpeechErrors.RateLimited("r").Code,
+            SpeechErrors.InvalidVoiceId("v").Code,
+            SpeechErrors.TextTooLong(1, 0).Code,
+            SpeechErrors.UnsupportedLanguage("l").Code,
         };
 
         // Assert
