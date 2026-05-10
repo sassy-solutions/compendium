@@ -2475,6 +2475,232 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.AI.PromptTemplate.Version
   nameWithType: PromptTemplate.Version
+- uid: Compendium.Abstractions.Analytics
+  name: Compendium.Abstractions.Analytics
+  href: api/Compendium.Abstractions.Analytics.html
+  commentId: N:Compendium.Abstractions.Analytics
+  fullName: Compendium.Abstractions.Analytics
+  nameWithType: Compendium.Abstractions.Analytics
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors
+  name: AnalyticsErrors
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html
+  commentId: T:Compendium.Abstractions.Analytics.AnalyticsErrors
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors
+  nameWithType: AnalyticsErrors
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors.InvalidEvent(System.String)
+  name: InvalidEvent(string)
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html#Compendium_Abstractions_Analytics_AnalyticsErrors_InvalidEvent_System_String_
+  commentId: M:Compendium.Abstractions.Analytics.AnalyticsErrors.InvalidEvent(System.String)
+  name.vb: InvalidEvent(String)
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors.InvalidEvent(string)
+  fullName.vb: Compendium.Abstractions.Analytics.AnalyticsErrors.InvalidEvent(String)
+  nameWithType: AnalyticsErrors.InvalidEvent(string)
+  nameWithType.vb: AnalyticsErrors.InvalidEvent(String)
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors.InvalidEvent*
+  name: InvalidEvent
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html#Compendium_Abstractions_Analytics_AnalyticsErrors_InvalidEvent_
+  commentId: Overload:Compendium.Abstractions.Analytics.AnalyticsErrors.InvalidEvent
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors.InvalidEvent
+  nameWithType: AnalyticsErrors.InvalidEvent
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors.Prefix
+  name: Prefix
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html#Compendium_Abstractions_Analytics_AnalyticsErrors_Prefix
+  commentId: F:Compendium.Abstractions.Analytics.AnalyticsErrors.Prefix
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors.Prefix
+  nameWithType: AnalyticsErrors.Prefix
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors.ProviderUnreachable(System.String)
+  name: ProviderUnreachable(string)
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html#Compendium_Abstractions_Analytics_AnalyticsErrors_ProviderUnreachable_System_String_
+  commentId: M:Compendium.Abstractions.Analytics.AnalyticsErrors.ProviderUnreachable(System.String)
+  name.vb: ProviderUnreachable(String)
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors.ProviderUnreachable(string)
+  fullName.vb: Compendium.Abstractions.Analytics.AnalyticsErrors.ProviderUnreachable(String)
+  nameWithType: AnalyticsErrors.ProviderUnreachable(string)
+  nameWithType.vb: AnalyticsErrors.ProviderUnreachable(String)
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors.ProviderUnreachable*
+  name: ProviderUnreachable
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html#Compendium_Abstractions_Analytics_AnalyticsErrors_ProviderUnreachable_
+  commentId: Overload:Compendium.Abstractions.Analytics.AnalyticsErrors.ProviderUnreachable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors.ProviderUnreachable
+  nameWithType: AnalyticsErrors.ProviderUnreachable
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors.RateLimited(System.Nullable{System.TimeSpan})
+  name: RateLimited(TimeSpan?)
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html#Compendium_Abstractions_Analytics_AnalyticsErrors_RateLimited_System_Nullable_System_TimeSpan__
+  commentId: M:Compendium.Abstractions.Analytics.AnalyticsErrors.RateLimited(System.Nullable{System.TimeSpan})
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors.RateLimited(System.TimeSpan?)
+  nameWithType: AnalyticsErrors.RateLimited(TimeSpan?)
+- uid: Compendium.Abstractions.Analytics.AnalyticsErrors.RateLimited*
+  name: RateLimited
+  href: api/Compendium.Abstractions.Analytics.AnalyticsErrors.html#Compendium_Abstractions_Analytics_AnalyticsErrors_RateLimited_
+  commentId: Overload:Compendium.Abstractions.Analytics.AnalyticsErrors.RateLimited
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.AnalyticsErrors.RateLimited
+  nameWithType: AnalyticsErrors.RateLimited
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics
+  name: IProductAnalytics
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html
+  commentId: T:Compendium.Abstractions.Analytics.IProductAnalytics
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics
+  nameWithType: IProductAnalytics
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.AliasAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: AliasAsync(string, string, CancellationToken)
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_AliasAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Analytics.IProductAnalytics.AliasAsync(System.String,System.String,System.Threading.CancellationToken)
+  name.vb: AliasAsync(String, String, CancellationToken)
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.AliasAsync(string, string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Analytics.IProductAnalytics.AliasAsync(String, String, System.Threading.CancellationToken)
+  nameWithType: IProductAnalytics.AliasAsync(string, string, CancellationToken)
+  nameWithType.vb: IProductAnalytics.AliasAsync(String, String, CancellationToken)
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.AliasAsync*
+  name: AliasAsync
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_AliasAsync_
+  commentId: Overload:Compendium.Abstractions.Analytics.IProductAnalytics.AliasAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.AliasAsync
+  nameWithType: IProductAnalytics.AliasAsync
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.GroupAsync(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Threading.CancellationToken)
+  name: GroupAsync(string, string, IReadOnlyDictionary<string, object>, CancellationToken)
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_GroupAsync_System_String_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Analytics.IProductAnalytics.GroupAsync(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Threading.CancellationToken)
+  name.vb: GroupAsync(String, String, IReadOnlyDictionary(Of String, Object), CancellationToken)
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.GroupAsync(string, string, System.Collections.Generic.IReadOnlyDictionary<string, object>, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Analytics.IProductAnalytics.GroupAsync(String, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), System.Threading.CancellationToken)
+  nameWithType: IProductAnalytics.GroupAsync(string, string, IReadOnlyDictionary<string, object>, CancellationToken)
+  nameWithType.vb: IProductAnalytics.GroupAsync(String, String, IReadOnlyDictionary(Of String, Object), CancellationToken)
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.GroupAsync*
+  name: GroupAsync
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_GroupAsync_
+  commentId: Overload:Compendium.Abstractions.Analytics.IProductAnalytics.GroupAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.GroupAsync
+  nameWithType: IProductAnalytics.GroupAsync
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.IdentifyAsync(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Threading.CancellationToken)
+  name: IdentifyAsync(string, IReadOnlyDictionary<string, object>, CancellationToken)
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_IdentifyAsync_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Analytics.IProductAnalytics.IdentifyAsync(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Threading.CancellationToken)
+  name.vb: IdentifyAsync(String, IReadOnlyDictionary(Of String, Object), CancellationToken)
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.IdentifyAsync(string, System.Collections.Generic.IReadOnlyDictionary<string, object>, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Analytics.IProductAnalytics.IdentifyAsync(String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), System.Threading.CancellationToken)
+  nameWithType: IProductAnalytics.IdentifyAsync(string, IReadOnlyDictionary<string, object>, CancellationToken)
+  nameWithType.vb: IProductAnalytics.IdentifyAsync(String, IReadOnlyDictionary(Of String, Object), CancellationToken)
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.IdentifyAsync*
+  name: IdentifyAsync
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_IdentifyAsync_
+  commentId: Overload:Compendium.Abstractions.Analytics.IProductAnalytics.IdentifyAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.IdentifyAsync
+  nameWithType: IProductAnalytics.IdentifyAsync
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.TrackAsync(Compendium.Abstractions.Analytics.Models.AnalyticsEvent,System.Threading.CancellationToken)
+  name: TrackAsync(AnalyticsEvent, CancellationToken)
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_TrackAsync_Compendium_Abstractions_Analytics_Models_AnalyticsEvent_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Analytics.IProductAnalytics.TrackAsync(Compendium.Abstractions.Analytics.Models.AnalyticsEvent,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.TrackAsync(Compendium.Abstractions.Analytics.Models.AnalyticsEvent, System.Threading.CancellationToken)
+  nameWithType: IProductAnalytics.TrackAsync(AnalyticsEvent, CancellationToken)
+- uid: Compendium.Abstractions.Analytics.IProductAnalytics.TrackAsync*
+  name: TrackAsync
+  href: api/Compendium.Abstractions.Analytics.IProductAnalytics.html#Compendium_Abstractions_Analytics_IProductAnalytics_TrackAsync_
+  commentId: Overload:Compendium.Abstractions.Analytics.IProductAnalytics.TrackAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.IProductAnalytics.TrackAsync
+  nameWithType: IProductAnalytics.TrackAsync
+- uid: Compendium.Abstractions.Analytics.Models
+  name: Compendium.Abstractions.Analytics.Models
+  href: api/Compendium.Abstractions.Analytics.Models.html
+  commentId: N:Compendium.Abstractions.Analytics.Models
+  fullName: Compendium.Abstractions.Analytics.Models
+  nameWithType: Compendium.Abstractions.Analytics.Models
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent
+  name: AnalyticsEvent
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html
+  commentId: T:Compendium.Abstractions.Analytics.Models.AnalyticsEvent
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent
+  nameWithType: AnalyticsEvent
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.#ctor(System.String,System.String,System.String,System.DateTimeOffset,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})
+  name: AnalyticsEvent(string, string, string, DateTimeOffset, IReadOnlyDictionary<string, object>)
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent__ctor_System_String_System_String_System_String_System_DateTimeOffset_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__
+  commentId: M:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.#ctor(System.String,System.String,System.String,System.DateTimeOffset,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})
+  name.vb: New(String, String, String, DateTimeOffset, IReadOnlyDictionary(Of String, Object))
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.AnalyticsEvent(string, string, string, System.DateTimeOffset, System.Collections.Generic.IReadOnlyDictionary<string, object>)
+  fullName.vb: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.New(String, String, String, System.DateTimeOffset, System.Collections.Generic.IReadOnlyDictionary(Of String, Object))
+  nameWithType: AnalyticsEvent.AnalyticsEvent(string, string, string, DateTimeOffset, IReadOnlyDictionary<string, object>)
+  nameWithType.vb: AnalyticsEvent.New(String, String, String, DateTimeOffset, IReadOnlyDictionary(Of String, Object))
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.#ctor*
+  name: AnalyticsEvent
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent__ctor_
+  commentId: Overload:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.AnalyticsEvent
+  fullName.vb: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.New
+  nameWithType: AnalyticsEvent.AnalyticsEvent
+  nameWithType.vb: AnalyticsEvent.New
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.DistinctId
+  name: DistinctId
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_DistinctId
+  commentId: P:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.DistinctId
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.DistinctId
+  nameWithType: AnalyticsEvent.DistinctId
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.DistinctId*
+  name: DistinctId
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_DistinctId_
+  commentId: Overload:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.DistinctId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.DistinctId
+  nameWithType: AnalyticsEvent.DistinctId
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Name
+  name: Name
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_Name
+  commentId: P:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Name
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Name
+  nameWithType: AnalyticsEvent.Name
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Name*
+  name: Name
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_Name_
+  commentId: Overload:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Name
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Name
+  nameWithType: AnalyticsEvent.Name
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Properties
+  name: Properties
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_Properties
+  commentId: P:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Properties
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Properties
+  nameWithType: AnalyticsEvent.Properties
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Properties*
+  name: Properties
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_Properties_
+  commentId: Overload:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Properties
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Properties
+  nameWithType: AnalyticsEvent.Properties
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_TenantId
+  commentId: P:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.TenantId
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.TenantId
+  nameWithType: AnalyticsEvent.TenantId
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_TenantId_
+  commentId: Overload:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.TenantId
+  nameWithType: AnalyticsEvent.TenantId
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Timestamp
+  name: Timestamp
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_Timestamp
+  commentId: P:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Timestamp
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Timestamp
+  nameWithType: AnalyticsEvent.Timestamp
+- uid: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Timestamp*
+  name: Timestamp
+  href: api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html#Compendium_Abstractions_Analytics_Models_AnalyticsEvent_Timestamp_
+  commentId: Overload:Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Timestamp
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Timestamp
+  nameWithType: AnalyticsEvent.Timestamp
 - uid: Compendium.Abstractions.Billing
   name: Compendium.Abstractions.Billing
   href: api/Compendium.Abstractions.Billing.html

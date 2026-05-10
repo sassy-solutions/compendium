@@ -683,6 +683,76 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Analytics.AnalyticsErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Analytics.AnalyticsErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Analytics.AnalyticsErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Analytics.AnalyticsErrors.yml\" sourcestartlinenumber=\"1\">Provides standardized error definitions for product analytics operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Analytics.IProductAnalytics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Analytics.IProductAnalytics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Analytics.IProductAnalytics",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Analytics.IProductAnalytics.yml\" sourcestartlinenumber=\"1\">Provides product analytics operations such as event tracking, user identification,\ngroup association, and identity aliasing. This interface is provider-agnostic and\ncan be implemented by analytics backends such as PostHog, Mixpanel, or Amplitude.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Analytics.Models.AnalyticsEvent",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Analytics.Models.AnalyticsEvent.yml\" sourcestartlinenumber=\"1\">Represents a product analytics event captured for a specific user and tenant.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Analytics.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Analytics.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Analytics.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Analytics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Analytics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Analytics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Billing.BillingErrors.yml",
       "output": {
         ".html": {
