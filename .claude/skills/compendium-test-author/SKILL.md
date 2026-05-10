@@ -95,7 +95,7 @@ _logger.Received(1).LogInformation(Arg.Any<string>());
 ### Async
 
 - Always `async Task` (never `async void`, never `.Result`, never `.GetAwaiter().GetResult()`).
-- Cancellation tokens : when the SUT takes one, pass `TestContext.Current.CancellationToken` or `CancellationToken.None`.
+- Cancellation tokens: when the SUT takes one, pass `CancellationToken.None` unless the test needs to control cancellation; in that case, create a `CancellationTokenSource` in the test setup and pass its token.
 
 ### Theory / data-driven
 

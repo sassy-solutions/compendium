@@ -19,7 +19,7 @@ using Xunit;
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 
 /// <summary>
-/// Validates the typed-state reload contract added in preview.5: a saga whose state was
+/// Validates the typed-state reload contract added in [Unreleased]: a saga whose state was
 /// persisted by <see cref="PostgresProcessManagerRepository.SaveAsync"/> can be reloaded
 /// via <c>GetByIdAsync&lt;TState&gt;</c> with its full domain state intact. This is the
 /// foundation for idempotent saga step retries — without it, resumption can't tell what
