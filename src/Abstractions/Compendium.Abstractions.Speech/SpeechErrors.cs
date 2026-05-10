@@ -37,4 +37,24 @@ public static class SpeechErrors
     /// </summary>
     public static Error RateLimited(string reason) =>
         Error.TooManyRequests("Speech.RateLimited", $"Rate limit exceeded: {reason}");
+
+    /// <summary>
+    /// Error returned when the supplied text-to-speech voice identifier is not recognised by the adapter.
+    /// </summary>
+    public static Error InvalidVoiceId(string voiceId) =>
+        Error.Validation("Speech.InvalidVoiceId", $"The voice identifier '{voiceId}' is not valid.");
+
+    /// <summary>
+    /// Error returned when the synthesis input text exceeds the adapter's maximum supported length.
+    /// </summary>
+    public static Error TextTooLong(int length, int maximum) =>
+        Error.Validation(
+            "Speech.TextTooLong",
+            $"The input text length {length} exceeds the maximum of {maximum} characters.");
+
+    /// <summary>
+    /// Error returned when the requested BCP-47 language is not supported by the adapter or selected voice.
+    /// </summary>
+    public static Error UnsupportedLanguage(string language) =>
+        Error.Validation("Speech.UnsupportedLanguage", $"The language '{language}' is not supported.");
 }
