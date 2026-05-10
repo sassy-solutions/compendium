@@ -2139,6 +2139,146 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.ISearchIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.ISearchIndex.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.ISearchIndex",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.ISearchIndex.yml\" sourcestartlinenumber=\"1\">Provides search-engine-agnostic indexing and querying operations.\nAdapter targets include Meilisearch, Typesense, Elasticsearch, and OpenSearch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.Models.IndexSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.Models.IndexSettings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.Models.IndexSettings",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.Models.IndexSettings.yml\" sourcestartlinenumber=\"1\">Represents the configuration of a search index.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.Models.SearchHit-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.Models.SearchHit-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.Models.SearchHit<T>",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.Models.SearchHit-1.yml\" sourcestartlinenumber=\"1\">Represents a single document returned by a search query.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.Models.SearchQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.Models.SearchQuery.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.Models.SearchQuery",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.Models.SearchQuery.yml\" sourcestartlinenumber=\"1\">Represents a provider-agnostic search query.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.Models.SearchResult-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.Models.SearchResult-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.Models.SearchResult<T>",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.Models.SearchResult-1.yml\" sourcestartlinenumber=\"1\">Represents the result of a search query.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.Models.SearchSort.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.Models.SearchSort.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.Models.SearchSort",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.Models.SearchSort.yml\" sourcestartlinenumber=\"1\">Represents a sort instruction for a search query.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.Models.SortDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.Models.SortDirection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.Models.SortDirection",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.Models.SortDirection.yml\" sourcestartlinenumber=\"1\">Specifies the direction of a sort operation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.SearchErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.SearchErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search.SearchErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Search.SearchErrors.yml\" sourcestartlinenumber=\"1\">Provides standardized error definitions for search operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Search.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Search.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Search",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.VectorStore.IVectorStore.yml",
       "output": {
         ".html": {

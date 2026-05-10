@@ -9832,6 +9832,596 @@ references:
   fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager(Of TState).State
   nameWithType: IProcessManager<TState>.State
   nameWithType.vb: IProcessManager(Of TState).State
+- uid: Compendium.Abstractions.Search
+  name: Compendium.Abstractions.Search
+  href: api/Compendium.Abstractions.Search.html
+  commentId: N:Compendium.Abstractions.Search
+  fullName: Compendium.Abstractions.Search
+  nameWithType: Compendium.Abstractions.Search
+- uid: Compendium.Abstractions.Search.ISearchIndex
+  name: ISearchIndex
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html
+  commentId: T:Compendium.Abstractions.Search.ISearchIndex
+  fullName: Compendium.Abstractions.Search.ISearchIndex
+  nameWithType: ISearchIndex
+- uid: Compendium.Abstractions.Search.ISearchIndex.DeleteAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: DeleteAsync(string, string, CancellationToken)
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_DeleteAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Search.ISearchIndex.DeleteAsync(System.String,System.String,System.Threading.CancellationToken)
+  name.vb: DeleteAsync(String, String, CancellationToken)
+  fullName: Compendium.Abstractions.Search.ISearchIndex.DeleteAsync(string, string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Search.ISearchIndex.DeleteAsync(String, String, System.Threading.CancellationToken)
+  nameWithType: ISearchIndex.DeleteAsync(string, string, CancellationToken)
+  nameWithType.vb: ISearchIndex.DeleteAsync(String, String, CancellationToken)
+- uid: Compendium.Abstractions.Search.ISearchIndex.DeleteAsync*
+  name: DeleteAsync
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_DeleteAsync_
+  commentId: Overload:Compendium.Abstractions.Search.ISearchIndex.DeleteAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.ISearchIndex.DeleteAsync
+  nameWithType: ISearchIndex.DeleteAsync
+- uid: Compendium.Abstractions.Search.ISearchIndex.EnsureIndexAsync(System.String,Compendium.Abstractions.Search.Models.IndexSettings,System.Threading.CancellationToken)
+  name: EnsureIndexAsync(string, IndexSettings, CancellationToken)
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_EnsureIndexAsync_System_String_Compendium_Abstractions_Search_Models_IndexSettings_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Search.ISearchIndex.EnsureIndexAsync(System.String,Compendium.Abstractions.Search.Models.IndexSettings,System.Threading.CancellationToken)
+  name.vb: EnsureIndexAsync(String, IndexSettings, CancellationToken)
+  fullName: Compendium.Abstractions.Search.ISearchIndex.EnsureIndexAsync(string, Compendium.Abstractions.Search.Models.IndexSettings, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Search.ISearchIndex.EnsureIndexAsync(String, Compendium.Abstractions.Search.Models.IndexSettings, System.Threading.CancellationToken)
+  nameWithType: ISearchIndex.EnsureIndexAsync(string, IndexSettings, CancellationToken)
+  nameWithType.vb: ISearchIndex.EnsureIndexAsync(String, IndexSettings, CancellationToken)
+- uid: Compendium.Abstractions.Search.ISearchIndex.EnsureIndexAsync*
+  name: EnsureIndexAsync
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_EnsureIndexAsync_
+  commentId: Overload:Compendium.Abstractions.Search.ISearchIndex.EnsureIndexAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.ISearchIndex.EnsureIndexAsync
+  nameWithType: ISearchIndex.EnsureIndexAsync
+- uid: Compendium.Abstractions.Search.ISearchIndex.IndexAsync*
+  name: IndexAsync
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_IndexAsync_
+  commentId: Overload:Compendium.Abstractions.Search.ISearchIndex.IndexAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.ISearchIndex.IndexAsync
+  nameWithType: ISearchIndex.IndexAsync
+- uid: Compendium.Abstractions.Search.ISearchIndex.IndexAsync``1(System.String,System.String,``0,System.Threading.CancellationToken)
+  name: IndexAsync<T>(string, string, T, CancellationToken)
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_IndexAsync__1_System_String_System_String___0_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Search.ISearchIndex.IndexAsync``1(System.String,System.String,``0,System.Threading.CancellationToken)
+  name.vb: IndexAsync(Of T)(String, String, T, CancellationToken)
+  fullName: Compendium.Abstractions.Search.ISearchIndex.IndexAsync<T>(string, string, T, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Search.ISearchIndex.IndexAsync(Of T)(String, String, T, System.Threading.CancellationToken)
+  nameWithType: ISearchIndex.IndexAsync<T>(string, string, T, CancellationToken)
+  nameWithType.vb: ISearchIndex.IndexAsync(Of T)(String, String, T, CancellationToken)
+- uid: Compendium.Abstractions.Search.ISearchIndex.SearchAsync*
+  name: SearchAsync
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_SearchAsync_
+  commentId: Overload:Compendium.Abstractions.Search.ISearchIndex.SearchAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.ISearchIndex.SearchAsync
+  nameWithType: ISearchIndex.SearchAsync
+- uid: Compendium.Abstractions.Search.ISearchIndex.SearchAsync``1(System.String,Compendium.Abstractions.Search.Models.SearchQuery,System.Threading.CancellationToken)
+  name: SearchAsync<T>(string, SearchQuery, CancellationToken)
+  href: api/Compendium.Abstractions.Search.ISearchIndex.html#Compendium_Abstractions_Search_ISearchIndex_SearchAsync__1_System_String_Compendium_Abstractions_Search_Models_SearchQuery_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Search.ISearchIndex.SearchAsync``1(System.String,Compendium.Abstractions.Search.Models.SearchQuery,System.Threading.CancellationToken)
+  name.vb: SearchAsync(Of T)(String, SearchQuery, CancellationToken)
+  fullName: Compendium.Abstractions.Search.ISearchIndex.SearchAsync<T>(string, Compendium.Abstractions.Search.Models.SearchQuery, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Search.ISearchIndex.SearchAsync(Of T)(String, Compendium.Abstractions.Search.Models.SearchQuery, System.Threading.CancellationToken)
+  nameWithType: ISearchIndex.SearchAsync<T>(string, SearchQuery, CancellationToken)
+  nameWithType.vb: ISearchIndex.SearchAsync(Of T)(String, SearchQuery, CancellationToken)
+- uid: Compendium.Abstractions.Search.Models
+  name: Compendium.Abstractions.Search.Models
+  href: api/Compendium.Abstractions.Search.Models.html
+  commentId: N:Compendium.Abstractions.Search.Models
+  fullName: Compendium.Abstractions.Search.Models
+  nameWithType: Compendium.Abstractions.Search.Models
+- uid: Compendium.Abstractions.Search.Models.IndexSettings
+  name: IndexSettings
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html
+  commentId: T:Compendium.Abstractions.Search.Models.IndexSettings
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings
+  nameWithType: IndexSettings
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.DistinctAttribute
+  name: DistinctAttribute
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_DistinctAttribute
+  commentId: P:Compendium.Abstractions.Search.Models.IndexSettings.DistinctAttribute
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.DistinctAttribute
+  nameWithType: IndexSettings.DistinctAttribute
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.DistinctAttribute*
+  name: DistinctAttribute
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_DistinctAttribute_
+  commentId: Overload:Compendium.Abstractions.Search.Models.IndexSettings.DistinctAttribute
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.DistinctAttribute
+  nameWithType: IndexSettings.DistinctAttribute
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.FilterableAttributes
+  name: FilterableAttributes
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_FilterableAttributes
+  commentId: P:Compendium.Abstractions.Search.Models.IndexSettings.FilterableAttributes
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.FilterableAttributes
+  nameWithType: IndexSettings.FilterableAttributes
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.FilterableAttributes*
+  name: FilterableAttributes
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_FilterableAttributes_
+  commentId: Overload:Compendium.Abstractions.Search.Models.IndexSettings.FilterableAttributes
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.FilterableAttributes
+  nameWithType: IndexSettings.FilterableAttributes
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.RankingRules
+  name: RankingRules
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_RankingRules
+  commentId: P:Compendium.Abstractions.Search.Models.IndexSettings.RankingRules
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.RankingRules
+  nameWithType: IndexSettings.RankingRules
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.RankingRules*
+  name: RankingRules
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_RankingRules_
+  commentId: Overload:Compendium.Abstractions.Search.Models.IndexSettings.RankingRules
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.RankingRules
+  nameWithType: IndexSettings.RankingRules
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.SearchableAttributes
+  name: SearchableAttributes
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_SearchableAttributes
+  commentId: P:Compendium.Abstractions.Search.Models.IndexSettings.SearchableAttributes
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.SearchableAttributes
+  nameWithType: IndexSettings.SearchableAttributes
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.SearchableAttributes*
+  name: SearchableAttributes
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_SearchableAttributes_
+  commentId: Overload:Compendium.Abstractions.Search.Models.IndexSettings.SearchableAttributes
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.SearchableAttributes
+  nameWithType: IndexSettings.SearchableAttributes
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.SortableAttributes
+  name: SortableAttributes
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_SortableAttributes
+  commentId: P:Compendium.Abstractions.Search.Models.IndexSettings.SortableAttributes
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.SortableAttributes
+  nameWithType: IndexSettings.SortableAttributes
+- uid: Compendium.Abstractions.Search.Models.IndexSettings.SortableAttributes*
+  name: SortableAttributes
+  href: api/Compendium.Abstractions.Search.Models.IndexSettings.html#Compendium_Abstractions_Search_Models_IndexSettings_SortableAttributes_
+  commentId: Overload:Compendium.Abstractions.Search.Models.IndexSettings.SortableAttributes
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.IndexSettings.SortableAttributes
+  nameWithType: IndexSettings.SortableAttributes
+- uid: Compendium.Abstractions.Search.Models.SearchHit`1
+  name: SearchHit<T>
+  href: api/Compendium.Abstractions.Search.Models.SearchHit-1.html
+  commentId: T:Compendium.Abstractions.Search.Models.SearchHit`1
+  name.vb: SearchHit(Of T)
+  fullName: Compendium.Abstractions.Search.Models.SearchHit<T>
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchHit(Of T)
+  nameWithType: SearchHit<T>
+  nameWithType.vb: SearchHit(Of T)
+- uid: Compendium.Abstractions.Search.Models.SearchHit`1.Document
+  name: Document
+  href: api/Compendium.Abstractions.Search.Models.SearchHit-1.html#Compendium_Abstractions_Search_Models_SearchHit_1_Document
+  commentId: P:Compendium.Abstractions.Search.Models.SearchHit`1.Document
+  fullName: Compendium.Abstractions.Search.Models.SearchHit<T>.Document
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchHit(Of T).Document
+  nameWithType: SearchHit<T>.Document
+  nameWithType.vb: SearchHit(Of T).Document
+- uid: Compendium.Abstractions.Search.Models.SearchHit`1.Document*
+  name: Document
+  href: api/Compendium.Abstractions.Search.Models.SearchHit-1.html#Compendium_Abstractions_Search_Models_SearchHit_1_Document_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchHit`1.Document
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchHit<T>.Document
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchHit(Of T).Document
+  nameWithType: SearchHit<T>.Document
+  nameWithType.vb: SearchHit(Of T).Document
+- uid: Compendium.Abstractions.Search.Models.SearchHit`1.Highlights
+  name: Highlights
+  href: api/Compendium.Abstractions.Search.Models.SearchHit-1.html#Compendium_Abstractions_Search_Models_SearchHit_1_Highlights
+  commentId: P:Compendium.Abstractions.Search.Models.SearchHit`1.Highlights
+  fullName: Compendium.Abstractions.Search.Models.SearchHit<T>.Highlights
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchHit(Of T).Highlights
+  nameWithType: SearchHit<T>.Highlights
+  nameWithType.vb: SearchHit(Of T).Highlights
+- uid: Compendium.Abstractions.Search.Models.SearchHit`1.Highlights*
+  name: Highlights
+  href: api/Compendium.Abstractions.Search.Models.SearchHit-1.html#Compendium_Abstractions_Search_Models_SearchHit_1_Highlights_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchHit`1.Highlights
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchHit<T>.Highlights
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchHit(Of T).Highlights
+  nameWithType: SearchHit<T>.Highlights
+  nameWithType.vb: SearchHit(Of T).Highlights
+- uid: Compendium.Abstractions.Search.Models.SearchHit`1.Score
+  name: Score
+  href: api/Compendium.Abstractions.Search.Models.SearchHit-1.html#Compendium_Abstractions_Search_Models_SearchHit_1_Score
+  commentId: P:Compendium.Abstractions.Search.Models.SearchHit`1.Score
+  fullName: Compendium.Abstractions.Search.Models.SearchHit<T>.Score
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchHit(Of T).Score
+  nameWithType: SearchHit<T>.Score
+  nameWithType.vb: SearchHit(Of T).Score
+- uid: Compendium.Abstractions.Search.Models.SearchHit`1.Score*
+  name: Score
+  href: api/Compendium.Abstractions.Search.Models.SearchHit-1.html#Compendium_Abstractions_Search_Models_SearchHit_1_Score_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchHit`1.Score
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchHit<T>.Score
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchHit(Of T).Score
+  nameWithType: SearchHit<T>.Score
+  nameWithType.vb: SearchHit(Of T).Score
+- uid: Compendium.Abstractions.Search.Models.SearchQuery
+  name: SearchQuery
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html
+  commentId: T:Compendium.Abstractions.Search.Models.SearchQuery
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery
+  nameWithType: SearchQuery
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Facets
+  name: Facets
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Facets
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.Facets
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Facets
+  nameWithType: SearchQuery.Facets
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Facets*
+  name: Facets
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Facets_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.Facets
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Facets
+  nameWithType: SearchQuery.Facets
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Filters
+  name: Filters
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Filters
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.Filters
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Filters
+  nameWithType: SearchQuery.Filters
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Filters*
+  name: Filters
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Filters_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.Filters
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Filters
+  nameWithType: SearchQuery.Filters
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Highlight
+  name: Highlight
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Highlight
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.Highlight
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Highlight
+  nameWithType: SearchQuery.Highlight
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Highlight*
+  name: Highlight
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Highlight_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.Highlight
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Highlight
+  nameWithType: SearchQuery.Highlight
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Limit
+  name: Limit
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Limit
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.Limit
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Limit
+  nameWithType: SearchQuery.Limit
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Limit*
+  name: Limit
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Limit_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.Limit
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Limit
+  nameWithType: SearchQuery.Limit
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Offset
+  name: Offset
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Offset
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.Offset
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Offset
+  nameWithType: SearchQuery.Offset
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Offset*
+  name: Offset
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Offset_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.Offset
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Offset
+  nameWithType: SearchQuery.Offset
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Sort
+  name: Sort
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Sort
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.Sort
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Sort
+  nameWithType: SearchQuery.Sort
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Sort*
+  name: Sort
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Sort_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.Sort
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Sort
+  nameWithType: SearchQuery.Sort
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_TenantId
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.TenantId
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.TenantId
+  nameWithType: SearchQuery.TenantId
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_TenantId_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.TenantId
+  nameWithType: SearchQuery.TenantId
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Text
+  name: Text
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Text
+  commentId: P:Compendium.Abstractions.Search.Models.SearchQuery.Text
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Text
+  nameWithType: SearchQuery.Text
+- uid: Compendium.Abstractions.Search.Models.SearchQuery.Text*
+  name: Text
+  href: api/Compendium.Abstractions.Search.Models.SearchQuery.html#Compendium_Abstractions_Search_Models_SearchQuery_Text_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchQuery.Text
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchQuery.Text
+  nameWithType: SearchQuery.Text
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1
+  name: SearchResult<T>
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html
+  commentId: T:Compendium.Abstractions.Search.Models.SearchResult`1
+  name.vb: SearchResult(Of T)
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T)
+  nameWithType: SearchResult<T>
+  nameWithType.vb: SearchResult(Of T)
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.FacetCounts
+  name: FacetCounts
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_FacetCounts
+  commentId: P:Compendium.Abstractions.Search.Models.SearchResult`1.FacetCounts
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.FacetCounts
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).FacetCounts
+  nameWithType: SearchResult<T>.FacetCounts
+  nameWithType.vb: SearchResult(Of T).FacetCounts
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.FacetCounts*
+  name: FacetCounts
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_FacetCounts_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchResult`1.FacetCounts
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.FacetCounts
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).FacetCounts
+  nameWithType: SearchResult<T>.FacetCounts
+  nameWithType.vb: SearchResult(Of T).FacetCounts
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.Hits
+  name: Hits
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_Hits
+  commentId: P:Compendium.Abstractions.Search.Models.SearchResult`1.Hits
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.Hits
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).Hits
+  nameWithType: SearchResult<T>.Hits
+  nameWithType.vb: SearchResult(Of T).Hits
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.Hits*
+  name: Hits
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_Hits_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchResult`1.Hits
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.Hits
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).Hits
+  nameWithType: SearchResult<T>.Hits
+  nameWithType.vb: SearchResult(Of T).Hits
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.Took
+  name: Took
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_Took
+  commentId: P:Compendium.Abstractions.Search.Models.SearchResult`1.Took
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.Took
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).Took
+  nameWithType: SearchResult<T>.Took
+  nameWithType.vb: SearchResult(Of T).Took
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.Took*
+  name: Took
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_Took_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchResult`1.Took
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.Took
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).Took
+  nameWithType: SearchResult<T>.Took
+  nameWithType.vb: SearchResult(Of T).Took
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.Total
+  name: Total
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_Total
+  commentId: P:Compendium.Abstractions.Search.Models.SearchResult`1.Total
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.Total
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).Total
+  nameWithType: SearchResult<T>.Total
+  nameWithType.vb: SearchResult(Of T).Total
+- uid: Compendium.Abstractions.Search.Models.SearchResult`1.Total*
+  name: Total
+  href: api/Compendium.Abstractions.Search.Models.SearchResult-1.html#Compendium_Abstractions_Search_Models_SearchResult_1_Total_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchResult`1.Total
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchResult<T>.Total
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchResult(Of T).Total
+  nameWithType: SearchResult<T>.Total
+  nameWithType.vb: SearchResult(Of T).Total
+- uid: Compendium.Abstractions.Search.Models.SearchSort
+  name: SearchSort
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html
+  commentId: T:Compendium.Abstractions.Search.Models.SearchSort
+  fullName: Compendium.Abstractions.Search.Models.SearchSort
+  nameWithType: SearchSort
+- uid: Compendium.Abstractions.Search.Models.SearchSort.#ctor(System.String,Compendium.Abstractions.Search.Models.SortDirection)
+  name: SearchSort(string, SortDirection)
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort__ctor_System_String_Compendium_Abstractions_Search_Models_SortDirection_
+  commentId: M:Compendium.Abstractions.Search.Models.SearchSort.#ctor(System.String,Compendium.Abstractions.Search.Models.SortDirection)
+  name.vb: New(String, SortDirection)
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.SearchSort(string, Compendium.Abstractions.Search.Models.SortDirection)
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchSort.New(String, Compendium.Abstractions.Search.Models.SortDirection)
+  nameWithType: SearchSort.SearchSort(string, SortDirection)
+  nameWithType.vb: SearchSort.New(String, SortDirection)
+- uid: Compendium.Abstractions.Search.Models.SearchSort.#ctor*
+  name: SearchSort
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort__ctor_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchSort.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.SearchSort
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchSort.New
+  nameWithType: SearchSort.SearchSort
+  nameWithType.vb: SearchSort.New
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Ascending(System.String)
+  name: Ascending(string)
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Ascending_System_String_
+  commentId: M:Compendium.Abstractions.Search.Models.SearchSort.Ascending(System.String)
+  name.vb: Ascending(String)
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Ascending(string)
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchSort.Ascending(String)
+  nameWithType: SearchSort.Ascending(string)
+  nameWithType.vb: SearchSort.Ascending(String)
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Ascending*
+  name: Ascending
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Ascending_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchSort.Ascending
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Ascending
+  nameWithType: SearchSort.Ascending
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Descending(System.String)
+  name: Descending(string)
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Descending_System_String_
+  commentId: M:Compendium.Abstractions.Search.Models.SearchSort.Descending(System.String)
+  name.vb: Descending(String)
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Descending(string)
+  fullName.vb: Compendium.Abstractions.Search.Models.SearchSort.Descending(String)
+  nameWithType: SearchSort.Descending(string)
+  nameWithType.vb: SearchSort.Descending(String)
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Descending*
+  name: Descending
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Descending_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchSort.Descending
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Descending
+  nameWithType: SearchSort.Descending
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Direction
+  name: Direction
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Direction
+  commentId: P:Compendium.Abstractions.Search.Models.SearchSort.Direction
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Direction
+  nameWithType: SearchSort.Direction
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Direction*
+  name: Direction
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Direction_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchSort.Direction
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Direction
+  nameWithType: SearchSort.Direction
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Field
+  name: Field
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Field
+  commentId: P:Compendium.Abstractions.Search.Models.SearchSort.Field
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Field
+  nameWithType: SearchSort.Field
+- uid: Compendium.Abstractions.Search.Models.SearchSort.Field*
+  name: Field
+  href: api/Compendium.Abstractions.Search.Models.SearchSort.html#Compendium_Abstractions_Search_Models_SearchSort_Field_
+  commentId: Overload:Compendium.Abstractions.Search.Models.SearchSort.Field
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.Models.SearchSort.Field
+  nameWithType: SearchSort.Field
+- uid: Compendium.Abstractions.Search.Models.SortDirection
+  name: SortDirection
+  href: api/Compendium.Abstractions.Search.Models.SortDirection.html
+  commentId: T:Compendium.Abstractions.Search.Models.SortDirection
+  fullName: Compendium.Abstractions.Search.Models.SortDirection
+  nameWithType: SortDirection
+- uid: Compendium.Abstractions.Search.Models.SortDirection.Asc
+  name: Asc
+  href: api/Compendium.Abstractions.Search.Models.SortDirection.html#Compendium_Abstractions_Search_Models_SortDirection_Asc
+  commentId: F:Compendium.Abstractions.Search.Models.SortDirection.Asc
+  fullName: Compendium.Abstractions.Search.Models.SortDirection.Asc
+  nameWithType: SortDirection.Asc
+- uid: Compendium.Abstractions.Search.Models.SortDirection.Desc
+  name: Desc
+  href: api/Compendium.Abstractions.Search.Models.SortDirection.html#Compendium_Abstractions_Search_Models_SortDirection_Desc
+  commentId: F:Compendium.Abstractions.Search.Models.SortDirection.Desc
+  fullName: Compendium.Abstractions.Search.Models.SortDirection.Desc
+  nameWithType: SortDirection.Desc
+- uid: Compendium.Abstractions.Search.SearchErrors
+  name: SearchErrors
+  href: api/Compendium.Abstractions.Search.SearchErrors.html
+  commentId: T:Compendium.Abstractions.Search.SearchErrors
+  fullName: Compendium.Abstractions.Search.SearchErrors
+  nameWithType: SearchErrors
+- uid: Compendium.Abstractions.Search.SearchErrors.AttributeNotFilterable(System.String)
+  name: AttributeNotFilterable(string)
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_AttributeNotFilterable_System_String_
+  commentId: M:Compendium.Abstractions.Search.SearchErrors.AttributeNotFilterable(System.String)
+  name.vb: AttributeNotFilterable(String)
+  fullName: Compendium.Abstractions.Search.SearchErrors.AttributeNotFilterable(string)
+  fullName.vb: Compendium.Abstractions.Search.SearchErrors.AttributeNotFilterable(String)
+  nameWithType: SearchErrors.AttributeNotFilterable(string)
+  nameWithType.vb: SearchErrors.AttributeNotFilterable(String)
+- uid: Compendium.Abstractions.Search.SearchErrors.AttributeNotFilterable*
+  name: AttributeNotFilterable
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_AttributeNotFilterable_
+  commentId: Overload:Compendium.Abstractions.Search.SearchErrors.AttributeNotFilterable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.SearchErrors.AttributeNotFilterable
+  nameWithType: SearchErrors.AttributeNotFilterable
+- uid: Compendium.Abstractions.Search.SearchErrors.AttributeNotSortable(System.String)
+  name: AttributeNotSortable(string)
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_AttributeNotSortable_System_String_
+  commentId: M:Compendium.Abstractions.Search.SearchErrors.AttributeNotSortable(System.String)
+  name.vb: AttributeNotSortable(String)
+  fullName: Compendium.Abstractions.Search.SearchErrors.AttributeNotSortable(string)
+  fullName.vb: Compendium.Abstractions.Search.SearchErrors.AttributeNotSortable(String)
+  nameWithType: SearchErrors.AttributeNotSortable(string)
+  nameWithType.vb: SearchErrors.AttributeNotSortable(String)
+- uid: Compendium.Abstractions.Search.SearchErrors.AttributeNotSortable*
+  name: AttributeNotSortable
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_AttributeNotSortable_
+  commentId: Overload:Compendium.Abstractions.Search.SearchErrors.AttributeNotSortable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.SearchErrors.AttributeNotSortable
+  nameWithType: SearchErrors.AttributeNotSortable
+- uid: Compendium.Abstractions.Search.SearchErrors.IndexNotFound(System.String)
+  name: IndexNotFound(string)
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_IndexNotFound_System_String_
+  commentId: M:Compendium.Abstractions.Search.SearchErrors.IndexNotFound(System.String)
+  name.vb: IndexNotFound(String)
+  fullName: Compendium.Abstractions.Search.SearchErrors.IndexNotFound(string)
+  fullName.vb: Compendium.Abstractions.Search.SearchErrors.IndexNotFound(String)
+  nameWithType: SearchErrors.IndexNotFound(string)
+  nameWithType.vb: SearchErrors.IndexNotFound(String)
+- uid: Compendium.Abstractions.Search.SearchErrors.IndexNotFound*
+  name: IndexNotFound
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_IndexNotFound_
+  commentId: Overload:Compendium.Abstractions.Search.SearchErrors.IndexNotFound
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.SearchErrors.IndexNotFound
+  nameWithType: SearchErrors.IndexNotFound
+- uid: Compendium.Abstractions.Search.SearchErrors.InvalidQuery(System.String)
+  name: InvalidQuery(string)
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_InvalidQuery_System_String_
+  commentId: M:Compendium.Abstractions.Search.SearchErrors.InvalidQuery(System.String)
+  name.vb: InvalidQuery(String)
+  fullName: Compendium.Abstractions.Search.SearchErrors.InvalidQuery(string)
+  fullName.vb: Compendium.Abstractions.Search.SearchErrors.InvalidQuery(String)
+  nameWithType: SearchErrors.InvalidQuery(string)
+  nameWithType.vb: SearchErrors.InvalidQuery(String)
+- uid: Compendium.Abstractions.Search.SearchErrors.InvalidQuery*
+  name: InvalidQuery
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_InvalidQuery_
+  commentId: Overload:Compendium.Abstractions.Search.SearchErrors.InvalidQuery
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.SearchErrors.InvalidQuery
+  nameWithType: SearchErrors.InvalidQuery
+- uid: Compendium.Abstractions.Search.SearchErrors.Prefix
+  name: Prefix
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_Prefix
+  commentId: F:Compendium.Abstractions.Search.SearchErrors.Prefix
+  fullName: Compendium.Abstractions.Search.SearchErrors.Prefix
+  nameWithType: SearchErrors.Prefix
+- uid: Compendium.Abstractions.Search.SearchErrors.Throttled(System.Nullable{System.TimeSpan})
+  name: Throttled(TimeSpan?)
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_Throttled_System_Nullable_System_TimeSpan__
+  commentId: M:Compendium.Abstractions.Search.SearchErrors.Throttled(System.Nullable{System.TimeSpan})
+  fullName: Compendium.Abstractions.Search.SearchErrors.Throttled(System.TimeSpan?)
+  nameWithType: SearchErrors.Throttled(TimeSpan?)
+- uid: Compendium.Abstractions.Search.SearchErrors.Throttled*
+  name: Throttled
+  href: api/Compendium.Abstractions.Search.SearchErrors.html#Compendium_Abstractions_Search_SearchErrors_Throttled_
+  commentId: Overload:Compendium.Abstractions.Search.SearchErrors.Throttled
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Search.SearchErrors.Throttled
+  nameWithType: SearchErrors.Throttled
 - uid: Compendium.Abstractions.VectorStore
   name: Compendium.Abstractions.VectorStore
   href: api/Compendium.Abstractions.VectorStore.html
