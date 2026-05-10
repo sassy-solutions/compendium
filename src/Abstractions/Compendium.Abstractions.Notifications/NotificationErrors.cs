@@ -37,4 +37,20 @@ public static class NotificationErrors
         Error.Validation(
             "Notification.PayloadTooLarge",
             $"Notification payload of {sizeBytes} bytes exceeds the maximum allowed size of {maxBytes} bytes.");
+
+    /// <summary>
+    /// Error returned when the supplied SMS phone number is not a valid E.164 value.
+    /// </summary>
+    public static Error InvalidPhoneNumber(string phoneNumber) =>
+        Error.Validation(
+            "Notification.InvalidPhoneNumber",
+            $"The phone number '{phoneNumber}' is not a valid E.164 number.");
+
+    /// <summary>
+    /// Error returned when the SMS message body exceeds the provider-imposed length limit.
+    /// </summary>
+    public static Error MessageTooLong(int length, int maxLength) =>
+        Error.Validation(
+            "Notification.MessageTooLong",
+            $"SMS message body of {length} characters exceeds the maximum allowed length of {maxLength} characters.");
 }
