@@ -93,6 +93,8 @@ public class NotificationErrorsTests
         NotificationErrors.ProviderUnreachable("r").Should().NotBeNull();
         NotificationErrors.RateLimited("r").Should().NotBeNull();
         NotificationErrors.PayloadTooLarge(1, 0).Should().NotBeNull();
+        NotificationErrors.InvalidPhoneNumber("+1").Should().NotBeNull();
+        NotificationErrors.MessageTooLong(1, 0).Should().NotBeNull();
     }
 
     [Fact]
@@ -105,9 +107,42 @@ public class NotificationErrorsTests
             NotificationErrors.ProviderUnreachable("r").Code,
             NotificationErrors.RateLimited("r").Code,
             NotificationErrors.PayloadTooLarge(1, 0).Code,
+            NotificationErrors.InvalidPhoneNumber("+1").Code,
+            NotificationErrors.MessageTooLong(1, 0).Code,
         };
 
         // Assert
         codes.Should().OnlyContain(c => c.StartsWith("Notification.", StringComparison.Ordinal));
+    }
+
+    [Theory]
+    [InlineData("+15551234567")]
+    [InlineData("not-a-number")]
+    [InlineData("")]
+    public void InvalidPhoneNumber_WithVariousInputs_EmbedsNumberInMessage(string phoneNumber)
+    {
+        // Act
+        var error = NotificationErrors.InvalidPhoneNumber(phoneNumber);
+
+        // Assert
+        error.Code.Should().Be("Notification.InvalidPhoneNumber");
+        error.Type.Should().Be(ErrorType.Validation);
+        error.Message.Should().Contain($"'{phoneNumber}'");
+    }
+
+    [Theory]
+    [InlineData(1700, 1600)]
+    [InlineData(161, 160)]
+    [InlineData(1, 0)]
+    public void MessageTooLong_WithLengths_EmbedsBothLengthsInMessage(int length, int maxLength)
+    {
+        // Act
+        var error = NotificationErrors.MessageTooLong(length, maxLength);
+
+        // Assert
+        error.Code.Should().Be("Notification.MessageTooLong");
+        error.Type.Should().Be(ErrorType.Validation);
+        error.Message.Should().Contain(length.ToString(System.Globalization.CultureInfo.InvariantCulture));
+        error.Message.Should().Contain(maxLength.ToString(System.Globalization.CultureInfo.InvariantCulture));
     }
 }
