@@ -9832,6 +9832,645 @@ references:
   fullName.vb: Compendium.Abstractions.Sagas.ProcessManagers.IProcessManager(Of TState).State
   nameWithType: IProcessManager<TState>.State
   nameWithType.vb: IProcessManager(Of TState).State
+- uid: Compendium.Abstractions.VectorStore
+  name: Compendium.Abstractions.VectorStore
+  href: api/Compendium.Abstractions.VectorStore.html
+  commentId: N:Compendium.Abstractions.VectorStore
+  fullName: Compendium.Abstractions.VectorStore
+  nameWithType: Compendium.Abstractions.VectorStore
+- uid: Compendium.Abstractions.VectorStore.IVectorStore
+  name: IVectorStore
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html
+  commentId: T:Compendium.Abstractions.VectorStore.IVectorStore
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore
+  nameWithType: IVectorStore
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.DeleteAsync(System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String,System.Threading.CancellationToken)
+  name: DeleteAsync(string, IReadOnlyList<string>, string?, CancellationToken)
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_DeleteAsync_System_String_System_Collections_Generic_IReadOnlyList_System_String__System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.VectorStore.IVectorStore.DeleteAsync(System.String,System.Collections.Generic.IReadOnlyList{System.String},System.String,System.Threading.CancellationToken)
+  name.vb: DeleteAsync(String, IReadOnlyList(Of String), String, CancellationToken)
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.DeleteAsync(string, System.Collections.Generic.IReadOnlyList<string>, string?, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.VectorStore.IVectorStore.DeleteAsync(String, System.Collections.Generic.IReadOnlyList(Of String), String, System.Threading.CancellationToken)
+  nameWithType: IVectorStore.DeleteAsync(string, IReadOnlyList<string>, string?, CancellationToken)
+  nameWithType.vb: IVectorStore.DeleteAsync(String, IReadOnlyList(Of String), String, CancellationToken)
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.DeleteAsync*
+  name: DeleteAsync
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_DeleteAsync_
+  commentId: Overload:Compendium.Abstractions.VectorStore.IVectorStore.DeleteAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.DeleteAsync
+  nameWithType: IVectorStore.DeleteAsync
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.EnsureCollectionAsync(System.String,System.Int32,Compendium.Abstractions.VectorStore.Models.DistanceMetric,System.Threading.CancellationToken)
+  name: EnsureCollectionAsync(string, int, DistanceMetric, CancellationToken)
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_EnsureCollectionAsync_System_String_System_Int32_Compendium_Abstractions_VectorStore_Models_DistanceMetric_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.VectorStore.IVectorStore.EnsureCollectionAsync(System.String,System.Int32,Compendium.Abstractions.VectorStore.Models.DistanceMetric,System.Threading.CancellationToken)
+  name.vb: EnsureCollectionAsync(String, Integer, DistanceMetric, CancellationToken)
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.EnsureCollectionAsync(string, int, Compendium.Abstractions.VectorStore.Models.DistanceMetric, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.VectorStore.IVectorStore.EnsureCollectionAsync(String, Integer, Compendium.Abstractions.VectorStore.Models.DistanceMetric, System.Threading.CancellationToken)
+  nameWithType: IVectorStore.EnsureCollectionAsync(string, int, DistanceMetric, CancellationToken)
+  nameWithType.vb: IVectorStore.EnsureCollectionAsync(String, Integer, DistanceMetric, CancellationToken)
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.EnsureCollectionAsync*
+  name: EnsureCollectionAsync
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_EnsureCollectionAsync_
+  commentId: Overload:Compendium.Abstractions.VectorStore.IVectorStore.EnsureCollectionAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.EnsureCollectionAsync
+  nameWithType: IVectorStore.EnsureCollectionAsync
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.SearchAsync(System.String,System.ReadOnlyMemory{System.Single},System.Int32,Compendium.Abstractions.VectorStore.Models.VectorFilter,System.Threading.CancellationToken)
+  name: SearchAsync(string, ReadOnlyMemory<float>, int, VectorFilter?, CancellationToken)
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_SearchAsync_System_String_System_ReadOnlyMemory_System_Single__System_Int32_Compendium_Abstractions_VectorStore_Models_VectorFilter_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.VectorStore.IVectorStore.SearchAsync(System.String,System.ReadOnlyMemory{System.Single},System.Int32,Compendium.Abstractions.VectorStore.Models.VectorFilter,System.Threading.CancellationToken)
+  name.vb: SearchAsync(String, ReadOnlyMemory(Of Single), Integer, VectorFilter, CancellationToken)
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.SearchAsync(string, System.ReadOnlyMemory<float>, int, Compendium.Abstractions.VectorStore.Models.VectorFilter?, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.VectorStore.IVectorStore.SearchAsync(String, System.ReadOnlyMemory(Of Single), Integer, Compendium.Abstractions.VectorStore.Models.VectorFilter, System.Threading.CancellationToken)
+  nameWithType: IVectorStore.SearchAsync(string, ReadOnlyMemory<float>, int, VectorFilter?, CancellationToken)
+  nameWithType.vb: IVectorStore.SearchAsync(String, ReadOnlyMemory(Of Single), Integer, VectorFilter, CancellationToken)
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.SearchAsync*
+  name: SearchAsync
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_SearchAsync_
+  commentId: Overload:Compendium.Abstractions.VectorStore.IVectorStore.SearchAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.SearchAsync
+  nameWithType: IVectorStore.SearchAsync
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.UpsertAsync(System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.VectorStore.Models.VectorRecord},System.Threading.CancellationToken)
+  name: UpsertAsync(string, IReadOnlyList<VectorRecord>, CancellationToken)
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_UpsertAsync_System_String_System_Collections_Generic_IReadOnlyList_Compendium_Abstractions_VectorStore_Models_VectorRecord__System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.VectorStore.IVectorStore.UpsertAsync(System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.VectorStore.Models.VectorRecord},System.Threading.CancellationToken)
+  name.vb: UpsertAsync(String, IReadOnlyList(Of VectorRecord), CancellationToken)
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.UpsertAsync(string, System.Collections.Generic.IReadOnlyList<Compendium.Abstractions.VectorStore.Models.VectorRecord>, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.VectorStore.IVectorStore.UpsertAsync(String, System.Collections.Generic.IReadOnlyList(Of Compendium.Abstractions.VectorStore.Models.VectorRecord), System.Threading.CancellationToken)
+  nameWithType: IVectorStore.UpsertAsync(string, IReadOnlyList<VectorRecord>, CancellationToken)
+  nameWithType.vb: IVectorStore.UpsertAsync(String, IReadOnlyList(Of VectorRecord), CancellationToken)
+- uid: Compendium.Abstractions.VectorStore.IVectorStore.UpsertAsync*
+  name: UpsertAsync
+  href: api/Compendium.Abstractions.VectorStore.IVectorStore.html#Compendium_Abstractions_VectorStore_IVectorStore_UpsertAsync_
+  commentId: Overload:Compendium.Abstractions.VectorStore.IVectorStore.UpsertAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.IVectorStore.UpsertAsync
+  nameWithType: IVectorStore.UpsertAsync
+- uid: Compendium.Abstractions.VectorStore.Models
+  name: Compendium.Abstractions.VectorStore.Models
+  href: api/Compendium.Abstractions.VectorStore.Models.html
+  commentId: N:Compendium.Abstractions.VectorStore.Models
+  fullName: Compendium.Abstractions.VectorStore.Models
+  nameWithType: Compendium.Abstractions.VectorStore.Models
+- uid: Compendium.Abstractions.VectorStore.Models.DistanceMetric
+  name: DistanceMetric
+  href: api/Compendium.Abstractions.VectorStore.Models.DistanceMetric.html
+  commentId: T:Compendium.Abstractions.VectorStore.Models.DistanceMetric
+  fullName: Compendium.Abstractions.VectorStore.Models.DistanceMetric
+  nameWithType: DistanceMetric
+- uid: Compendium.Abstractions.VectorStore.Models.DistanceMetric.Cosine
+  name: Cosine
+  href: api/Compendium.Abstractions.VectorStore.Models.DistanceMetric.html#Compendium_Abstractions_VectorStore_Models_DistanceMetric_Cosine
+  commentId: F:Compendium.Abstractions.VectorStore.Models.DistanceMetric.Cosine
+  fullName: Compendium.Abstractions.VectorStore.Models.DistanceMetric.Cosine
+  nameWithType: DistanceMetric.Cosine
+- uid: Compendium.Abstractions.VectorStore.Models.DistanceMetric.InnerProduct
+  name: InnerProduct
+  href: api/Compendium.Abstractions.VectorStore.Models.DistanceMetric.html#Compendium_Abstractions_VectorStore_Models_DistanceMetric_InnerProduct
+  commentId: F:Compendium.Abstractions.VectorStore.Models.DistanceMetric.InnerProduct
+  fullName: Compendium.Abstractions.VectorStore.Models.DistanceMetric.InnerProduct
+  nameWithType: DistanceMetric.InnerProduct
+- uid: Compendium.Abstractions.VectorStore.Models.DistanceMetric.L2
+  name: L2
+  href: api/Compendium.Abstractions.VectorStore.Models.DistanceMetric.html#Compendium_Abstractions_VectorStore_Models_DistanceMetric_L2
+  commentId: F:Compendium.Abstractions.VectorStore.Models.DistanceMetric.L2
+  fullName: Compendium.Abstractions.VectorStore.Models.DistanceMetric.L2
+  nameWithType: DistanceMetric.L2
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter
+  name: VectorFilter
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html
+  commentId: T:Compendium.Abstractions.VectorStore.Models.VectorFilter
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter
+  nameWithType: VectorFilter
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.And(Compendium.Abstractions.VectorStore.Models.VectorFilter[])
+  name: And(params VectorFilter[])
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_And_Compendium_Abstractions_VectorStore_Models_VectorFilter___
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorFilter.And(Compendium.Abstractions.VectorStore.Models.VectorFilter[])
+  name.vb: And(ParamArray VectorFilter())
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.And(params Compendium.Abstractions.VectorStore.Models.VectorFilter[])
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorFilter.And(ParamArray Compendium.Abstractions.VectorStore.Models.VectorFilter())
+  nameWithType: VectorFilter.And(params VectorFilter[])
+  nameWithType.vb: VectorFilter.And(ParamArray VectorFilter())
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.And*
+  name: And
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_And_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.And
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.And
+  nameWithType: VectorFilter.And
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Children
+  name: Children
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Children
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.Children
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Children
+  nameWithType: VectorFilter.Children
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Children*
+  name: Children
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Children_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Children
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Children
+  nameWithType: VectorFilter.Children
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Eq(System.String,System.Object)
+  name: Eq(string, object)
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Eq_System_String_System_Object_
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorFilter.Eq(System.String,System.Object)
+  name.vb: Eq(String, Object)
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Eq(string, object)
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorFilter.Eq(String, Object)
+  nameWithType: VectorFilter.Eq(string, object)
+  nameWithType.vb: VectorFilter.Eq(String, Object)
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Eq*
+  name: Eq
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Eq_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Eq
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Eq
+  nameWithType: VectorFilter.Eq
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Field
+  name: Field
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Field
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.Field
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Field
+  nameWithType: VectorFilter.Field
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Field*
+  name: Field
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Field_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Field
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Field
+  nameWithType: VectorFilter.Field
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.ForTenant(System.String)
+  name: ForTenant(string)
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_ForTenant_System_String_
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorFilter.ForTenant(System.String)
+  name.vb: ForTenant(String)
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.ForTenant(string)
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorFilter.ForTenant(String)
+  nameWithType: VectorFilter.ForTenant(string)
+  nameWithType.vb: VectorFilter.ForTenant(String)
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.ForTenant*
+  name: ForTenant
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_ForTenant_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.ForTenant
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.ForTenant
+  nameWithType: VectorFilter.ForTenant
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.In(System.String,System.Collections.Generic.IEnumerable{System.Object})
+  name: In(string, IEnumerable<object>)
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_In_System_String_System_Collections_Generic_IEnumerable_System_Object__
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorFilter.In(System.String,System.Collections.Generic.IEnumerable{System.Object})
+  name.vb: In(String, IEnumerable(Of Object))
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.In(string, System.Collections.Generic.IEnumerable<object>)
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorFilter.In(String, System.Collections.Generic.IEnumerable(Of Object))
+  nameWithType: VectorFilter.In(string, IEnumerable<object>)
+  nameWithType.vb: VectorFilter.In(String, IEnumerable(Of Object))
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.In*
+  name: In
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_In_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.In
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.In
+  nameWithType: VectorFilter.In
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Kind
+  name: Kind
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Kind
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.Kind
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Kind
+  nameWithType: VectorFilter.Kind
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Kind*
+  name: Kind
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Kind_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Kind
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Kind
+  nameWithType: VectorFilter.Kind
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Ne(System.String,System.Object)
+  name: Ne(string, object)
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Ne_System_String_System_Object_
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorFilter.Ne(System.String,System.Object)
+  name.vb: Ne(String, Object)
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Ne(string, object)
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorFilter.Ne(String, Object)
+  nameWithType: VectorFilter.Ne(string, object)
+  nameWithType.vb: VectorFilter.Ne(String, Object)
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Ne*
+  name: Ne
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Ne_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Ne
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Ne
+  nameWithType: VectorFilter.Ne
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Or(Compendium.Abstractions.VectorStore.Models.VectorFilter[])
+  name: Or(params VectorFilter[])
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Or_Compendium_Abstractions_VectorStore_Models_VectorFilter___
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorFilter.Or(Compendium.Abstractions.VectorStore.Models.VectorFilter[])
+  name.vb: Or(ParamArray VectorFilter())
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Or(params Compendium.Abstractions.VectorStore.Models.VectorFilter[])
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorFilter.Or(ParamArray Compendium.Abstractions.VectorStore.Models.VectorFilter())
+  nameWithType: VectorFilter.Or(params VectorFilter[])
+  nameWithType.vb: VectorFilter.Or(ParamArray VectorFilter())
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Or*
+  name: Or
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Or_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Or
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Or
+  nameWithType: VectorFilter.Or
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Range(System.String,System.Object,System.Object,System.Boolean,System.Boolean)
+  name: Range(string, object?, object?, bool, bool)
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Range_System_String_System_Object_System_Object_System_Boolean_System_Boolean_
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorFilter.Range(System.String,System.Object,System.Object,System.Boolean,System.Boolean)
+  name.vb: Range(String, Object, Object, Boolean, Boolean)
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Range(string, object?, object?, bool, bool)
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorFilter.Range(String, Object, Object, Boolean, Boolean)
+  nameWithType: VectorFilter.Range(string, object?, object?, bool, bool)
+  nameWithType.vb: VectorFilter.Range(String, Object, Object, Boolean, Boolean)
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Range*
+  name: Range
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Range_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Range
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Range
+  nameWithType: VectorFilter.Range
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMax
+  name: RangeMax
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMax
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMax
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMax
+  nameWithType: VectorFilter.RangeMax
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMax*
+  name: RangeMax
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMax_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMax
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMax
+  nameWithType: VectorFilter.RangeMax
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMaxInclusive
+  name: RangeMaxInclusive
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMaxInclusive
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMaxInclusive
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMaxInclusive
+  nameWithType: VectorFilter.RangeMaxInclusive
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMaxInclusive*
+  name: RangeMaxInclusive
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMaxInclusive_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMaxInclusive
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMaxInclusive
+  nameWithType: VectorFilter.RangeMaxInclusive
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMin
+  name: RangeMin
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMin
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMin
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMin
+  nameWithType: VectorFilter.RangeMin
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMin*
+  name: RangeMin
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMin_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMin
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMin
+  nameWithType: VectorFilter.RangeMin
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMinInclusive
+  name: RangeMinInclusive
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMinInclusive
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMinInclusive
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMinInclusive
+  nameWithType: VectorFilter.RangeMinInclusive
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMinInclusive*
+  name: RangeMinInclusive
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_RangeMinInclusive_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMinInclusive
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.RangeMinInclusive
+  nameWithType: VectorFilter.RangeMinInclusive
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_TenantId
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.TenantId
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.TenantId
+  nameWithType: VectorFilter.TenantId
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_TenantId_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.TenantId
+  nameWithType: VectorFilter.TenantId
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Value
+  name: Value
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Value
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.Value
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Value
+  nameWithType: VectorFilter.Value
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Value*
+  name: Value
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Value_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Value
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Value
+  nameWithType: VectorFilter.Value
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Values
+  name: Values
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Values
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorFilter.Values
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Values
+  nameWithType: VectorFilter.Values
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilter.Values*
+  name: Values
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html#Compendium_Abstractions_VectorStore_Models_VectorFilter_Values_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorFilter.Values
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilter.Values
+  nameWithType: VectorFilter.Values
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilterKind
+  name: VectorFilterKind
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html
+  commentId: T:Compendium.Abstractions.VectorStore.Models.VectorFilterKind
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilterKind
+  nameWithType: VectorFilterKind
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.And
+  name: And
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html#Compendium_Abstractions_VectorStore_Models_VectorFilterKind_And
+  commentId: F:Compendium.Abstractions.VectorStore.Models.VectorFilterKind.And
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.And
+  nameWithType: VectorFilterKind.And
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Eq
+  name: Eq
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html#Compendium_Abstractions_VectorStore_Models_VectorFilterKind_Eq
+  commentId: F:Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Eq
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Eq
+  nameWithType: VectorFilterKind.Eq
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.In
+  name: In
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html#Compendium_Abstractions_VectorStore_Models_VectorFilterKind_In
+  commentId: F:Compendium.Abstractions.VectorStore.Models.VectorFilterKind.In
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.In
+  nameWithType: VectorFilterKind.In
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Ne
+  name: Ne
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html#Compendium_Abstractions_VectorStore_Models_VectorFilterKind_Ne
+  commentId: F:Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Ne
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Ne
+  nameWithType: VectorFilterKind.Ne
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Or
+  name: Or
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html#Compendium_Abstractions_VectorStore_Models_VectorFilterKind_Or
+  commentId: F:Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Or
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Or
+  nameWithType: VectorFilterKind.Or
+- uid: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Range
+  name: Range
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html#Compendium_Abstractions_VectorStore_Models_VectorFilterKind_Range
+  commentId: F:Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Range
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorFilterKind.Range
+  nameWithType: VectorFilterKind.Range
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch
+  name: VectorMatch
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html
+  commentId: T:Compendium.Abstractions.VectorStore.Models.VectorMatch
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch
+  nameWithType: VectorMatch
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.#ctor(System.String,System.Single,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.String)
+  name: VectorMatch(string, float, IReadOnlyDictionary<string, object>, string?)
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch__ctor_System_String_System_Single_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_String_
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorMatch.#ctor(System.String,System.Single,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.String)
+  name.vb: New(String, Single, IReadOnlyDictionary(Of String, Object), String)
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.VectorMatch(string, float, System.Collections.Generic.IReadOnlyDictionary<string, object>, string?)
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorMatch.New(String, Single, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), String)
+  nameWithType: VectorMatch.VectorMatch(string, float, IReadOnlyDictionary<string, object>, string?)
+  nameWithType.vb: VectorMatch.New(String, Single, IReadOnlyDictionary(Of String, Object), String)
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.#ctor*
+  name: VectorMatch
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch__ctor_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorMatch.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.VectorMatch
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorMatch.New
+  nameWithType: VectorMatch.VectorMatch
+  nameWithType.vb: VectorMatch.New
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.Id
+  name: Id
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_Id
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorMatch.Id
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.Id
+  nameWithType: VectorMatch.Id
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.Id*
+  name: Id
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_Id_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorMatch.Id
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.Id
+  nameWithType: VectorMatch.Id
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.Metadata
+  name: Metadata
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_Metadata
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorMatch.Metadata
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.Metadata
+  nameWithType: VectorMatch.Metadata
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.Metadata*
+  name: Metadata
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_Metadata_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorMatch.Metadata
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.Metadata
+  nameWithType: VectorMatch.Metadata
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.Score
+  name: Score
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_Score
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorMatch.Score
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.Score
+  nameWithType: VectorMatch.Score
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.Score*
+  name: Score
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_Score_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorMatch.Score
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.Score
+  nameWithType: VectorMatch.Score
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_TenantId
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorMatch.TenantId
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.TenantId
+  nameWithType: VectorMatch.TenantId
+- uid: Compendium.Abstractions.VectorStore.Models.VectorMatch.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html#Compendium_Abstractions_VectorStore_Models_VectorMatch_TenantId_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorMatch.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorMatch.TenantId
+  nameWithType: VectorMatch.TenantId
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord
+  name: VectorRecord
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html
+  commentId: T:Compendium.Abstractions.VectorStore.Models.VectorRecord
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord
+  nameWithType: VectorRecord
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.#ctor(System.String,System.ReadOnlyMemory{System.Single},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.String)
+  name: VectorRecord(string, ReadOnlyMemory<float>, IReadOnlyDictionary<string, object>, string?)
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord__ctor_System_String_System_ReadOnlyMemory_System_Single__System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_String_
+  commentId: M:Compendium.Abstractions.VectorStore.Models.VectorRecord.#ctor(System.String,System.ReadOnlyMemory{System.Single},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.String)
+  name.vb: New(String, ReadOnlyMemory(Of Single), IReadOnlyDictionary(Of String, Object), String)
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.VectorRecord(string, System.ReadOnlyMemory<float>, System.Collections.Generic.IReadOnlyDictionary<string, object>, string?)
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorRecord.New(String, System.ReadOnlyMemory(Of Single), System.Collections.Generic.IReadOnlyDictionary(Of String, Object), String)
+  nameWithType: VectorRecord.VectorRecord(string, ReadOnlyMemory<float>, IReadOnlyDictionary<string, object>, string?)
+  nameWithType.vb: VectorRecord.New(String, ReadOnlyMemory(Of Single), IReadOnlyDictionary(Of String, Object), String)
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.#ctor*
+  name: VectorRecord
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord__ctor_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorRecord.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.VectorRecord
+  fullName.vb: Compendium.Abstractions.VectorStore.Models.VectorRecord.New
+  nameWithType: VectorRecord.VectorRecord
+  nameWithType.vb: VectorRecord.New
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.Embedding
+  name: Embedding
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_Embedding
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorRecord.Embedding
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.Embedding
+  nameWithType: VectorRecord.Embedding
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.Embedding*
+  name: Embedding
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_Embedding_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorRecord.Embedding
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.Embedding
+  nameWithType: VectorRecord.Embedding
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.Id
+  name: Id
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_Id
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorRecord.Id
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.Id
+  nameWithType: VectorRecord.Id
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.Id*
+  name: Id
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_Id_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorRecord.Id
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.Id
+  nameWithType: VectorRecord.Id
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.Metadata
+  name: Metadata
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_Metadata
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorRecord.Metadata
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.Metadata
+  nameWithType: VectorRecord.Metadata
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.Metadata*
+  name: Metadata
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_Metadata_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorRecord.Metadata
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.Metadata
+  nameWithType: VectorRecord.Metadata
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_TenantId
+  commentId: P:Compendium.Abstractions.VectorStore.Models.VectorRecord.TenantId
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.TenantId
+  nameWithType: VectorRecord.TenantId
+- uid: Compendium.Abstractions.VectorStore.Models.VectorRecord.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html#Compendium_Abstractions_VectorStore_Models_VectorRecord_TenantId_
+  commentId: Overload:Compendium.Abstractions.VectorStore.Models.VectorRecord.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.Models.VectorRecord.TenantId
+  nameWithType: VectorRecord.TenantId
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors
+  name: VectorStoreErrors
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html
+  commentId: T:Compendium.Abstractions.VectorStore.VectorStoreErrors
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors
+  nameWithType: VectorStoreErrors
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.CollectionNotFound(System.String)
+  name: CollectionNotFound(string)
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_CollectionNotFound_System_String_
+  commentId: M:Compendium.Abstractions.VectorStore.VectorStoreErrors.CollectionNotFound(System.String)
+  name.vb: CollectionNotFound(String)
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.CollectionNotFound(string)
+  fullName.vb: Compendium.Abstractions.VectorStore.VectorStoreErrors.CollectionNotFound(String)
+  nameWithType: VectorStoreErrors.CollectionNotFound(string)
+  nameWithType.vb: VectorStoreErrors.CollectionNotFound(String)
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.CollectionNotFound*
+  name: CollectionNotFound
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_CollectionNotFound_
+  commentId: Overload:Compendium.Abstractions.VectorStore.VectorStoreErrors.CollectionNotFound
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.CollectionNotFound
+  nameWithType: VectorStoreErrors.CollectionNotFound
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.DimensionMismatch(System.Int32,System.Int32)
+  name: DimensionMismatch(int, int)
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_DimensionMismatch_System_Int32_System_Int32_
+  commentId: M:Compendium.Abstractions.VectorStore.VectorStoreErrors.DimensionMismatch(System.Int32,System.Int32)
+  name.vb: DimensionMismatch(Integer, Integer)
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.DimensionMismatch(int, int)
+  fullName.vb: Compendium.Abstractions.VectorStore.VectorStoreErrors.DimensionMismatch(Integer, Integer)
+  nameWithType: VectorStoreErrors.DimensionMismatch(int, int)
+  nameWithType.vb: VectorStoreErrors.DimensionMismatch(Integer, Integer)
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.DimensionMismatch*
+  name: DimensionMismatch
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_DimensionMismatch_
+  commentId: Overload:Compendium.Abstractions.VectorStore.VectorStoreErrors.DimensionMismatch
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.DimensionMismatch
+  nameWithType: VectorStoreErrors.DimensionMismatch
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.IdNotFound(System.String)
+  name: IdNotFound(string)
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_IdNotFound_System_String_
+  commentId: M:Compendium.Abstractions.VectorStore.VectorStoreErrors.IdNotFound(System.String)
+  name.vb: IdNotFound(String)
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.IdNotFound(string)
+  fullName.vb: Compendium.Abstractions.VectorStore.VectorStoreErrors.IdNotFound(String)
+  nameWithType: VectorStoreErrors.IdNotFound(string)
+  nameWithType.vb: VectorStoreErrors.IdNotFound(String)
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.IdNotFound*
+  name: IdNotFound
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_IdNotFound_
+  commentId: Overload:Compendium.Abstractions.VectorStore.VectorStoreErrors.IdNotFound
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.IdNotFound
+  nameWithType: VectorStoreErrors.IdNotFound
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.InvalidFilter(System.String)
+  name: InvalidFilter(string)
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_InvalidFilter_System_String_
+  commentId: M:Compendium.Abstractions.VectorStore.VectorStoreErrors.InvalidFilter(System.String)
+  name.vb: InvalidFilter(String)
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.InvalidFilter(string)
+  fullName.vb: Compendium.Abstractions.VectorStore.VectorStoreErrors.InvalidFilter(String)
+  nameWithType: VectorStoreErrors.InvalidFilter(string)
+  nameWithType.vb: VectorStoreErrors.InvalidFilter(String)
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.InvalidFilter*
+  name: InvalidFilter
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_InvalidFilter_
+  commentId: Overload:Compendium.Abstractions.VectorStore.VectorStoreErrors.InvalidFilter
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.InvalidFilter
+  nameWithType: VectorStoreErrors.InvalidFilter
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.Prefix
+  name: Prefix
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_Prefix
+  commentId: F:Compendium.Abstractions.VectorStore.VectorStoreErrors.Prefix
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.Prefix
+  nameWithType: VectorStoreErrors.Prefix
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.Throttled(System.Nullable{System.TimeSpan})
+  name: Throttled(TimeSpan?)
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_Throttled_System_Nullable_System_TimeSpan__
+  commentId: M:Compendium.Abstractions.VectorStore.VectorStoreErrors.Throttled(System.Nullable{System.TimeSpan})
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.Throttled(System.TimeSpan?)
+  nameWithType: VectorStoreErrors.Throttled(TimeSpan?)
+- uid: Compendium.Abstractions.VectorStore.VectorStoreErrors.Throttled*
+  name: Throttled
+  href: api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html#Compendium_Abstractions_VectorStore_VectorStoreErrors_Throttled_
+  commentId: Overload:Compendium.Abstractions.VectorStore.VectorStoreErrors.Throttled
+  isSpec: "True"
+  fullName: Compendium.Abstractions.VectorStore.VectorStoreErrors.Throttled
+  nameWithType: VectorStoreErrors.Throttled
 - uid: Compendium.Adapters.AspNetCore.Health
   name: Compendium.Adapters.AspNetCore.Health
   href: api/Compendium.Adapters.AspNetCore.Health.html

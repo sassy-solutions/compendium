@@ -2139,6 +2139,132 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.IVectorStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.IVectorStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.IVectorStore",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.VectorStore.IVectorStore.yml\" sourcestartlinenumber=\"1\">Provides storage and similarity search over dense embedding vectors.\nThis port is provider-agnostic and can be implemented by adapters such as\npgvector, Qdrant, Weaviate, or Pinecone.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.Models.DistanceMetric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.Models.DistanceMetric.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.Models.DistanceMetric",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.VectorStore.Models.DistanceMetric.yml\" sourcestartlinenumber=\"1\">Defines the distance metric used to compare vectors during similarity search.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorFilter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.Models.VectorFilter",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.VectorStore.Models.VectorFilter.yml\" sourcestartlinenumber=\"1\">Represents a tenant-aware metadata filter applied to a vector search.\nInstances are immutable and built through the static factories.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.Models.VectorFilterKind",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.VectorStore.Models.VectorFilterKind.yml\" sourcestartlinenumber=\"1\">Identifies the kind of operation represented by a <xref href=\"Compendium.Abstractions.VectorStore.Models.VectorFilter\" data-throw-if-not-resolved=\"false\"></xref> node.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorMatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorMatch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.Models.VectorMatch",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.VectorStore.Models.VectorMatch.yml\" sourcestartlinenumber=\"1\">Represents a single match returned by a similarity search.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorRecord.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.Models.VectorRecord.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.Models.VectorRecord",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.VectorStore.Models.VectorRecord.yml\" sourcestartlinenumber=\"1\">Represents a vector record to be stored in or retrieved from a vector store.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.VectorStoreErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.VectorStoreErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore.VectorStoreErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.VectorStore.VectorStoreErrors.yml\" sourcestartlinenumber=\"1\">Provides standardized error definitions for vector store operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.VectorStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.VectorStore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.VectorStore",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Adapters.AspNetCore.Health.HealthCheckExtensions.yml",
       "output": {
         ".html": {
