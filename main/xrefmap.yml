@@ -10993,6 +10993,324 @@ references:
   fullName.vb: Compendium.Abstractions.Persistence.IRepository(Of TAggregate, TId).UpdateAsync
   nameWithType: IRepository<TAggregate, TId>.UpdateAsync
   nameWithType.vb: IRepository(Of TAggregate, TId).UpdateAsync
+- uid: Compendium.Abstractions.Realtime
+  name: Compendium.Abstractions.Realtime
+  href: api/Compendium.Abstractions.Realtime.html
+  commentId: N:Compendium.Abstractions.Realtime
+  fullName: Compendium.Abstractions.Realtime
+  nameWithType: Compendium.Abstractions.Realtime
+- uid: Compendium.Abstractions.Realtime.IRealtimeChannel
+  name: IRealtimeChannel
+  href: api/Compendium.Abstractions.Realtime.IRealtimeChannel.html
+  commentId: T:Compendium.Abstractions.Realtime.IRealtimeChannel
+  fullName: Compendium.Abstractions.Realtime.IRealtimeChannel
+  nameWithType: IRealtimeChannel
+- uid: Compendium.Abstractions.Realtime.IRealtimeChannel.AuthorizeSubscriberAsync(Compendium.Abstractions.Realtime.Models.SubscriberContext,System.String,System.Threading.CancellationToken)
+  name: AuthorizeSubscriberAsync(SubscriberContext, string, CancellationToken)
+  href: api/Compendium.Abstractions.Realtime.IRealtimeChannel.html#Compendium_Abstractions_Realtime_IRealtimeChannel_AuthorizeSubscriberAsync_Compendium_Abstractions_Realtime_Models_SubscriberContext_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Realtime.IRealtimeChannel.AuthorizeSubscriberAsync(Compendium.Abstractions.Realtime.Models.SubscriberContext,System.String,System.Threading.CancellationToken)
+  name.vb: AuthorizeSubscriberAsync(SubscriberContext, String, CancellationToken)
+  fullName: Compendium.Abstractions.Realtime.IRealtimeChannel.AuthorizeSubscriberAsync(Compendium.Abstractions.Realtime.Models.SubscriberContext, string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Realtime.IRealtimeChannel.AuthorizeSubscriberAsync(Compendium.Abstractions.Realtime.Models.SubscriberContext, String, System.Threading.CancellationToken)
+  nameWithType: IRealtimeChannel.AuthorizeSubscriberAsync(SubscriberContext, string, CancellationToken)
+  nameWithType.vb: IRealtimeChannel.AuthorizeSubscriberAsync(SubscriberContext, String, CancellationToken)
+- uid: Compendium.Abstractions.Realtime.IRealtimeChannel.AuthorizeSubscriberAsync*
+  name: AuthorizeSubscriberAsync
+  href: api/Compendium.Abstractions.Realtime.IRealtimeChannel.html#Compendium_Abstractions_Realtime_IRealtimeChannel_AuthorizeSubscriberAsync_
+  commentId: Overload:Compendium.Abstractions.Realtime.IRealtimeChannel.AuthorizeSubscriberAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.IRealtimeChannel.AuthorizeSubscriberAsync
+  nameWithType: IRealtimeChannel.AuthorizeSubscriberAsync
+- uid: Compendium.Abstractions.Realtime.IRealtimeChannel.GetPresenceAsync(System.String,System.Threading.CancellationToken)
+  name: GetPresenceAsync(string, CancellationToken)
+  href: api/Compendium.Abstractions.Realtime.IRealtimeChannel.html#Compendium_Abstractions_Realtime_IRealtimeChannel_GetPresenceAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Realtime.IRealtimeChannel.GetPresenceAsync(System.String,System.Threading.CancellationToken)
+  name.vb: GetPresenceAsync(String, CancellationToken)
+  fullName: Compendium.Abstractions.Realtime.IRealtimeChannel.GetPresenceAsync(string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Realtime.IRealtimeChannel.GetPresenceAsync(String, System.Threading.CancellationToken)
+  nameWithType: IRealtimeChannel.GetPresenceAsync(string, CancellationToken)
+  nameWithType.vb: IRealtimeChannel.GetPresenceAsync(String, CancellationToken)
+- uid: Compendium.Abstractions.Realtime.IRealtimeChannel.GetPresenceAsync*
+  name: GetPresenceAsync
+  href: api/Compendium.Abstractions.Realtime.IRealtimeChannel.html#Compendium_Abstractions_Realtime_IRealtimeChannel_GetPresenceAsync_
+  commentId: Overload:Compendium.Abstractions.Realtime.IRealtimeChannel.GetPresenceAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.IRealtimeChannel.GetPresenceAsync
+  nameWithType: IRealtimeChannel.GetPresenceAsync
+- uid: Compendium.Abstractions.Realtime.IRealtimeChannel.PublishAsync(System.String,System.String,System.Object,Compendium.Abstractions.Realtime.Models.PublishOptions,System.Threading.CancellationToken)
+  name: PublishAsync(string, string, object, PublishOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Realtime.IRealtimeChannel.html#Compendium_Abstractions_Realtime_IRealtimeChannel_PublishAsync_System_String_System_String_System_Object_Compendium_Abstractions_Realtime_Models_PublishOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Realtime.IRealtimeChannel.PublishAsync(System.String,System.String,System.Object,Compendium.Abstractions.Realtime.Models.PublishOptions,System.Threading.CancellationToken)
+  name.vb: PublishAsync(String, String, Object, PublishOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Realtime.IRealtimeChannel.PublishAsync(string, string, object, Compendium.Abstractions.Realtime.Models.PublishOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Realtime.IRealtimeChannel.PublishAsync(String, String, Object, Compendium.Abstractions.Realtime.Models.PublishOptions, System.Threading.CancellationToken)
+  nameWithType: IRealtimeChannel.PublishAsync(string, string, object, PublishOptions, CancellationToken)
+  nameWithType.vb: IRealtimeChannel.PublishAsync(String, String, Object, PublishOptions, CancellationToken)
+- uid: Compendium.Abstractions.Realtime.IRealtimeChannel.PublishAsync*
+  name: PublishAsync
+  href: api/Compendium.Abstractions.Realtime.IRealtimeChannel.html#Compendium_Abstractions_Realtime_IRealtimeChannel_PublishAsync_
+  commentId: Overload:Compendium.Abstractions.Realtime.IRealtimeChannel.PublishAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.IRealtimeChannel.PublishAsync
+  nameWithType: IRealtimeChannel.PublishAsync
+- uid: Compendium.Abstractions.Realtime.Models
+  name: Compendium.Abstractions.Realtime.Models
+  href: api/Compendium.Abstractions.Realtime.Models.html
+  commentId: N:Compendium.Abstractions.Realtime.Models
+  fullName: Compendium.Abstractions.Realtime.Models
+  nameWithType: Compendium.Abstractions.Realtime.Models
+- uid: Compendium.Abstractions.Realtime.Models.PresenceMember
+  name: PresenceMember
+  href: api/Compendium.Abstractions.Realtime.Models.PresenceMember.html
+  commentId: T:Compendium.Abstractions.Realtime.Models.PresenceMember
+  fullName: Compendium.Abstractions.Realtime.Models.PresenceMember
+  nameWithType: PresenceMember
+- uid: Compendium.Abstractions.Realtime.Models.PresenceMember.#ctor(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})
+  name: PresenceMember(string, IReadOnlyDictionary<string, object>)
+  href: api/Compendium.Abstractions.Realtime.Models.PresenceMember.html#Compendium_Abstractions_Realtime_Models_PresenceMember__ctor_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__
+  commentId: M:Compendium.Abstractions.Realtime.Models.PresenceMember.#ctor(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})
+  name.vb: New(String, IReadOnlyDictionary(Of String, Object))
+  fullName: Compendium.Abstractions.Realtime.Models.PresenceMember.PresenceMember(string, System.Collections.Generic.IReadOnlyDictionary<string, object>)
+  fullName.vb: Compendium.Abstractions.Realtime.Models.PresenceMember.New(String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object))
+  nameWithType: PresenceMember.PresenceMember(string, IReadOnlyDictionary<string, object>)
+  nameWithType.vb: PresenceMember.New(String, IReadOnlyDictionary(Of String, Object))
+- uid: Compendium.Abstractions.Realtime.Models.PresenceMember.#ctor*
+  name: PresenceMember
+  href: api/Compendium.Abstractions.Realtime.Models.PresenceMember.html#Compendium_Abstractions_Realtime_Models_PresenceMember__ctor_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.PresenceMember.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Realtime.Models.PresenceMember.PresenceMember
+  fullName.vb: Compendium.Abstractions.Realtime.Models.PresenceMember.New
+  nameWithType: PresenceMember.PresenceMember
+  nameWithType.vb: PresenceMember.New
+- uid: Compendium.Abstractions.Realtime.Models.PresenceMember.Id
+  name: Id
+  href: api/Compendium.Abstractions.Realtime.Models.PresenceMember.html#Compendium_Abstractions_Realtime_Models_PresenceMember_Id
+  commentId: P:Compendium.Abstractions.Realtime.Models.PresenceMember.Id
+  fullName: Compendium.Abstractions.Realtime.Models.PresenceMember.Id
+  nameWithType: PresenceMember.Id
+- uid: Compendium.Abstractions.Realtime.Models.PresenceMember.Id*
+  name: Id
+  href: api/Compendium.Abstractions.Realtime.Models.PresenceMember.html#Compendium_Abstractions_Realtime_Models_PresenceMember_Id_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.PresenceMember.Id
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.PresenceMember.Id
+  nameWithType: PresenceMember.Id
+- uid: Compendium.Abstractions.Realtime.Models.PresenceMember.Info
+  name: Info
+  href: api/Compendium.Abstractions.Realtime.Models.PresenceMember.html#Compendium_Abstractions_Realtime_Models_PresenceMember_Info
+  commentId: P:Compendium.Abstractions.Realtime.Models.PresenceMember.Info
+  fullName: Compendium.Abstractions.Realtime.Models.PresenceMember.Info
+  nameWithType: PresenceMember.Info
+- uid: Compendium.Abstractions.Realtime.Models.PresenceMember.Info*
+  name: Info
+  href: api/Compendium.Abstractions.Realtime.Models.PresenceMember.html#Compendium_Abstractions_Realtime_Models_PresenceMember_Info_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.PresenceMember.Info
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.PresenceMember.Info
+  nameWithType: PresenceMember.Info
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions
+  name: PublishOptions
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html
+  commentId: T:Compendium.Abstractions.Realtime.Models.PublishOptions
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions
+  nameWithType: PublishOptions
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.#ctor(System.String,System.Nullable{System.TimeSpan},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})
+  name: PublishOptions(string, TimeSpan?, IReadOnlyDictionary<string, string>?)
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions__ctor_System_String_System_Nullable_System_TimeSpan__System_Collections_Generic_IReadOnlyDictionary_System_String_System_String__
+  commentId: M:Compendium.Abstractions.Realtime.Models.PublishOptions.#ctor(System.String,System.Nullable{System.TimeSpan},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})
+  name.vb: New(String, TimeSpan?, IReadOnlyDictionary(Of String, String))
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.PublishOptions(string, System.TimeSpan?, System.Collections.Generic.IReadOnlyDictionary<string, string>?)
+  fullName.vb: Compendium.Abstractions.Realtime.Models.PublishOptions.New(String, System.TimeSpan?, System.Collections.Generic.IReadOnlyDictionary(Of String, String))
+  nameWithType: PublishOptions.PublishOptions(string, TimeSpan?, IReadOnlyDictionary<string, string>?)
+  nameWithType.vb: PublishOptions.New(String, TimeSpan?, IReadOnlyDictionary(Of String, String))
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.#ctor*
+  name: PublishOptions
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions__ctor_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.PublishOptions.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.PublishOptions
+  fullName.vb: Compendium.Abstractions.Realtime.Models.PublishOptions.New
+  nameWithType: PublishOptions.PublishOptions
+  nameWithType.vb: PublishOptions.New
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.Headers
+  name: Headers
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions_Headers
+  commentId: P:Compendium.Abstractions.Realtime.Models.PublishOptions.Headers
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.Headers
+  nameWithType: PublishOptions.Headers
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.Headers*
+  name: Headers
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions_Headers_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.PublishOptions.Headers
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.Headers
+  nameWithType: PublishOptions.Headers
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions_TenantId
+  commentId: P:Compendium.Abstractions.Realtime.Models.PublishOptions.TenantId
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.TenantId
+  nameWithType: PublishOptions.TenantId
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions_TenantId_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.PublishOptions.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.TenantId
+  nameWithType: PublishOptions.TenantId
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.Ttl
+  name: Ttl
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions_Ttl
+  commentId: P:Compendium.Abstractions.Realtime.Models.PublishOptions.Ttl
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.Ttl
+  nameWithType: PublishOptions.Ttl
+- uid: Compendium.Abstractions.Realtime.Models.PublishOptions.Ttl*
+  name: Ttl
+  href: api/Compendium.Abstractions.Realtime.Models.PublishOptions.html#Compendium_Abstractions_Realtime_Models_PublishOptions_Ttl_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.PublishOptions.Ttl
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.PublishOptions.Ttl
+  nameWithType: PublishOptions.Ttl
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext
+  name: SubscriberContext
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html
+  commentId: T:Compendium.Abstractions.Realtime.Models.SubscriberContext
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext
+  nameWithType: SubscriberContext
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})
+  name: SubscriberContext(string, string, IReadOnlyDictionary<string, object>?)
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext__ctor_System_String_System_String_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__
+  commentId: M:Compendium.Abstractions.Realtime.Models.SubscriberContext.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})
+  name.vb: New(String, String, IReadOnlyDictionary(Of String, Object))
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.SubscriberContext(string, string, System.Collections.Generic.IReadOnlyDictionary<string, object>?)
+  fullName.vb: Compendium.Abstractions.Realtime.Models.SubscriberContext.New(String, String, System.Collections.Generic.IReadOnlyDictionary(Of String, Object))
+  nameWithType: SubscriberContext.SubscriberContext(string, string, IReadOnlyDictionary<string, object>?)
+  nameWithType.vb: SubscriberContext.New(String, String, IReadOnlyDictionary(Of String, Object))
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.#ctor*
+  name: SubscriberContext
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext__ctor_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.SubscriberContext.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.SubscriberContext
+  fullName.vb: Compendium.Abstractions.Realtime.Models.SubscriberContext.New
+  nameWithType: SubscriberContext.SubscriberContext
+  nameWithType.vb: SubscriberContext.New
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.Info
+  name: Info
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext_Info
+  commentId: P:Compendium.Abstractions.Realtime.Models.SubscriberContext.Info
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.Info
+  nameWithType: SubscriberContext.Info
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.Info*
+  name: Info
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext_Info_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.SubscriberContext.Info
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.Info
+  nameWithType: SubscriberContext.Info
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext_TenantId
+  commentId: P:Compendium.Abstractions.Realtime.Models.SubscriberContext.TenantId
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.TenantId
+  nameWithType: SubscriberContext.TenantId
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext_TenantId_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.SubscriberContext.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.TenantId
+  nameWithType: SubscriberContext.TenantId
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.UserId
+  name: UserId
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext_UserId
+  commentId: P:Compendium.Abstractions.Realtime.Models.SubscriberContext.UserId
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.UserId
+  nameWithType: SubscriberContext.UserId
+- uid: Compendium.Abstractions.Realtime.Models.SubscriberContext.UserId*
+  name: UserId
+  href: api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html#Compendium_Abstractions_Realtime_Models_SubscriberContext_UserId_
+  commentId: Overload:Compendium.Abstractions.Realtime.Models.SubscriberContext.UserId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.Models.SubscriberContext.UserId
+  nameWithType: SubscriberContext.UserId
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors
+  name: RealtimeErrors
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html
+  commentId: T:Compendium.Abstractions.Realtime.RealtimeErrors
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors
+  nameWithType: RealtimeErrors
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.ChannelNotAuthorized(System.String)
+  name: ChannelNotAuthorized(string)
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_ChannelNotAuthorized_System_String_
+  commentId: M:Compendium.Abstractions.Realtime.RealtimeErrors.ChannelNotAuthorized(System.String)
+  name.vb: ChannelNotAuthorized(String)
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.ChannelNotAuthorized(string)
+  fullName.vb: Compendium.Abstractions.Realtime.RealtimeErrors.ChannelNotAuthorized(String)
+  nameWithType: RealtimeErrors.ChannelNotAuthorized(string)
+  nameWithType.vb: RealtimeErrors.ChannelNotAuthorized(String)
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.ChannelNotAuthorized*
+  name: ChannelNotAuthorized
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_ChannelNotAuthorized_
+  commentId: Overload:Compendium.Abstractions.Realtime.RealtimeErrors.ChannelNotAuthorized
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.ChannelNotAuthorized
+  nameWithType: RealtimeErrors.ChannelNotAuthorized
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.MessageTooLarge(System.Int32,System.Int32)
+  name: MessageTooLarge(int, int)
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_MessageTooLarge_System_Int32_System_Int32_
+  commentId: M:Compendium.Abstractions.Realtime.RealtimeErrors.MessageTooLarge(System.Int32,System.Int32)
+  name.vb: MessageTooLarge(Integer, Integer)
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.MessageTooLarge(int, int)
+  fullName.vb: Compendium.Abstractions.Realtime.RealtimeErrors.MessageTooLarge(Integer, Integer)
+  nameWithType: RealtimeErrors.MessageTooLarge(int, int)
+  nameWithType.vb: RealtimeErrors.MessageTooLarge(Integer, Integer)
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.MessageTooLarge*
+  name: MessageTooLarge
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_MessageTooLarge_
+  commentId: Overload:Compendium.Abstractions.Realtime.RealtimeErrors.MessageTooLarge
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.MessageTooLarge
+  nameWithType: RealtimeErrors.MessageTooLarge
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.Prefix
+  name: Prefix
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_Prefix
+  commentId: F:Compendium.Abstractions.Realtime.RealtimeErrors.Prefix
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.Prefix
+  nameWithType: RealtimeErrors.Prefix
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.ProviderUnreachable(System.String,System.String)
+  name: ProviderUnreachable(string, string?)
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_ProviderUnreachable_System_String_System_String_
+  commentId: M:Compendium.Abstractions.Realtime.RealtimeErrors.ProviderUnreachable(System.String,System.String)
+  name.vb: ProviderUnreachable(String, String)
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.ProviderUnreachable(string, string?)
+  fullName.vb: Compendium.Abstractions.Realtime.RealtimeErrors.ProviderUnreachable(String, String)
+  nameWithType: RealtimeErrors.ProviderUnreachable(string, string?)
+  nameWithType.vb: RealtimeErrors.ProviderUnreachable(String, String)
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.ProviderUnreachable*
+  name: ProviderUnreachable
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_ProviderUnreachable_
+  commentId: Overload:Compendium.Abstractions.Realtime.RealtimeErrors.ProviderUnreachable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.ProviderUnreachable
+  nameWithType: RealtimeErrors.ProviderUnreachable
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.RateLimited(System.Nullable{System.TimeSpan})
+  name: RateLimited(TimeSpan?)
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_RateLimited_System_Nullable_System_TimeSpan__
+  commentId: M:Compendium.Abstractions.Realtime.RealtimeErrors.RateLimited(System.Nullable{System.TimeSpan})
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.RateLimited(System.TimeSpan?)
+  nameWithType: RealtimeErrors.RateLimited(TimeSpan?)
+- uid: Compendium.Abstractions.Realtime.RealtimeErrors.RateLimited*
+  name: RateLimited
+  href: api/Compendium.Abstractions.Realtime.RealtimeErrors.html#Compendium_Abstractions_Realtime_RealtimeErrors_RateLimited_
+  commentId: Overload:Compendium.Abstractions.Realtime.RealtimeErrors.RateLimited
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Realtime.RealtimeErrors.RateLimited
+  nameWithType: RealtimeErrors.RateLimited
 - uid: Compendium.Abstractions.Sagas.Choreography
   name: Compendium.Abstractions.Sagas.Choreography
   href: api/Compendium.Abstractions.Sagas.Choreography.html

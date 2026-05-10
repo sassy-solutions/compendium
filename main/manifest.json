@@ -2433,6 +2433,104 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Realtime.IRealtimeChannel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Realtime.IRealtimeChannel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Realtime.IRealtimeChannel",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Realtime.IRealtimeChannel.yml\" sourcestartlinenumber=\"1\">Provider-agnostic realtime channel port. Implementations (Pusher, Ably, SignalR, …)\nadapt this interface to their transport. Channel names MUST follow the tenant-prefixed\nconvention <code>{tenantId}:{scope}</code> so authorization can be enforced uniformly.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Realtime.Models.PresenceMember.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Realtime.Models.PresenceMember.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Realtime.Models.PresenceMember",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Realtime.Models.PresenceMember.yml\" sourcestartlinenumber=\"1\">A member currently present on a realtime presence channel.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Realtime.Models.PublishOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Realtime.Models.PublishOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Realtime.Models.PublishOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Realtime.Models.PublishOptions.yml\" sourcestartlinenumber=\"1\">Options for publishing a realtime message. <xref href=\"Compendium.Abstractions.Realtime.Models.PublishOptions.TenantId\" data-throw-if-not-resolved=\"false\"></xref> is required so adapters\ncan enforce the tenant-prefixed channel naming convention (<code>{tenantId}:{scope}</code>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Realtime.Models.SubscriberContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Realtime.Models.SubscriberContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Realtime.Models.SubscriberContext",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Realtime.Models.SubscriberContext.yml\" sourcestartlinenumber=\"1\">Context describing a subscriber attempting to join a realtime channel.\nAdapters use this to authorize the subscription and bind presence metadata.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Realtime.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Realtime.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Realtime.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Realtime.RealtimeErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Realtime.RealtimeErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Realtime.RealtimeErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Realtime.RealtimeErrors.yml\" sourcestartlinenumber=\"1\">Provides standardized error definitions for realtime channel operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Realtime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Realtime.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Realtime",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Sagas.Choreography.CompensationAttribute.yml",
       "output": {
         ".html": {
