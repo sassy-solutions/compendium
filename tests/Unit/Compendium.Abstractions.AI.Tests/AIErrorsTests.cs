@@ -198,4 +198,28 @@ public class AIErrorsTests
         error.Message.Should().Be("Messages array cannot be empty");
         error.Type.Should().Be(ErrorType.Validation);
     }
+
+    [Fact]
+    public void RerankFailed_ShouldReturnFailureErrorWithReason()
+    {
+        // Act
+        var error = AIErrors.RerankFailed("upstream 503");
+
+        // Assert
+        error.Code.Should().Be("AI.RerankFailed");
+        error.Message.Should().Contain("upstream 503");
+        error.Type.Should().Be(ErrorType.Failure);
+    }
+
+    [Fact]
+    public void InvalidQuery_ShouldReturnValidationError()
+    {
+        // Act
+        var error = AIErrors.InvalidQuery("Query must not be empty");
+
+        // Assert
+        error.Code.Should().Be("AI.InvalidQuery");
+        error.Message.Should().Be("Query must not be empty");
+        error.Type.Should().Be(ErrorType.Validation);
+    }
 }
