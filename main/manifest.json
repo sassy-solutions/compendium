@@ -1229,6 +1229,118 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.CrmErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.CrmErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm.CrmErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Crm.CrmErrors.yml\" sourcestartlinenumber=\"1\">Provides standardized error definitions for CRM synchronization operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.ICrmSync.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.ICrmSync.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm.ICrmSync",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Crm.ICrmSync.yml\" sourcestartlinenumber=\"1\">Provides synchronization of contacts, companies, events and associations with an external CRM.\nThis interface is provider-agnostic and can be implemented by adapters for HubSpot, Attio,\nSalesforce, or similar platforms.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.Models.CrmAssociation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.Models.CrmAssociation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm.Models.CrmAssociation",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Crm.Models.CrmAssociation.yml\" sourcestartlinenumber=\"1\">Represents a directional association between two CRM entities (e.g. contact -&gt; company).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.Models.CrmCompany.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.Models.CrmCompany.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm.Models.CrmCompany",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Crm.Models.CrmCompany.yml\" sourcestartlinenumber=\"1\">Represents a CRM company / organization to be synchronized with an external CRM provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.Models.CrmContact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.Models.CrmContact.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm.Models.CrmContact",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Crm.Models.CrmContact.yml\" sourcestartlinenumber=\"1\">Represents a CRM contact to be synchronized with an external CRM provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.Models.CrmEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.Models.CrmEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm.Models.CrmEvent",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Crm.Models.CrmEvent.yml\" sourcestartlinenumber=\"1\">Represents a behavioural / lifecycle event to be tracked against a CRM contact.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Crm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Crm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Crm",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Documents.DocumentsErrors.yml",
       "output": {
         ".html": {
@@ -3395,6 +3507,90 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Compendium.Abstractions.VectorStore",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Webhooks.IWebhookSender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Webhooks.IWebhookSender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Webhooks.IWebhookSender",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Webhooks.IWebhookSender.yml\" sourcestartlinenumber=\"1\">Provides operations for fan-out of integration events to external consumer endpoints.\nThis port complements the in-process outbox: where the outbox publishes integration\nevents inside the application, an <xref href=\"Compendium.Abstractions.Webhooks.IWebhookSender\" data-throw-if-not-resolved=\"false\"></xref> adapter dispatches them\nover HTTP to subscribed external endpoints with provider-managed retries and signatures.\nImplementations may target managed services such as Svix or implement raw HTTP fan-out.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Webhooks.Models.WebhookEndpoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Webhooks.Models.WebhookEndpoint.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Webhooks.Models.WebhookEndpoint",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Webhooks.Models.WebhookEndpoint.yml\" sourcestartlinenumber=\"1\">Represents a registered consumer endpoint that subscribes to a set of webhook events\nfor a single tenant.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Webhooks.Models.WebhookMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Webhooks.Models.WebhookMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Webhooks.Models.WebhookMessage",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Webhooks.Models.WebhookMessage.yml\" sourcestartlinenumber=\"1\">Represents a webhook message to be fanned out to subscribed consumer endpoints.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Webhooks.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Webhooks.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Webhooks.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Webhooks.WebhookErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Webhooks.WebhookErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Webhooks.WebhookErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Webhooks.WebhookErrors.yml\" sourcestartlinenumber=\"1\">Provides standard error definitions for webhook fan-out operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Webhooks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Webhooks.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Webhooks",
       "Summary": null
     },
     {
