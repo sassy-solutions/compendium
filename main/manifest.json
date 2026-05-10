@@ -2027,6 +2027,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.ISmsSender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.ISmsSender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.ISmsSender",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.ISmsSender.yml\" sourcestartlinenumber=\"1\">Provides operations for sending SMS / MMS messages. This interface is provider-agnostic\nand can be implemented by adapters targeting Twilio, MessageBird, Vonage, and similar services.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult.yml",
       "output": {
         ".html": {
@@ -2038,6 +2052,20 @@
       "IsMRef": true,
       "Title": "Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult",
       "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult.yml\" sourcestartlinenumber=\"1\">Represents the aggregated result of delivering a push notification to multiple device tokens\nacross one or more provider batches.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.yml\" sourcestartlinenumber=\"1\">Represents the aggregated result of submitting multiple SMS messages in a single batch.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2108,6 +2136,48 @@
       "IsMRef": true,
       "Title": "Compendium.Abstractions.Notifications.Models.PushProvider",
       "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.PushProvider.yml\" sourcestartlinenumber=\"1\">Identifies the push notification provider associated with a device token.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.SmsDeliveryResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.yml\" sourcestartlinenumber=\"1\">Represents the result of submitting a single SMS message to a provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.SmsMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.SmsMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.SmsMessage",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.SmsMessage.yml\" sourcestartlinenumber=\"1\">Represents an SMS (or MMS) message payload to be delivered to a single recipient.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.SmsStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.SmsStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.SmsStatus",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.SmsStatus.yml\" sourcestartlinenumber=\"1\">Represents the delivery status of an SMS message as reported by a provider.</p>\n"
     },
     {
       "type": "ManagedReference",

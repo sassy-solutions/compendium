@@ -153,6 +153,43 @@ Class NotificationErrors  <a class="header-action link-secondary" title="View so
 </h2>
 
 
+  <a id="Compendium_Abstractions_Notifications_NotificationErrors_InvalidPhoneNumber_" data-uid="Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber*"></a>
+
+  <h3 id="Compendium_Abstractions_Notifications_NotificationErrors_InvalidPhoneNumber_System_String_" data-uid="Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber(System.String)">
+  InvalidPhoneNumber(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Notifications/NotificationErrors.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Error returned when the supplied SMS phone number is not a valid E.164 value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Error InvalidPhoneNumber(string phoneNumber)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>phoneNumber</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Core.Results.Error.html">Error</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Compendium_Abstractions_Notifications_NotificationErrors_InvalidToken_" data-uid="Compendium.Abstractions.Notifications.NotificationErrors.InvalidToken*"></a>
 
   <h3 id="Compendium_Abstractions_Notifications_NotificationErrors_InvalidToken_System_String_" data-uid="Compendium.Abstractions.Notifications.NotificationErrors.InvalidToken(System.String)">
@@ -171,6 +208,45 @@ Class NotificationErrors  <a class="header-action link-secondary" title="View so
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Core.Results.Error.html">Error</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Notifications_NotificationErrors_MessageTooLong_" data-uid="Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong*"></a>
+
+  <h3 id="Compendium_Abstractions_Notifications_NotificationErrors_MessageTooLong_System_Int32_System_Int32_" data-uid="Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong(System.Int32,System.Int32)">
+  MessageTooLong(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Notifications/NotificationErrors.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Error returned when the SMS message body exceeds the provider-imposed length limit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Error MessageTooLong(int length, int maxLength)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>maxLength</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

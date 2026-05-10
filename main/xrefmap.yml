@@ -9625,6 +9625,41 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Notifications.IPushNotificationSender.SendBatchAsync
   nameWithType: IPushNotificationSender.SendBatchAsync
+- uid: Compendium.Abstractions.Notifications.ISmsSender
+  name: ISmsSender
+  href: api/Compendium.Abstractions.Notifications.ISmsSender.html
+  commentId: T:Compendium.Abstractions.Notifications.ISmsSender
+  fullName: Compendium.Abstractions.Notifications.ISmsSender
+  nameWithType: ISmsSender
+- uid: Compendium.Abstractions.Notifications.ISmsSender.SendAsync(Compendium.Abstractions.Notifications.Models.SmsMessage,System.Threading.CancellationToken)
+  name: SendAsync(SmsMessage, CancellationToken)
+  href: api/Compendium.Abstractions.Notifications.ISmsSender.html#Compendium_Abstractions_Notifications_ISmsSender_SendAsync_Compendium_Abstractions_Notifications_Models_SmsMessage_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Notifications.ISmsSender.SendAsync(Compendium.Abstractions.Notifications.Models.SmsMessage,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Notifications.ISmsSender.SendAsync(Compendium.Abstractions.Notifications.Models.SmsMessage, System.Threading.CancellationToken)
+  nameWithType: ISmsSender.SendAsync(SmsMessage, CancellationToken)
+- uid: Compendium.Abstractions.Notifications.ISmsSender.SendAsync*
+  name: SendAsync
+  href: api/Compendium.Abstractions.Notifications.ISmsSender.html#Compendium_Abstractions_Notifications_ISmsSender_SendAsync_
+  commentId: Overload:Compendium.Abstractions.Notifications.ISmsSender.SendAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.ISmsSender.SendAsync
+  nameWithType: ISmsSender.SendAsync
+- uid: Compendium.Abstractions.Notifications.ISmsSender.SendBatchAsync(System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Notifications.Models.SmsMessage},System.Threading.CancellationToken)
+  name: SendBatchAsync(IReadOnlyList<SmsMessage>, CancellationToken)
+  href: api/Compendium.Abstractions.Notifications.ISmsSender.html#Compendium_Abstractions_Notifications_ISmsSender_SendBatchAsync_System_Collections_Generic_IReadOnlyList_Compendium_Abstractions_Notifications_Models_SmsMessage__System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Notifications.ISmsSender.SendBatchAsync(System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Notifications.Models.SmsMessage},System.Threading.CancellationToken)
+  name.vb: SendBatchAsync(IReadOnlyList(Of SmsMessage), CancellationToken)
+  fullName: Compendium.Abstractions.Notifications.ISmsSender.SendBatchAsync(System.Collections.Generic.IReadOnlyList<Compendium.Abstractions.Notifications.Models.SmsMessage>, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Notifications.ISmsSender.SendBatchAsync(System.Collections.Generic.IReadOnlyList(Of Compendium.Abstractions.Notifications.Models.SmsMessage), System.Threading.CancellationToken)
+  nameWithType: ISmsSender.SendBatchAsync(IReadOnlyList<SmsMessage>, CancellationToken)
+  nameWithType.vb: ISmsSender.SendBatchAsync(IReadOnlyList(Of SmsMessage), CancellationToken)
+- uid: Compendium.Abstractions.Notifications.ISmsSender.SendBatchAsync*
+  name: SendBatchAsync
+  href: api/Compendium.Abstractions.Notifications.ISmsSender.html#Compendium_Abstractions_Notifications_ISmsSender_SendBatchAsync_
+  commentId: Overload:Compendium.Abstractions.Notifications.ISmsSender.SendBatchAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.ISmsSender.SendBatchAsync
+  nameWithType: ISmsSender.SendBatchAsync
 - uid: Compendium.Abstractions.Notifications.Models
   name: Compendium.Abstractions.Notifications.Models
   href: api/Compendium.Abstractions.Notifications.Models.html
@@ -9676,6 +9711,51 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult.SuccessCount
   nameWithType: BatchPushDeliveryResult.SuccessCount
+- uid: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult
+  name: BatchSmsDeliveryResult
+  href: api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html
+  commentId: T:Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult
+  fullName: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult
+  nameWithType: BatchSmsDeliveryResult
+- uid: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.FailureCount
+  name: FailureCount
+  href: api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_BatchSmsDeliveryResult_FailureCount
+  commentId: P:Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.FailureCount
+  fullName: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.FailureCount
+  nameWithType: BatchSmsDeliveryResult.FailureCount
+- uid: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.FailureCount*
+  name: FailureCount
+  href: api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_BatchSmsDeliveryResult_FailureCount_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.FailureCount
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.FailureCount
+  nameWithType: BatchSmsDeliveryResult.FailureCount
+- uid: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.Results
+  name: Results
+  href: api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_BatchSmsDeliveryResult_Results
+  commentId: P:Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.Results
+  fullName: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.Results
+  nameWithType: BatchSmsDeliveryResult.Results
+- uid: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.Results*
+  name: Results
+  href: api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_BatchSmsDeliveryResult_Results_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.Results
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.Results
+  nameWithType: BatchSmsDeliveryResult.Results
+- uid: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.SuccessCount
+  name: SuccessCount
+  href: api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_BatchSmsDeliveryResult_SuccessCount
+  commentId: P:Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.SuccessCount
+  fullName: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.SuccessCount
+  nameWithType: BatchSmsDeliveryResult.SuccessCount
+- uid: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.SuccessCount*
+  name: SuccessCount
+  href: api/Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_BatchSmsDeliveryResult_SuccessCount_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.SuccessCount
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.SuccessCount
+  nameWithType: BatchSmsDeliveryResult.SuccessCount
 - uid: Compendium.Abstractions.Notifications.Models.DeviceToken
   name: DeviceToken
   href: api/Compendium.Abstractions.Notifications.Models.DeviceToken.html
@@ -9906,12 +9986,193 @@ references:
   commentId: F:Compendium.Abstractions.Notifications.Models.PushProvider.WebPush
   fullName: Compendium.Abstractions.Notifications.Models.PushProvider.WebPush
   nameWithType: PushProvider.WebPush
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult
+  name: SmsDeliveryResult
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html
+  commentId: T:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult
+  nameWithType: SmsDeliveryResult
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.CostHint
+  name: CostHint
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_CostHint
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.CostHint
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.CostHint
+  nameWithType: SmsDeliveryResult.CostHint
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.CostHint*
+  name: CostHint
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_CostHint_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.CostHint
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.CostHint
+  nameWithType: SmsDeliveryResult.CostHint
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.ProviderMessageId
+  name: ProviderMessageId
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_ProviderMessageId
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.ProviderMessageId
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.ProviderMessageId
+  nameWithType: SmsDeliveryResult.ProviderMessageId
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.ProviderMessageId*
+  name: ProviderMessageId
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_ProviderMessageId_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.ProviderMessageId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.ProviderMessageId
+  nameWithType: SmsDeliveryResult.ProviderMessageId
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.SegmentCount
+  name: SegmentCount
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_SegmentCount
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.SegmentCount
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.SegmentCount
+  nameWithType: SmsDeliveryResult.SegmentCount
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.SegmentCount*
+  name: SegmentCount
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_SegmentCount_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.SegmentCount
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.SegmentCount
+  nameWithType: SmsDeliveryResult.SegmentCount
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.Status
+  name: Status
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_Status
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.Status
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.Status
+  nameWithType: SmsDeliveryResult.Status
+- uid: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.Status*
+  name: Status
+  href: api/Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html#Compendium_Abstractions_Notifications_Models_SmsDeliveryResult_Status_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.Status
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.Status
+  nameWithType: SmsDeliveryResult.Status
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage
+  name: SmsMessage
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html
+  commentId: T:Compendium.Abstractions.Notifications.Models.SmsMessage
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage
+  nameWithType: SmsMessage
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.Body
+  name: Body
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_Body
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsMessage.Body
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.Body
+  nameWithType: SmsMessage.Body
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.Body*
+  name: Body
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_Body_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsMessage.Body
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.Body
+  nameWithType: SmsMessage.Body
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.From
+  name: From
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_From
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsMessage.From
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.From
+  nameWithType: SmsMessage.From
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.From*
+  name: From
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_From_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsMessage.From
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.From
+  nameWithType: SmsMessage.From
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.MediaUrls
+  name: MediaUrls
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_MediaUrls
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsMessage.MediaUrls
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.MediaUrls
+  nameWithType: SmsMessage.MediaUrls
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.MediaUrls*
+  name: MediaUrls
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_MediaUrls_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsMessage.MediaUrls
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.MediaUrls
+  nameWithType: SmsMessage.MediaUrls
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_TenantId
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsMessage.TenantId
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.TenantId
+  nameWithType: SmsMessage.TenantId
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_TenantId_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsMessage.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.TenantId
+  nameWithType: SmsMessage.TenantId
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.To
+  name: To
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_To
+  commentId: P:Compendium.Abstractions.Notifications.Models.SmsMessage.To
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.To
+  nameWithType: SmsMessage.To
+- uid: Compendium.Abstractions.Notifications.Models.SmsMessage.To*
+  name: To
+  href: api/Compendium.Abstractions.Notifications.Models.SmsMessage.html#Compendium_Abstractions_Notifications_Models_SmsMessage_To_
+  commentId: Overload:Compendium.Abstractions.Notifications.Models.SmsMessage.To
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.Models.SmsMessage.To
+  nameWithType: SmsMessage.To
+- uid: Compendium.Abstractions.Notifications.Models.SmsStatus
+  name: SmsStatus
+  href: api/Compendium.Abstractions.Notifications.Models.SmsStatus.html
+  commentId: T:Compendium.Abstractions.Notifications.Models.SmsStatus
+  fullName: Compendium.Abstractions.Notifications.Models.SmsStatus
+  nameWithType: SmsStatus
+- uid: Compendium.Abstractions.Notifications.Models.SmsStatus.Delivered
+  name: Delivered
+  href: api/Compendium.Abstractions.Notifications.Models.SmsStatus.html#Compendium_Abstractions_Notifications_Models_SmsStatus_Delivered
+  commentId: F:Compendium.Abstractions.Notifications.Models.SmsStatus.Delivered
+  fullName: Compendium.Abstractions.Notifications.Models.SmsStatus.Delivered
+  nameWithType: SmsStatus.Delivered
+- uid: Compendium.Abstractions.Notifications.Models.SmsStatus.Failed
+  name: Failed
+  href: api/Compendium.Abstractions.Notifications.Models.SmsStatus.html#Compendium_Abstractions_Notifications_Models_SmsStatus_Failed
+  commentId: F:Compendium.Abstractions.Notifications.Models.SmsStatus.Failed
+  fullName: Compendium.Abstractions.Notifications.Models.SmsStatus.Failed
+  nameWithType: SmsStatus.Failed
+- uid: Compendium.Abstractions.Notifications.Models.SmsStatus.Queued
+  name: Queued
+  href: api/Compendium.Abstractions.Notifications.Models.SmsStatus.html#Compendium_Abstractions_Notifications_Models_SmsStatus_Queued
+  commentId: F:Compendium.Abstractions.Notifications.Models.SmsStatus.Queued
+  fullName: Compendium.Abstractions.Notifications.Models.SmsStatus.Queued
+  nameWithType: SmsStatus.Queued
+- uid: Compendium.Abstractions.Notifications.Models.SmsStatus.Sent
+  name: Sent
+  href: api/Compendium.Abstractions.Notifications.Models.SmsStatus.html#Compendium_Abstractions_Notifications_Models_SmsStatus_Sent
+  commentId: F:Compendium.Abstractions.Notifications.Models.SmsStatus.Sent
+  fullName: Compendium.Abstractions.Notifications.Models.SmsStatus.Sent
+  nameWithType: SmsStatus.Sent
+- uid: Compendium.Abstractions.Notifications.Models.SmsStatus.Undelivered
+  name: Undelivered
+  href: api/Compendium.Abstractions.Notifications.Models.SmsStatus.html#Compendium_Abstractions_Notifications_Models_SmsStatus_Undelivered
+  commentId: F:Compendium.Abstractions.Notifications.Models.SmsStatus.Undelivered
+  fullName: Compendium.Abstractions.Notifications.Models.SmsStatus.Undelivered
+  nameWithType: SmsStatus.Undelivered
 - uid: Compendium.Abstractions.Notifications.NotificationErrors
   name: NotificationErrors
   href: api/Compendium.Abstractions.Notifications.NotificationErrors.html
   commentId: T:Compendium.Abstractions.Notifications.NotificationErrors
   fullName: Compendium.Abstractions.Notifications.NotificationErrors
   nameWithType: NotificationErrors
+- uid: Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber(System.String)
+  name: InvalidPhoneNumber(string)
+  href: api/Compendium.Abstractions.Notifications.NotificationErrors.html#Compendium_Abstractions_Notifications_NotificationErrors_InvalidPhoneNumber_System_String_
+  commentId: M:Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber(System.String)
+  name.vb: InvalidPhoneNumber(String)
+  fullName: Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber(string)
+  fullName.vb: Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber(String)
+  nameWithType: NotificationErrors.InvalidPhoneNumber(string)
+  nameWithType.vb: NotificationErrors.InvalidPhoneNumber(String)
+- uid: Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber*
+  name: InvalidPhoneNumber
+  href: api/Compendium.Abstractions.Notifications.NotificationErrors.html#Compendium_Abstractions_Notifications_NotificationErrors_InvalidPhoneNumber_
+  commentId: Overload:Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.NotificationErrors.InvalidPhoneNumber
+  nameWithType: NotificationErrors.InvalidPhoneNumber
 - uid: Compendium.Abstractions.Notifications.NotificationErrors.InvalidToken(System.String)
   name: InvalidToken(string)
   href: api/Compendium.Abstractions.Notifications.NotificationErrors.html#Compendium_Abstractions_Notifications_NotificationErrors_InvalidToken_System_String_
@@ -9928,6 +10189,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Notifications.NotificationErrors.InvalidToken
   nameWithType: NotificationErrors.InvalidToken
+- uid: Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong(System.Int32,System.Int32)
+  name: MessageTooLong(int, int)
+  href: api/Compendium.Abstractions.Notifications.NotificationErrors.html#Compendium_Abstractions_Notifications_NotificationErrors_MessageTooLong_System_Int32_System_Int32_
+  commentId: M:Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong(System.Int32,System.Int32)
+  name.vb: MessageTooLong(Integer, Integer)
+  fullName: Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong(int, int)
+  fullName.vb: Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong(Integer, Integer)
+  nameWithType: NotificationErrors.MessageTooLong(int, int)
+  nameWithType.vb: NotificationErrors.MessageTooLong(Integer, Integer)
+- uid: Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong*
+  name: MessageTooLong
+  href: api/Compendium.Abstractions.Notifications.NotificationErrors.html#Compendium_Abstractions_Notifications_NotificationErrors_MessageTooLong_
+  commentId: Overload:Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Notifications.NotificationErrors.MessageTooLong
+  nameWithType: NotificationErrors.MessageTooLong
 - uid: Compendium.Abstractions.Notifications.NotificationErrors.PayloadTooLarge(System.Int32,System.Int32)
   name: PayloadTooLarge(int, int)
   href: api/Compendium.Abstractions.Notifications.NotificationErrors.html#Compendium_Abstractions_Notifications_NotificationErrors_PayloadTooLarge_System_Int32_System_Int32_

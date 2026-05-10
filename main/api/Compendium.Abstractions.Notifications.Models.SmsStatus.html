@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace Compendium.Abstractions.Notifications.Models | Compendium — .NET event-sourcing framework </title>
+      <title>Enum SmsStatus | Compendium — .NET event-sourcing framework </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace Compendium.Abstractions.Notifications.Models | Compendium — .NET event-sourcing framework ">
+      <meta name="title" content="Enum SmsStatus | Compendium — .NET event-sourcing framework ">
       
-      
+      <meta name="description" content="Represents the delivery status of an SMS message as reported by a provider.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Notifications_Models_SmsStatus.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Notifications.Models.SmsStatus%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,75 +84,67 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Compendium.Abstractions.Notifications.Models">
+        <article data-uid="Compendium.Abstractions.Notifications.Models.SmsStatus">
 
-  <h1 id="Compendium_Abstractions_Notifications_Models" data-uid="Compendium.Abstractions.Notifications.Models" class="text-break">Namespace Compendium.Abstractions.Notifications.Models</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
 
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult.html">BatchPushDeliveryResult</a></dt>
-      <dd><p>Represents the aggregated result of delivering a push notification to multiple device tokens
-across one or more provider batches.</p>
+
+
+  <h1 id="Compendium_Abstractions_Notifications_Models_SmsStatus" data-uid="Compendium.Abstractions.Notifications.Models.SmsStatus" class="text-break">
+Enum SmsStatus  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Notifications/Models/SmsStatus.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Notifications.html">Notifications</a>.<a class="xref" href="Compendium.Abstractions.Notifications.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.Notifications.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents the delivery status of an SMS message as reported by a provider.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum SmsStatus</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="Compendium_Abstractions_Notifications_Models_SmsStatus_Delivered"><code>Delivered = 2</code></dt>
+  
+  <dd><p>The carrier has confirmed delivery to the recipient handset.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.BatchSmsDeliveryResult.html">BatchSmsDeliveryResult</a></dt>
-      <dd><p>Represents the aggregated result of submitting multiple SMS messages in a single batch.</p>
+    <dt id="Compendium_Abstractions_Notifications_Models_SmsStatus_Failed"><code>Failed = 3</code></dt>
+  
+  <dd><p>The message failed to be sent or delivered.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.DeviceToken.html">DeviceToken</a></dt>
-      <dd><p>Represents a registered device token for a specific tenant and (optionally) user.</p>
+    <dt id="Compendium_Abstractions_Notifications_Models_SmsStatus_Queued"><code>Queued = 0</code></dt>
+  
+  <dd><p>The message has been accepted by the provider and is queued for delivery.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.PushDeliveryResult.html">PushDeliveryResult</a></dt>
-      <dd><p>Represents the result of delivering a single push notification to a set of device tokens.</p>
+    <dt id="Compendium_Abstractions_Notifications_Models_SmsStatus_Sent"><code>Sent = 1</code></dt>
+  
+  <dd><p>The message has been sent by the provider to the carrier.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.PushFailure.html">PushFailure</a></dt>
-      <dd><p>Describes a single device token that failed to receive a push notification.</p>
+    <dt id="Compendium_Abstractions_Notifications_Models_SmsStatus_Undelivered"><code>Undelivered = 4</code></dt>
+  
+  <dd><p>The carrier reported that the message could not be delivered to the recipient.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.PushNotification.html">PushNotification</a></dt>
-      <dd><p>Represents a push notification payload to be delivered to one or more devices.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.SmsDeliveryResult.html">SmsDeliveryResult</a></dt>
-      <dd><p>Represents the result of submitting a single SMS message to a provider.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.SmsMessage.html">SmsMessage</a></dt>
-      <dd><p>Represents an SMS (or MMS) message payload to be delivered to a single recipient.</p>
-</dd>
-    </dl>
-    <h3 id="enums">
-Enums
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.PushProvider.html">PushProvider</a></dt>
-      <dd><p>Identifies the push notification provider associated with a device token.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Notifications.Models.SmsStatus.html">SmsStatus</a></dt>
-      <dd><p>Represents the delivery status of an SMS message as reported by a provider.</p>
-</dd>
-    </dl>
+  </dl>
+
 
 
 </article>
 
         <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Notifications/Models/SmsStatus.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 
