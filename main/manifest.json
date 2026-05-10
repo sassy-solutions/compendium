@@ -3427,6 +3427,104 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Translation.ITranslator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Translation.ITranslator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Translation.ITranslator",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Translation.ITranslator.yml\" sourcestartlinenumber=\"1\">Provides text translation and language detection.\nThis interface is provider-agnostic and can be implemented by providers such as\nDeepL, Google Cloud Translation, Azure Translator, or local models.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Translation.Models.Formality.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Translation.Models.Formality.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Translation.Models.Formality",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Translation.Models.Formality.yml\" sourcestartlinenumber=\"1\">Specifies how formal the translated text should sound.\nProviders that don't support formality should treat all values as <xref href=\"Compendium.Abstractions.Translation.Models.Formality.Default\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Translation.Models.TranslationOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Translation.Models.TranslationOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Translation.Models.TranslationOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Translation.Models.TranslationOptions.yml\" sourcestartlinenumber=\"1\">Options controlling a translation request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Translation.Models.TranslationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Translation.Models.TranslationResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Translation.Models.TranslationResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Translation.Models.TranslationResult.yml\" sourcestartlinenumber=\"1\">Outcome of a successful translation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Translation.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Translation.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Translation.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Translation.TranslationErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Translation.TranslationErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Translation.TranslationErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Translation.TranslationErrors.yml\" sourcestartlinenumber=\"1\">Standardized error definitions for translation operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Translation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Translation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Translation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.VectorStore.IVectorStore.yml",
       "output": {
         ".html": {

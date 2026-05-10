@@ -14492,6 +14492,309 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage
   nameWithType: SpeechErrors.UnsupportedLanguage
+- uid: Compendium.Abstractions.Translation
+  name: Compendium.Abstractions.Translation
+  href: api/Compendium.Abstractions.Translation.html
+  commentId: N:Compendium.Abstractions.Translation
+  fullName: Compendium.Abstractions.Translation
+  nameWithType: Compendium.Abstractions.Translation
+- uid: Compendium.Abstractions.Translation.ITranslator
+  name: ITranslator
+  href: api/Compendium.Abstractions.Translation.ITranslator.html
+  commentId: T:Compendium.Abstractions.Translation.ITranslator
+  fullName: Compendium.Abstractions.Translation.ITranslator
+  nameWithType: ITranslator
+- uid: Compendium.Abstractions.Translation.ITranslator.DetectLanguageAsync(System.String,System.Threading.CancellationToken)
+  name: DetectLanguageAsync(string, CancellationToken)
+  href: api/Compendium.Abstractions.Translation.ITranslator.html#Compendium_Abstractions_Translation_ITranslator_DetectLanguageAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Translation.ITranslator.DetectLanguageAsync(System.String,System.Threading.CancellationToken)
+  name.vb: DetectLanguageAsync(String, CancellationToken)
+  fullName: Compendium.Abstractions.Translation.ITranslator.DetectLanguageAsync(string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Translation.ITranslator.DetectLanguageAsync(String, System.Threading.CancellationToken)
+  nameWithType: ITranslator.DetectLanguageAsync(string, CancellationToken)
+  nameWithType.vb: ITranslator.DetectLanguageAsync(String, CancellationToken)
+- uid: Compendium.Abstractions.Translation.ITranslator.DetectLanguageAsync*
+  name: DetectLanguageAsync
+  href: api/Compendium.Abstractions.Translation.ITranslator.html#Compendium_Abstractions_Translation_ITranslator_DetectLanguageAsync_
+  commentId: Overload:Compendium.Abstractions.Translation.ITranslator.DetectLanguageAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.ITranslator.DetectLanguageAsync
+  nameWithType: ITranslator.DetectLanguageAsync
+- uid: Compendium.Abstractions.Translation.ITranslator.TranslateAsync(System.String,Compendium.Abstractions.Translation.Models.TranslationOptions,System.Threading.CancellationToken)
+  name: TranslateAsync(string, TranslationOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Translation.ITranslator.html#Compendium_Abstractions_Translation_ITranslator_TranslateAsync_System_String_Compendium_Abstractions_Translation_Models_TranslationOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Translation.ITranslator.TranslateAsync(System.String,Compendium.Abstractions.Translation.Models.TranslationOptions,System.Threading.CancellationToken)
+  name.vb: TranslateAsync(String, TranslationOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Translation.ITranslator.TranslateAsync(string, Compendium.Abstractions.Translation.Models.TranslationOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Translation.ITranslator.TranslateAsync(String, Compendium.Abstractions.Translation.Models.TranslationOptions, System.Threading.CancellationToken)
+  nameWithType: ITranslator.TranslateAsync(string, TranslationOptions, CancellationToken)
+  nameWithType.vb: ITranslator.TranslateAsync(String, TranslationOptions, CancellationToken)
+- uid: Compendium.Abstractions.Translation.ITranslator.TranslateAsync*
+  name: TranslateAsync
+  href: api/Compendium.Abstractions.Translation.ITranslator.html#Compendium_Abstractions_Translation_ITranslator_TranslateAsync_
+  commentId: Overload:Compendium.Abstractions.Translation.ITranslator.TranslateAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.ITranslator.TranslateAsync
+  nameWithType: ITranslator.TranslateAsync
+- uid: Compendium.Abstractions.Translation.ITranslator.TranslateBatchAsync(System.Collections.Generic.IReadOnlyList{System.String},Compendium.Abstractions.Translation.Models.TranslationOptions,System.Threading.CancellationToken)
+  name: TranslateBatchAsync(IReadOnlyList<string>, TranslationOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Translation.ITranslator.html#Compendium_Abstractions_Translation_ITranslator_TranslateBatchAsync_System_Collections_Generic_IReadOnlyList_System_String__Compendium_Abstractions_Translation_Models_TranslationOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Translation.ITranslator.TranslateBatchAsync(System.Collections.Generic.IReadOnlyList{System.String},Compendium.Abstractions.Translation.Models.TranslationOptions,System.Threading.CancellationToken)
+  name.vb: TranslateBatchAsync(IReadOnlyList(Of String), TranslationOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Translation.ITranslator.TranslateBatchAsync(System.Collections.Generic.IReadOnlyList<string>, Compendium.Abstractions.Translation.Models.TranslationOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Translation.ITranslator.TranslateBatchAsync(System.Collections.Generic.IReadOnlyList(Of String), Compendium.Abstractions.Translation.Models.TranslationOptions, System.Threading.CancellationToken)
+  nameWithType: ITranslator.TranslateBatchAsync(IReadOnlyList<string>, TranslationOptions, CancellationToken)
+  nameWithType.vb: ITranslator.TranslateBatchAsync(IReadOnlyList(Of String), TranslationOptions, CancellationToken)
+- uid: Compendium.Abstractions.Translation.ITranslator.TranslateBatchAsync*
+  name: TranslateBatchAsync
+  href: api/Compendium.Abstractions.Translation.ITranslator.html#Compendium_Abstractions_Translation_ITranslator_TranslateBatchAsync_
+  commentId: Overload:Compendium.Abstractions.Translation.ITranslator.TranslateBatchAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.ITranslator.TranslateBatchAsync
+  nameWithType: ITranslator.TranslateBatchAsync
+- uid: Compendium.Abstractions.Translation.Models
+  name: Compendium.Abstractions.Translation.Models
+  href: api/Compendium.Abstractions.Translation.Models.html
+  commentId: N:Compendium.Abstractions.Translation.Models
+  fullName: Compendium.Abstractions.Translation.Models
+  nameWithType: Compendium.Abstractions.Translation.Models
+- uid: Compendium.Abstractions.Translation.Models.Formality
+  name: Formality
+  href: api/Compendium.Abstractions.Translation.Models.Formality.html
+  commentId: T:Compendium.Abstractions.Translation.Models.Formality
+  fullName: Compendium.Abstractions.Translation.Models.Formality
+  nameWithType: Formality
+- uid: Compendium.Abstractions.Translation.Models.Formality.Default
+  name: Default
+  href: api/Compendium.Abstractions.Translation.Models.Formality.html#Compendium_Abstractions_Translation_Models_Formality_Default
+  commentId: F:Compendium.Abstractions.Translation.Models.Formality.Default
+  fullName: Compendium.Abstractions.Translation.Models.Formality.Default
+  nameWithType: Formality.Default
+- uid: Compendium.Abstractions.Translation.Models.Formality.Less
+  name: Less
+  href: api/Compendium.Abstractions.Translation.Models.Formality.html#Compendium_Abstractions_Translation_Models_Formality_Less
+  commentId: F:Compendium.Abstractions.Translation.Models.Formality.Less
+  fullName: Compendium.Abstractions.Translation.Models.Formality.Less
+  nameWithType: Formality.Less
+- uid: Compendium.Abstractions.Translation.Models.Formality.More
+  name: More
+  href: api/Compendium.Abstractions.Translation.Models.Formality.html#Compendium_Abstractions_Translation_Models_Formality_More
+  commentId: F:Compendium.Abstractions.Translation.Models.Formality.More
+  fullName: Compendium.Abstractions.Translation.Models.Formality.More
+  nameWithType: Formality.More
+- uid: Compendium.Abstractions.Translation.Models.Formality.PreferLess
+  name: PreferLess
+  href: api/Compendium.Abstractions.Translation.Models.Formality.html#Compendium_Abstractions_Translation_Models_Formality_PreferLess
+  commentId: F:Compendium.Abstractions.Translation.Models.Formality.PreferLess
+  fullName: Compendium.Abstractions.Translation.Models.Formality.PreferLess
+  nameWithType: Formality.PreferLess
+- uid: Compendium.Abstractions.Translation.Models.Formality.PreferMore
+  name: PreferMore
+  href: api/Compendium.Abstractions.Translation.Models.Formality.html#Compendium_Abstractions_Translation_Models_Formality_PreferMore
+  commentId: F:Compendium.Abstractions.Translation.Models.Formality.PreferMore
+  fullName: Compendium.Abstractions.Translation.Models.Formality.PreferMore
+  nameWithType: Formality.PreferMore
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions
+  name: TranslationOptions
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html
+  commentId: T:Compendium.Abstractions.Translation.Models.TranslationOptions
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions
+  nameWithType: TranslationOptions
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.#ctor(System.String,System.String,Compendium.Abstractions.Translation.Models.Formality)
+  name: TranslationOptions(string?, string, Formality)
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions__ctor_System_String_System_String_Compendium_Abstractions_Translation_Models_Formality_
+  commentId: M:Compendium.Abstractions.Translation.Models.TranslationOptions.#ctor(System.String,System.String,Compendium.Abstractions.Translation.Models.Formality)
+  name.vb: New(String, String, Formality)
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.TranslationOptions(string?, string, Compendium.Abstractions.Translation.Models.Formality)
+  fullName.vb: Compendium.Abstractions.Translation.Models.TranslationOptions.New(String, String, Compendium.Abstractions.Translation.Models.Formality)
+  nameWithType: TranslationOptions.TranslationOptions(string?, string, Formality)
+  nameWithType.vb: TranslationOptions.New(String, String, Formality)
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.#ctor*
+  name: TranslationOptions
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions__ctor_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationOptions.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.TranslationOptions
+  fullName.vb: Compendium.Abstractions.Translation.Models.TranslationOptions.New
+  nameWithType: TranslationOptions.TranslationOptions
+  nameWithType.vb: TranslationOptions.New
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.Formality
+  name: Formality
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions_Formality
+  commentId: P:Compendium.Abstractions.Translation.Models.TranslationOptions.Formality
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.Formality
+  nameWithType: TranslationOptions.Formality
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.Formality*
+  name: Formality
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions_Formality_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationOptions.Formality
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.Formality
+  nameWithType: TranslationOptions.Formality
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.SourceLanguage
+  name: SourceLanguage
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions_SourceLanguage
+  commentId: P:Compendium.Abstractions.Translation.Models.TranslationOptions.SourceLanguage
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.SourceLanguage
+  nameWithType: TranslationOptions.SourceLanguage
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.SourceLanguage*
+  name: SourceLanguage
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions_SourceLanguage_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationOptions.SourceLanguage
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.SourceLanguage
+  nameWithType: TranslationOptions.SourceLanguage
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.TargetLanguage
+  name: TargetLanguage
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions_TargetLanguage
+  commentId: P:Compendium.Abstractions.Translation.Models.TranslationOptions.TargetLanguage
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.TargetLanguage
+  nameWithType: TranslationOptions.TargetLanguage
+- uid: Compendium.Abstractions.Translation.Models.TranslationOptions.TargetLanguage*
+  name: TargetLanguage
+  href: api/Compendium.Abstractions.Translation.Models.TranslationOptions.html#Compendium_Abstractions_Translation_Models_TranslationOptions_TargetLanguage_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationOptions.TargetLanguage
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.Models.TranslationOptions.TargetLanguage
+  nameWithType: TranslationOptions.TargetLanguage
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult
+  name: TranslationResult
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html
+  commentId: T:Compendium.Abstractions.Translation.Models.TranslationResult
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult
+  nameWithType: TranslationResult
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.#ctor(System.String,System.String,System.Nullable{System.Double})
+  name: TranslationResult(string, string, double?)
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult__ctor_System_String_System_String_System_Nullable_System_Double__
+  commentId: M:Compendium.Abstractions.Translation.Models.TranslationResult.#ctor(System.String,System.String,System.Nullable{System.Double})
+  name.vb: New(String, String, Double?)
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.TranslationResult(string, string, double?)
+  fullName.vb: Compendium.Abstractions.Translation.Models.TranslationResult.New(String, String, Double?)
+  nameWithType: TranslationResult.TranslationResult(string, string, double?)
+  nameWithType.vb: TranslationResult.New(String, String, Double?)
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.#ctor*
+  name: TranslationResult
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult__ctor_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationResult.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.TranslationResult
+  fullName.vb: Compendium.Abstractions.Translation.Models.TranslationResult.New
+  nameWithType: TranslationResult.TranslationResult
+  nameWithType.vb: TranslationResult.New
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.Confidence
+  name: Confidence
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult_Confidence
+  commentId: P:Compendium.Abstractions.Translation.Models.TranslationResult.Confidence
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.Confidence
+  nameWithType: TranslationResult.Confidence
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.Confidence*
+  name: Confidence
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult_Confidence_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationResult.Confidence
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.Confidence
+  nameWithType: TranslationResult.Confidence
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.DetectedSourceLanguage
+  name: DetectedSourceLanguage
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult_DetectedSourceLanguage
+  commentId: P:Compendium.Abstractions.Translation.Models.TranslationResult.DetectedSourceLanguage
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.DetectedSourceLanguage
+  nameWithType: TranslationResult.DetectedSourceLanguage
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.DetectedSourceLanguage*
+  name: DetectedSourceLanguage
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult_DetectedSourceLanguage_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationResult.DetectedSourceLanguage
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.DetectedSourceLanguage
+  nameWithType: TranslationResult.DetectedSourceLanguage
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.TranslatedText
+  name: TranslatedText
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult_TranslatedText
+  commentId: P:Compendium.Abstractions.Translation.Models.TranslationResult.TranslatedText
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.TranslatedText
+  nameWithType: TranslationResult.TranslatedText
+- uid: Compendium.Abstractions.Translation.Models.TranslationResult.TranslatedText*
+  name: TranslatedText
+  href: api/Compendium.Abstractions.Translation.Models.TranslationResult.html#Compendium_Abstractions_Translation_Models_TranslationResult_TranslatedText_
+  commentId: Overload:Compendium.Abstractions.Translation.Models.TranslationResult.TranslatedText
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.Models.TranslationResult.TranslatedText
+  nameWithType: TranslationResult.TranslatedText
+- uid: Compendium.Abstractions.Translation.TranslationErrors
+  name: TranslationErrors
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html
+  commentId: T:Compendium.Abstractions.Translation.TranslationErrors
+  fullName: Compendium.Abstractions.Translation.TranslationErrors
+  nameWithType: TranslationErrors
+- uid: Compendium.Abstractions.Translation.TranslationErrors.Prefix
+  name: Prefix
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_Prefix
+  commentId: F:Compendium.Abstractions.Translation.TranslationErrors.Prefix
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.Prefix
+  nameWithType: TranslationErrors.Prefix
+- uid: Compendium.Abstractions.Translation.TranslationErrors.ProviderUnreachable(System.String,System.String)
+  name: ProviderUnreachable(string, string?)
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_ProviderUnreachable_System_String_System_String_
+  commentId: M:Compendium.Abstractions.Translation.TranslationErrors.ProviderUnreachable(System.String,System.String)
+  name.vb: ProviderUnreachable(String, String)
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.ProviderUnreachable(string, string?)
+  fullName.vb: Compendium.Abstractions.Translation.TranslationErrors.ProviderUnreachable(String, String)
+  nameWithType: TranslationErrors.ProviderUnreachable(string, string?)
+  nameWithType.vb: TranslationErrors.ProviderUnreachable(String, String)
+- uid: Compendium.Abstractions.Translation.TranslationErrors.ProviderUnreachable*
+  name: ProviderUnreachable
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_ProviderUnreachable_
+  commentId: Overload:Compendium.Abstractions.Translation.TranslationErrors.ProviderUnreachable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.ProviderUnreachable
+  nameWithType: TranslationErrors.ProviderUnreachable
+- uid: Compendium.Abstractions.Translation.TranslationErrors.RateLimited(System.Nullable{System.TimeSpan})
+  name: RateLimited(TimeSpan?)
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_RateLimited_System_Nullable_System_TimeSpan__
+  commentId: M:Compendium.Abstractions.Translation.TranslationErrors.RateLimited(System.Nullable{System.TimeSpan})
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.RateLimited(System.TimeSpan?)
+  nameWithType: TranslationErrors.RateLimited(TimeSpan?)
+- uid: Compendium.Abstractions.Translation.TranslationErrors.RateLimited*
+  name: RateLimited
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_RateLimited_
+  commentId: Overload:Compendium.Abstractions.Translation.TranslationErrors.RateLimited
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.RateLimited
+  nameWithType: TranslationErrors.RateLimited
+- uid: Compendium.Abstractions.Translation.TranslationErrors.TextTooLong(System.Int32,System.Int32)
+  name: TextTooLong(int, int)
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_TextTooLong_System_Int32_System_Int32_
+  commentId: M:Compendium.Abstractions.Translation.TranslationErrors.TextTooLong(System.Int32,System.Int32)
+  name.vb: TextTooLong(Integer, Integer)
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.TextTooLong(int, int)
+  fullName.vb: Compendium.Abstractions.Translation.TranslationErrors.TextTooLong(Integer, Integer)
+  nameWithType: TranslationErrors.TextTooLong(int, int)
+  nameWithType.vb: TranslationErrors.TextTooLong(Integer, Integer)
+- uid: Compendium.Abstractions.Translation.TranslationErrors.TextTooLong*
+  name: TextTooLong
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_TextTooLong_
+  commentId: Overload:Compendium.Abstractions.Translation.TranslationErrors.TextTooLong
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.TextTooLong
+  nameWithType: TranslationErrors.TextTooLong
+- uid: Compendium.Abstractions.Translation.TranslationErrors.UnsupportedLanguage(System.String)
+  name: UnsupportedLanguage(string)
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_UnsupportedLanguage_System_String_
+  commentId: M:Compendium.Abstractions.Translation.TranslationErrors.UnsupportedLanguage(System.String)
+  name.vb: UnsupportedLanguage(String)
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.UnsupportedLanguage(string)
+  fullName.vb: Compendium.Abstractions.Translation.TranslationErrors.UnsupportedLanguage(String)
+  nameWithType: TranslationErrors.UnsupportedLanguage(string)
+  nameWithType.vb: TranslationErrors.UnsupportedLanguage(String)
+- uid: Compendium.Abstractions.Translation.TranslationErrors.UnsupportedLanguage*
+  name: UnsupportedLanguage
+  href: api/Compendium.Abstractions.Translation.TranslationErrors.html#Compendium_Abstractions_Translation_TranslationErrors_UnsupportedLanguage_
+  commentId: Overload:Compendium.Abstractions.Translation.TranslationErrors.UnsupportedLanguage
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Translation.TranslationErrors.UnsupportedLanguage
+  nameWithType: TranslationErrors.UnsupportedLanguage
 - uid: Compendium.Abstractions.VectorStore
   name: Compendium.Abstractions.VectorStore
   href: api/Compendium.Abstractions.VectorStore.html
