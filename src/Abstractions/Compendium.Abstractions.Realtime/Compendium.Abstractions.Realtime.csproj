@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Abstractions.Realtime</AssemblyName>
+    <RootNamespace>Compendium.Abstractions.Realtime</RootNamespace>
+    <PackageId>Compendium.Abstractions.Realtime</PackageId>
+    <Description>Realtime channel abstractions for Compendium Framework: IRealtimeChannel. Provider-agnostic port for realtime messaging, subscriber authorization, and presence (Pusher, Ably, SignalR, etc.).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Abstractions.Realtime.Tests" />
+  </ItemGroup>
+
+</Project>
