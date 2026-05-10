@@ -753,6 +753,90 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Authorization.AuthorizationErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Authorization.AuthorizationErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Authorization.AuthorizationErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Authorization.AuthorizationErrors.yml\" sourcestartlinenumber=\"1\">Provides standard error definitions for relationship-based authorization operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Authorization.IAuthorizationCheck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Authorization.IAuthorizationCheck",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Authorization.IAuthorizationCheck.yml\" sourcestartlinenumber=\"1\">Provides operations for relationship-based authorization (ReBAC) against a Zanzibar-style store.\nThis interface is provider-agnostic and can be implemented by adapters targeting\nOpenFGA, SpiceDB, AuthZed, and similar relationship-based authorization services.\nEach tenant has its own authorization store; tenant scoping is mandatory on every call.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Authorization.Models.AuthorizationRequest",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.yml\" sourcestartlinenumber=\"1\">Represents a relationship-based authorization check request.\nAsks whether <code class=\"paramref\">Subject</code> has <code class=\"paramref\">Relation</code> with <code class=\"paramref\">Object</code>\nin the store identified by <code class=\"paramref\">TenantId</code>, optionally augmented with <code class=\"paramref\">ContextualTuples</code>\nthat exist only for the duration of the check.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Authorization.Models.RelationTuple.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Authorization.Models.RelationTuple.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Authorization.Models.RelationTuple",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Authorization.Models.RelationTuple.yml\" sourcestartlinenumber=\"1\">Represents a relationship tuple in a Zanzibar-style relationship-based authorization store.\nA tuple expresses the fact that <code class=\"paramref\">Subject</code> has <code class=\"paramref\">Relation</code> with <code class=\"paramref\">Object</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Authorization.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Authorization.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Authorization.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Authorization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Authorization.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Authorization",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Billing.BillingErrors.yml",
       "output": {
         ".html": {
@@ -2009,6 +2093,104 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Compendium.Abstractions.Infrastructure",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Jobs.IBackgroundJobScheduler",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.yml\" sourcestartlinenumber=\"1\">Provides operations for enqueueing, scheduling, recurring, and cancelling background jobs.\nThis interface is provider-agnostic and can be implemented by adapters targeting\nHangfire, Temporal, Quartz, or similar engines.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Jobs.JobsErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Jobs.JobsErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Jobs.JobsErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Jobs.JobsErrors.yml\" sourcestartlinenumber=\"1\">Provides standard error definitions for background-job operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Jobs.Models.JobOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Jobs.Models.JobOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Jobs.Models.JobOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Jobs.Models.JobOptions.yml\" sourcestartlinenumber=\"1\">Tenant-aware options describing how a background job should be enqueued, scheduled, or recurred.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Jobs.Models.JobPriority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Jobs.Models.JobPriority.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Jobs.Models.JobPriority",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Jobs.Models.JobPriority.yml\" sourcestartlinenumber=\"1\">Defines the priority bands a background job can be enqueued with.\nAdapters map these onto provider-specific queues / weights.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Jobs.Models.RetryPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Jobs.Models.RetryPolicy",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Jobs.Models.RetryPolicy.yml\" sourcestartlinenumber=\"1\">Describes the retry behaviour applied to a background job.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Jobs.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Jobs.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Jobs.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Jobs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Jobs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Jobs",
       "Summary": null
     },
     {

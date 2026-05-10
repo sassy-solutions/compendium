@@ -2701,6 +2701,293 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Analytics.Models.AnalyticsEvent.Timestamp
   nameWithType: AnalyticsEvent.Timestamp
+- uid: Compendium.Abstractions.Authorization
+  name: Compendium.Abstractions.Authorization
+  href: api/Compendium.Abstractions.Authorization.html
+  commentId: N:Compendium.Abstractions.Authorization
+  fullName: Compendium.Abstractions.Authorization
+  nameWithType: Compendium.Abstractions.Authorization
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors
+  name: AuthorizationErrors
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html
+  commentId: T:Compendium.Abstractions.Authorization.AuthorizationErrors
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors
+  nameWithType: AuthorizationErrors
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.InvalidTuple(System.String)
+  name: InvalidTuple(string)
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_InvalidTuple_System_String_
+  commentId: M:Compendium.Abstractions.Authorization.AuthorizationErrors.InvalidTuple(System.String)
+  name.vb: InvalidTuple(String)
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.InvalidTuple(string)
+  fullName.vb: Compendium.Abstractions.Authorization.AuthorizationErrors.InvalidTuple(String)
+  nameWithType: AuthorizationErrors.InvalidTuple(string)
+  nameWithType.vb: AuthorizationErrors.InvalidTuple(String)
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.InvalidTuple*
+  name: InvalidTuple
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_InvalidTuple_
+  commentId: Overload:Compendium.Abstractions.Authorization.AuthorizationErrors.InvalidTuple
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.InvalidTuple
+  nameWithType: AuthorizationErrors.InvalidTuple
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.NotAuthorized(System.String,System.String,System.String)
+  name: NotAuthorized(string, string, string)
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_NotAuthorized_System_String_System_String_System_String_
+  commentId: M:Compendium.Abstractions.Authorization.AuthorizationErrors.NotAuthorized(System.String,System.String,System.String)
+  name.vb: NotAuthorized(String, String, String)
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.NotAuthorized(string, string, string)
+  fullName.vb: Compendium.Abstractions.Authorization.AuthorizationErrors.NotAuthorized(String, String, String)
+  nameWithType: AuthorizationErrors.NotAuthorized(string, string, string)
+  nameWithType.vb: AuthorizationErrors.NotAuthorized(String, String, String)
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.NotAuthorized*
+  name: NotAuthorized
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_NotAuthorized_
+  commentId: Overload:Compendium.Abstractions.Authorization.AuthorizationErrors.NotAuthorized
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.NotAuthorized
+  nameWithType: AuthorizationErrors.NotAuthorized
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.ProviderUnreachable(System.String)
+  name: ProviderUnreachable(string)
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_ProviderUnreachable_System_String_
+  commentId: M:Compendium.Abstractions.Authorization.AuthorizationErrors.ProviderUnreachable(System.String)
+  name.vb: ProviderUnreachable(String)
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.ProviderUnreachable(string)
+  fullName.vb: Compendium.Abstractions.Authorization.AuthorizationErrors.ProviderUnreachable(String)
+  nameWithType: AuthorizationErrors.ProviderUnreachable(string)
+  nameWithType.vb: AuthorizationErrors.ProviderUnreachable(String)
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.ProviderUnreachable*
+  name: ProviderUnreachable
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_ProviderUnreachable_
+  commentId: Overload:Compendium.Abstractions.Authorization.AuthorizationErrors.ProviderUnreachable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.ProviderUnreachable
+  nameWithType: AuthorizationErrors.ProviderUnreachable
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.StoreNotFound(System.String)
+  name: StoreNotFound(string)
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_StoreNotFound_System_String_
+  commentId: M:Compendium.Abstractions.Authorization.AuthorizationErrors.StoreNotFound(System.String)
+  name.vb: StoreNotFound(String)
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.StoreNotFound(string)
+  fullName.vb: Compendium.Abstractions.Authorization.AuthorizationErrors.StoreNotFound(String)
+  nameWithType: AuthorizationErrors.StoreNotFound(string)
+  nameWithType.vb: AuthorizationErrors.StoreNotFound(String)
+- uid: Compendium.Abstractions.Authorization.AuthorizationErrors.StoreNotFound*
+  name: StoreNotFound
+  href: api/Compendium.Abstractions.Authorization.AuthorizationErrors.html#Compendium_Abstractions_Authorization_AuthorizationErrors_StoreNotFound_
+  commentId: Overload:Compendium.Abstractions.Authorization.AuthorizationErrors.StoreNotFound
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.AuthorizationErrors.StoreNotFound
+  nameWithType: AuthorizationErrors.StoreNotFound
+- uid: Compendium.Abstractions.Authorization.IAuthorizationCheck
+  name: IAuthorizationCheck
+  href: api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html
+  commentId: T:Compendium.Abstractions.Authorization.IAuthorizationCheck
+  fullName: Compendium.Abstractions.Authorization.IAuthorizationCheck
+  nameWithType: IAuthorizationCheck
+- uid: Compendium.Abstractions.Authorization.IAuthorizationCheck.CheckAsync(Compendium.Abstractions.Authorization.Models.AuthorizationRequest,System.Threading.CancellationToken)
+  name: CheckAsync(AuthorizationRequest, CancellationToken)
+  href: api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html#Compendium_Abstractions_Authorization_IAuthorizationCheck_CheckAsync_Compendium_Abstractions_Authorization_Models_AuthorizationRequest_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Authorization.IAuthorizationCheck.CheckAsync(Compendium.Abstractions.Authorization.Models.AuthorizationRequest,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Authorization.IAuthorizationCheck.CheckAsync(Compendium.Abstractions.Authorization.Models.AuthorizationRequest, System.Threading.CancellationToken)
+  nameWithType: IAuthorizationCheck.CheckAsync(AuthorizationRequest, CancellationToken)
+- uid: Compendium.Abstractions.Authorization.IAuthorizationCheck.CheckAsync*
+  name: CheckAsync
+  href: api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html#Compendium_Abstractions_Authorization_IAuthorizationCheck_CheckAsync_
+  commentId: Overload:Compendium.Abstractions.Authorization.IAuthorizationCheck.CheckAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.IAuthorizationCheck.CheckAsync
+  nameWithType: IAuthorizationCheck.CheckAsync
+- uid: Compendium.Abstractions.Authorization.IAuthorizationCheck.ListObjectsAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  name: ListObjectsAsync(string, string, string, string, CancellationToken)
+  href: api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html#Compendium_Abstractions_Authorization_IAuthorizationCheck_ListObjectsAsync_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Authorization.IAuthorizationCheck.ListObjectsAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  name.vb: ListObjectsAsync(String, String, String, String, CancellationToken)
+  fullName: Compendium.Abstractions.Authorization.IAuthorizationCheck.ListObjectsAsync(string, string, string, string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Authorization.IAuthorizationCheck.ListObjectsAsync(String, String, String, String, System.Threading.CancellationToken)
+  nameWithType: IAuthorizationCheck.ListObjectsAsync(string, string, string, string, CancellationToken)
+  nameWithType.vb: IAuthorizationCheck.ListObjectsAsync(String, String, String, String, CancellationToken)
+- uid: Compendium.Abstractions.Authorization.IAuthorizationCheck.ListObjectsAsync*
+  name: ListObjectsAsync
+  href: api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html#Compendium_Abstractions_Authorization_IAuthorizationCheck_ListObjectsAsync_
+  commentId: Overload:Compendium.Abstractions.Authorization.IAuthorizationCheck.ListObjectsAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.IAuthorizationCheck.ListObjectsAsync
+  nameWithType: IAuthorizationCheck.ListObjectsAsync
+- uid: Compendium.Abstractions.Authorization.IAuthorizationCheck.WriteAsync(System.Collections.Generic.IEnumerable{Compendium.Abstractions.Authorization.Models.RelationTuple},System.Collections.Generic.IEnumerable{Compendium.Abstractions.Authorization.Models.RelationTuple},System.String,System.Threading.CancellationToken)
+  name: WriteAsync(IEnumerable<RelationTuple>, IEnumerable<RelationTuple>, string, CancellationToken)
+  href: api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html#Compendium_Abstractions_Authorization_IAuthorizationCheck_WriteAsync_System_Collections_Generic_IEnumerable_Compendium_Abstractions_Authorization_Models_RelationTuple__System_Collections_Generic_IEnumerable_Compendium_Abstractions_Authorization_Models_RelationTuple__System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Authorization.IAuthorizationCheck.WriteAsync(System.Collections.Generic.IEnumerable{Compendium.Abstractions.Authorization.Models.RelationTuple},System.Collections.Generic.IEnumerable{Compendium.Abstractions.Authorization.Models.RelationTuple},System.String,System.Threading.CancellationToken)
+  name.vb: WriteAsync(IEnumerable(Of RelationTuple), IEnumerable(Of RelationTuple), String, CancellationToken)
+  fullName: Compendium.Abstractions.Authorization.IAuthorizationCheck.WriteAsync(System.Collections.Generic.IEnumerable<Compendium.Abstractions.Authorization.Models.RelationTuple>, System.Collections.Generic.IEnumerable<Compendium.Abstractions.Authorization.Models.RelationTuple>, string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Authorization.IAuthorizationCheck.WriteAsync(System.Collections.Generic.IEnumerable(Of Compendium.Abstractions.Authorization.Models.RelationTuple), System.Collections.Generic.IEnumerable(Of Compendium.Abstractions.Authorization.Models.RelationTuple), String, System.Threading.CancellationToken)
+  nameWithType: IAuthorizationCheck.WriteAsync(IEnumerable<RelationTuple>, IEnumerable<RelationTuple>, string, CancellationToken)
+  nameWithType.vb: IAuthorizationCheck.WriteAsync(IEnumerable(Of RelationTuple), IEnumerable(Of RelationTuple), String, CancellationToken)
+- uid: Compendium.Abstractions.Authorization.IAuthorizationCheck.WriteAsync*
+  name: WriteAsync
+  href: api/Compendium.Abstractions.Authorization.IAuthorizationCheck.html#Compendium_Abstractions_Authorization_IAuthorizationCheck_WriteAsync_
+  commentId: Overload:Compendium.Abstractions.Authorization.IAuthorizationCheck.WriteAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.IAuthorizationCheck.WriteAsync
+  nameWithType: IAuthorizationCheck.WriteAsync
+- uid: Compendium.Abstractions.Authorization.Models
+  name: Compendium.Abstractions.Authorization.Models
+  href: api/Compendium.Abstractions.Authorization.Models.html
+  commentId: N:Compendium.Abstractions.Authorization.Models
+  fullName: Compendium.Abstractions.Authorization.Models
+  nameWithType: Compendium.Abstractions.Authorization.Models
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest
+  name: AuthorizationRequest
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html
+  commentId: T:Compendium.Abstractions.Authorization.Models.AuthorizationRequest
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest
+  nameWithType: AuthorizationRequest
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Authorization.Models.RelationTuple})
+  name: AuthorizationRequest(string, string, string, string, IReadOnlyList<RelationTuple>?)
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest__ctor_System_String_System_String_System_String_System_String_System_Collections_Generic_IReadOnlyList_Compendium_Abstractions_Authorization_Models_RelationTuple__
+  commentId: M:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Authorization.Models.RelationTuple})
+  name.vb: New(String, String, String, String, IReadOnlyList(Of RelationTuple))
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.AuthorizationRequest(string, string, string, string, System.Collections.Generic.IReadOnlyList<Compendium.Abstractions.Authorization.Models.RelationTuple>?)
+  fullName.vb: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.New(String, String, String, String, System.Collections.Generic.IReadOnlyList(Of Compendium.Abstractions.Authorization.Models.RelationTuple))
+  nameWithType: AuthorizationRequest.AuthorizationRequest(string, string, string, string, IReadOnlyList<RelationTuple>?)
+  nameWithType.vb: AuthorizationRequest.New(String, String, String, String, IReadOnlyList(Of RelationTuple))
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.#ctor*
+  name: AuthorizationRequest
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest__ctor_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.AuthorizationRequest
+  fullName.vb: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.New
+  nameWithType: AuthorizationRequest.AuthorizationRequest
+  nameWithType.vb: AuthorizationRequest.New
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.ContextualTuples
+  name: ContextualTuples
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_ContextualTuples
+  commentId: P:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.ContextualTuples
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.ContextualTuples
+  nameWithType: AuthorizationRequest.ContextualTuples
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.ContextualTuples*
+  name: ContextualTuples
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_ContextualTuples_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.ContextualTuples
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.ContextualTuples
+  nameWithType: AuthorizationRequest.ContextualTuples
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Object
+  name: Object
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_Object
+  commentId: P:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Object
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Object
+  nameWithType: AuthorizationRequest.Object
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Object*
+  name: Object
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_Object_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Object
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Object
+  nameWithType: AuthorizationRequest.Object
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Relation
+  name: Relation
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_Relation
+  commentId: P:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Relation
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Relation
+  nameWithType: AuthorizationRequest.Relation
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Relation*
+  name: Relation
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_Relation_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Relation
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Relation
+  nameWithType: AuthorizationRequest.Relation
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Subject
+  name: Subject
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_Subject
+  commentId: P:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Subject
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Subject
+  nameWithType: AuthorizationRequest.Subject
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Subject*
+  name: Subject
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_Subject_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Subject
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.Subject
+  nameWithType: AuthorizationRequest.Subject
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_TenantId
+  commentId: P:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.TenantId
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.TenantId
+  nameWithType: AuthorizationRequest.TenantId
+- uid: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.Authorization.Models.AuthorizationRequest.html#Compendium_Abstractions_Authorization_Models_AuthorizationRequest_TenantId_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.AuthorizationRequest.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.AuthorizationRequest.TenantId
+  nameWithType: AuthorizationRequest.TenantId
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple
+  name: RelationTuple
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html
+  commentId: T:Compendium.Abstractions.Authorization.Models.RelationTuple
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple
+  nameWithType: RelationTuple
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.#ctor(System.String,System.String,System.String)
+  name: RelationTuple(string, string, string)
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple__ctor_System_String_System_String_System_String_
+  commentId: M:Compendium.Abstractions.Authorization.Models.RelationTuple.#ctor(System.String,System.String,System.String)
+  name.vb: New(String, String, String)
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.RelationTuple(string, string, string)
+  fullName.vb: Compendium.Abstractions.Authorization.Models.RelationTuple.New(String, String, String)
+  nameWithType: RelationTuple.RelationTuple(string, string, string)
+  nameWithType.vb: RelationTuple.New(String, String, String)
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.#ctor*
+  name: RelationTuple
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple__ctor_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.RelationTuple.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.RelationTuple
+  fullName.vb: Compendium.Abstractions.Authorization.Models.RelationTuple.New
+  nameWithType: RelationTuple.RelationTuple
+  nameWithType.vb: RelationTuple.New
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.Object
+  name: Object
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple_Object
+  commentId: P:Compendium.Abstractions.Authorization.Models.RelationTuple.Object
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.Object
+  nameWithType: RelationTuple.Object
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.Object*
+  name: Object
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple_Object_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.RelationTuple.Object
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.Object
+  nameWithType: RelationTuple.Object
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.Relation
+  name: Relation
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple_Relation
+  commentId: P:Compendium.Abstractions.Authorization.Models.RelationTuple.Relation
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.Relation
+  nameWithType: RelationTuple.Relation
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.Relation*
+  name: Relation
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple_Relation_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.RelationTuple.Relation
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.Relation
+  nameWithType: RelationTuple.Relation
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.Subject
+  name: Subject
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple_Subject
+  commentId: P:Compendium.Abstractions.Authorization.Models.RelationTuple.Subject
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.Subject
+  nameWithType: RelationTuple.Subject
+- uid: Compendium.Abstractions.Authorization.Models.RelationTuple.Subject*
+  name: Subject
+  href: api/Compendium.Abstractions.Authorization.Models.RelationTuple.html#Compendium_Abstractions_Authorization_Models_RelationTuple_Subject_
+  commentId: Overload:Compendium.Abstractions.Authorization.Models.RelationTuple.Subject
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Authorization.Models.RelationTuple.Subject
+  nameWithType: RelationTuple.Subject
 - uid: Compendium.Abstractions.Billing
   name: Compendium.Abstractions.Billing
   href: api/Compendium.Abstractions.Billing.html
@@ -9581,6 +9868,358 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Infrastructure.IUnitOfWork.SaveChangesAsync
   nameWithType: IUnitOfWork.SaveChangesAsync
+- uid: Compendium.Abstractions.Jobs
+  name: Compendium.Abstractions.Jobs
+  href: api/Compendium.Abstractions.Jobs.html
+  commentId: N:Compendium.Abstractions.Jobs
+  fullName: Compendium.Abstractions.Jobs
+  nameWithType: Compendium.Abstractions.Jobs
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler
+  name: IBackgroundJobScheduler
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html
+  commentId: T:Compendium.Abstractions.Jobs.IBackgroundJobScheduler
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler
+  nameWithType: IBackgroundJobScheduler
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.CancelAsync(System.String,System.Threading.CancellationToken)
+  name: CancelAsync(string, CancellationToken)
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_CancelAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.CancelAsync(System.String,System.Threading.CancellationToken)
+  name.vb: CancelAsync(String, CancellationToken)
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.CancelAsync(string, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.CancelAsync(String, System.Threading.CancellationToken)
+  nameWithType: IBackgroundJobScheduler.CancelAsync(string, CancellationToken)
+  nameWithType.vb: IBackgroundJobScheduler.CancelAsync(String, CancellationToken)
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.CancelAsync*
+  name: CancelAsync
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_CancelAsync_
+  commentId: Overload:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.CancelAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.CancelAsync
+  nameWithType: IBackgroundJobScheduler.CancelAsync
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.EnqueueAsync*
+  name: EnqueueAsync
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_EnqueueAsync_
+  commentId: Overload:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.EnqueueAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.EnqueueAsync
+  nameWithType: IBackgroundJobScheduler.EnqueueAsync
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.EnqueueAsync``1(System.String,``0,Compendium.Abstractions.Jobs.Models.JobOptions,System.Threading.CancellationToken)
+  name: EnqueueAsync<TPayload>(string, TPayload, JobOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_EnqueueAsync__1_System_String___0_Compendium_Abstractions_Jobs_Models_JobOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.EnqueueAsync``1(System.String,``0,Compendium.Abstractions.Jobs.Models.JobOptions,System.Threading.CancellationToken)
+  name.vb: EnqueueAsync(Of TPayload)(String, TPayload, JobOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.EnqueueAsync<TPayload>(string, TPayload, Compendium.Abstractions.Jobs.Models.JobOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.EnqueueAsync(Of TPayload)(String, TPayload, Compendium.Abstractions.Jobs.Models.JobOptions, System.Threading.CancellationToken)
+  nameWithType: IBackgroundJobScheduler.EnqueueAsync<TPayload>(string, TPayload, JobOptions, CancellationToken)
+  nameWithType.vb: IBackgroundJobScheduler.EnqueueAsync(Of TPayload)(String, TPayload, JobOptions, CancellationToken)
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.RecurAsync*
+  name: RecurAsync
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_RecurAsync_
+  commentId: Overload:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.RecurAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.RecurAsync
+  nameWithType: IBackgroundJobScheduler.RecurAsync
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.RecurAsync``1(System.String,``0,System.String,Compendium.Abstractions.Jobs.Models.JobOptions,System.Threading.CancellationToken)
+  name: RecurAsync<TPayload>(string, TPayload, string, JobOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_RecurAsync__1_System_String___0_System_String_Compendium_Abstractions_Jobs_Models_JobOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.RecurAsync``1(System.String,``0,System.String,Compendium.Abstractions.Jobs.Models.JobOptions,System.Threading.CancellationToken)
+  name.vb: RecurAsync(Of TPayload)(String, TPayload, String, JobOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.RecurAsync<TPayload>(string, TPayload, string, Compendium.Abstractions.Jobs.Models.JobOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.RecurAsync(Of TPayload)(String, TPayload, String, Compendium.Abstractions.Jobs.Models.JobOptions, System.Threading.CancellationToken)
+  nameWithType: IBackgroundJobScheduler.RecurAsync<TPayload>(string, TPayload, string, JobOptions, CancellationToken)
+  nameWithType.vb: IBackgroundJobScheduler.RecurAsync(Of TPayload)(String, TPayload, String, JobOptions, CancellationToken)
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.ScheduleAsync*
+  name: ScheduleAsync
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_ScheduleAsync_
+  commentId: Overload:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.ScheduleAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.ScheduleAsync
+  nameWithType: IBackgroundJobScheduler.ScheduleAsync
+- uid: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.ScheduleAsync``1(System.String,``0,System.DateTimeOffset,Compendium.Abstractions.Jobs.Models.JobOptions,System.Threading.CancellationToken)
+  name: ScheduleAsync<TPayload>(string, TPayload, DateTimeOffset, JobOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Jobs.IBackgroundJobScheduler.html#Compendium_Abstractions_Jobs_IBackgroundJobScheduler_ScheduleAsync__1_System_String___0_System_DateTimeOffset_Compendium_Abstractions_Jobs_Models_JobOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Jobs.IBackgroundJobScheduler.ScheduleAsync``1(System.String,``0,System.DateTimeOffset,Compendium.Abstractions.Jobs.Models.JobOptions,System.Threading.CancellationToken)
+  name.vb: ScheduleAsync(Of TPayload)(String, TPayload, DateTimeOffset, JobOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.ScheduleAsync<TPayload>(string, TPayload, System.DateTimeOffset, Compendium.Abstractions.Jobs.Models.JobOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Jobs.IBackgroundJobScheduler.ScheduleAsync(Of TPayload)(String, TPayload, System.DateTimeOffset, Compendium.Abstractions.Jobs.Models.JobOptions, System.Threading.CancellationToken)
+  nameWithType: IBackgroundJobScheduler.ScheduleAsync<TPayload>(string, TPayload, DateTimeOffset, JobOptions, CancellationToken)
+  nameWithType.vb: IBackgroundJobScheduler.ScheduleAsync(Of TPayload)(String, TPayload, DateTimeOffset, JobOptions, CancellationToken)
+- uid: Compendium.Abstractions.Jobs.JobsErrors
+  name: JobsErrors
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html
+  commentId: T:Compendium.Abstractions.Jobs.JobsErrors
+  fullName: Compendium.Abstractions.Jobs.JobsErrors
+  nameWithType: JobsErrors
+- uid: Compendium.Abstractions.Jobs.JobsErrors.CronInvalid(System.String)
+  name: CronInvalid(string)
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_CronInvalid_System_String_
+  commentId: M:Compendium.Abstractions.Jobs.JobsErrors.CronInvalid(System.String)
+  name.vb: CronInvalid(String)
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.CronInvalid(string)
+  fullName.vb: Compendium.Abstractions.Jobs.JobsErrors.CronInvalid(String)
+  nameWithType: JobsErrors.CronInvalid(string)
+  nameWithType.vb: JobsErrors.CronInvalid(String)
+- uid: Compendium.Abstractions.Jobs.JobsErrors.CronInvalid*
+  name: CronInvalid
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_CronInvalid_
+  commentId: Overload:Compendium.Abstractions.Jobs.JobsErrors.CronInvalid
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.CronInvalid
+  nameWithType: JobsErrors.CronInvalid
+- uid: Compendium.Abstractions.Jobs.JobsErrors.InvalidPayload(System.String)
+  name: InvalidPayload(string)
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_InvalidPayload_System_String_
+  commentId: M:Compendium.Abstractions.Jobs.JobsErrors.InvalidPayload(System.String)
+  name.vb: InvalidPayload(String)
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.InvalidPayload(string)
+  fullName.vb: Compendium.Abstractions.Jobs.JobsErrors.InvalidPayload(String)
+  nameWithType: JobsErrors.InvalidPayload(string)
+  nameWithType.vb: JobsErrors.InvalidPayload(String)
+- uid: Compendium.Abstractions.Jobs.JobsErrors.InvalidPayload*
+  name: InvalidPayload
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_InvalidPayload_
+  commentId: Overload:Compendium.Abstractions.Jobs.JobsErrors.InvalidPayload
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.InvalidPayload
+  nameWithType: JobsErrors.InvalidPayload
+- uid: Compendium.Abstractions.Jobs.JobsErrors.JobNotFound(System.String)
+  name: JobNotFound(string)
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_JobNotFound_System_String_
+  commentId: M:Compendium.Abstractions.Jobs.JobsErrors.JobNotFound(System.String)
+  name.vb: JobNotFound(String)
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.JobNotFound(string)
+  fullName.vb: Compendium.Abstractions.Jobs.JobsErrors.JobNotFound(String)
+  nameWithType: JobsErrors.JobNotFound(string)
+  nameWithType.vb: JobsErrors.JobNotFound(String)
+- uid: Compendium.Abstractions.Jobs.JobsErrors.JobNotFound*
+  name: JobNotFound
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_JobNotFound_
+  commentId: Overload:Compendium.Abstractions.Jobs.JobsErrors.JobNotFound
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.JobNotFound
+  nameWithType: JobsErrors.JobNotFound
+- uid: Compendium.Abstractions.Jobs.JobsErrors.ProviderUnreachable(System.String)
+  name: ProviderUnreachable(string)
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_ProviderUnreachable_System_String_
+  commentId: M:Compendium.Abstractions.Jobs.JobsErrors.ProviderUnreachable(System.String)
+  name.vb: ProviderUnreachable(String)
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.ProviderUnreachable(string)
+  fullName.vb: Compendium.Abstractions.Jobs.JobsErrors.ProviderUnreachable(String)
+  nameWithType: JobsErrors.ProviderUnreachable(string)
+  nameWithType.vb: JobsErrors.ProviderUnreachable(String)
+- uid: Compendium.Abstractions.Jobs.JobsErrors.ProviderUnreachable*
+  name: ProviderUnreachable
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_ProviderUnreachable_
+  commentId: Overload:Compendium.Abstractions.Jobs.JobsErrors.ProviderUnreachable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.ProviderUnreachable
+  nameWithType: JobsErrors.ProviderUnreachable
+- uid: Compendium.Abstractions.Jobs.JobsErrors.RateLimited(System.String)
+  name: RateLimited(string)
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_RateLimited_System_String_
+  commentId: M:Compendium.Abstractions.Jobs.JobsErrors.RateLimited(System.String)
+  name.vb: RateLimited(String)
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.RateLimited(string)
+  fullName.vb: Compendium.Abstractions.Jobs.JobsErrors.RateLimited(String)
+  nameWithType: JobsErrors.RateLimited(string)
+  nameWithType.vb: JobsErrors.RateLimited(String)
+- uid: Compendium.Abstractions.Jobs.JobsErrors.RateLimited*
+  name: RateLimited
+  href: api/Compendium.Abstractions.Jobs.JobsErrors.html#Compendium_Abstractions_Jobs_JobsErrors_RateLimited_
+  commentId: Overload:Compendium.Abstractions.Jobs.JobsErrors.RateLimited
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.JobsErrors.RateLimited
+  nameWithType: JobsErrors.RateLimited
+- uid: Compendium.Abstractions.Jobs.Models
+  name: Compendium.Abstractions.Jobs.Models
+  href: api/Compendium.Abstractions.Jobs.Models.html
+  commentId: N:Compendium.Abstractions.Jobs.Models
+  fullName: Compendium.Abstractions.Jobs.Models
+  nameWithType: Compendium.Abstractions.Jobs.Models
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions
+  name: JobOptions
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html
+  commentId: T:Compendium.Abstractions.Jobs.Models.JobOptions
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions
+  nameWithType: JobOptions
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.#ctor(System.String,Compendium.Abstractions.Jobs.Models.RetryPolicy,System.String,Compendium.Abstractions.Jobs.Models.JobPriority,System.Nullable{System.DateTimeOffset})
+  name: JobOptions(string, RetryPolicy?, string?, JobPriority, DateTimeOffset?)
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions__ctor_System_String_Compendium_Abstractions_Jobs_Models_RetryPolicy_System_String_Compendium_Abstractions_Jobs_Models_JobPriority_System_Nullable_System_DateTimeOffset__
+  commentId: M:Compendium.Abstractions.Jobs.Models.JobOptions.#ctor(System.String,Compendium.Abstractions.Jobs.Models.RetryPolicy,System.String,Compendium.Abstractions.Jobs.Models.JobPriority,System.Nullable{System.DateTimeOffset})
+  name.vb: New(String, RetryPolicy, String, JobPriority, DateTimeOffset?)
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.JobOptions(string, Compendium.Abstractions.Jobs.Models.RetryPolicy?, string?, Compendium.Abstractions.Jobs.Models.JobPriority, System.DateTimeOffset?)
+  fullName.vb: Compendium.Abstractions.Jobs.Models.JobOptions.New(String, Compendium.Abstractions.Jobs.Models.RetryPolicy, String, Compendium.Abstractions.Jobs.Models.JobPriority, System.DateTimeOffset?)
+  nameWithType: JobOptions.JobOptions(string, RetryPolicy?, string?, JobPriority, DateTimeOffset?)
+  nameWithType.vb: JobOptions.New(String, RetryPolicy, String, JobPriority, DateTimeOffset?)
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.#ctor*
+  name: JobOptions
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions__ctor_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.JobOptions.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.JobOptions
+  fullName.vb: Compendium.Abstractions.Jobs.Models.JobOptions.New
+  nameWithType: JobOptions.JobOptions
+  nameWithType.vb: JobOptions.New
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.Priority
+  name: Priority
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_Priority
+  commentId: P:Compendium.Abstractions.Jobs.Models.JobOptions.Priority
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.Priority
+  nameWithType: JobOptions.Priority
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.Priority*
+  name: Priority
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_Priority_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.JobOptions.Priority
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.Priority
+  nameWithType: JobOptions.Priority
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.Queue
+  name: Queue
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_Queue
+  commentId: P:Compendium.Abstractions.Jobs.Models.JobOptions.Queue
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.Queue
+  nameWithType: JobOptions.Queue
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.Queue*
+  name: Queue
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_Queue_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.JobOptions.Queue
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.Queue
+  nameWithType: JobOptions.Queue
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.Retry
+  name: Retry
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_Retry
+  commentId: P:Compendium.Abstractions.Jobs.Models.JobOptions.Retry
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.Retry
+  nameWithType: JobOptions.Retry
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.Retry*
+  name: Retry
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_Retry_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.JobOptions.Retry
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.Retry
+  nameWithType: JobOptions.Retry
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.ScheduledAt
+  name: ScheduledAt
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_ScheduledAt
+  commentId: P:Compendium.Abstractions.Jobs.Models.JobOptions.ScheduledAt
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.ScheduledAt
+  nameWithType: JobOptions.ScheduledAt
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.ScheduledAt*
+  name: ScheduledAt
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_ScheduledAt_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.JobOptions.ScheduledAt
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.ScheduledAt
+  nameWithType: JobOptions.ScheduledAt
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.TenantId
+  name: TenantId
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_TenantId
+  commentId: P:Compendium.Abstractions.Jobs.Models.JobOptions.TenantId
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.TenantId
+  nameWithType: JobOptions.TenantId
+- uid: Compendium.Abstractions.Jobs.Models.JobOptions.TenantId*
+  name: TenantId
+  href: api/Compendium.Abstractions.Jobs.Models.JobOptions.html#Compendium_Abstractions_Jobs_Models_JobOptions_TenantId_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.JobOptions.TenantId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.JobOptions.TenantId
+  nameWithType: JobOptions.TenantId
+- uid: Compendium.Abstractions.Jobs.Models.JobPriority
+  name: JobPriority
+  href: api/Compendium.Abstractions.Jobs.Models.JobPriority.html
+  commentId: T:Compendium.Abstractions.Jobs.Models.JobPriority
+  fullName: Compendium.Abstractions.Jobs.Models.JobPriority
+  nameWithType: JobPriority
+- uid: Compendium.Abstractions.Jobs.Models.JobPriority.Critical
+  name: Critical
+  href: api/Compendium.Abstractions.Jobs.Models.JobPriority.html#Compendium_Abstractions_Jobs_Models_JobPriority_Critical
+  commentId: F:Compendium.Abstractions.Jobs.Models.JobPriority.Critical
+  fullName: Compendium.Abstractions.Jobs.Models.JobPriority.Critical
+  nameWithType: JobPriority.Critical
+- uid: Compendium.Abstractions.Jobs.Models.JobPriority.High
+  name: High
+  href: api/Compendium.Abstractions.Jobs.Models.JobPriority.html#Compendium_Abstractions_Jobs_Models_JobPriority_High
+  commentId: F:Compendium.Abstractions.Jobs.Models.JobPriority.High
+  fullName: Compendium.Abstractions.Jobs.Models.JobPriority.High
+  nameWithType: JobPriority.High
+- uid: Compendium.Abstractions.Jobs.Models.JobPriority.Low
+  name: Low
+  href: api/Compendium.Abstractions.Jobs.Models.JobPriority.html#Compendium_Abstractions_Jobs_Models_JobPriority_Low
+  commentId: F:Compendium.Abstractions.Jobs.Models.JobPriority.Low
+  fullName: Compendium.Abstractions.Jobs.Models.JobPriority.Low
+  nameWithType: JobPriority.Low
+- uid: Compendium.Abstractions.Jobs.Models.JobPriority.Normal
+  name: Normal
+  href: api/Compendium.Abstractions.Jobs.Models.JobPriority.html#Compendium_Abstractions_Jobs_Models_JobPriority_Normal
+  commentId: F:Compendium.Abstractions.Jobs.Models.JobPriority.Normal
+  fullName: Compendium.Abstractions.Jobs.Models.JobPriority.Normal
+  nameWithType: JobPriority.Normal
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy
+  name: RetryPolicy
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html
+  commentId: T:Compendium.Abstractions.Jobs.Models.RetryPolicy
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy
+  nameWithType: RetryPolicy
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.#ctor(System.Int32,System.TimeSpan,System.Nullable{System.TimeSpan})
+  name: RetryPolicy(int, TimeSpan, TimeSpan?)
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy__ctor_System_Int32_System_TimeSpan_System_Nullable_System_TimeSpan__
+  commentId: M:Compendium.Abstractions.Jobs.Models.RetryPolicy.#ctor(System.Int32,System.TimeSpan,System.Nullable{System.TimeSpan})
+  name.vb: New(Integer, TimeSpan, TimeSpan?)
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.RetryPolicy(int, System.TimeSpan, System.TimeSpan?)
+  fullName.vb: Compendium.Abstractions.Jobs.Models.RetryPolicy.New(Integer, System.TimeSpan, System.TimeSpan?)
+  nameWithType: RetryPolicy.RetryPolicy(int, TimeSpan, TimeSpan?)
+  nameWithType.vb: RetryPolicy.New(Integer, TimeSpan, TimeSpan?)
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.#ctor*
+  name: RetryPolicy
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy__ctor_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.RetryPolicy.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.RetryPolicy
+  fullName.vb: Compendium.Abstractions.Jobs.Models.RetryPolicy.New
+  nameWithType: RetryPolicy.RetryPolicy
+  nameWithType.vb: RetryPolicy.New
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.InitialBackoff
+  name: InitialBackoff
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy_InitialBackoff
+  commentId: P:Compendium.Abstractions.Jobs.Models.RetryPolicy.InitialBackoff
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.InitialBackoff
+  nameWithType: RetryPolicy.InitialBackoff
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.InitialBackoff*
+  name: InitialBackoff
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy_InitialBackoff_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.RetryPolicy.InitialBackoff
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.InitialBackoff
+  nameWithType: RetryPolicy.InitialBackoff
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxAttempts
+  name: MaxAttempts
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy_MaxAttempts
+  commentId: P:Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxAttempts
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxAttempts
+  nameWithType: RetryPolicy.MaxAttempts
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxAttempts*
+  name: MaxAttempts
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy_MaxAttempts_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxAttempts
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxAttempts
+  nameWithType: RetryPolicy.MaxAttempts
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxBackoff
+  name: MaxBackoff
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy_MaxBackoff
+  commentId: P:Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxBackoff
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxBackoff
+  nameWithType: RetryPolicy.MaxBackoff
+- uid: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxBackoff*
+  name: MaxBackoff
+  href: api/Compendium.Abstractions.Jobs.Models.RetryPolicy.html#Compendium_Abstractions_Jobs_Models_RetryPolicy_MaxBackoff_
+  commentId: Overload:Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxBackoff
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Jobs.Models.RetryPolicy.MaxBackoff
+  nameWithType: RetryPolicy.MaxBackoff
 - uid: Compendium.Abstractions.Notifications
   name: Compendium.Abstractions.Notifications
   href: api/Compendium.Abstractions.Notifications.html
