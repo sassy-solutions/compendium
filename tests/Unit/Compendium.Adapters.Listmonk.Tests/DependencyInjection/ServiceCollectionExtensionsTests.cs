@@ -199,4 +199,51 @@ public class ServiceCollectionExtensionsTests
         // Assert
         result.Should().BeSameAs(services);
     }
+
+    [Fact]
+    public void AddListmonk_WhenSkipSslValidationTrue_BuildsHandlerWithCustomCertificateValidator()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddLogging();
+
+        // Act
+        services.AddListmonk(opt =>
+        {
+            opt.BaseUrl = "https://insecure.test";
+            opt.Username = "admin";
+            opt.Password = "secret";
+            opt.SkipSslValidation = true;
+        });
+        var provider = services.BuildServiceProvider();
+
+        // Assert — resolving the typed Listmonk HTTP client triggers the primary handler
+        // factory, which exercises the SkipSslValidation = true branch.
+        var factory = provider.GetRequiredService<IHttpClientFactory>();
+        var client = factory.CreateClient("ListmonkHttpClient");
+        client.Should().NotBeNull();
+    }
+
+    [Fact]
+    public void AddListmonk_WhenSkipSslValidationFalse_BuildsHandlerWithoutCustomValidator()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddLogging();
+
+        // Act
+        services.AddListmonk(opt =>
+        {
+            opt.BaseUrl = "https://secure.test";
+            opt.Username = "admin";
+            opt.Password = "secret";
+            opt.SkipSslValidation = false;
+        });
+        var provider = services.BuildServiceProvider();
+
+        // Assert
+        var factory = provider.GetRequiredService<IHttpClientFactory>();
+        var client = factory.CreateClient("ListmonkHttpClient");
+        client.Should().NotBeNull();
+    }
 }

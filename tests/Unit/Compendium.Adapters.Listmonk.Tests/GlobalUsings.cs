@@ -6,3 +6,6 @@
 // -----------------------------------------------------------------------
 
 global using Xunit;
+global using Compendium.Abstractions.Email;
+global using Compendium.Abstractions.Email.Models;
+global using Compendium.Core.Results;
