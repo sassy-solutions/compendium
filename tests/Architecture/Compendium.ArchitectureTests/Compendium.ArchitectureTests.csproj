@@ -10,6 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Core\Compendium.Core\Compendium.Core.csproj" />
     <ProjectReference Include="..\..\..\src\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\src\Application\Compendium.Application\Compendium.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +19,7 @@
     <PackageReference Include="xunit.runner.visualstudio" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="NetArchTest.Rules" />
   </ItemGroup>
 
 </Project>
