@@ -71,6 +71,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.AI.AIErrors.InvalidApiKey
   nameWithType: AIErrors.InvalidApiKey
+- uid: Compendium.Abstractions.AI.AIErrors.InvalidQuery(System.String)
+  name: InvalidQuery(string)
+  href: api/Compendium.Abstractions.AI.AIErrors.html#Compendium_Abstractions_AI_AIErrors_InvalidQuery_System_String_
+  commentId: M:Compendium.Abstractions.AI.AIErrors.InvalidQuery(System.String)
+  name.vb: InvalidQuery(String)
+  fullName: Compendium.Abstractions.AI.AIErrors.InvalidQuery(string)
+  fullName.vb: Compendium.Abstractions.AI.AIErrors.InvalidQuery(String)
+  nameWithType: AIErrors.InvalidQuery(string)
+  nameWithType.vb: AIErrors.InvalidQuery(String)
+- uid: Compendium.Abstractions.AI.AIErrors.InvalidQuery*
+  name: InvalidQuery
+  href: api/Compendium.Abstractions.AI.AIErrors.html#Compendium_Abstractions_AI_AIErrors_InvalidQuery_
+  commentId: Overload:Compendium.Abstractions.AI.AIErrors.InvalidQuery
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.AIErrors.InvalidQuery
+  nameWithType: AIErrors.InvalidQuery
 - uid: Compendium.Abstractions.AI.AIErrors.InvalidRequest(System.String)
   name: InvalidRequest(string)
   href: api/Compendium.Abstractions.AI.AIErrors.html#Compendium_Abstractions_AI_AIErrors_InvalidRequest_System_String_
@@ -186,6 +202,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.AI.AIErrors.RateLimitExceeded
   nameWithType: AIErrors.RateLimitExceeded
+- uid: Compendium.Abstractions.AI.AIErrors.RerankFailed(System.String)
+  name: RerankFailed(string)
+  href: api/Compendium.Abstractions.AI.AIErrors.html#Compendium_Abstractions_AI_AIErrors_RerankFailed_System_String_
+  commentId: M:Compendium.Abstractions.AI.AIErrors.RerankFailed(System.String)
+  name.vb: RerankFailed(String)
+  fullName: Compendium.Abstractions.AI.AIErrors.RerankFailed(string)
+  fullName.vb: Compendium.Abstractions.AI.AIErrors.RerankFailed(String)
+  nameWithType: AIErrors.RerankFailed(string)
+  nameWithType.vb: AIErrors.RerankFailed(String)
+- uid: Compendium.Abstractions.AI.AIErrors.RerankFailed*
+  name: RerankFailed
+  href: api/Compendium.Abstractions.AI.AIErrors.html#Compendium_Abstractions_AI_AIErrors_RerankFailed_
+  commentId: Overload:Compendium.Abstractions.AI.AIErrors.RerankFailed
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.AIErrors.RerankFailed
+  nameWithType: AIErrors.RerankFailed
 - uid: Compendium.Abstractions.AI.AIErrors.StreamInterrupted(System.String)
   name: StreamInterrupted(string?)
   href: api/Compendium.Abstractions.AI.AIErrors.html#Compendium_Abstractions_AI_AIErrors_StreamInterrupted_System_String_
@@ -1347,6 +1379,28 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.AI.IPromptRegistry.RenderPromptAsync
   nameWithType: IPromptRegistry.RenderPromptAsync
+- uid: Compendium.Abstractions.AI.IReranker
+  name: IReranker
+  href: api/Compendium.Abstractions.AI.IReranker.html
+  commentId: T:Compendium.Abstractions.AI.IReranker
+  fullName: Compendium.Abstractions.AI.IReranker
+  nameWithType: IReranker
+- uid: Compendium.Abstractions.AI.IReranker.RerankAsync(System.String,System.Collections.Generic.IReadOnlyList{System.String},Compendium.Abstractions.AI.Models.RerankOptions,System.Threading.CancellationToken)
+  name: RerankAsync(string, IReadOnlyList<string>, RerankOptions, CancellationToken)
+  href: api/Compendium.Abstractions.AI.IReranker.html#Compendium_Abstractions_AI_IReranker_RerankAsync_System_String_System_Collections_Generic_IReadOnlyList_System_String__Compendium_Abstractions_AI_Models_RerankOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.AI.IReranker.RerankAsync(System.String,System.Collections.Generic.IReadOnlyList{System.String},Compendium.Abstractions.AI.Models.RerankOptions,System.Threading.CancellationToken)
+  name.vb: RerankAsync(String, IReadOnlyList(Of String), RerankOptions, CancellationToken)
+  fullName: Compendium.Abstractions.AI.IReranker.RerankAsync(string, System.Collections.Generic.IReadOnlyList<string>, Compendium.Abstractions.AI.Models.RerankOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.AI.IReranker.RerankAsync(String, System.Collections.Generic.IReadOnlyList(Of String), Compendium.Abstractions.AI.Models.RerankOptions, System.Threading.CancellationToken)
+  nameWithType: IReranker.RerankAsync(string, IReadOnlyList<string>, RerankOptions, CancellationToken)
+  nameWithType.vb: IReranker.RerankAsync(String, IReadOnlyList(Of String), RerankOptions, CancellationToken)
+- uid: Compendium.Abstractions.AI.IReranker.RerankAsync*
+  name: RerankAsync
+  href: api/Compendium.Abstractions.AI.IReranker.html#Compendium_Abstractions_AI_IReranker_RerankAsync_
+  commentId: Overload:Compendium.Abstractions.AI.IReranker.RerankAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.IReranker.RerankAsync
+  nameWithType: IReranker.RerankAsync
 - uid: Compendium.Abstractions.AI.Models
   name: Compendium.Abstractions.AI.Models
   href: api/Compendium.Abstractions.AI.Models.html
@@ -2229,6 +2283,96 @@ references:
   commentId: F:Compendium.Abstractions.AI.Models.MessageRole.User
   fullName: Compendium.Abstractions.AI.Models.MessageRole.User
   nameWithType: MessageRole.User
+- uid: Compendium.Abstractions.AI.Models.RerankOptions
+  name: RerankOptions
+  href: api/Compendium.Abstractions.AI.Models.RerankOptions.html
+  commentId: T:Compendium.Abstractions.AI.Models.RerankOptions
+  fullName: Compendium.Abstractions.AI.Models.RerankOptions
+  nameWithType: RerankOptions
+- uid: Compendium.Abstractions.AI.Models.RerankOptions.Model
+  name: Model
+  href: api/Compendium.Abstractions.AI.Models.RerankOptions.html#Compendium_Abstractions_AI_Models_RerankOptions_Model
+  commentId: P:Compendium.Abstractions.AI.Models.RerankOptions.Model
+  fullName: Compendium.Abstractions.AI.Models.RerankOptions.Model
+  nameWithType: RerankOptions.Model
+- uid: Compendium.Abstractions.AI.Models.RerankOptions.Model*
+  name: Model
+  href: api/Compendium.Abstractions.AI.Models.RerankOptions.html#Compendium_Abstractions_AI_Models_RerankOptions_Model_
+  commentId: Overload:Compendium.Abstractions.AI.Models.RerankOptions.Model
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.Models.RerankOptions.Model
+  nameWithType: RerankOptions.Model
+- uid: Compendium.Abstractions.AI.Models.RerankOptions.ReturnDocuments
+  name: ReturnDocuments
+  href: api/Compendium.Abstractions.AI.Models.RerankOptions.html#Compendium_Abstractions_AI_Models_RerankOptions_ReturnDocuments
+  commentId: P:Compendium.Abstractions.AI.Models.RerankOptions.ReturnDocuments
+  fullName: Compendium.Abstractions.AI.Models.RerankOptions.ReturnDocuments
+  nameWithType: RerankOptions.ReturnDocuments
+- uid: Compendium.Abstractions.AI.Models.RerankOptions.ReturnDocuments*
+  name: ReturnDocuments
+  href: api/Compendium.Abstractions.AI.Models.RerankOptions.html#Compendium_Abstractions_AI_Models_RerankOptions_ReturnDocuments_
+  commentId: Overload:Compendium.Abstractions.AI.Models.RerankOptions.ReturnDocuments
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.Models.RerankOptions.ReturnDocuments
+  nameWithType: RerankOptions.ReturnDocuments
+- uid: Compendium.Abstractions.AI.Models.RerankOptions.TopN
+  name: TopN
+  href: api/Compendium.Abstractions.AI.Models.RerankOptions.html#Compendium_Abstractions_AI_Models_RerankOptions_TopN
+  commentId: P:Compendium.Abstractions.AI.Models.RerankOptions.TopN
+  fullName: Compendium.Abstractions.AI.Models.RerankOptions.TopN
+  nameWithType: RerankOptions.TopN
+- uid: Compendium.Abstractions.AI.Models.RerankOptions.TopN*
+  name: TopN
+  href: api/Compendium.Abstractions.AI.Models.RerankOptions.html#Compendium_Abstractions_AI_Models_RerankOptions_TopN_
+  commentId: Overload:Compendium.Abstractions.AI.Models.RerankOptions.TopN
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.Models.RerankOptions.TopN
+  nameWithType: RerankOptions.TopN
+- uid: Compendium.Abstractions.AI.Models.RerankedDocument
+  name: RerankedDocument
+  href: api/Compendium.Abstractions.AI.Models.RerankedDocument.html
+  commentId: T:Compendium.Abstractions.AI.Models.RerankedDocument
+  fullName: Compendium.Abstractions.AI.Models.RerankedDocument
+  nameWithType: RerankedDocument
+- uid: Compendium.Abstractions.AI.Models.RerankedDocument.Document
+  name: Document
+  href: api/Compendium.Abstractions.AI.Models.RerankedDocument.html#Compendium_Abstractions_AI_Models_RerankedDocument_Document
+  commentId: P:Compendium.Abstractions.AI.Models.RerankedDocument.Document
+  fullName: Compendium.Abstractions.AI.Models.RerankedDocument.Document
+  nameWithType: RerankedDocument.Document
+- uid: Compendium.Abstractions.AI.Models.RerankedDocument.Document*
+  name: Document
+  href: api/Compendium.Abstractions.AI.Models.RerankedDocument.html#Compendium_Abstractions_AI_Models_RerankedDocument_Document_
+  commentId: Overload:Compendium.Abstractions.AI.Models.RerankedDocument.Document
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.Models.RerankedDocument.Document
+  nameWithType: RerankedDocument.Document
+- uid: Compendium.Abstractions.AI.Models.RerankedDocument.Index
+  name: Index
+  href: api/Compendium.Abstractions.AI.Models.RerankedDocument.html#Compendium_Abstractions_AI_Models_RerankedDocument_Index
+  commentId: P:Compendium.Abstractions.AI.Models.RerankedDocument.Index
+  fullName: Compendium.Abstractions.AI.Models.RerankedDocument.Index
+  nameWithType: RerankedDocument.Index
+- uid: Compendium.Abstractions.AI.Models.RerankedDocument.Index*
+  name: Index
+  href: api/Compendium.Abstractions.AI.Models.RerankedDocument.html#Compendium_Abstractions_AI_Models_RerankedDocument_Index_
+  commentId: Overload:Compendium.Abstractions.AI.Models.RerankedDocument.Index
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.Models.RerankedDocument.Index
+  nameWithType: RerankedDocument.Index
+- uid: Compendium.Abstractions.AI.Models.RerankedDocument.RelevanceScore
+  name: RelevanceScore
+  href: api/Compendium.Abstractions.AI.Models.RerankedDocument.html#Compendium_Abstractions_AI_Models_RerankedDocument_RelevanceScore
+  commentId: P:Compendium.Abstractions.AI.Models.RerankedDocument.RelevanceScore
+  fullName: Compendium.Abstractions.AI.Models.RerankedDocument.RelevanceScore
+  nameWithType: RerankedDocument.RelevanceScore
+- uid: Compendium.Abstractions.AI.Models.RerankedDocument.RelevanceScore*
+  name: RelevanceScore
+  href: api/Compendium.Abstractions.AI.Models.RerankedDocument.html#Compendium_Abstractions_AI_Models_RerankedDocument_RelevanceScore_
+  commentId: Overload:Compendium.Abstractions.AI.Models.RerankedDocument.RelevanceScore
+  isSpec: "True"
+  fullName: Compendium.Abstractions.AI.Models.RerankedDocument.RelevanceScore
+  nameWithType: RerankedDocument.RelevanceScore
 - uid: Compendium.Abstractions.AI.Models.UsageStats
   name: UsageStats
   href: api/Compendium.Abstractions.AI.Models.UsageStats.html

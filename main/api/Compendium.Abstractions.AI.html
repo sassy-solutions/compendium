@@ -146,6 +146,14 @@ Enables contextual prompt augmentation with user preferences, history, and domai
 Enables centralized management of meta-prompts, system prompts, and prompt chains.</p>
 </dd>
     </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Compendium.Abstractions.AI.IReranker.html">IReranker</a></dt>
+      <dd><p>Provides relevance-based reranking of a set of documents against a query.
+Implementations may delegate to providers such as Cohere Rerank, Voyage,
+or local cross-encoder models. This port is consumed by RAG pipelines
+to improve retrieval quality after an initial vector search.</p>
+</dd>
+    </dl>
 
 
 </article>

@@ -473,6 +473,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.IReranker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.IReranker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.IReranker",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.IReranker.yml\" sourcestartlinenumber=\"1\">Provides relevance-based reranking of a set of documents against a query.\nImplementations may delegate to providers such as Cohere Rerank, Voyage,\nor local cross-encoder models. This port is consumed by RAG pipelines\nto improve retrieval quality after an initial vector search.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.AI.Models.AIModel.yml",
       "output": {
         ".html": {
@@ -624,6 +638,34 @@
       "IsMRef": true,
       "Title": "Compendium.Abstractions.AI.Models.MessageRole",
       "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Models.MessageRole.yml\" sourcestartlinenumber=\"1\">Represents the role of a message sender.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Models.RerankOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Models.RerankOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Models.RerankOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Models.RerankOptions.yml\" sourcestartlinenumber=\"1\">Represents options for a rerank request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.AI.Models.RerankedDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.AI.Models.RerankedDocument.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.AI.Models.RerankedDocument",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.AI.Models.RerankedDocument.yml\" sourcestartlinenumber=\"1\">Represents a single reranked document with its relevance score.</p>\n"
     },
     {
       "type": "ManagedReference",
