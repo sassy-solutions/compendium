@@ -192,6 +192,43 @@ Class SpeechErrors  <a class="header-action link-secondary" title="View source" 
 
 
 
+  <a id="Compendium_Abstractions_Speech_SpeechErrors_InvalidVoiceId_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId*"></a>
+
+  <h3 id="Compendium_Abstractions_Speech_SpeechErrors_InvalidVoiceId_System_String_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId(System.String)">
+  InvalidVoiceId(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Speech/SpeechErrors.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Error returned when the supplied text-to-speech voice identifier is not recognised by the adapter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Error InvalidVoiceId(string voiceId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>voiceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Core.Results.Error.html">Error</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Compendium_Abstractions_Speech_SpeechErrors_ProviderUnreachable_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable*"></a>
 
   <h3 id="Compendium_Abstractions_Speech_SpeechErrors_ProviderUnreachable_System_String_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable(System.String)">
@@ -266,6 +303,45 @@ Class SpeechErrors  <a class="header-action link-secondary" title="View source" 
 
 
 
+  <a id="Compendium_Abstractions_Speech_SpeechErrors_TextTooLong_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.TextTooLong*"></a>
+
+  <h3 id="Compendium_Abstractions_Speech_SpeechErrors_TextTooLong_System_Int32_System_Int32_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.TextTooLong(System.Int32,System.Int32)">
+  TextTooLong(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Speech/SpeechErrors.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Error returned when the synthesis input text exceeds the adapter's maximum supported length.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Error TextTooLong(int length, int maximum)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>maximum</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Core.Results.Error.html">Error</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Compendium_Abstractions_Speech_SpeechErrors_UnsupportedFormat_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat*"></a>
 
   <h3 id="Compendium_Abstractions_Speech_SpeechErrors_UnsupportedFormat_System_String_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat(System.String)">
@@ -284,6 +360,43 @@ Class SpeechErrors  <a class="header-action link-secondary" title="View source" 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>mimeType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Compendium.Core.Results.Error.html">Error</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_Speech_SpeechErrors_UnsupportedLanguage_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage*"></a>
+
+  <h3 id="Compendium_Abstractions_Speech_SpeechErrors_UnsupportedLanguage_System_String_" data-uid="Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage(System.String)">
+  UnsupportedLanguage(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Speech/SpeechErrors.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Error returned when the requested BCP-47 language is not supported by the adapter or selected voice.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Error UnsupportedLanguage(string language)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>language</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 

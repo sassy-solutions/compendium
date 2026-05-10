@@ -13096,6 +13096,44 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync
   nameWithType: ISpeechToText.TranscribeStreamAsync
+- uid: Compendium.Abstractions.Speech.ITextToSpeech
+  name: ITextToSpeech
+  href: api/Compendium.Abstractions.Speech.ITextToSpeech.html
+  commentId: T:Compendium.Abstractions.Speech.ITextToSpeech
+  fullName: Compendium.Abstractions.Speech.ITextToSpeech
+  nameWithType: ITextToSpeech
+- uid: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeAsync(System.String,Compendium.Abstractions.Speech.Models.SynthesisOptions,System.Threading.CancellationToken)
+  name: SynthesizeAsync(string, SynthesisOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Speech.ITextToSpeech.html#Compendium_Abstractions_Speech_ITextToSpeech_SynthesizeAsync_System_String_Compendium_Abstractions_Speech_Models_SynthesisOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeAsync(System.String,Compendium.Abstractions.Speech.Models.SynthesisOptions,System.Threading.CancellationToken)
+  name.vb: SynthesizeAsync(String, SynthesisOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeAsync(string, Compendium.Abstractions.Speech.Models.SynthesisOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeAsync(String, Compendium.Abstractions.Speech.Models.SynthesisOptions, System.Threading.CancellationToken)
+  nameWithType: ITextToSpeech.SynthesizeAsync(string, SynthesisOptions, CancellationToken)
+  nameWithType.vb: ITextToSpeech.SynthesizeAsync(String, SynthesisOptions, CancellationToken)
+- uid: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeAsync*
+  name: SynthesizeAsync
+  href: api/Compendium.Abstractions.Speech.ITextToSpeech.html#Compendium_Abstractions_Speech_ITextToSpeech_SynthesizeAsync_
+  commentId: Overload:Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeAsync
+  nameWithType: ITextToSpeech.SynthesizeAsync
+- uid: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeStreamAsync(System.String,Compendium.Abstractions.Speech.Models.SynthesisOptions,System.Threading.CancellationToken)
+  name: SynthesizeStreamAsync(string, SynthesisOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Speech.ITextToSpeech.html#Compendium_Abstractions_Speech_ITextToSpeech_SynthesizeStreamAsync_System_String_Compendium_Abstractions_Speech_Models_SynthesisOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeStreamAsync(System.String,Compendium.Abstractions.Speech.Models.SynthesisOptions,System.Threading.CancellationToken)
+  name.vb: SynthesizeStreamAsync(String, SynthesisOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeStreamAsync(string, Compendium.Abstractions.Speech.Models.SynthesisOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeStreamAsync(String, Compendium.Abstractions.Speech.Models.SynthesisOptions, System.Threading.CancellationToken)
+  nameWithType: ITextToSpeech.SynthesizeStreamAsync(string, SynthesisOptions, CancellationToken)
+  nameWithType.vb: ITextToSpeech.SynthesizeStreamAsync(String, SynthesisOptions, CancellationToken)
+- uid: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeStreamAsync*
+  name: SynthesizeStreamAsync
+  href: api/Compendium.Abstractions.Speech.ITextToSpeech.html#Compendium_Abstractions_Speech_ITextToSpeech_SynthesizeStreamAsync_
+  commentId: Overload:Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeStreamAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.ITextToSpeech.SynthesizeStreamAsync
+  nameWithType: ITextToSpeech.SynthesizeStreamAsync
 - uid: Compendium.Abstractions.Speech.Models
   name: Compendium.Abstractions.Speech.Models
   href: api/Compendium.Abstractions.Speech.Models.html
@@ -13153,6 +13191,42 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Speech.Models.AudioChunk.SampleRate
   nameWithType: AudioChunk.SampleRate
+- uid: Compendium.Abstractions.Speech.Models.AudioFormat
+  name: AudioFormat
+  href: api/Compendium.Abstractions.Speech.Models.AudioFormat.html
+  commentId: T:Compendium.Abstractions.Speech.Models.AudioFormat
+  fullName: Compendium.Abstractions.Speech.Models.AudioFormat
+  nameWithType: AudioFormat
+- uid: Compendium.Abstractions.Speech.Models.AudioFormat.Flac
+  name: Flac
+  href: api/Compendium.Abstractions.Speech.Models.AudioFormat.html#Compendium_Abstractions_Speech_Models_AudioFormat_Flac
+  commentId: F:Compendium.Abstractions.Speech.Models.AudioFormat.Flac
+  fullName: Compendium.Abstractions.Speech.Models.AudioFormat.Flac
+  nameWithType: AudioFormat.Flac
+- uid: Compendium.Abstractions.Speech.Models.AudioFormat.Mp3
+  name: Mp3
+  href: api/Compendium.Abstractions.Speech.Models.AudioFormat.html#Compendium_Abstractions_Speech_Models_AudioFormat_Mp3
+  commentId: F:Compendium.Abstractions.Speech.Models.AudioFormat.Mp3
+  fullName: Compendium.Abstractions.Speech.Models.AudioFormat.Mp3
+  nameWithType: AudioFormat.Mp3
+- uid: Compendium.Abstractions.Speech.Models.AudioFormat.Opus
+  name: Opus
+  href: api/Compendium.Abstractions.Speech.Models.AudioFormat.html#Compendium_Abstractions_Speech_Models_AudioFormat_Opus
+  commentId: F:Compendium.Abstractions.Speech.Models.AudioFormat.Opus
+  fullName: Compendium.Abstractions.Speech.Models.AudioFormat.Opus
+  nameWithType: AudioFormat.Opus
+- uid: Compendium.Abstractions.Speech.Models.AudioFormat.Pcm16
+  name: Pcm16
+  href: api/Compendium.Abstractions.Speech.Models.AudioFormat.html#Compendium_Abstractions_Speech_Models_AudioFormat_Pcm16
+  commentId: F:Compendium.Abstractions.Speech.Models.AudioFormat.Pcm16
+  fullName: Compendium.Abstractions.Speech.Models.AudioFormat.Pcm16
+  nameWithType: AudioFormat.Pcm16
+- uid: Compendium.Abstractions.Speech.Models.AudioFormat.Wav
+  name: Wav
+  href: api/Compendium.Abstractions.Speech.Models.AudioFormat.html#Compendium_Abstractions_Speech_Models_AudioFormat_Wav
+  commentId: F:Compendium.Abstractions.Speech.Models.AudioFormat.Wav
+  fullName: Compendium.Abstractions.Speech.Models.AudioFormat.Wav
+  nameWithType: AudioFormat.Wav
 - uid: Compendium.Abstractions.Speech.Models.AudioInput
   name: AudioInput
   href: api/Compendium.Abstractions.Speech.Models.AudioInput.html
@@ -13204,6 +13278,160 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Speech.Models.AudioInput.Stream
   nameWithType: AudioInput.Stream
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput
+  name: AudioOutput
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html
+  commentId: T:Compendium.Abstractions.Speech.Models.AudioOutput
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput
+  nameWithType: AudioOutput
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.#ctor(System.IO.Stream,System.String,System.TimeSpan)
+  name: AudioOutput(Stream, string, TimeSpan)
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput__ctor_System_IO_Stream_System_String_System_TimeSpan_
+  commentId: M:Compendium.Abstractions.Speech.Models.AudioOutput.#ctor(System.IO.Stream,System.String,System.TimeSpan)
+  name.vb: New(Stream, String, TimeSpan)
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.AudioOutput(System.IO.Stream, string, System.TimeSpan)
+  fullName.vb: Compendium.Abstractions.Speech.Models.AudioOutput.New(System.IO.Stream, String, System.TimeSpan)
+  nameWithType: AudioOutput.AudioOutput(Stream, string, TimeSpan)
+  nameWithType.vb: AudioOutput.New(Stream, String, TimeSpan)
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.#ctor*
+  name: AudioOutput
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioOutput.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.AudioOutput
+  fullName.vb: Compendium.Abstractions.Speech.Models.AudioOutput.New
+  nameWithType: AudioOutput.AudioOutput
+  nameWithType.vb: AudioOutput.New
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.Duration
+  name: Duration
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput_Duration
+  commentId: P:Compendium.Abstractions.Speech.Models.AudioOutput.Duration
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.Duration
+  nameWithType: AudioOutput.Duration
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.Duration*
+  name: Duration
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput_Duration_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioOutput.Duration
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.Duration
+  nameWithType: AudioOutput.Duration
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.MimeType
+  name: MimeType
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput_MimeType
+  commentId: P:Compendium.Abstractions.Speech.Models.AudioOutput.MimeType
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.MimeType
+  nameWithType: AudioOutput.MimeType
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.MimeType*
+  name: MimeType
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput_MimeType_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioOutput.MimeType
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.MimeType
+  nameWithType: AudioOutput.MimeType
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.Stream
+  name: Stream
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput_Stream
+  commentId: P:Compendium.Abstractions.Speech.Models.AudioOutput.Stream
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.Stream
+  nameWithType: AudioOutput.Stream
+- uid: Compendium.Abstractions.Speech.Models.AudioOutput.Stream*
+  name: Stream
+  href: api/Compendium.Abstractions.Speech.Models.AudioOutput.html#Compendium_Abstractions_Speech_Models_AudioOutput_Stream_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioOutput.Stream
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.AudioOutput.Stream
+  nameWithType: AudioOutput.Stream
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions
+  name: SynthesisOptions
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html
+  commentId: T:Compendium.Abstractions.Speech.Models.SynthesisOptions
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions
+  nameWithType: SynthesisOptions
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.#ctor(System.String,System.String,Compendium.Abstractions.Speech.Models.AudioFormat,System.Int32,System.Double)
+  name: SynthesisOptions(string, string?, AudioFormat, int, double)
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions__ctor_System_String_System_String_Compendium_Abstractions_Speech_Models_AudioFormat_System_Int32_System_Double_
+  commentId: M:Compendium.Abstractions.Speech.Models.SynthesisOptions.#ctor(System.String,System.String,Compendium.Abstractions.Speech.Models.AudioFormat,System.Int32,System.Double)
+  name.vb: New(String, String, AudioFormat, Integer, Double)
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.SynthesisOptions(string, string?, Compendium.Abstractions.Speech.Models.AudioFormat, int, double)
+  fullName.vb: Compendium.Abstractions.Speech.Models.SynthesisOptions.New(String, String, Compendium.Abstractions.Speech.Models.AudioFormat, Integer, Double)
+  nameWithType: SynthesisOptions.SynthesisOptions(string, string?, AudioFormat, int, double)
+  nameWithType.vb: SynthesisOptions.New(String, String, AudioFormat, Integer, Double)
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.#ctor*
+  name: SynthesisOptions
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.SynthesisOptions.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.SynthesisOptions
+  fullName.vb: Compendium.Abstractions.Speech.Models.SynthesisOptions.New
+  nameWithType: SynthesisOptions.SynthesisOptions
+  nameWithType.vb: SynthesisOptions.New
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.Format
+  name: Format
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_Format
+  commentId: P:Compendium.Abstractions.Speech.Models.SynthesisOptions.Format
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.Format
+  nameWithType: SynthesisOptions.Format
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.Format*
+  name: Format
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_Format_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.SynthesisOptions.Format
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.Format
+  nameWithType: SynthesisOptions.Format
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.Model
+  name: Model
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_Model
+  commentId: P:Compendium.Abstractions.Speech.Models.SynthesisOptions.Model
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.Model
+  nameWithType: SynthesisOptions.Model
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.Model*
+  name: Model
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_Model_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.SynthesisOptions.Model
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.Model
+  nameWithType: SynthesisOptions.Model
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.SampleRate
+  name: SampleRate
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_SampleRate
+  commentId: P:Compendium.Abstractions.Speech.Models.SynthesisOptions.SampleRate
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.SampleRate
+  nameWithType: SynthesisOptions.SampleRate
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.SampleRate*
+  name: SampleRate
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_SampleRate_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.SynthesisOptions.SampleRate
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.SampleRate
+  nameWithType: SynthesisOptions.SampleRate
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.Stability
+  name: Stability
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_Stability
+  commentId: P:Compendium.Abstractions.Speech.Models.SynthesisOptions.Stability
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.Stability
+  nameWithType: SynthesisOptions.Stability
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.Stability*
+  name: Stability
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_Stability_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.SynthesisOptions.Stability
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.Stability
+  nameWithType: SynthesisOptions.Stability
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.VoiceId
+  name: VoiceId
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_VoiceId
+  commentId: P:Compendium.Abstractions.Speech.Models.SynthesisOptions.VoiceId
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.VoiceId
+  nameWithType: SynthesisOptions.VoiceId
+- uid: Compendium.Abstractions.Speech.Models.SynthesisOptions.VoiceId*
+  name: VoiceId
+  href: api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html#Compendium_Abstractions_Speech_Models_SynthesisOptions_VoiceId_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.SynthesisOptions.VoiceId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.SynthesisOptions.VoiceId
+  nameWithType: SynthesisOptions.VoiceId
 - uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk
   name: TranscriptionChunk
   href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html
@@ -13492,6 +13720,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Speech.SpeechErrors.AudioTooLong
   nameWithType: SpeechErrors.AudioTooLong
+- uid: Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId(System.String)
+  name: InvalidVoiceId(string)
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_InvalidVoiceId_System_String_
+  commentId: M:Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId(System.String)
+  name.vb: InvalidVoiceId(String)
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId(string)
+  fullName.vb: Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId(String)
+  nameWithType: SpeechErrors.InvalidVoiceId(string)
+  nameWithType.vb: SpeechErrors.InvalidVoiceId(String)
+- uid: Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId*
+  name: InvalidVoiceId
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_InvalidVoiceId_
+  commentId: Overload:Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.InvalidVoiceId
+  nameWithType: SpeechErrors.InvalidVoiceId
 - uid: Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable(System.String)
   name: ProviderUnreachable(string)
   href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_ProviderUnreachable_System_String_
@@ -13524,6 +13768,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Speech.SpeechErrors.RateLimited
   nameWithType: SpeechErrors.RateLimited
+- uid: Compendium.Abstractions.Speech.SpeechErrors.TextTooLong(System.Int32,System.Int32)
+  name: TextTooLong(int, int)
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_TextTooLong_System_Int32_System_Int32_
+  commentId: M:Compendium.Abstractions.Speech.SpeechErrors.TextTooLong(System.Int32,System.Int32)
+  name.vb: TextTooLong(Integer, Integer)
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.TextTooLong(int, int)
+  fullName.vb: Compendium.Abstractions.Speech.SpeechErrors.TextTooLong(Integer, Integer)
+  nameWithType: SpeechErrors.TextTooLong(int, int)
+  nameWithType.vb: SpeechErrors.TextTooLong(Integer, Integer)
+- uid: Compendium.Abstractions.Speech.SpeechErrors.TextTooLong*
+  name: TextTooLong
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_TextTooLong_
+  commentId: Overload:Compendium.Abstractions.Speech.SpeechErrors.TextTooLong
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.TextTooLong
+  nameWithType: SpeechErrors.TextTooLong
 - uid: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat(System.String)
   name: UnsupportedFormat(string)
   href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_UnsupportedFormat_System_String_
@@ -13540,6 +13800,22 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat
   nameWithType: SpeechErrors.UnsupportedFormat
+- uid: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage(System.String)
+  name: UnsupportedLanguage(string)
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_UnsupportedLanguage_System_String_
+  commentId: M:Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage(System.String)
+  name.vb: UnsupportedLanguage(String)
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage(string)
+  fullName.vb: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage(String)
+  nameWithType: SpeechErrors.UnsupportedLanguage(string)
+  nameWithType.vb: SpeechErrors.UnsupportedLanguage(String)
+- uid: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage*
+  name: UnsupportedLanguage
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_UnsupportedLanguage_
+  commentId: Overload:Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedLanguage
+  nameWithType: SpeechErrors.UnsupportedLanguage
 - uid: Compendium.Abstractions.VectorStore
   name: Compendium.Abstractions.VectorStore
   href: api/Compendium.Abstractions.VectorStore.html

@@ -3091,6 +3091,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.ITextToSpeech.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.ITextToSpeech.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.ITextToSpeech",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.ITextToSpeech.yml\" sourcestartlinenumber=\"1\">Provides text-to-speech synthesis operations.\nThis interface is provider-agnostic and can be implemented by adapters targeting\nElevenLabs, Azure Speech, Google Cloud TTS, OpenAI, or similar engines.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Speech.Models.AudioChunk.yml",
       "output": {
         ".html": {
@@ -3105,6 +3119,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.AudioFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.AudioFormat.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.AudioFormat",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.AudioFormat.yml\" sourcestartlinenumber=\"1\">Enumerates the audio container/codec formats supported as text-to-speech synthesis output.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Speech.Models.AudioInput.yml",
       "output": {
         ".html": {
@@ -3116,6 +3144,34 @@
       "IsMRef": true,
       "Title": "Compendium.Abstractions.Speech.Models.AudioInput",
       "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.AudioInput.yml\" sourcestartlinenumber=\"1\">Represents an audio payload submitted to a speech-to-text provider for batch transcription.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.AudioOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.AudioOutput.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.AudioOutput",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.AudioOutput.yml\" sourcestartlinenumber=\"1\">Represents the synthesized audio payload returned by a text-to-speech provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.SynthesisOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.SynthesisOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.SynthesisOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.SynthesisOptions.yml\" sourcestartlinenumber=\"1\">Captures the tunable parameters submitted to a text-to-speech provider.</p>\n"
     },
     {
       "type": "ManagedReference",

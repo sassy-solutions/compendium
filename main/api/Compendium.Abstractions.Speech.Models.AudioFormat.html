@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace Compendium.Abstractions.Speech | Compendium — .NET event-sourcing framework </title>
+      <title>Enum AudioFormat | Compendium — .NET event-sourcing framework </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace Compendium.Abstractions.Speech | Compendium — .NET event-sourcing framework ">
+      <meta name="title" content="Enum AudioFormat | Compendium — .NET event-sourcing framework ">
       
-      
+      <meta name="description" content="Enumerates the audio container/codec formats supported as text-to-speech synthesis output.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_Speech_Models_AudioFormat.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.Speech.Models.AudioFormat%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,43 +84,67 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Compendium.Abstractions.Speech">
+        <article data-uid="Compendium.Abstractions.Speech.Models.AudioFormat">
 
-  <h1 id="Compendium_Abstractions_Speech" data-uid="Compendium.Abstractions.Speech" class="text-break">Namespace Compendium.Abstractions.Speech</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
 
-    <h3 id="classes">
-Classes
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Speech.SpeechErrors.html">SpeechErrors</a></dt>
-      <dd><p>Provides standard error definitions for speech-to-text operations.</p>
+
+
+  <h1 id="Compendium_Abstractions_Speech_Models_AudioFormat" data-uid="Compendium.Abstractions.Speech.Models.AudioFormat" class="text-break">
+Enum AudioFormat  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Speech/Models/AudioFormat.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.Speech.html">Speech</a>.<a class="xref" href="Compendium.Abstractions.Speech.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.Speech.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Enumerates the audio container/codec formats supported as text-to-speech synthesis output.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum AudioFormat</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="Compendium_Abstractions_Speech_Models_AudioFormat_Flac"><code>Flac = 3</code></dt>
+  
+  <dd><p>Free Lossless Audio Codec.</p>
 </dd>
-    </dl>
-    <h3 id="interfaces">
-Interfaces
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Speech.ISpeechToText.html">ISpeechToText</a></dt>
-      <dd><p>Provides speech-to-text transcription operations.
-This interface is provider-agnostic and can be implemented by adapters targeting
-Whisper, Deepgram, Azure Speech, or similar engines.</p>
+    <dt id="Compendium_Abstractions_Speech_Models_AudioFormat_Mp3"><code>Mp3 = 0</code></dt>
+  
+  <dd><p>MPEG-1 Audio Layer III container.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Compendium.Abstractions.Speech.ITextToSpeech.html">ITextToSpeech</a></dt>
-      <dd><p>Provides text-to-speech synthesis operations.
-This interface is provider-agnostic and can be implemented by adapters targeting
-ElevenLabs, Azure Speech, Google Cloud TTS, OpenAI, or similar engines.</p>
+    <dt id="Compendium_Abstractions_Speech_Models_AudioFormat_Opus"><code>Opus = 2</code></dt>
+  
+  <dd><p>Opus codec inside an Ogg container.</p>
 </dd>
-    </dl>
+    <dt id="Compendium_Abstractions_Speech_Models_AudioFormat_Pcm16"><code>Pcm16 = 4</code></dt>
+  
+  <dd><p>Raw 16-bit signed PCM samples.</p>
+</dd>
+    <dt id="Compendium_Abstractions_Speech_Models_AudioFormat_Wav"><code>Wav = 1</code></dt>
+  
+  <dd><p>Waveform Audio File Format (uncompressed PCM).</p>
+</dd>
+  </dl>
+
 
 
 </article>
 
         <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.Speech/Models/AudioFormat.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 
