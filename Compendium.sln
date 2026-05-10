@@ -114,6 +114,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Testing.Tests", "tests\Unit\Compendium.Testing.Tests\Compendium.Testing.Tests.csproj", "{E5232EFA-E06C-4975-B5A7-91A241D029CB}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.PostgreSQL.Tests", "tests\Unit\Compendium.Adapters.PostgreSQL.Tests\Compendium.Adapters.PostgreSQL.Tests.csproj", "{3E6C387D-A84B-43A8-AAF5-B7A9494C57CE}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Abstractions.Identity.Tests", "tests\Unit\Compendium.Abstractions.Identity.Tests\Compendium.Abstractions.Identity.Tests.csproj", "{0EDEE2DC-46FE-404B-9615-B6E3F756DF75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Abstractions.Billing.Tests", "tests\Unit\Compendium.Abstractions.Billing.Tests\Compendium.Abstractions.Billing.Tests.csproj", "{A3257DCF-9F77-4CEE-8FE5-7E8C569F0B17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -296,6 +297,10 @@ Global
 		{0EDEE2DC-46FE-404B-9615-B6E3F756DF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EDEE2DC-46FE-404B-9615-B6E3F756DF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EDEE2DC-46FE-404B-9615-B6E3F756DF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3257DCF-9F77-4CEE-8FE5-7E8C569F0B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3257DCF-9F77-4CEE-8FE5-7E8C569F0B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3257DCF-9F77-4CEE-8FE5-7E8C569F0B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3257DCF-9F77-4CEE-8FE5-7E8C569F0B17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FE421F00-7FFD-4666-A961-F1FF325ECD34} = {E35C8F52-5000-4427-9589-AEB5987C1AC6}
@@ -353,5 +358,6 @@ Global
 		{E5232EFA-E06C-4975-B5A7-91A241D029CB} = {6E0B453A-55CF-4567-ADBD-50CFB84CE629}
 		{3E6C387D-A84B-43A8-AAF5-B7A9494C57CE} = {6E0B453A-55CF-4567-ADBD-50CFB84CE629}
 		{0EDEE2DC-46FE-404B-9615-B6E3F756DF75} = {6E0B453A-55CF-4567-ADBD-50CFB84CE629}
+		{A3257DCF-9F77-4CEE-8FE5-7E8C569F0B17} = {6E0B453A-55CF-4567-ADBD-50CFB84CE629}
 	EndGlobalSection
 EndGlobal
