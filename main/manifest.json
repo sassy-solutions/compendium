@@ -1481,6 +1481,90 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.FeatureFlags.FeatureFlagErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.FeatureFlags.FeatureFlagErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.FeatureFlags.FeatureFlagErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.FeatureFlags.FeatureFlagErrors.yml\" sourcestartlinenumber=\"1\">Provides standardized error definitions for feature flag operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.FeatureFlags.IFeatureFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.FeatureFlags.IFeatureFlags.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.FeatureFlags.IFeatureFlags",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.FeatureFlags.IFeatureFlags.yml\" sourcestartlinenumber=\"1\">Provides feature flag and experiment evaluation operations.\nThis interface is provider-agnostic and can be implemented by various feature flag\nproviders such as GrowthBook, Flagsmith, LaunchDarkly, ConfigCat or self-hosted backends.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.FeatureFlags.Models.ExperimentAssignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.FeatureFlags.Models.ExperimentAssignment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.FeatureFlags.Models.ExperimentAssignment",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.FeatureFlags.Models.ExperimentAssignment.yml\" sourcestartlinenumber=\"1\">Represents the result of evaluating an experiment for a given <xref href=\"Compendium.Abstractions.FeatureFlags.Models.FlagContext\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.FeatureFlags.Models.FlagContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.FeatureFlags.Models.FlagContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.FeatureFlags.Models.FlagContext",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.FeatureFlags.Models.FlagContext.yml\" sourcestartlinenumber=\"1\">Evaluation context passed to a feature flag provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.FeatureFlags.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.FeatureFlags.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.FeatureFlags.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.FeatureFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.FeatureFlags.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.FeatureFlags",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Identity.AdminUserProvisioningRequest.yml",
       "output": {
         ".html": {
@@ -1925,6 +2009,146 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Compendium.Abstractions.Infrastructure",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.IPushNotificationSender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.IPushNotificationSender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.IPushNotificationSender",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.IPushNotificationSender.yml\" sourcestartlinenumber=\"1\">Provides operations for sending push notifications to one or more device tokens.\nThis interface is provider-agnostic and can be implemented by adapters targeting\nFCM, APNS, Web Push, OneSignal, and similar services.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.BatchPushDeliveryResult.yml\" sourcestartlinenumber=\"1\">Represents the aggregated result of delivering a push notification to multiple device tokens\nacross one or more provider batches.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.DeviceToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.DeviceToken.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.DeviceToken",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.DeviceToken.yml\" sourcestartlinenumber=\"1\">Represents a registered device token for a specific tenant and (optionally) user.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.PushDeliveryResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.PushDeliveryResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.PushDeliveryResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.PushDeliveryResult.yml\" sourcestartlinenumber=\"1\">Represents the result of delivering a single push notification to a set of device tokens.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.PushFailure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.PushFailure.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.PushFailure",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.PushFailure.yml\" sourcestartlinenumber=\"1\">Describes a single device token that failed to receive a push notification.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.PushNotification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.PushNotification.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.PushNotification",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.PushNotification.yml\" sourcestartlinenumber=\"1\">Represents a push notification payload to be delivered to one or more devices.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.PushProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.PushProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models.PushProvider",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.Models.PushProvider.yml\" sourcestartlinenumber=\"1\">Identifies the push notification provider associated with a device token.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.NotificationErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.NotificationErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications.NotificationErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Notifications.NotificationErrors.yml\" sourcestartlinenumber=\"1\">Provides standard error definitions for notification (push / SMS) operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Notifications.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Notifications.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Notifications",
       "Summary": null
     },
     {

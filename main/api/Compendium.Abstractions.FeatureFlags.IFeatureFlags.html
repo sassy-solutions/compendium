@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IFeatureFlags | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IFeatureFlags | Compendium — .NET event-sourcing framework ">
+      
+      <meta name="description" content="Provides feature flag and experiment evaluation operations. This interface is provider-agnostic and can be implemented by various feature flag providers such as GrowthBook, Flagsmith, LaunchDarkly, ConfigCat or self-hosted backends.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/new/main/apiSpec/new?filename=Compendium_Abstractions_FeatureFlags_IFeatureFlags.md&amp;value=---%0Auid%3A%20Compendium.Abstractions.FeatureFlags.IFeatureFlags%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags">
+
+
+
+  <h1 id="Compendium_Abstractions_FeatureFlags_IFeatureFlags" data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags" class="text-break">
+Interface IFeatureFlags  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.FeatureFlags/IFeatureFlags.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Compendium.html">Compendium</a>.<a class="xref" href="Compendium.Abstractions.html">Abstractions</a>.<a class="xref" href="Compendium.Abstractions.FeatureFlags.html">FeatureFlags</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Compendium.Abstractions.FeatureFlags.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides feature flag and experiment evaluation operations.
+This interface is provider-agnostic and can be implemented by various feature flag
+providers such as GrowthBook, Flagsmith, LaunchDarkly, ConfigCat or self-hosted backends.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IFeatureFlags</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Compendium_Abstractions_FeatureFlags_IFeatureFlags_GetExperimentAsync_" data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags.GetExperimentAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_FeatureFlags_IFeatureFlags_GetExperimentAsync_System_String_Compendium_Abstractions_FeatureFlags_Models_FlagContext_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags.GetExperimentAsync(System.String,Compendium.Abstractions.FeatureFlags.Models.FlagContext,System.Threading.CancellationToken)">
+  GetExperimentAsync(string, FlagContext, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.FeatureFlags/IFeatureFlags.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluates an experiment and returns the assignment for the given context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;ExperimentAssignment&gt;&gt; GetExperimentAsync(string experimentKey, FlagContext ctx, CancellationToken ct)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>experimentKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique key of the experiment.</p>
+</dd>
+    <dt><code>ctx</code> <a class="xref" href="Compendium.Abstractions.FeatureFlags.Models.FlagContext.html">FlagContext</a></dt>
+    <dd><p>The evaluation context.</p>
+</dd>
+    <dt><code>ct</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="Compendium.Abstractions.FeatureFlags.Models.ExperimentAssignment.html">ExperimentAssignment</a>&gt;&gt;</dt>
+    <dd><p>A <a class="xref" href="Compendium.Core.Results.Result-1.html">Result&lt;TValue&gt;</a> containing the <a class="xref" href="Compendium.Abstractions.FeatureFlags.Models.ExperimentAssignment.html">ExperimentAssignment</a> or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_FeatureFlags_IFeatureFlags_GetVariantAsync_" data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags.GetVariantAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_FeatureFlags_IFeatureFlags_GetVariantAsync__1_System_String___0_Compendium_Abstractions_FeatureFlags_Models_FlagContext_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags.GetVariantAsync``1(System.String,``0,Compendium.Abstractions.FeatureFlags.Models.FlagContext,System.Threading.CancellationToken)">
+  GetVariantAsync&lt;T&gt;(string, T, FlagContext, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.FeatureFlags/IFeatureFlags.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluates a typed variant feature flag for the given context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;T&gt;&gt; GetVariantAsync&lt;T&gt;(string flagKey, T defaultValue, FlagContext ctx, CancellationToken ct)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flagKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique key of the feature flag to evaluate.</p>
+</dd>
+    <dt><code>defaultValue</code> <span class="xref">T</span></dt>
+    <dd><p>The value returned when the provider has no opinion or the flag is missing.</p>
+</dd>
+    <dt><code>ctx</code> <a class="xref" href="Compendium.Abstractions.FeatureFlags.Models.FlagContext.html">FlagContext</a></dt>
+    <dd><p>The evaluation context.</p>
+</dd>
+    <dt><code>ct</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;T&gt;&gt;</dt>
+    <dd><p>A <a class="xref" href="Compendium.Core.Results.Result-1.html">Result&lt;TValue&gt;</a> containing the resolved variant value or an error.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The CLR type of the variant value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Compendium_Abstractions_FeatureFlags_IFeatureFlags_IsOnAsync_" data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags.IsOnAsync*"></a>
+
+  <h3 id="Compendium_Abstractions_FeatureFlags_IFeatureFlags_IsOnAsync_System_String_Compendium_Abstractions_FeatureFlags_Models_FlagContext_System_Threading_CancellationToken_" data-uid="Compendium.Abstractions.FeatureFlags.IFeatureFlags.IsOnAsync(System.String,Compendium.Abstractions.FeatureFlags.Models.FlagContext,System.Threading.CancellationToken)">
+  IsOnAsync(string, FlagContext, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.FeatureFlags/IFeatureFlags.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluates a boolean feature flag for the given context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Result&lt;bool&gt;&gt; IsOnAsync(string flagKey, FlagContext ctx, CancellationToken ct)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flagKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unique key of the feature flag to evaluate.</p>
+</dd>
+    <dt><code>ctx</code> <a class="xref" href="Compendium.Abstractions.FeatureFlags.Models.FlagContext.html">FlagContext</a></dt>
+    <dd><p>The evaluation context (mandatory tenant + optional user / attributes).</p>
+</dd>
+    <dt><code>ct</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Compendium.Core.Results.Result-1.html">Result</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;&gt;</dt>
+    <dd><p>A <a class="xref" href="Compendium.Core.Results.Result-1.html">Result&lt;TValue&gt;</a> containing the boolean evaluation or an error.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/src/Abstractions/Compendium.Abstractions.FeatureFlags/IFeatureFlags.cs/#L17" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
