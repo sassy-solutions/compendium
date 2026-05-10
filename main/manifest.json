@@ -7308,6 +7308,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "testing/load-tests.md",
+      "output": {
+        ".html": {
+          "relative_path": "testing/load-tests.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {

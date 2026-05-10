@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Load tests | Compendium — .NET event-sourcing framework </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Load tests | Compendium — .NET event-sourcing framework ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sassy-solutions/compendium/blob/main/docs/testing/load-tests.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="Compendium">
+            Compendium
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="load-tests">Load tests</h1>
+
+<p>The <code>Compendium.LoadTests</code> project (under <code>tests/LoadTests/Compendium.LoadTests</code>)
+hosts a small collection of <a href="https://nbomber.com">NBomber 6</a> scenarios that
+exercise the in-memory implementations of the framework's hot-path
+abstractions. Their purpose is <strong>informational baselining</strong> — they measure
+the cost of the framework's own code paths on a developer machine, with no
+external dependencies (no PostgreSQL, no Redis, no network).</p>
+<p>These scenarios are <strong>not gated in CI</strong>. They are intended to be run
+manually before merging a change that could plausibly affect throughput
+(touching <code>IEventStore</code>, <code>IProjectionManager</code>, <code>IIdempotencyStore</code>, or any
+adapter on the request path), and to be cited in the PR description for
+review.</p>
+<h2 id="running-a-scenario">Running a scenario</h2>
+<pre><code class="lang-bash">dotnet run --project tests/LoadTests/Compendium.LoadTests -c Release -- \
+    --scenario &lt;name&gt; [--duration 30s] [--artifacts artifacts/load] [--no-warmup]
+</code></pre>
+<p>Flags:</p>
+<ul>
+<li><code>--scenario &lt;name&gt;</code> (required) — one of <code>eventstore</code>, <code>projection</code>,
+<code>idempotency</code>, <code>tenant</code>.</li>
+<li><code>--duration &lt;value&gt;</code> — total run length. Accepts <code>30s</code>, <code>2m</code>, <code>500ms</code>, or
+a bare integer interpreted as seconds. Default: <code>15s</code>.</li>
+<li><code>--artifacts &lt;dir&gt;</code> — output directory. Default: <code>artifacts/load</code>.</li>
+<li><code>--no-warmup</code> — skip the 2-second warm-up phase that NBomber would
+otherwise prepend to the run.</li>
+</ul>
+<p>Each run produces:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Producer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;artifacts&gt;/&lt;scenario&gt;-report.html</code></td>
+<td>NBomber</td>
+</tr>
+<tr>
+<td><code>&lt;artifacts&gt;/&lt;scenario&gt;-report.{csv,md,txt}</code></td>
+<td>NBomber</td>
+</tr>
+<tr>
+<td><code>&lt;artifacts&gt;/&lt;scenario&gt;.json</code></td>
+<td>This project</td>
+</tr>
+</tbody>
+</table>
+<p>The JSON summary is what to commit/share for run-over-run comparisons; the
+HTML report is the human-readable view.</p>
+<h2 id="scenarios">Scenarios</h2>
+<h3 id="eventstore--ieventstoreappendeventsasync-throughput"><code>eventstore</code> — <code>IEventStore.AppendEventsAsync</code> throughput</h3>
+<p>Repeatedly appends a 10-event batch to a fresh aggregate against the
+in-memory <code>InMemoryEventStore</code>. 32 NBomber copies run in parallel, so this
+exercises the writer-lock contention.</p>
+<ul>
+<li><strong>Metric</strong>: append operations per second (NBomber <code>Ok.Request.RPS</code>).</li>
+<li><strong>Derived</strong>: events per second ≈ <code>Ok.Request.RPS &amp;times; 10</code>.</li>
+<li><strong>Measured dev-box baseline (Apple M-series, .NET 9, Release, 10 s
+run)</strong>: ≈ <strong>60 000 ops/s</strong> → <strong>≈ 600 000 events/s</strong>
+sustained, mean latency 1 ms, p99 ≈ 15 ms.</li>
+</ul>
+<h3 id="projection--projection-catch-up-rate"><code>projection</code> — projection catch-up rate</h3>
+<p>Pre-populates a single aggregate with 5 000 events, then on each
+NBomber iteration resets a <code>ProjectionBase</code>-derived projection and runs
+<code>ProjectionManager.RebuildProjectionAsync</code> from version 0 to N. Run with a
+single copy because each iteration is intentionally heavy (full replay).</p>
+<ul>
+<li><strong>Metric</strong>: rebuild iterations per second + per-iteration latency
+(NBomber latency percentiles).</li>
+<li><strong>Derived</strong>: events processed per second ≈ <code>5_000 / mean_latency_seconds</code>.</li>
+<li><strong>Measured dev-box baseline</strong>: ≈ <strong>290 rebuilds/s</strong> →
+<strong>≈ 1.5 M events/s</strong> for the <code>CountingProjection</code> (which does
+only a counter update), mean iteration 3 ms, p99 ≈ 5 ms.
+Real projections will be lower — this measures the manager + replay
+overhead, not the projection body.</li>
+</ul>
+<h3 id="idempotency--iidempotencystore-readswrites-under-concurrency"><code>idempotency</code> — <code>IIdempotencyStore</code> reads/writes under concurrency</h3>
+<p>64 NBomber copies hammering an in-memory <code>IIdempotencyStore</code> with an 80/20
+read/write split, against 10 000 pre-populated keys.</p>
+<ul>
+<li><strong>Metric</strong>: lookup operations per second + per-call latency percentiles.</li>
+<li><strong>Measured dev-box baseline</strong>: ≈ <strong>1.3 M ops/s</strong>, mean latency
+≈ 30 µs, p95 ≈ 10 µs, p99 ≈ 2.5 ms
+(the store is a <code>ConcurrentDictionary</code>; the long-tail comes from GC pauses).</li>
+<li><strong>What this tells you</strong>: the abstraction itself adds negligible cost; if
+a real Redis-backed run is dramatically slower, the bottleneck is in the
+network / serialisation, not in the framework's idempotency contract.</li>
+</ul>
+<h3 id="tenant--compositetenantresolver-chain-throughput"><code>tenant</code> — <code>CompositeTenantResolver</code> chain throughput</h3>
+<p>64 NBomber copies driving a <code>CompositeTenantResolver</code> ( header → host )
+backed by an <code>InMemoryTenantStore</code> of 200 tenants. The traffic mix is
+deliberate: 60 % header hits (fast path), 20 % host hits (chain
+walks past the header resolver), 20 % misses (chain walks the full
+list before returning <code>null</code>).</p>
+<ul>
+<li><strong>Metric</strong>: resolutions per second, with mean and p99 latency.</li>
+<li><strong>Measured dev-box baseline</strong>: ≈ <strong>2.9 M resolutions/s</strong>, mean
+latency ≈ 50 µs, p95 ≈ 80 µs.</li>
+<li><strong>What this tells you</strong>: walking a two-resolver chain on every request
+adds tens of nanoseconds per call against the in-memory store; it is not
+a scaling concern.</li>
+</ul>
+<h2 id="ci-policy">CI policy</h2>
+<p>These scenarios are <strong>excluded</strong> from <code>dotnet test</code> invocations because
+they are an executable, not a test project (<code>&lt;IsTestProject&gt;false&lt;/IsTestProject&gt;</code>
+in the csproj). The CI pipeline should still build the project (it is in
+<code>Compendium.sln</code>); use a test filter that targets <code>tests/Unit/</code> and
+<code>tests/Integration/</code> directly when running tests in CI.</p>
+<p>If a scenario is added that requires a backing service (PostgreSQL, Redis),
+keep it self-contained — start the dependency in <code>Build(...)</code> (e.g. via
+Testcontainers) and document it here so reviewers know what running it
+implies.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/sassy-solutions/compendium/blob/main/docs/testing/load-tests.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright © 2026 Sassy Solutions. Released under the MIT License. <a href="https://github.com/sassy-solutions/compendium">View on GitHub</a>.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
