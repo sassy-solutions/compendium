@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test (with coverage)
+        run: |
+          dotnet test -c Release --no-build \
+            --filter "FullyQualifiedName!~IntegrationTests" \
+            --logger "trx;LogFileName=test-results.trx" \
+            --results-directory TestResults/ \
+            --collect:"XPlat Code Coverage"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults/
+          retention-days: 14
+
+      - name: Coverage report + 90% gate
+        run: |
+          dotnet tool restore
+          dotnet tool run reportgenerator \
+            -reports:'TestResults/**/coverage.cobertura.xml' \
+            -targetdir:coverage-report \
+            -reporttypes:'TextSummary;MarkdownSummary'
+          cat coverage-report/Summary.txt
+          # Fail if line coverage < 90% on the unit-testable surface.
+          # Override per-class via [ExcludeFromCodeCoverage] when the class
+          # genuinely requires integration tests (e.g. raw DB drivers).
+          line_pct=$(grep -E '^Line coverage' coverage-report/Summary.txt | awk '{print $3}' | tr -d '%')
+          echo "Line coverage: ${line_pct}%"
+          awk -v c="$line_pct" 'BEGIN { exit (c+0 >= 90) ? 0 : 1 }'
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage-report/
+          retention-days: 14

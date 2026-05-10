@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D6C5C0A8-4A5A-4A5A-9C4A-1F4A4F4F4F01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D6C5C0A8-4A5A-4A5A-9C4A-1F4A4F4F4F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Sample", "src\Compendium.Adapters.Sample\Compendium.Adapters.Sample.csproj", "{A1A1A1A1-0000-0000-0000-000000000001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Sample.Tests", "tests\Unit\Compendium.Adapters.Sample.Tests\Compendium.Adapters.Sample.Tests.csproj", "{A1A1A1A1-0000-0000-0000-000000000002}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1A1A1A1-0000-0000-0000-000000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A1A1A1-0000-0000-0000-000000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A1A1A1-0000-0000-0000-000000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A1A1A1-0000-0000-0000-000000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A1A1A1-0000-0000-0000-000000000002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A1A1A1-0000-0000-0000-000000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A1A1A1-0000-0000-0000-000000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A1A1A1-0000-0000-0000-000000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1A1A1A1-0000-0000-0000-000000000001} = {D6C5C0A8-4A5A-4A5A-9C4A-1F4A4F4F4F01}
+		{A1A1A1A1-0000-0000-0000-000000000002} = {D6C5C0A8-4A5A-4A5A-9C4A-1F4A4F4F4F02}
+	EndGlobalSection
+EndGlobal
