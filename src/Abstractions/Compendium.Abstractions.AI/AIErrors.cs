@@ -116,4 +116,16 @@ public static class AIErrors
     /// </summary>
     public static Error InvalidRequest(string reason) =>
         Error.Validation($"{Prefix}.InvalidRequest", reason);
+
+    /// <summary>
+    /// The rerank operation failed.
+    /// </summary>
+    public static Error RerankFailed(string reason) =>
+        Error.Failure($"{Prefix}.RerankFailed", $"Rerank operation failed: {reason}.");
+
+    /// <summary>
+    /// The query supplied to a rerank or retrieval operation is invalid (e.g. empty or whitespace).
+    /// </summary>
+    public static Error InvalidQuery(string reason) =>
+        Error.Validation($"{Prefix}.InvalidQuery", reason);
 }
