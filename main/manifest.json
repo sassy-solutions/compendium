@@ -1229,6 +1229,160 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.DocumentsErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.DocumentsErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.DocumentsErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.DocumentsErrors.yml\" sourcestartlinenumber=\"1\">Provides standardized error definitions for document parsing operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.IDocumentParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.IDocumentParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.IDocumentParser",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.IDocumentParser.yml\" sourcestartlinenumber=\"1\">Provides document parsing operations including OCR and structured extraction.\nThis interface is provider-agnostic and can be implemented by various providers\nsuch as Azure Document Intelligence, AWS Textract, Google Document AI, or local engines.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.DocumentInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.DocumentInput.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models.DocumentInput",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.Models.DocumentInput.yml\" sourcestartlinenumber=\"1\">Represents the binary content of a document submitted for parsing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.DocumentModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.DocumentModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models.DocumentModel",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.Models.DocumentModel.yml\" sourcestartlinenumber=\"1\">Identifies the structured document model the parser should apply.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.ParseOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.ParseOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models.ParseOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.Models.ParseOptions.yml\" sourcestartlinenumber=\"1\">Options controlling how a document is parsed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedDocument.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models.ParsedDocument",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.Models.ParsedDocument.yml\" sourcestartlinenumber=\"1\">Represents the full result of parsing a document.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedField.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models.ParsedField",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.Models.ParsedField.yml\" sourcestartlinenumber=\"1\">Represents a single key/value field extracted from a document.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedPage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models.ParsedPage",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.Models.ParsedPage.yml\" sourcestartlinenumber=\"1\">Represents a single parsed page of a document.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedTable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.ParsedTable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models.ParsedTable",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Documents.Models.ParsedTable.yml\" sourcestartlinenumber=\"1\">Represents a tabular region extracted from a document.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Documents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Documents.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Documents",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Compendium.Abstractions.Email.EmailErrors.yml",
       "output": {
         ".html": {
@@ -2919,6 +3073,146 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Compendium.Abstractions.Search",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.ISpeechToText.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.ISpeechToText.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.ISpeechToText",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.ISpeechToText.yml\" sourcestartlinenumber=\"1\">Provides speech-to-text transcription operations.\nThis interface is provider-agnostic and can be implemented by adapters targeting\nWhisper, Deepgram, Azure Speech, or similar engines.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.AudioChunk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.AudioChunk.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.AudioChunk",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.AudioChunk.yml\" sourcestartlinenumber=\"1\">Represents a single audio frame used to feed a streaming speech-to-text provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.AudioInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.AudioInput.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.AudioInput",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.AudioInput.yml\" sourcestartlinenumber=\"1\">Represents an audio payload submitted to a speech-to-text provider for batch transcription.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.TranscriptionChunk",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.yml\" sourcestartlinenumber=\"1\">Represents an incremental transcription update emitted by a streaming speech-to-text provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.TranscriptionOptions",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.yml\" sourcestartlinenumber=\"1\">Captures the tunable parameters submitted to a speech-to-text provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.TranscriptionResult",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.TranscriptionResult.yml\" sourcestartlinenumber=\"1\">Represents the finalized output of a batch transcription request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models.TranscriptionSegment",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.yml\" sourcestartlinenumber=\"1\">Represents a single, time-aligned segment of a finalized transcription.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.SpeechErrors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.SpeechErrors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech.SpeechErrors",
+      "Summary": "<p sourcefile=\"api/Compendium.Abstractions.Speech.SpeechErrors.yml\" sourcestartlinenumber=\"1\">Provides standard error definitions for speech-to-text operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Compendium.Abstractions.Speech.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Compendium.Abstractions.Speech.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Compendium.Abstractions.Speech",
       "Summary": null
     },
     {

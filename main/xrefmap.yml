@@ -5131,6 +5131,517 @@ references:
   fullName.vb: Compendium.Abstractions.CQRS.Queries.IQuery(Of TResponse)
   nameWithType: IQuery<TResponse>
   nameWithType.vb: IQuery(Of TResponse)
+- uid: Compendium.Abstractions.Documents
+  name: Compendium.Abstractions.Documents
+  href: api/Compendium.Abstractions.Documents.html
+  commentId: N:Compendium.Abstractions.Documents
+  fullName: Compendium.Abstractions.Documents
+  nameWithType: Compendium.Abstractions.Documents
+- uid: Compendium.Abstractions.Documents.DocumentsErrors
+  name: DocumentsErrors
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html
+  commentId: T:Compendium.Abstractions.Documents.DocumentsErrors
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors
+  nameWithType: DocumentsErrors
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.DocumentTooLarge(System.Int64,System.Int64)
+  name: DocumentTooLarge(long, long)
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_DocumentTooLarge_System_Int64_System_Int64_
+  commentId: M:Compendium.Abstractions.Documents.DocumentsErrors.DocumentTooLarge(System.Int64,System.Int64)
+  name.vb: DocumentTooLarge(Long, Long)
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.DocumentTooLarge(long, long)
+  fullName.vb: Compendium.Abstractions.Documents.DocumentsErrors.DocumentTooLarge(Long, Long)
+  nameWithType: DocumentsErrors.DocumentTooLarge(long, long)
+  nameWithType.vb: DocumentsErrors.DocumentTooLarge(Long, Long)
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.DocumentTooLarge*
+  name: DocumentTooLarge
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_DocumentTooLarge_
+  commentId: Overload:Compendium.Abstractions.Documents.DocumentsErrors.DocumentTooLarge
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.DocumentTooLarge
+  nameWithType: DocumentsErrors.DocumentTooLarge
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.Prefix
+  name: Prefix
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_Prefix
+  commentId: F:Compendium.Abstractions.Documents.DocumentsErrors.Prefix
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.Prefix
+  nameWithType: DocumentsErrors.Prefix
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.ProviderUnreachable(System.String,System.String)
+  name: ProviderUnreachable(string, string?)
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_ProviderUnreachable_System_String_System_String_
+  commentId: M:Compendium.Abstractions.Documents.DocumentsErrors.ProviderUnreachable(System.String,System.String)
+  name.vb: ProviderUnreachable(String, String)
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.ProviderUnreachable(string, string?)
+  fullName.vb: Compendium.Abstractions.Documents.DocumentsErrors.ProviderUnreachable(String, String)
+  nameWithType: DocumentsErrors.ProviderUnreachable(string, string?)
+  nameWithType.vb: DocumentsErrors.ProviderUnreachable(String, String)
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.ProviderUnreachable*
+  name: ProviderUnreachable
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_ProviderUnreachable_
+  commentId: Overload:Compendium.Abstractions.Documents.DocumentsErrors.ProviderUnreachable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.ProviderUnreachable
+  nameWithType: DocumentsErrors.ProviderUnreachable
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.RateLimited(System.Nullable{System.TimeSpan})
+  name: RateLimited(TimeSpan?)
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_RateLimited_System_Nullable_System_TimeSpan__
+  commentId: M:Compendium.Abstractions.Documents.DocumentsErrors.RateLimited(System.Nullable{System.TimeSpan})
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.RateLimited(System.TimeSpan?)
+  nameWithType: DocumentsErrors.RateLimited(TimeSpan?)
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.RateLimited*
+  name: RateLimited
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_RateLimited_
+  commentId: Overload:Compendium.Abstractions.Documents.DocumentsErrors.RateLimited
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.RateLimited
+  nameWithType: DocumentsErrors.RateLimited
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.UnsupportedFormat(System.String)
+  name: UnsupportedFormat(string)
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_UnsupportedFormat_System_String_
+  commentId: M:Compendium.Abstractions.Documents.DocumentsErrors.UnsupportedFormat(System.String)
+  name.vb: UnsupportedFormat(String)
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.UnsupportedFormat(string)
+  fullName.vb: Compendium.Abstractions.Documents.DocumentsErrors.UnsupportedFormat(String)
+  nameWithType: DocumentsErrors.UnsupportedFormat(string)
+  nameWithType.vb: DocumentsErrors.UnsupportedFormat(String)
+- uid: Compendium.Abstractions.Documents.DocumentsErrors.UnsupportedFormat*
+  name: UnsupportedFormat
+  href: api/Compendium.Abstractions.Documents.DocumentsErrors.html#Compendium_Abstractions_Documents_DocumentsErrors_UnsupportedFormat_
+  commentId: Overload:Compendium.Abstractions.Documents.DocumentsErrors.UnsupportedFormat
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.DocumentsErrors.UnsupportedFormat
+  nameWithType: DocumentsErrors.UnsupportedFormat
+- uid: Compendium.Abstractions.Documents.IDocumentParser
+  name: IDocumentParser
+  href: api/Compendium.Abstractions.Documents.IDocumentParser.html
+  commentId: T:Compendium.Abstractions.Documents.IDocumentParser
+  fullName: Compendium.Abstractions.Documents.IDocumentParser
+  nameWithType: IDocumentParser
+- uid: Compendium.Abstractions.Documents.IDocumentParser.ParseAsync(Compendium.Abstractions.Documents.Models.DocumentInput,Compendium.Abstractions.Documents.Models.ParseOptions,System.Threading.CancellationToken)
+  name: ParseAsync(DocumentInput, ParseOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Documents.IDocumentParser.html#Compendium_Abstractions_Documents_IDocumentParser_ParseAsync_Compendium_Abstractions_Documents_Models_DocumentInput_Compendium_Abstractions_Documents_Models_ParseOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Documents.IDocumentParser.ParseAsync(Compendium.Abstractions.Documents.Models.DocumentInput,Compendium.Abstractions.Documents.Models.ParseOptions,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Documents.IDocumentParser.ParseAsync(Compendium.Abstractions.Documents.Models.DocumentInput, Compendium.Abstractions.Documents.Models.ParseOptions, System.Threading.CancellationToken)
+  nameWithType: IDocumentParser.ParseAsync(DocumentInput, ParseOptions, CancellationToken)
+- uid: Compendium.Abstractions.Documents.IDocumentParser.ParseAsync*
+  name: ParseAsync
+  href: api/Compendium.Abstractions.Documents.IDocumentParser.html#Compendium_Abstractions_Documents_IDocumentParser_ParseAsync_
+  commentId: Overload:Compendium.Abstractions.Documents.IDocumentParser.ParseAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.IDocumentParser.ParseAsync
+  nameWithType: IDocumentParser.ParseAsync
+- uid: Compendium.Abstractions.Documents.Models
+  name: Compendium.Abstractions.Documents.Models
+  href: api/Compendium.Abstractions.Documents.Models.html
+  commentId: N:Compendium.Abstractions.Documents.Models
+  fullName: Compendium.Abstractions.Documents.Models
+  nameWithType: Compendium.Abstractions.Documents.Models
+- uid: Compendium.Abstractions.Documents.Models.DocumentInput
+  name: DocumentInput
+  href: api/Compendium.Abstractions.Documents.Models.DocumentInput.html
+  commentId: T:Compendium.Abstractions.Documents.Models.DocumentInput
+  fullName: Compendium.Abstractions.Documents.Models.DocumentInput
+  nameWithType: DocumentInput
+- uid: Compendium.Abstractions.Documents.Models.DocumentInput.#ctor(System.IO.Stream,System.String)
+  name: DocumentInput(Stream, string)
+  href: api/Compendium.Abstractions.Documents.Models.DocumentInput.html#Compendium_Abstractions_Documents_Models_DocumentInput__ctor_System_IO_Stream_System_String_
+  commentId: M:Compendium.Abstractions.Documents.Models.DocumentInput.#ctor(System.IO.Stream,System.String)
+  name.vb: New(Stream, String)
+  fullName: Compendium.Abstractions.Documents.Models.DocumentInput.DocumentInput(System.IO.Stream, string)
+  fullName.vb: Compendium.Abstractions.Documents.Models.DocumentInput.New(System.IO.Stream, String)
+  nameWithType: DocumentInput.DocumentInput(Stream, string)
+  nameWithType.vb: DocumentInput.New(Stream, String)
+- uid: Compendium.Abstractions.Documents.Models.DocumentInput.#ctor*
+  name: DocumentInput
+  href: api/Compendium.Abstractions.Documents.Models.DocumentInput.html#Compendium_Abstractions_Documents_Models_DocumentInput__ctor_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.DocumentInput.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Documents.Models.DocumentInput.DocumentInput
+  fullName.vb: Compendium.Abstractions.Documents.Models.DocumentInput.New
+  nameWithType: DocumentInput.DocumentInput
+  nameWithType.vb: DocumentInput.New
+- uid: Compendium.Abstractions.Documents.Models.DocumentInput.MimeType
+  name: MimeType
+  href: api/Compendium.Abstractions.Documents.Models.DocumentInput.html#Compendium_Abstractions_Documents_Models_DocumentInput_MimeType
+  commentId: P:Compendium.Abstractions.Documents.Models.DocumentInput.MimeType
+  fullName: Compendium.Abstractions.Documents.Models.DocumentInput.MimeType
+  nameWithType: DocumentInput.MimeType
+- uid: Compendium.Abstractions.Documents.Models.DocumentInput.MimeType*
+  name: MimeType
+  href: api/Compendium.Abstractions.Documents.Models.DocumentInput.html#Compendium_Abstractions_Documents_Models_DocumentInput_MimeType_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.DocumentInput.MimeType
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.DocumentInput.MimeType
+  nameWithType: DocumentInput.MimeType
+- uid: Compendium.Abstractions.Documents.Models.DocumentInput.Stream
+  name: Stream
+  href: api/Compendium.Abstractions.Documents.Models.DocumentInput.html#Compendium_Abstractions_Documents_Models_DocumentInput_Stream
+  commentId: P:Compendium.Abstractions.Documents.Models.DocumentInput.Stream
+  fullName: Compendium.Abstractions.Documents.Models.DocumentInput.Stream
+  nameWithType: DocumentInput.Stream
+- uid: Compendium.Abstractions.Documents.Models.DocumentInput.Stream*
+  name: Stream
+  href: api/Compendium.Abstractions.Documents.Models.DocumentInput.html#Compendium_Abstractions_Documents_Models_DocumentInput_Stream_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.DocumentInput.Stream
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.DocumentInput.Stream
+  nameWithType: DocumentInput.Stream
+- uid: Compendium.Abstractions.Documents.Models.DocumentModel
+  name: DocumentModel
+  href: api/Compendium.Abstractions.Documents.Models.DocumentModel.html
+  commentId: T:Compendium.Abstractions.Documents.Models.DocumentModel
+  fullName: Compendium.Abstractions.Documents.Models.DocumentModel
+  nameWithType: DocumentModel
+- uid: Compendium.Abstractions.Documents.Models.DocumentModel.Custom
+  name: Custom
+  href: api/Compendium.Abstractions.Documents.Models.DocumentModel.html#Compendium_Abstractions_Documents_Models_DocumentModel_Custom
+  commentId: F:Compendium.Abstractions.Documents.Models.DocumentModel.Custom
+  fullName: Compendium.Abstractions.Documents.Models.DocumentModel.Custom
+  nameWithType: DocumentModel.Custom
+- uid: Compendium.Abstractions.Documents.Models.DocumentModel.Generic
+  name: Generic
+  href: api/Compendium.Abstractions.Documents.Models.DocumentModel.html#Compendium_Abstractions_Documents_Models_DocumentModel_Generic
+  commentId: F:Compendium.Abstractions.Documents.Models.DocumentModel.Generic
+  fullName: Compendium.Abstractions.Documents.Models.DocumentModel.Generic
+  nameWithType: DocumentModel.Generic
+- uid: Compendium.Abstractions.Documents.Models.DocumentModel.IdDocument
+  name: IdDocument
+  href: api/Compendium.Abstractions.Documents.Models.DocumentModel.html#Compendium_Abstractions_Documents_Models_DocumentModel_IdDocument
+  commentId: F:Compendium.Abstractions.Documents.Models.DocumentModel.IdDocument
+  fullName: Compendium.Abstractions.Documents.Models.DocumentModel.IdDocument
+  nameWithType: DocumentModel.IdDocument
+- uid: Compendium.Abstractions.Documents.Models.DocumentModel.Invoice
+  name: Invoice
+  href: api/Compendium.Abstractions.Documents.Models.DocumentModel.html#Compendium_Abstractions_Documents_Models_DocumentModel_Invoice
+  commentId: F:Compendium.Abstractions.Documents.Models.DocumentModel.Invoice
+  fullName: Compendium.Abstractions.Documents.Models.DocumentModel.Invoice
+  nameWithType: DocumentModel.Invoice
+- uid: Compendium.Abstractions.Documents.Models.DocumentModel.Receipt
+  name: Receipt
+  href: api/Compendium.Abstractions.Documents.Models.DocumentModel.html#Compendium_Abstractions_Documents_Models_DocumentModel_Receipt
+  commentId: F:Compendium.Abstractions.Documents.Models.DocumentModel.Receipt
+  fullName: Compendium.Abstractions.Documents.Models.DocumentModel.Receipt
+  nameWithType: DocumentModel.Receipt
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions
+  name: ParseOptions
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html
+  commentId: T:Compendium.Abstractions.Documents.Models.ParseOptions
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions
+  nameWithType: ParseOptions
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.#ctor(Compendium.Abstractions.Documents.Models.DocumentModel,System.String,System.Boolean)
+  name: ParseOptions(DocumentModel, string?, bool)
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions__ctor_Compendium_Abstractions_Documents_Models_DocumentModel_System_String_System_Boolean_
+  commentId: M:Compendium.Abstractions.Documents.Models.ParseOptions.#ctor(Compendium.Abstractions.Documents.Models.DocumentModel,System.String,System.Boolean)
+  name.vb: New(DocumentModel, String, Boolean)
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.ParseOptions(Compendium.Abstractions.Documents.Models.DocumentModel, string?, bool)
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParseOptions.New(Compendium.Abstractions.Documents.Models.DocumentModel, String, Boolean)
+  nameWithType: ParseOptions.ParseOptions(DocumentModel, string?, bool)
+  nameWithType.vb: ParseOptions.New(DocumentModel, String, Boolean)
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.#ctor*
+  name: ParseOptions
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions__ctor_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParseOptions.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.ParseOptions
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParseOptions.New
+  nameWithType: ParseOptions.ParseOptions
+  nameWithType.vb: ParseOptions.New
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.Language
+  name: Language
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions_Language
+  commentId: P:Compendium.Abstractions.Documents.Models.ParseOptions.Language
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.Language
+  nameWithType: ParseOptions.Language
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.Language*
+  name: Language
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions_Language_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParseOptions.Language
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.Language
+  nameWithType: ParseOptions.Language
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.Model
+  name: Model
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions_Model
+  commentId: P:Compendium.Abstractions.Documents.Models.ParseOptions.Model
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.Model
+  nameWithType: ParseOptions.Model
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.Model*
+  name: Model
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions_Model_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParseOptions.Model
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.Model
+  nameWithType: ParseOptions.Model
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.OcrOnly
+  name: OcrOnly
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions_OcrOnly
+  commentId: P:Compendium.Abstractions.Documents.Models.ParseOptions.OcrOnly
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.OcrOnly
+  nameWithType: ParseOptions.OcrOnly
+- uid: Compendium.Abstractions.Documents.Models.ParseOptions.OcrOnly*
+  name: OcrOnly
+  href: api/Compendium.Abstractions.Documents.Models.ParseOptions.html#Compendium_Abstractions_Documents_Models_ParseOptions_OcrOnly_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParseOptions.OcrOnly
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParseOptions.OcrOnly
+  nameWithType: ParseOptions.OcrOnly
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument
+  name: ParsedDocument
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html
+  commentId: T:Compendium.Abstractions.Documents.Models.ParsedDocument
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument
+  nameWithType: ParsedDocument
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Documents.Models.ParsedPage},System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Documents.Models.ParsedTable},System.Collections.Generic.IReadOnlyDictionary{System.String,Compendium.Abstractions.Documents.Models.ParsedField},System.Double)
+  name: ParsedDocument(string, IReadOnlyList<ParsedPage>, IReadOnlyList<ParsedTable>, IReadOnlyDictionary<string, ParsedField>, double)
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument__ctor_System_String_System_Collections_Generic_IReadOnlyList_Compendium_Abstractions_Documents_Models_ParsedPage__System_Collections_Generic_IReadOnlyList_Compendium_Abstractions_Documents_Models_ParsedTable__System_Collections_Generic_IReadOnlyDictionary_System_String_Compendium_Abstractions_Documents_Models_ParsedField__System_Double_
+  commentId: M:Compendium.Abstractions.Documents.Models.ParsedDocument.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Documents.Models.ParsedPage},System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Documents.Models.ParsedTable},System.Collections.Generic.IReadOnlyDictionary{System.String,Compendium.Abstractions.Documents.Models.ParsedField},System.Double)
+  name.vb: New(String, IReadOnlyList(Of ParsedPage), IReadOnlyList(Of ParsedTable), IReadOnlyDictionary(Of String, ParsedField), Double)
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.ParsedDocument(string, System.Collections.Generic.IReadOnlyList<Compendium.Abstractions.Documents.Models.ParsedPage>, System.Collections.Generic.IReadOnlyList<Compendium.Abstractions.Documents.Models.ParsedTable>, System.Collections.Generic.IReadOnlyDictionary<string, Compendium.Abstractions.Documents.Models.ParsedField>, double)
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedDocument.New(String, System.Collections.Generic.IReadOnlyList(Of Compendium.Abstractions.Documents.Models.ParsedPage), System.Collections.Generic.IReadOnlyList(Of Compendium.Abstractions.Documents.Models.ParsedTable), System.Collections.Generic.IReadOnlyDictionary(Of String, Compendium.Abstractions.Documents.Models.ParsedField), Double)
+  nameWithType: ParsedDocument.ParsedDocument(string, IReadOnlyList<ParsedPage>, IReadOnlyList<ParsedTable>, IReadOnlyDictionary<string, ParsedField>, double)
+  nameWithType.vb: ParsedDocument.New(String, IReadOnlyList(Of ParsedPage), IReadOnlyList(Of ParsedTable), IReadOnlyDictionary(Of String, ParsedField), Double)
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.#ctor*
+  name: ParsedDocument
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument__ctor_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedDocument.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.ParsedDocument
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedDocument.New
+  nameWithType: ParsedDocument.ParsedDocument
+  nameWithType.vb: ParsedDocument.New
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.Confidence
+  name: Confidence
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_Confidence
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedDocument.Confidence
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.Confidence
+  nameWithType: ParsedDocument.Confidence
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.Confidence*
+  name: Confidence
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_Confidence_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedDocument.Confidence
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.Confidence
+  nameWithType: ParsedDocument.Confidence
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.KeyValues
+  name: KeyValues
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_KeyValues
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedDocument.KeyValues
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.KeyValues
+  nameWithType: ParsedDocument.KeyValues
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.KeyValues*
+  name: KeyValues
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_KeyValues_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedDocument.KeyValues
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.KeyValues
+  nameWithType: ParsedDocument.KeyValues
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.Pages
+  name: Pages
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_Pages
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedDocument.Pages
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.Pages
+  nameWithType: ParsedDocument.Pages
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.Pages*
+  name: Pages
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_Pages_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedDocument.Pages
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.Pages
+  nameWithType: ParsedDocument.Pages
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.RawText
+  name: RawText
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_RawText
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedDocument.RawText
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.RawText
+  nameWithType: ParsedDocument.RawText
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.RawText*
+  name: RawText
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_RawText_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedDocument.RawText
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.RawText
+  nameWithType: ParsedDocument.RawText
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.Tables
+  name: Tables
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_Tables
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedDocument.Tables
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.Tables
+  nameWithType: ParsedDocument.Tables
+- uid: Compendium.Abstractions.Documents.Models.ParsedDocument.Tables*
+  name: Tables
+  href: api/Compendium.Abstractions.Documents.Models.ParsedDocument.html#Compendium_Abstractions_Documents_Models_ParsedDocument_Tables_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedDocument.Tables
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedDocument.Tables
+  nameWithType: ParsedDocument.Tables
+- uid: Compendium.Abstractions.Documents.Models.ParsedField
+  name: ParsedField
+  href: api/Compendium.Abstractions.Documents.Models.ParsedField.html
+  commentId: T:Compendium.Abstractions.Documents.Models.ParsedField
+  fullName: Compendium.Abstractions.Documents.Models.ParsedField
+  nameWithType: ParsedField
+- uid: Compendium.Abstractions.Documents.Models.ParsedField.#ctor(System.String,System.Double)
+  name: ParsedField(string, double)
+  href: api/Compendium.Abstractions.Documents.Models.ParsedField.html#Compendium_Abstractions_Documents_Models_ParsedField__ctor_System_String_System_Double_
+  commentId: M:Compendium.Abstractions.Documents.Models.ParsedField.#ctor(System.String,System.Double)
+  name.vb: New(String, Double)
+  fullName: Compendium.Abstractions.Documents.Models.ParsedField.ParsedField(string, double)
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedField.New(String, Double)
+  nameWithType: ParsedField.ParsedField(string, double)
+  nameWithType.vb: ParsedField.New(String, Double)
+- uid: Compendium.Abstractions.Documents.Models.ParsedField.#ctor*
+  name: ParsedField
+  href: api/Compendium.Abstractions.Documents.Models.ParsedField.html#Compendium_Abstractions_Documents_Models_ParsedField__ctor_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedField.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Documents.Models.ParsedField.ParsedField
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedField.New
+  nameWithType: ParsedField.ParsedField
+  nameWithType.vb: ParsedField.New
+- uid: Compendium.Abstractions.Documents.Models.ParsedField.Confidence
+  name: Confidence
+  href: api/Compendium.Abstractions.Documents.Models.ParsedField.html#Compendium_Abstractions_Documents_Models_ParsedField_Confidence
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedField.Confidence
+  fullName: Compendium.Abstractions.Documents.Models.ParsedField.Confidence
+  nameWithType: ParsedField.Confidence
+- uid: Compendium.Abstractions.Documents.Models.ParsedField.Confidence*
+  name: Confidence
+  href: api/Compendium.Abstractions.Documents.Models.ParsedField.html#Compendium_Abstractions_Documents_Models_ParsedField_Confidence_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedField.Confidence
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedField.Confidence
+  nameWithType: ParsedField.Confidence
+- uid: Compendium.Abstractions.Documents.Models.ParsedField.Value
+  name: Value
+  href: api/Compendium.Abstractions.Documents.Models.ParsedField.html#Compendium_Abstractions_Documents_Models_ParsedField_Value
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedField.Value
+  fullName: Compendium.Abstractions.Documents.Models.ParsedField.Value
+  nameWithType: ParsedField.Value
+- uid: Compendium.Abstractions.Documents.Models.ParsedField.Value*
+  name: Value
+  href: api/Compendium.Abstractions.Documents.Models.ParsedField.html#Compendium_Abstractions_Documents_Models_ParsedField_Value_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedField.Value
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedField.Value
+  nameWithType: ParsedField.Value
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage
+  name: ParsedPage
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html
+  commentId: T:Compendium.Abstractions.Documents.Models.ParsedPage
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage
+  nameWithType: ParsedPage
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.#ctor(System.Int32,System.String,System.Double)
+  name: ParsedPage(int, string, double)
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage__ctor_System_Int32_System_String_System_Double_
+  commentId: M:Compendium.Abstractions.Documents.Models.ParsedPage.#ctor(System.Int32,System.String,System.Double)
+  name.vb: New(Integer, String, Double)
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.ParsedPage(int, string, double)
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedPage.New(Integer, String, Double)
+  nameWithType: ParsedPage.ParsedPage(int, string, double)
+  nameWithType.vb: ParsedPage.New(Integer, String, Double)
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.#ctor*
+  name: ParsedPage
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage__ctor_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedPage.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.ParsedPage
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedPage.New
+  nameWithType: ParsedPage.ParsedPage
+  nameWithType.vb: ParsedPage.New
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.Confidence
+  name: Confidence
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage_Confidence
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedPage.Confidence
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.Confidence
+  nameWithType: ParsedPage.Confidence
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.Confidence*
+  name: Confidence
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage_Confidence_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedPage.Confidence
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.Confidence
+  nameWithType: ParsedPage.Confidence
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.PageNumber
+  name: PageNumber
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage_PageNumber
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedPage.PageNumber
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.PageNumber
+  nameWithType: ParsedPage.PageNumber
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.PageNumber*
+  name: PageNumber
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage_PageNumber_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedPage.PageNumber
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.PageNumber
+  nameWithType: ParsedPage.PageNumber
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.Text
+  name: Text
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage_Text
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedPage.Text
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.Text
+  nameWithType: ParsedPage.Text
+- uid: Compendium.Abstractions.Documents.Models.ParsedPage.Text*
+  name: Text
+  href: api/Compendium.Abstractions.Documents.Models.ParsedPage.html#Compendium_Abstractions_Documents_Models_ParsedPage_Text_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedPage.Text
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedPage.Text
+  nameWithType: ParsedPage.Text
+- uid: Compendium.Abstractions.Documents.Models.ParsedTable
+  name: ParsedTable
+  href: api/Compendium.Abstractions.Documents.Models.ParsedTable.html
+  commentId: T:Compendium.Abstractions.Documents.Models.ParsedTable
+  fullName: Compendium.Abstractions.Documents.Models.ParsedTable
+  nameWithType: ParsedTable
+- uid: Compendium.Abstractions.Documents.Models.ParsedTable.#ctor(System.Int32,System.Collections.Generic.IReadOnlyList{System.Collections.Generic.IReadOnlyList{System.String}})
+  name: ParsedTable(int, IReadOnlyList<IReadOnlyList<string>>)
+  href: api/Compendium.Abstractions.Documents.Models.ParsedTable.html#Compendium_Abstractions_Documents_Models_ParsedTable__ctor_System_Int32_System_Collections_Generic_IReadOnlyList_System_Collections_Generic_IReadOnlyList_System_String___
+  commentId: M:Compendium.Abstractions.Documents.Models.ParsedTable.#ctor(System.Int32,System.Collections.Generic.IReadOnlyList{System.Collections.Generic.IReadOnlyList{System.String}})
+  name.vb: New(Integer, IReadOnlyList(Of IReadOnlyList(Of String)))
+  fullName: Compendium.Abstractions.Documents.Models.ParsedTable.ParsedTable(int, System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlyList<string>>)
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedTable.New(Integer, System.Collections.Generic.IReadOnlyList(Of System.Collections.Generic.IReadOnlyList(Of String)))
+  nameWithType: ParsedTable.ParsedTable(int, IReadOnlyList<IReadOnlyList<string>>)
+  nameWithType.vb: ParsedTable.New(Integer, IReadOnlyList(Of IReadOnlyList(Of String)))
+- uid: Compendium.Abstractions.Documents.Models.ParsedTable.#ctor*
+  name: ParsedTable
+  href: api/Compendium.Abstractions.Documents.Models.ParsedTable.html#Compendium_Abstractions_Documents_Models_ParsedTable__ctor_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedTable.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Documents.Models.ParsedTable.ParsedTable
+  fullName.vb: Compendium.Abstractions.Documents.Models.ParsedTable.New
+  nameWithType: ParsedTable.ParsedTable
+  nameWithType.vb: ParsedTable.New
+- uid: Compendium.Abstractions.Documents.Models.ParsedTable.PageNumber
+  name: PageNumber
+  href: api/Compendium.Abstractions.Documents.Models.ParsedTable.html#Compendium_Abstractions_Documents_Models_ParsedTable_PageNumber
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedTable.PageNumber
+  fullName: Compendium.Abstractions.Documents.Models.ParsedTable.PageNumber
+  nameWithType: ParsedTable.PageNumber
+- uid: Compendium.Abstractions.Documents.Models.ParsedTable.PageNumber*
+  name: PageNumber
+  href: api/Compendium.Abstractions.Documents.Models.ParsedTable.html#Compendium_Abstractions_Documents_Models_ParsedTable_PageNumber_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedTable.PageNumber
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedTable.PageNumber
+  nameWithType: ParsedTable.PageNumber
+- uid: Compendium.Abstractions.Documents.Models.ParsedTable.Rows
+  name: Rows
+  href: api/Compendium.Abstractions.Documents.Models.ParsedTable.html#Compendium_Abstractions_Documents_Models_ParsedTable_Rows
+  commentId: P:Compendium.Abstractions.Documents.Models.ParsedTable.Rows
+  fullName: Compendium.Abstractions.Documents.Models.ParsedTable.Rows
+  nameWithType: ParsedTable.Rows
+- uid: Compendium.Abstractions.Documents.Models.ParsedTable.Rows*
+  name: Rows
+  href: api/Compendium.Abstractions.Documents.Models.ParsedTable.html#Compendium_Abstractions_Documents_Models_ParsedTable_Rows_
+  commentId: Overload:Compendium.Abstractions.Documents.Models.ParsedTable.Rows
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Documents.Models.ParsedTable.Rows
+  nameWithType: ParsedTable.Rows
 - uid: Compendium.Abstractions.Email
   name: Compendium.Abstractions.Email
   href: api/Compendium.Abstractions.Email.html
@@ -12544,6 +13055,491 @@ references:
   isSpec: "True"
   fullName: Compendium.Abstractions.Search.SearchErrors.Throttled
   nameWithType: SearchErrors.Throttled
+- uid: Compendium.Abstractions.Speech
+  name: Compendium.Abstractions.Speech
+  href: api/Compendium.Abstractions.Speech.html
+  commentId: N:Compendium.Abstractions.Speech
+  fullName: Compendium.Abstractions.Speech
+  nameWithType: Compendium.Abstractions.Speech
+- uid: Compendium.Abstractions.Speech.ISpeechToText
+  name: ISpeechToText
+  href: api/Compendium.Abstractions.Speech.ISpeechToText.html
+  commentId: T:Compendium.Abstractions.Speech.ISpeechToText
+  fullName: Compendium.Abstractions.Speech.ISpeechToText
+  nameWithType: ISpeechToText
+- uid: Compendium.Abstractions.Speech.ISpeechToText.TranscribeAsync(Compendium.Abstractions.Speech.Models.AudioInput,Compendium.Abstractions.Speech.Models.TranscriptionOptions,System.Threading.CancellationToken)
+  name: TranscribeAsync(AudioInput, TranscriptionOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Speech.ISpeechToText.html#Compendium_Abstractions_Speech_ISpeechToText_TranscribeAsync_Compendium_Abstractions_Speech_Models_AudioInput_Compendium_Abstractions_Speech_Models_TranscriptionOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Speech.ISpeechToText.TranscribeAsync(Compendium.Abstractions.Speech.Models.AudioInput,Compendium.Abstractions.Speech.Models.TranscriptionOptions,System.Threading.CancellationToken)
+  fullName: Compendium.Abstractions.Speech.ISpeechToText.TranscribeAsync(Compendium.Abstractions.Speech.Models.AudioInput, Compendium.Abstractions.Speech.Models.TranscriptionOptions, System.Threading.CancellationToken)
+  nameWithType: ISpeechToText.TranscribeAsync(AudioInput, TranscriptionOptions, CancellationToken)
+- uid: Compendium.Abstractions.Speech.ISpeechToText.TranscribeAsync*
+  name: TranscribeAsync
+  href: api/Compendium.Abstractions.Speech.ISpeechToText.html#Compendium_Abstractions_Speech_ISpeechToText_TranscribeAsync_
+  commentId: Overload:Compendium.Abstractions.Speech.ISpeechToText.TranscribeAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.ISpeechToText.TranscribeAsync
+  nameWithType: ISpeechToText.TranscribeAsync
+- uid: Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync(System.Collections.Generic.IAsyncEnumerable{Compendium.Abstractions.Speech.Models.AudioChunk},Compendium.Abstractions.Speech.Models.TranscriptionOptions,System.Threading.CancellationToken)
+  name: TranscribeStreamAsync(IAsyncEnumerable<AudioChunk>, TranscriptionOptions, CancellationToken)
+  href: api/Compendium.Abstractions.Speech.ISpeechToText.html#Compendium_Abstractions_Speech_ISpeechToText_TranscribeStreamAsync_System_Collections_Generic_IAsyncEnumerable_Compendium_Abstractions_Speech_Models_AudioChunk__Compendium_Abstractions_Speech_Models_TranscriptionOptions_System_Threading_CancellationToken_
+  commentId: M:Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync(System.Collections.Generic.IAsyncEnumerable{Compendium.Abstractions.Speech.Models.AudioChunk},Compendium.Abstractions.Speech.Models.TranscriptionOptions,System.Threading.CancellationToken)
+  name.vb: TranscribeStreamAsync(IAsyncEnumerable(Of AudioChunk), TranscriptionOptions, CancellationToken)
+  fullName: Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync(System.Collections.Generic.IAsyncEnumerable<Compendium.Abstractions.Speech.Models.AudioChunk>, Compendium.Abstractions.Speech.Models.TranscriptionOptions, System.Threading.CancellationToken)
+  fullName.vb: Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync(System.Collections.Generic.IAsyncEnumerable(Of Compendium.Abstractions.Speech.Models.AudioChunk), Compendium.Abstractions.Speech.Models.TranscriptionOptions, System.Threading.CancellationToken)
+  nameWithType: ISpeechToText.TranscribeStreamAsync(IAsyncEnumerable<AudioChunk>, TranscriptionOptions, CancellationToken)
+  nameWithType.vb: ISpeechToText.TranscribeStreamAsync(IAsyncEnumerable(Of AudioChunk), TranscriptionOptions, CancellationToken)
+- uid: Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync*
+  name: TranscribeStreamAsync
+  href: api/Compendium.Abstractions.Speech.ISpeechToText.html#Compendium_Abstractions_Speech_ISpeechToText_TranscribeStreamAsync_
+  commentId: Overload:Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.ISpeechToText.TranscribeStreamAsync
+  nameWithType: ISpeechToText.TranscribeStreamAsync
+- uid: Compendium.Abstractions.Speech.Models
+  name: Compendium.Abstractions.Speech.Models
+  href: api/Compendium.Abstractions.Speech.Models.html
+  commentId: N:Compendium.Abstractions.Speech.Models
+  fullName: Compendium.Abstractions.Speech.Models
+  nameWithType: Compendium.Abstractions.Speech.Models
+- uid: Compendium.Abstractions.Speech.Models.AudioChunk
+  name: AudioChunk
+  href: api/Compendium.Abstractions.Speech.Models.AudioChunk.html
+  commentId: T:Compendium.Abstractions.Speech.Models.AudioChunk
+  fullName: Compendium.Abstractions.Speech.Models.AudioChunk
+  nameWithType: AudioChunk
+- uid: Compendium.Abstractions.Speech.Models.AudioChunk.#ctor(System.ReadOnlyMemory{System.Byte},System.Int32)
+  name: AudioChunk(ReadOnlyMemory<byte>, int)
+  href: api/Compendium.Abstractions.Speech.Models.AudioChunk.html#Compendium_Abstractions_Speech_Models_AudioChunk__ctor_System_ReadOnlyMemory_System_Byte__System_Int32_
+  commentId: M:Compendium.Abstractions.Speech.Models.AudioChunk.#ctor(System.ReadOnlyMemory{System.Byte},System.Int32)
+  name.vb: New(ReadOnlyMemory(Of Byte), Integer)
+  fullName: Compendium.Abstractions.Speech.Models.AudioChunk.AudioChunk(System.ReadOnlyMemory<byte>, int)
+  fullName.vb: Compendium.Abstractions.Speech.Models.AudioChunk.New(System.ReadOnlyMemory(Of Byte), Integer)
+  nameWithType: AudioChunk.AudioChunk(ReadOnlyMemory<byte>, int)
+  nameWithType.vb: AudioChunk.New(ReadOnlyMemory(Of Byte), Integer)
+- uid: Compendium.Abstractions.Speech.Models.AudioChunk.#ctor*
+  name: AudioChunk
+  href: api/Compendium.Abstractions.Speech.Models.AudioChunk.html#Compendium_Abstractions_Speech_Models_AudioChunk__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioChunk.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.AudioChunk.AudioChunk
+  fullName.vb: Compendium.Abstractions.Speech.Models.AudioChunk.New
+  nameWithType: AudioChunk.AudioChunk
+  nameWithType.vb: AudioChunk.New
+- uid: Compendium.Abstractions.Speech.Models.AudioChunk.Bytes
+  name: Bytes
+  href: api/Compendium.Abstractions.Speech.Models.AudioChunk.html#Compendium_Abstractions_Speech_Models_AudioChunk_Bytes
+  commentId: P:Compendium.Abstractions.Speech.Models.AudioChunk.Bytes
+  fullName: Compendium.Abstractions.Speech.Models.AudioChunk.Bytes
+  nameWithType: AudioChunk.Bytes
+- uid: Compendium.Abstractions.Speech.Models.AudioChunk.Bytes*
+  name: Bytes
+  href: api/Compendium.Abstractions.Speech.Models.AudioChunk.html#Compendium_Abstractions_Speech_Models_AudioChunk_Bytes_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioChunk.Bytes
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.AudioChunk.Bytes
+  nameWithType: AudioChunk.Bytes
+- uid: Compendium.Abstractions.Speech.Models.AudioChunk.SampleRate
+  name: SampleRate
+  href: api/Compendium.Abstractions.Speech.Models.AudioChunk.html#Compendium_Abstractions_Speech_Models_AudioChunk_SampleRate
+  commentId: P:Compendium.Abstractions.Speech.Models.AudioChunk.SampleRate
+  fullName: Compendium.Abstractions.Speech.Models.AudioChunk.SampleRate
+  nameWithType: AudioChunk.SampleRate
+- uid: Compendium.Abstractions.Speech.Models.AudioChunk.SampleRate*
+  name: SampleRate
+  href: api/Compendium.Abstractions.Speech.Models.AudioChunk.html#Compendium_Abstractions_Speech_Models_AudioChunk_SampleRate_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioChunk.SampleRate
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.AudioChunk.SampleRate
+  nameWithType: AudioChunk.SampleRate
+- uid: Compendium.Abstractions.Speech.Models.AudioInput
+  name: AudioInput
+  href: api/Compendium.Abstractions.Speech.Models.AudioInput.html
+  commentId: T:Compendium.Abstractions.Speech.Models.AudioInput
+  fullName: Compendium.Abstractions.Speech.Models.AudioInput
+  nameWithType: AudioInput
+- uid: Compendium.Abstractions.Speech.Models.AudioInput.#ctor(System.IO.Stream,System.String)
+  name: AudioInput(Stream, string)
+  href: api/Compendium.Abstractions.Speech.Models.AudioInput.html#Compendium_Abstractions_Speech_Models_AudioInput__ctor_System_IO_Stream_System_String_
+  commentId: M:Compendium.Abstractions.Speech.Models.AudioInput.#ctor(System.IO.Stream,System.String)
+  name.vb: New(Stream, String)
+  fullName: Compendium.Abstractions.Speech.Models.AudioInput.AudioInput(System.IO.Stream, string)
+  fullName.vb: Compendium.Abstractions.Speech.Models.AudioInput.New(System.IO.Stream, String)
+  nameWithType: AudioInput.AudioInput(Stream, string)
+  nameWithType.vb: AudioInput.New(Stream, String)
+- uid: Compendium.Abstractions.Speech.Models.AudioInput.#ctor*
+  name: AudioInput
+  href: api/Compendium.Abstractions.Speech.Models.AudioInput.html#Compendium_Abstractions_Speech_Models_AudioInput__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioInput.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.AudioInput.AudioInput
+  fullName.vb: Compendium.Abstractions.Speech.Models.AudioInput.New
+  nameWithType: AudioInput.AudioInput
+  nameWithType.vb: AudioInput.New
+- uid: Compendium.Abstractions.Speech.Models.AudioInput.MimeType
+  name: MimeType
+  href: api/Compendium.Abstractions.Speech.Models.AudioInput.html#Compendium_Abstractions_Speech_Models_AudioInput_MimeType
+  commentId: P:Compendium.Abstractions.Speech.Models.AudioInput.MimeType
+  fullName: Compendium.Abstractions.Speech.Models.AudioInput.MimeType
+  nameWithType: AudioInput.MimeType
+- uid: Compendium.Abstractions.Speech.Models.AudioInput.MimeType*
+  name: MimeType
+  href: api/Compendium.Abstractions.Speech.Models.AudioInput.html#Compendium_Abstractions_Speech_Models_AudioInput_MimeType_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioInput.MimeType
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.AudioInput.MimeType
+  nameWithType: AudioInput.MimeType
+- uid: Compendium.Abstractions.Speech.Models.AudioInput.Stream
+  name: Stream
+  href: api/Compendium.Abstractions.Speech.Models.AudioInput.html#Compendium_Abstractions_Speech_Models_AudioInput_Stream
+  commentId: P:Compendium.Abstractions.Speech.Models.AudioInput.Stream
+  fullName: Compendium.Abstractions.Speech.Models.AudioInput.Stream
+  nameWithType: AudioInput.Stream
+- uid: Compendium.Abstractions.Speech.Models.AudioInput.Stream*
+  name: Stream
+  href: api/Compendium.Abstractions.Speech.Models.AudioInput.html#Compendium_Abstractions_Speech_Models_AudioInput_Stream_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.AudioInput.Stream
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.AudioInput.Stream
+  nameWithType: AudioInput.Stream
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk
+  name: TranscriptionChunk
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html
+  commentId: T:Compendium.Abstractions.Speech.Models.TranscriptionChunk
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk
+  nameWithType: TranscriptionChunk
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.#ctor(System.String,System.Boolean,System.TimeSpan)
+  name: TranscriptionChunk(string, bool, TimeSpan)
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk__ctor_System_String_System_Boolean_System_TimeSpan_
+  commentId: M:Compendium.Abstractions.Speech.Models.TranscriptionChunk.#ctor(System.String,System.Boolean,System.TimeSpan)
+  name.vb: New(String, Boolean, TimeSpan)
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.TranscriptionChunk(string, bool, System.TimeSpan)
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionChunk.New(String, Boolean, System.TimeSpan)
+  nameWithType: TranscriptionChunk.TranscriptionChunk(string, bool, TimeSpan)
+  nameWithType.vb: TranscriptionChunk.New(String, Boolean, TimeSpan)
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.#ctor*
+  name: TranscriptionChunk
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionChunk.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.TranscriptionChunk
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionChunk.New
+  nameWithType: TranscriptionChunk.TranscriptionChunk
+  nameWithType.vb: TranscriptionChunk.New
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.IsFinal
+  name: IsFinal
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk_IsFinal
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionChunk.IsFinal
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.IsFinal
+  nameWithType: TranscriptionChunk.IsFinal
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.IsFinal*
+  name: IsFinal
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk_IsFinal_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionChunk.IsFinal
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.IsFinal
+  nameWithType: TranscriptionChunk.IsFinal
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.PartialText
+  name: PartialText
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk_PartialText
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionChunk.PartialText
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.PartialText
+  nameWithType: TranscriptionChunk.PartialText
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.PartialText*
+  name: PartialText
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk_PartialText_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionChunk.PartialText
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.PartialText
+  nameWithType: TranscriptionChunk.PartialText
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.Timestamp
+  name: Timestamp
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk_Timestamp
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionChunk.Timestamp
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.Timestamp
+  nameWithType: TranscriptionChunk.Timestamp
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionChunk.Timestamp*
+  name: Timestamp
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionChunk.html#Compendium_Abstractions_Speech_Models_TranscriptionChunk_Timestamp_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionChunk.Timestamp
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionChunk.Timestamp
+  nameWithType: TranscriptionChunk.Timestamp
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions
+  name: TranscriptionOptions
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html
+  commentId: T:Compendium.Abstractions.Speech.Models.TranscriptionOptions
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions
+  nameWithType: TranscriptionOptions
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.#ctor(System.String,System.String,System.Boolean,System.Boolean)
+  name: TranscriptionOptions(string?, string?, bool, bool)
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions__ctor_System_String_System_String_System_Boolean_System_Boolean_
+  commentId: M:Compendium.Abstractions.Speech.Models.TranscriptionOptions.#ctor(System.String,System.String,System.Boolean,System.Boolean)
+  name.vb: New(String, String, Boolean, Boolean)
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.TranscriptionOptions(string?, string?, bool, bool)
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionOptions.New(String, String, Boolean, Boolean)
+  nameWithType: TranscriptionOptions.TranscriptionOptions(string?, string?, bool, bool)
+  nameWithType.vb: TranscriptionOptions.New(String, String, Boolean, Boolean)
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.#ctor*
+  name: TranscriptionOptions
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionOptions.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.TranscriptionOptions
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionOptions.New
+  nameWithType: TranscriptionOptions.TranscriptionOptions
+  nameWithType.vb: TranscriptionOptions.New
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Diarization
+  name: Diarization
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Diarization
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Diarization
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Diarization
+  nameWithType: TranscriptionOptions.Diarization
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Diarization*
+  name: Diarization
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Diarization_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Diarization
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Diarization
+  nameWithType: TranscriptionOptions.Diarization
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Language
+  name: Language
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Language
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Language
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Language
+  nameWithType: TranscriptionOptions.Language
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Language*
+  name: Language
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Language_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Language
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Language
+  nameWithType: TranscriptionOptions.Language
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Model
+  name: Model
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Model
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Model
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Model
+  nameWithType: TranscriptionOptions.Model
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Model*
+  name: Model
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Model_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Model
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Model
+  nameWithType: TranscriptionOptions.Model
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Punctuation
+  name: Punctuation
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Punctuation
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Punctuation
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Punctuation
+  nameWithType: TranscriptionOptions.Punctuation
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Punctuation*
+  name: Punctuation
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionOptions.html#Compendium_Abstractions_Speech_Models_TranscriptionOptions_Punctuation_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionOptions.Punctuation
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionOptions.Punctuation
+  nameWithType: TranscriptionOptions.Punctuation
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionResult
+  name: TranscriptionResult
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html
+  commentId: T:Compendium.Abstractions.Speech.Models.TranscriptionResult
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionResult
+  nameWithType: TranscriptionResult
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionResult.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Speech.Models.TranscriptionSegment})
+  name: TranscriptionResult(string, IReadOnlyList<TranscriptionSegment>)
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html#Compendium_Abstractions_Speech_Models_TranscriptionResult__ctor_System_String_System_Collections_Generic_IReadOnlyList_Compendium_Abstractions_Speech_Models_TranscriptionSegment__
+  commentId: M:Compendium.Abstractions.Speech.Models.TranscriptionResult.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Compendium.Abstractions.Speech.Models.TranscriptionSegment})
+  name.vb: New(String, IReadOnlyList(Of TranscriptionSegment))
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionResult.TranscriptionResult(string, System.Collections.Generic.IReadOnlyList<Compendium.Abstractions.Speech.Models.TranscriptionSegment>)
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionResult.New(String, System.Collections.Generic.IReadOnlyList(Of Compendium.Abstractions.Speech.Models.TranscriptionSegment))
+  nameWithType: TranscriptionResult.TranscriptionResult(string, IReadOnlyList<TranscriptionSegment>)
+  nameWithType.vb: TranscriptionResult.New(String, IReadOnlyList(Of TranscriptionSegment))
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionResult.#ctor*
+  name: TranscriptionResult
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html#Compendium_Abstractions_Speech_Models_TranscriptionResult__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionResult.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionResult.TranscriptionResult
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionResult.New
+  nameWithType: TranscriptionResult.TranscriptionResult
+  nameWithType.vb: TranscriptionResult.New
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionResult.Segments
+  name: Segments
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html#Compendium_Abstractions_Speech_Models_TranscriptionResult_Segments
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionResult.Segments
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionResult.Segments
+  nameWithType: TranscriptionResult.Segments
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionResult.Segments*
+  name: Segments
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html#Compendium_Abstractions_Speech_Models_TranscriptionResult_Segments_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionResult.Segments
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionResult.Segments
+  nameWithType: TranscriptionResult.Segments
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionResult.Text
+  name: Text
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html#Compendium_Abstractions_Speech_Models_TranscriptionResult_Text
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionResult.Text
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionResult.Text
+  nameWithType: TranscriptionResult.Text
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionResult.Text*
+  name: Text
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionResult.html#Compendium_Abstractions_Speech_Models_TranscriptionResult_Text_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionResult.Text
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionResult.Text
+  nameWithType: TranscriptionResult.Text
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment
+  name: TranscriptionSegment
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html
+  commentId: T:Compendium.Abstractions.Speech.Models.TranscriptionSegment
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment
+  nameWithType: TranscriptionSegment
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.#ctor(System.String,System.TimeSpan,System.TimeSpan,System.String)
+  name: TranscriptionSegment(string, TimeSpan, TimeSpan, string?)
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment__ctor_System_String_System_TimeSpan_System_TimeSpan_System_String_
+  commentId: M:Compendium.Abstractions.Speech.Models.TranscriptionSegment.#ctor(System.String,System.TimeSpan,System.TimeSpan,System.String)
+  name.vb: New(String, TimeSpan, TimeSpan, String)
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.TranscriptionSegment(string, System.TimeSpan, System.TimeSpan, string?)
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionSegment.New(String, System.TimeSpan, System.TimeSpan, String)
+  nameWithType: TranscriptionSegment.TranscriptionSegment(string, TimeSpan, TimeSpan, string?)
+  nameWithType.vb: TranscriptionSegment.New(String, TimeSpan, TimeSpan, String)
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.#ctor*
+  name: TranscriptionSegment
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment__ctor_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionSegment.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.TranscriptionSegment
+  fullName.vb: Compendium.Abstractions.Speech.Models.TranscriptionSegment.New
+  nameWithType: TranscriptionSegment.TranscriptionSegment
+  nameWithType.vb: TranscriptionSegment.New
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.End
+  name: End
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_End
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionSegment.End
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.End
+  nameWithType: TranscriptionSegment.End
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.End*
+  name: End
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_End_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionSegment.End
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.End
+  nameWithType: TranscriptionSegment.End
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Speaker
+  name: Speaker
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_Speaker
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionSegment.Speaker
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Speaker
+  nameWithType: TranscriptionSegment.Speaker
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Speaker*
+  name: Speaker
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_Speaker_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionSegment.Speaker
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Speaker
+  nameWithType: TranscriptionSegment.Speaker
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Start
+  name: Start
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_Start
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionSegment.Start
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Start
+  nameWithType: TranscriptionSegment.Start
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Start*
+  name: Start
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_Start_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionSegment.Start
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Start
+  nameWithType: TranscriptionSegment.Start
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Text
+  name: Text
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_Text
+  commentId: P:Compendium.Abstractions.Speech.Models.TranscriptionSegment.Text
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Text
+  nameWithType: TranscriptionSegment.Text
+- uid: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Text*
+  name: Text
+  href: api/Compendium.Abstractions.Speech.Models.TranscriptionSegment.html#Compendium_Abstractions_Speech_Models_TranscriptionSegment_Text_
+  commentId: Overload:Compendium.Abstractions.Speech.Models.TranscriptionSegment.Text
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.Models.TranscriptionSegment.Text
+  nameWithType: TranscriptionSegment.Text
+- uid: Compendium.Abstractions.Speech.SpeechErrors
+  name: SpeechErrors
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html
+  commentId: T:Compendium.Abstractions.Speech.SpeechErrors
+  fullName: Compendium.Abstractions.Speech.SpeechErrors
+  nameWithType: SpeechErrors
+- uid: Compendium.Abstractions.Speech.SpeechErrors.AudioTooLong(System.TimeSpan,System.TimeSpan)
+  name: AudioTooLong(TimeSpan, TimeSpan)
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_AudioTooLong_System_TimeSpan_System_TimeSpan_
+  commentId: M:Compendium.Abstractions.Speech.SpeechErrors.AudioTooLong(System.TimeSpan,System.TimeSpan)
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.AudioTooLong(System.TimeSpan, System.TimeSpan)
+  nameWithType: SpeechErrors.AudioTooLong(TimeSpan, TimeSpan)
+- uid: Compendium.Abstractions.Speech.SpeechErrors.AudioTooLong*
+  name: AudioTooLong
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_AudioTooLong_
+  commentId: Overload:Compendium.Abstractions.Speech.SpeechErrors.AudioTooLong
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.AudioTooLong
+  nameWithType: SpeechErrors.AudioTooLong
+- uid: Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable(System.String)
+  name: ProviderUnreachable(string)
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_ProviderUnreachable_System_String_
+  commentId: M:Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable(System.String)
+  name.vb: ProviderUnreachable(String)
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable(string)
+  fullName.vb: Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable(String)
+  nameWithType: SpeechErrors.ProviderUnreachable(string)
+  nameWithType.vb: SpeechErrors.ProviderUnreachable(String)
+- uid: Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable*
+  name: ProviderUnreachable
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_ProviderUnreachable_
+  commentId: Overload:Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.ProviderUnreachable
+  nameWithType: SpeechErrors.ProviderUnreachable
+- uid: Compendium.Abstractions.Speech.SpeechErrors.RateLimited(System.String)
+  name: RateLimited(string)
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_RateLimited_System_String_
+  commentId: M:Compendium.Abstractions.Speech.SpeechErrors.RateLimited(System.String)
+  name.vb: RateLimited(String)
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.RateLimited(string)
+  fullName.vb: Compendium.Abstractions.Speech.SpeechErrors.RateLimited(String)
+  nameWithType: SpeechErrors.RateLimited(string)
+  nameWithType.vb: SpeechErrors.RateLimited(String)
+- uid: Compendium.Abstractions.Speech.SpeechErrors.RateLimited*
+  name: RateLimited
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_RateLimited_
+  commentId: Overload:Compendium.Abstractions.Speech.SpeechErrors.RateLimited
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.RateLimited
+  nameWithType: SpeechErrors.RateLimited
+- uid: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat(System.String)
+  name: UnsupportedFormat(string)
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_UnsupportedFormat_System_String_
+  commentId: M:Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat(System.String)
+  name.vb: UnsupportedFormat(String)
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat(string)
+  fullName.vb: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat(String)
+  nameWithType: SpeechErrors.UnsupportedFormat(string)
+  nameWithType.vb: SpeechErrors.UnsupportedFormat(String)
+- uid: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat*
+  name: UnsupportedFormat
+  href: api/Compendium.Abstractions.Speech.SpeechErrors.html#Compendium_Abstractions_Speech_SpeechErrors_UnsupportedFormat_
+  commentId: Overload:Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat
+  isSpec: "True"
+  fullName: Compendium.Abstractions.Speech.SpeechErrors.UnsupportedFormat
+  nameWithType: SpeechErrors.UnsupportedFormat
 - uid: Compendium.Abstractions.VectorStore
   name: Compendium.Abstractions.VectorStore
   href: api/Compendium.Abstractions.VectorStore.html
