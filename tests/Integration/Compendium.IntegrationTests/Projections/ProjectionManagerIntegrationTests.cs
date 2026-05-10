@@ -413,8 +413,8 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
     /// </summary>
     private async Task SeedEventsAsync(string streamId, List<TestEvent> events)
     {
-        const int appendBatchSize = 200; // Keep below COPY threshold to avoid intermittent COPY transaction contention.
-        var appendedCount = 0;
+        const int appendBatchSize = 200; // Keep below COPY threshold (500): larger COPY batches intermittently fail with "connection is already in state 'Copy'".
+        long expectedVersion = -1;
 
         for (var i = 0; i < events.Count; i += appendBatchSize)
         {
@@ -424,10 +424,12 @@ public class ProjectionManagerIntegrationTests : IAsyncLifetime
                 .Cast<IDomainEvent>()
                 .ToList();
 
-            var expectedVersion = appendedCount == 0 ? -1 : appendedCount;
             var result = await _eventStore.AppendEventsAsync(streamId, batch, expectedVersion);
             result.IsSuccess.Should().BeTrue();
-            appendedCount += batch.Count;
+
+            var versionResult = await _eventStore.GetVersionAsync(streamId);
+            versionResult.IsSuccess.Should().BeTrue();
+            expectedVersion = versionResult.Value;
         }
     }
 }

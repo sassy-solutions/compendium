@@ -65,7 +65,7 @@ public sealed class LiveProjectionProcessorBackfillTests
     }
 
     [Fact]
-    public async Task EmptyCheckpoints_DefaultOptions_WhenHeadLookupThrows_InitializationFails()
+    public async Task EmptyCheckpoints_DefaultOptions_HeadLookupFails_InitializationFails()
     {
         var eventStore = Substitute.For<IStreamingEventStore>();
         var projectionStore = Substitute.For<IProjectionStore>();
