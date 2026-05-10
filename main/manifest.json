@@ -7298,6 +7298,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "testing/architecture-tests.md",
+      "output": {
+        ".html": {
+          "relative_path": "testing/architecture-tests.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
