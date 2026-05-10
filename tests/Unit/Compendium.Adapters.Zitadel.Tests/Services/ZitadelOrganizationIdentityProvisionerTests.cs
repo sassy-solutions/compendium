@@ -25,12 +25,12 @@ namespace Compendium.Adapters.Zitadel.Tests.Services;
 /// idempotent-create behaviour.
 /// </summary>
 /// <remarks>
-/// Mirrors the user-conflict tests already covered by PR #41. We verify three
+/// Mirrors the existing user-conflict idempotency coverage. We verify three
 /// additional Conflict paths:
 /// <list type="bullet">
 /// <item>Org Conflict → reuse existing org id.</item>
 /// <item>Project Conflict → reuse existing project id.</item>
-/// <item>OIDC app Conflict → fail fast with <c>Zitadel.OidcAppExistsButSecretLost</c>
+/// <item>OIDC app Conflict → returns a clear error <c>Zitadel.OidcAppExistsButSecretLost</c>
 /// (cannot reuse: client_secret is only returned at creation time).</item>
 /// </list>
 /// </remarks>
@@ -165,7 +165,7 @@ public class ZitadelOrganizationIdentityProvisionerTests
     }
 
     [Fact]
-    public async Task ProvisionAsync_OidcAppConflict_ReturnsClearError_AndDoesNotCleanUpEarlierResources()
+    public async Task ProvisionAsync_OidcAppConflict_ReturnsErrorWithoutCleanup()
     {
         // Arrange
         var orgService = Substitute.For<IOrganizationService>();
