@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   build-test:
-    runs-on: ubuntu-latest
+    runs-on: dotnet
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
