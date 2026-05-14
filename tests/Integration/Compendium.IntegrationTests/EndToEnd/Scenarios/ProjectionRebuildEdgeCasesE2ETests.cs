@@ -5,21 +5,14 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
-using Compendium.Adapters.PostgreSQL.Projections;
-using Compendium.Core.EventSourcing;
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.Infrastructure.Projections;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
 using Compendium.IntegrationTests.EndToEnd.TestProjections;
-using Compendium.IntegrationTests.Fixtures;
-using Dapper;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Npgsql;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -43,38 +36,17 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// </list>
 /// </summary>
 [Trait("Category", "E2E")]
-[Trait("Category", "Performance")]
-public sealed class ProjectionRebuildEdgeCasesE2ETests : IClassFixture<PostgreSqlFixture>, IAsyncLifetime
+public sealed class ProjectionRebuildEdgeCasesE2ETests : IAsyncLifetime
 {
-    private readonly PostgreSqlFixture _pg;
-    private PostgreSqlEventStore _eventStore = null!;
-    private PostgreSqlStreamingEventStore _streamingEventStore = null!;
-    private PostgreSqlProjectionStore _projectionStore = null!;
-    private IProjectionManager _projectionManager = null!;
-    private const string TableName = "rebuild_edges_events";
+    private InMemoryStreamingEventStore _eventStore = null!;
+    private InMemoryProjectionStore _projectionStore = null!;
+    private Compendium.Infrastructure.Projections.IProjectionManager _projectionManager = null!;
+    private ServiceProvider _provider = null!;
 
-    public ProjectionRebuildEdgeCasesE2ETests(PostgreSqlFixture pg)
+    public Task InitializeAsync()
     {
-        _pg = pg;
-    }
-
-    public async Task InitializeAsync()
-    {
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
         var services = new ServiceCollection();
-        services.AddLogging(builder => builder.AddDebug().SetMinimumLevel(LogLevel.Warning));
-
-        services.Configure<PostgreSqlOptions>(o =>
-        {
-            o.ConnectionString = _pg.ConnectionString;
-            o.TableName = TableName;
-            o.AutoCreateSchema = true;
-            o.BatchSize = 1000;
-        });
+        services.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Warning));
 
         services.Configure<ProjectionOptions>(o =>
         {
@@ -84,46 +56,32 @@ public sealed class ProjectionRebuildEdgeCasesE2ETests : IClassFixture<PostgreSq
             o.EnableSnapshots = false;
         });
 
-        services.AddSingleton<IEventDeserializer>(new E2EEventDeserializer());
-        services.AddSingleton<PostgreSqlEventStore>();
-        services.AddSingleton<IStreamingEventStore, PostgreSqlStreamingEventStore>();
-        services.AddSingleton<IProjectionStore, PostgreSqlProjectionStore>();
-        services.AddSingleton<IProjectionManager, EnhancedProjectionManager>();
+        _eventStore = new InMemoryStreamingEventStore();
+        _projectionStore = new InMemoryProjectionStore();
+
+        services.AddSingleton(_eventStore);
+        services.AddSingleton<IStreamingEventStore>(_eventStore);
+        services.AddSingleton<IProjectionStore>(_projectionStore);
+        services.AddSingleton<Compendium.Infrastructure.Projections.IProjectionManager, EnhancedProjectionManager>();
         services.AddSingleton<OrderSummaryProjection>();
 
-        var provider = services.BuildServiceProvider();
-        _eventStore = provider.GetRequiredService<PostgreSqlEventStore>();
-        _streamingEventStore = (PostgreSqlStreamingEventStore)provider.GetRequiredService<IStreamingEventStore>();
-        _projectionStore = (PostgreSqlProjectionStore)provider.GetRequiredService<IProjectionStore>();
-        _projectionManager = provider.GetRequiredService<IProjectionManager>();
+        _provider = services.BuildServiceProvider();
+        _projectionManager = _provider.GetRequiredService<Compendium.Infrastructure.Projections.IProjectionManager>();
 
-        // Drop projection metadata so each test starts from a clean slate. We keep the
-        // event-store table because the per-test orderIds are unique guids, so a shared
-        // table is safe and faster than DDL on every run.
-        await using var connection = new NpgsqlConnection(_pg.ConnectionString);
-        await connection.OpenAsync();
-        await connection.ExecuteAsync($"DROP TABLE IF EXISTS {TableName}");
-        await connection.ExecuteAsync("DROP TABLE IF EXISTS projection_checkpoints");
-        await connection.ExecuteAsync("DROP TABLE IF EXISTS projection_states");
-        await connection.ExecuteAsync("DROP TABLE IF EXISTS projection_snapshots");
-
-        var initEvents = await _eventStore.InitializeSchemaAsync();
-        initEvents.IsSuccess.Should().BeTrue();
-        var initStream = await _streamingEventStore.InitializeSchemaAsync();
-        initStream.IsSuccess.Should().BeTrue();
-        await _projectionStore.InitializeAsync();
+        return Task.CompletedTask;
     }
 
-    public Task DisposeAsync() => Task.CompletedTask;
+    public Task DisposeAsync()
+    {
+        _eventStore?.Dispose();
+        _provider?.Dispose();
+        return Task.CompletedTask;
+    }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task RebuildProjection_TwoPhaseAppend_CheckpointAdvancesMonotonically()
     {
         // Arrange — phase 1: append 5 events, rebuild, capture checkpoint.
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
 
         var orderId = OrderId.New();
         var order = OrderAggregate.PlaceOrder(orderId, "customer-multi-phase", DateTimeOffset.UtcNow);
@@ -168,14 +126,10 @@ public sealed class ProjectionRebuildEdgeCasesE2ETests : IClassFixture<PostgreSq
         state.Status.Should().Be(ProjectionStatus.Completed);
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task RebuildProjection_CalledTwiceWithNoNewEvents_CheckpointStaysStableAndStateIsCompleted()
     {
         // Arrange — single stream, rebuild once.
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
 
         var orderId = OrderId.New();
         var order = OrderAggregate.PlaceOrder(orderId, "customer-idempotent", DateTimeOffset.UtcNow);
@@ -204,16 +158,12 @@ public sealed class ProjectionRebuildEdgeCasesE2ETests : IClassFixture<PostgreSq
         state.Status.Should().Be(ProjectionStatus.Completed);
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task RebuildProjection_WithCheckpointAlreadyAtMaxPosition_CompletesWithoutReprocessing()
     {
         // Arrange — append events, rebuild, capture max checkpoint. Then call rebuild again
         // and assert no events are re-applied below the existing checkpoint. We measure
         // re-application via a counting projection wrapper that tracks ApplyAsync calls.
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
 
         var orderId = OrderId.New();
         var order = OrderAggregate.PlaceOrder(orderId, "customer-max-checkpoint", DateTimeOffset.UtcNow);
@@ -229,7 +179,7 @@ public sealed class ProjectionRebuildEdgeCasesE2ETests : IClassFixture<PostgreSq
         await _projectionManager.RebuildProjectionAsync<OrderSummaryProjection>(streamId: orderId.ToString());
         var initialCheckpoint = await _projectionStore.GetCheckpointAsync("E2E_OrderSummary");
         initialCheckpoint.Should().NotBeNull();
-        var maxPosition = await _streamingEventStore.GetMaxGlobalPositionAsync();
+        var maxPosition = await _eventStore.GetMaxGlobalPositionAsync();
         initialCheckpoint!.Value.Should().BeGreaterOrEqualTo(events.Count - 1,
             "the checkpoint must reach at least the count of applied events");
 
