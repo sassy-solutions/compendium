@@ -6,18 +6,11 @@
 // -----------------------------------------------------------------------
 
 using Compendium.Abstractions.EventSourcing;
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
 using Compendium.Core.Domain.Events;
 using Compendium.Infrastructure.EventSourcing;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
-using Compendium.IntegrationTests.Fixtures;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using NSubstitute;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -40,61 +33,30 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// </summary>
 [Trait("Category", "E2E")]
 [Trait("Category", "EventSourcing")]
-public sealed class SnapshotMidStreamE2ETests : IClassFixture<PostgreSqlFixture>, IAsyncLifetime
+public sealed class SnapshotMidStreamE2ETests : IAsyncLifetime
 {
-    private readonly PostgreSqlFixture _pg;
-    private PostgreSqlEventStore _eventStore = null!;
+    private InMemoryStreamingEventStore _eventStore = null!;
     private InMemorySnapshotStore _snapshots = null!;
-    private const string TableName = "snapshot_midstream_events";
 
-    public SnapshotMidStreamE2ETests(PostgreSqlFixture pg)
+    public Task InitializeAsync()
     {
-        _pg = pg;
-    }
-
-    public async Task InitializeAsync()
-    {
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
-        var options = Options.Create(new PostgreSqlOptions
-        {
-            ConnectionString = _pg.ConnectionString,
-            AutoCreateSchema = true,
-            TableName = TableName,
-            CommandTimeout = 30,
-            BatchSize = 1000,
-        });
-
-        var deserializer = new E2EEventDeserializer();
-        var logger = Substitute.For<ILogger<PostgreSqlEventStore>>();
-        _eventStore = new PostgreSqlEventStore(options, deserializer, logger);
-
-        var initResult = await _eventStore.InitializeSchemaAsync();
-        initResult.IsSuccess.Should().BeTrue();
-        await _pg.CleanTableAsync(TableName);
-
+        _eventStore = new InMemoryStreamingEventStore();
         _snapshots = new InMemorySnapshotStore();
+        return Task.CompletedTask;
     }
 
     public Task DisposeAsync()
     {
+        _eventStore?.Dispose();
         _snapshots?.Dispose();
         return Task.CompletedTask;
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task LoadFromMidStreamSnapshot_PlusDeltaEvents_ProducesIdenticalStateAsFullReplay()
     {
         // Arrange — append 4 events, snapshot at version 2, append 3 more events.
         // Loading via "snapshot + events from version 3 onward" must equal "replay all 7".
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
         var orderId = OrderId.New();
         var customerId = "snapshot-customer";
 
@@ -158,17 +120,12 @@ public sealed class SnapshotMidStreamE2ETests : IClassFixture<PostgreSqlFixture>
             "loading from a snapshot at v2 must skip the first 2 events and only re-apply the post-snapshot delta");
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task SaveSnapshot_OlderVersionAfterNewer_DoesNotRegressStoredState()
     {
         // Arrange — write a v5 snapshot, then attempt to write a v3 snapshot. The store
         // must keep v5. Without this guard, an out-of-order save (e.g. a delayed background
         // snapshotter racing the live writer) would corrupt the rehydration path.
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
         var aggregateId = $"aggregate-{Guid.NewGuid():N}";
         var newerState = new OrderSnapshotState
         {
