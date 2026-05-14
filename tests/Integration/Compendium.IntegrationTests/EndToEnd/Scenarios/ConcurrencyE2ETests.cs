@@ -5,19 +5,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
 using Compendium.Core.Results;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
-using Dapper;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using NSubstitute;
-using Testcontainers.PostgreSql;
-using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -26,78 +18,30 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// E2E Test Scenario 5: Concurrent Commands with Optimistic Concurrency.
 /// Tests optimistic concurrency control prevents lost updates under concurrent load.
 /// </summary>
+/// <remarks>
+/// Per ADR-0007, this framework-behaviour test runs against
+/// <see cref="InMemoryStreamingEventStore"/>. Postgres-specific concurrency
+/// tests live in compendium-adapter-postgresql.
+/// </remarks>
 [Trait("Category", "E2E")]
 [Trait("Category", "Concurrency")]
 public sealed class ConcurrencyE2ETests : IAsyncLifetime
 {
-    private PostgreSqlContainer? _postgres;
-    private PostgreSqlEventStore? _eventStore;
-    private string _connectionString = null!;
+    private InMemoryStreamingEventStore? _eventStore;
 
-    public async Task InitializeAsync()
+    public Task InitializeAsync()
     {
-        // Use EnvironmentConfigurationHelper for connection string fallback
-        var externalConnectionString = Compendium.IntegrationTests.Infrastructure.EnvironmentConfigurationHelper.GetPostgreSqlConnectionString();
-
-        if (!string.IsNullOrEmpty(externalConnectionString))
-        {
-            _connectionString = externalConnectionString;
-        }
-        else
-        {
-            // Fallback to TestContainers
-            Console.WriteLine("⚠️ Starting TestContainer for PostgreSQL (Concurrency E2E)...");
-            _postgres = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_concurrency_e2e")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
-
-            await _postgres.StartAsync();
-            _connectionString = _postgres.GetConnectionString();
-        }
-
-        // Initialize event store
-        var options = Options.Create(new PostgreSqlOptions
-        {
-            ConnectionString = _connectionString,
-            AutoCreateSchema = true,
-            TableName = "concurrency_events_e2e",
-            CommandTimeout = 30,
-            BatchSize = 1000
-        });
-
-        var eventDeserializer = new E2EEventDeserializer();
-        var logger = Substitute.For<ILogger<PostgreSqlEventStore>>();
-        _eventStore = new PostgreSqlEventStore(options, eventDeserializer, logger);
-
-        // Drop and recreate table to ensure clean state with proper constraints
-        using var connection = new Npgsql.NpgsqlConnection(_connectionString);
-        await connection.OpenAsync();
-        await connection.ExecuteAsync($"DROP TABLE IF EXISTS concurrency_events_e2e");
-        await connection.CloseAsync();
-
-        // Initialize schema with proper unique constraints
-        var initResult = await _eventStore.InitializeSchemaAsync();
-        initResult.IsSuccess.Should().BeTrue();
+        _eventStore = new InMemoryStreamingEventStore();
+        return Task.CompletedTask;
     }
 
-    public async Task DisposeAsync()
+    public Task DisposeAsync()
     {
-        if (_eventStore != null)
-        {
-            await _eventStore.DisposeAsync();
-        }
-
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        _eventStore?.Dispose();
+        return Task.CompletedTask;
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task ConcurrentAppends_WithSameExpectedVersion_OnlyOneSucceeds()
     {
         // Arrange
@@ -157,7 +101,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ Final aggregate version = 2 (no lost updates)
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task ConcurrentAppends_WithRetry_AllEventuallySucceed()
     {
         // Arrange
@@ -239,7 +183,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ No lost updates
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task HighConcurrency_50ParallelAppends_MaintainsConsistency()
     {
         // Arrange
@@ -315,7 +259,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ All events present in correct order
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task SequentialAppends_NoConflicts_AllSucceed()
     {
         // Arrange
@@ -353,7 +297,7 @@ public sealed class ConcurrencyE2ETests : IAsyncLifetime
         // ✅ Final version = 11
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task ConcurrentReads_WithConcurrentWrites_ReadsRemainConsistent()
     {
         // Arrange

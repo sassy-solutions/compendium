@@ -5,19 +5,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
 using Compendium.Multitenancy;
-using Dapper;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using NSubstitute;
-using Testcontainers.PostgreSql;
-using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -26,82 +18,33 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// E2E Test Scenario 3: Multi-Tenancy Isolation.
 /// Tests complete data isolation between tenants at all layers (event store, projections, queries).
 /// </summary>
+/// <remarks>
+/// Per ADR-0007, this framework-behaviour test runs against
+/// <see cref="InMemoryStreamingEventStore"/>. The tenant-aware stream key
+/// is constructed in the event store itself; this test verifies that
+/// behaviour identically against InMemory.
+/// </remarks>
 [Trait("Category", "E2E")]
 [Trait("Category", "MultiTenancy")]
 public sealed class MultiTenancyE2ETests : IAsyncLifetime
 {
-    private PostgreSqlContainer? _postgres;
-    private PostgreSqlEventStore? _eventStore;
+    private InMemoryStreamingEventStore? _eventStore;
     private TenantContext? _tenantContext;
-    private string _connectionString = null!;
 
-    public async Task InitializeAsync()
+    public Task InitializeAsync()
     {
-        // Use EnvironmentConfigurationHelper for connection string fallback
-        var externalConnectionString = Compendium.IntegrationTests.Infrastructure.EnvironmentConfigurationHelper.GetPostgreSqlConnectionString();
-
-        if (!string.IsNullOrEmpty(externalConnectionString))
-        {
-            _connectionString = externalConnectionString;
-        }
-        else
-        {
-            // Fallback to TestContainers
-            Console.WriteLine("⚠️ Starting TestContainer for PostgreSQL (Multi-Tenancy E2E)...");
-            _postgres = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_multitenant_e2e")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
-
-            await _postgres.StartAsync();
-            _connectionString = _postgres.GetConnectionString();
-        }
-
-        // Initialize tenant context
         _tenantContext = new TenantContext();
-
-        // Initialize event store with multi-tenancy support
-        var options = Options.Create(new PostgreSqlOptions
-        {
-            ConnectionString = _connectionString,
-            AutoCreateSchema = true,
-            TableName = "multitenant_events_e2e",
-            CommandTimeout = 30,
-            BatchSize = 1000
-        });
-
-        var eventDeserializer = new E2EEventDeserializer();
-        var logger = Substitute.For<ILogger<PostgreSqlEventStore>>();
-        _eventStore = new PostgreSqlEventStore(options, eventDeserializer, logger, _tenantContext);
-
-        // Drop and recreate table to ensure clean state with proper constraints
-        using var connection = new Npgsql.NpgsqlConnection(_connectionString);
-        await connection.OpenAsync();
-        await connection.ExecuteAsync($"DROP TABLE IF EXISTS multitenant_events_e2e");
-        await connection.CloseAsync();
-
-        // Initialize schema
-        var initResult = await _eventStore.InitializeSchemaAsync();
-        initResult.IsSuccess.Should().BeTrue();
+        _eventStore = new InMemoryStreamingEventStore(_tenantContext);
+        return Task.CompletedTask;
     }
 
-    public async Task DisposeAsync()
+    public Task DisposeAsync()
     {
-        if (_eventStore != null)
-        {
-            await _eventStore.DisposeAsync();
-        }
-
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        _eventStore?.Dispose();
+        return Task.CompletedTask;
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task TenantIsolation_OrdersCreatedForDifferentTenants_ShouldBeCompletelyIsolated()
     {
         // Arrange
@@ -186,7 +129,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Cross-tenant access prevented
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task TenantIsolation_StreamExistsCheck_ShouldRespectTenantBoundaries()
     {
         // Arrange
@@ -223,7 +166,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Tenant B cannot see Tenant A's stream
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task TenantIsolation_GetCurrentVersion_ShouldReturnZeroForOtherTenants()
     {
         // Arrange
@@ -260,7 +203,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Tenant B sees version 0 for Tenant A's stream
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task TenantIsolation_GetStatistics_ShouldOnlyReturnTenantData()
     {
         // Arrange
@@ -307,7 +250,7 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Each tenant only sees their own data
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task TenantIsolation_OptimisticConcurrency_ShouldWorkWithinTenantContext()
     {
         // Arrange
@@ -350,24 +293,11 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         // ✅ Version conflicts detected correctly
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task TenantIsolation_WithoutTenantContext_ShouldStillWork()
     {
-        // Arrange - Create event store WITHOUT tenant context
-        var options = Options.Create(new PostgreSqlOptions
-        {
-            ConnectionString = _connectionString,
-            AutoCreateSchema = true,
-            TableName = "no_tenant_events_e2e",
-            CommandTimeout = 30,
-            BatchSize = 1000
-        });
-
-        var eventDeserializer = new E2EEventDeserializer();
-        var logger = Substitute.For<ILogger<PostgreSqlEventStore>>();
-        var noTenantEventStore = new PostgreSqlEventStore(options, eventDeserializer, logger, tenantContext: null);
-
-        await noTenantEventStore.InitializeSchemaAsync();
+        // Arrange — create a separate event store WITHOUT tenant context.
+        using var noTenantEventStore = new InMemoryStreamingEventStore(tenantContext: null);
 
         // **Step 1: Create order without tenant context**
         var orderId = OrderId.New();
@@ -386,8 +316,6 @@ public sealed class MultiTenancyE2ETests : IAsyncLifetime
         var statsResult = await noTenantEventStore.GetStatisticsAsync();
         statsResult.IsSuccess.Should().BeTrue();
         statsResult.Value.TotalAggregates.Should().BeGreaterThan(0);
-
-        await noTenantEventStore.DisposeAsync();
 
         // **Expected Results:**
         // ✅ Event store works without tenant context (multi-tenancy is optional)
