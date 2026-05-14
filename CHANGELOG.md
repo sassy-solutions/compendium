@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Heavy adapters extracted to their own repositories per [ADR-0006](docs/adr/0006-multi-repo-adapter-split.md).**
+  `Compendium.Adapters.Stripe`, `Compendium.Adapters.LemonSqueezy`,
+  `Compendium.Adapters.Zitadel`, `Compendium.Adapters.Listmonk`, and
+  `Compendium.Adapters.OpenRouter` are no longer part of this repository.
+  They now live at `sassy-solutions/compendium-adapter-<vendor>` and are
+  released independently on their own version cadence. Same NuGet
+  `PackageId`s; version sequence continues from `1.0.0-preview.9` per
+  package. Consumers using `<PackageReference>` are unaffected — the
+  packages are still resolved from nuget.org. Consumers using
+  `<ProjectReference>` against this repo's `src/Adapters/` paths must
+  switch to `<PackageReference>`.
+- **Removed `Compendium.Extensions.ExternalAdapters` meta-package.**
+  Previously bundled DI registration helpers for Zitadel, Listmonk, and
+  LemonSqueezy. Each adapter now ships its own `Add<Vendor>...` extension
+  method. To migrate, replace `services.AddCompendiumExternalAdapters(...)`
+  with per-adapter calls (e.g. `services.AddZitadelIdentity(config)`,
+  `services.AddListmonkEmail(config)`, `services.AddLemonSqueezyBilling(config)`).
+- **Removed `Stripe.net` package pin from `Directory.Packages.props`** — that
+  transitive dependency now belongs to the Stripe adapter repository.
+
 ### Added
 
 - **Typed state reload on `IProcessManagerRepository`.** New

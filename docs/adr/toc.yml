@@ -10,5 +10,7 @@
   href: 0004-multi-tenancy-strategy.md
 - name: 0005 — Event sourcing
   href: 0005-event-sourcing-vs-state.md
+- name: 0006 — Multi-repo adapter split
+  href: 0006-multi-repo-adapter-split.md
 - name: Template
   href: 0000-template.md

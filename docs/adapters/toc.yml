@@ -4,13 +4,5 @@
   href: postgresql.md
 - name: Redis
   href: redis.md
-- name: Zitadel
-  href: zitadel.md
-- name: Stripe
-  href: stripe.md
-- name: LemonSqueezy
-  href: lemonsqueezy.md
-- name: Listmonk
-  href: listmonk.md
-- name: OpenRouter
-  href: openrouter.md
+- name: External adapters (separate repos)
+  href: external.md
