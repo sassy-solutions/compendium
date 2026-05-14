@@ -7,13 +7,9 @@
 
 using Compendium.Abstractions.Sagas.Common;
 using Compendium.Abstractions.Sagas.ProcessManagers;
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.Sagas;
 using Compendium.Application.Sagas.ProcessManagers;
 using Compendium.Core.Results;
-using Compendium.IntegrationTests.Fixtures;
 using FluentAssertions;
-using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -36,46 +32,26 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// </summary>
 [Trait("Category", "E2E")]
 [Trait("Category", "Saga")]
-public sealed class SagaRetryExhaustionE2ETests : IClassFixture<PostgreSqlFixture>, IAsyncLifetime
+public sealed class SagaRetryExhaustionE2ETests : IAsyncLifetime
 {
-    private readonly PostgreSqlFixture _pg;
-    private PostgresProcessManagerRepository _repository = null!;
+    private InMemoryProcessManagerRepository _repository = null!;
     private CountingStepExecutor _executor = null!;
     private ProcessManagerOrchestrator _orchestrator = null!;
 
-    public SagaRetryExhaustionE2ETests(PostgreSqlFixture pg)
+    public Task InitializeAsync()
     {
-        _pg = pg;
-    }
-
-    public async Task InitializeAsync()
-    {
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
-        var options = Options.Create(new PostgreSqlOptions { ConnectionString = _pg.ConnectionString });
-        _repository = new PostgresProcessManagerRepository(options);
-        await _repository.InitializeAsync();
-        await _pg.CleanTableAsync("process_manager_steps");
-        await _pg.CleanTableAsync("process_managers");
-
+        _repository = new InMemoryProcessManagerRepository();
         _executor = new CountingStepExecutor();
         _orchestrator = new ProcessManagerOrchestrator(_repository, _executor);
+        return Task.CompletedTask;
     }
 
     public Task DisposeAsync() => Task.CompletedTask;
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task ExecuteStep_AfterTransientFailure_RetrySucceedsAndStateAdvances()
     {
         // Arrange
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
         var pm = ProvisioningProcessManager.Create("acme");
         var startResult = await _orchestrator.StartAsync(pm);
         startResult.IsSuccess.Should().BeTrue();
@@ -113,16 +89,11 @@ public sealed class SagaRetryExhaustionE2ETests : IClassFixture<PostgreSqlFixtur
         step.ErrorMessage.Should().BeNull("the successful retry must clear the failure message");
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task ExecuteStep_AcrossManyRetries_AllAttemptsAreObservableViaErrorMessage()
     {
         // Arrange — a step that needs three resets to eventually succeed. Each failed attempt
         // must persist its error message so an operator dashboard can show retry history.
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
         var pm = ProvisioningProcessManager.Create("widget");
         await _orchestrator.StartAsync(pm);
 
@@ -164,17 +135,12 @@ public sealed class SagaRetryExhaustionE2ETests : IClassFixture<PostgreSqlFixtur
         _executor.ExecuteCallCount.Should().Be(maxAttempts + 1, "three failures plus the final success");
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task ExecuteStep_RetryExhaustion_TriggersCompensationAndOnlyCompensatesPriorCompletedSteps()
     {
         // Arrange — first step completes, second step fails permanently. Compensation must
         // roll back ONLY the first step (the one that actually executed external work).
         // This guards against the "compensate-everything" anti-pattern that double-undoes.
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
         var pm = ProvisioningProcessManager.Create("foo");
         await _orchestrator.StartAsync(pm);
 
@@ -205,7 +171,7 @@ public sealed class SagaRetryExhaustionE2ETests : IClassFixture<PostgreSqlFixtur
             "compensation must invoke the executor exactly once per previously-completed step");
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task Compensate_CalledTwice_IsIdempotentAndDoesNotReinvokeExecutor()
     {
         // Arrange — the orchestrator's compensation iterates "steps with status Completed".
@@ -213,11 +179,6 @@ public sealed class SagaRetryExhaustionE2ETests : IClassFixture<PostgreSqlFixtur
         // second invocation must not re-issue executor.CompensateAsync calls. This test pins
         // that contract because process-manager hosts may retry compensation on transient
         // persistence errors and we MUST NOT double-undo external work.
-        if (!_pg.IsAvailable)
-        {
-            return;
-        }
-
         var pm = ProvisioningProcessManager.Create("idempotent-org");
         await _orchestrator.StartAsync(pm);
 
