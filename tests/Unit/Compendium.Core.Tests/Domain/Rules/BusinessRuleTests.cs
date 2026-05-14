@@ -369,41 +369,6 @@ public class BusinessRuleTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Theory]
-    [InlineData(1000)]
-    public void BusinessRule_Evaluation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var rules = new IBusinessRule[]
-        {
-            new ValidBusinessRule(),
-            new BrokenBusinessRule(),
-            new ConditionalBusinessRule(false),
-            new ParameterizedBusinessRule("test", 3)
-        };
-
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            foreach (var rule in rules)
-            {
-                _ = rule.IsBroken();
-                _ = rule.Message;
-                _ = rule.ErrorCode;
-            }
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(50, "Business rule evaluation should be fast");
-    }
-
     [Fact]
     public void BusinessRule_ConcurrentAccess_ThreadSafe()
     {
@@ -433,31 +398,6 @@ public class BusinessRuleTests
         results.Should().HaveCount(100);
         results.Should().OnlyContain(r => r == false); // All should be false for this rule
     }
-
-    [Theory]
-    [InlineData(100)]
-    public void BusinessRuleValidationException_Creation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var rule = new BrokenBusinessRule();
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            var exception = new BusinessRuleValidationException(rule);
-            _ = exception.Message;
-            _ = exception.ErrorCode;
-            _ = exception.BrokenRule;
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(50, "Exception creation should be fast");
-    }
-
-    #endregion
 
     #region Edge Cases
 

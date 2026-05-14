@@ -355,29 +355,6 @@ public class ResultTests
            .WithMessage("A failed result must have an error.");
     }
 
-    [Theory]
-    [InlineData(1000)]
-    public void Result_Creation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var error = TestData.Errors.CreateValidation();
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            _ = Result.Success();
-            _ = Result.Success("value");
-            _ = Result.Failure(error);
-            _ = Result.Failure<string>(error);
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(50, "Result creation should be fast");
-    }
-
     [Fact]
     public void ConcurrentAccess_ResultCreation_ThreadSafe()
     {

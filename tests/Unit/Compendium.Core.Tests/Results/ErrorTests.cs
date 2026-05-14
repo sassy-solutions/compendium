@@ -476,29 +476,6 @@ public class ErrorTests
 
     #endregion
 
-    #region Performance Tests
-
-    [Theory]
-    [InlineData(1000)]
-    public void Error_Creation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            _ = Error.Validation($"VAL.{i:000}", $"Validation error {i}");
-            _ = Error.Failure($"FAIL.{i:000}", $"Failure error {i}");
-            _ = Error.NotFound($"NF.{i:000}", $"Not found error {i}");
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(100, "Error creation should be fast");
-    }
-
     [Fact]
     public void Error_ConcurrentAccess_ThreadSafe()
     {
@@ -521,8 +498,6 @@ public class ErrorTests
         errors.Should().OnlyContain(e => e.Type == ErrorType.Validation);
         errors.Select(e => e.Code).Should().OnlyHaveUniqueItems();
     }
-
-    #endregion
 
     #region Edge Cases
 

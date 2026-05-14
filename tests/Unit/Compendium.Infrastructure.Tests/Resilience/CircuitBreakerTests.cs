@@ -73,15 +73,15 @@ public sealed class CircuitBreakerTests
             await circuitBreaker.ExecuteAsync(failingOperation);
         }
 
-        var stopwatch = Stopwatch.StartNew();
         var result = await circuitBreaker.ExecuteAsync(successfulOperation);
-        stopwatch.Stop();
 
         // Assert
         circuitBreaker.State.Should().Be(CircuitBreakerState.Open);
         result.IsSuccess.Should().BeFalse();
         result.Error.Code.Should().Be("CircuitBreaker.Open");
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(50, "Should reject immediately without executing operation");
+
+        // Throughput / fast-fail latency is measured in
+        // tests/Perf/Compendium.Infrastructure.PerfTests (ResilienceBenchmarks).
     }
 
     [Fact]
@@ -515,36 +515,6 @@ public sealed class CircuitBreakerTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Fact]
-    public async Task CircuitBreaker_PerformanceTest_ShouldHandleHighThroughput()
-    {
-        // Arrange
-        const int operationCount = 10000;
-        var circuitBreaker = new CircuitBreaker(_defaultOptions, _logger);
-        var successfulOperation = CreateSuccessfulOperation();
-        var stopwatch = Stopwatch.StartNew();
-
-        // Act
-        var tasks = Enumerable.Range(0, operationCount)
-            .Select(_ => circuitBreaker.ExecuteAsync(successfulOperation));
-
-        var results = await Task.WhenAll(tasks);
-        stopwatch.Stop();
-
-        // Assert
-        results.Should().HaveCount(operationCount);
-        results.Should().AllSatisfy(r => r.IsSuccess.Should().BeTrue());
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(5000, "Should handle high throughput efficiently");
-
-        _output.WriteLine($"Processed {operationCount} operations in {stopwatch.ElapsedMilliseconds}ms");
-        _output.WriteLine($"Average: {(double)stopwatch.ElapsedMilliseconds / operationCount:F3}ms per operation");
-    }
-
-    #endregion
-
     #region Test Helpers
 
     private static Func<Task<Result>> CreateSuccessfulOperation()

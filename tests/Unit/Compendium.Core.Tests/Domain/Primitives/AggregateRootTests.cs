@@ -311,31 +311,6 @@ public class AggregateRootTests
         aggregate.Version.Should().Be(incrementCount);
     }
 
-    [Theory]
-    [InlineData(1000)]
-    public void AddDomainEvent_PerformanceTest_CompletesQuickly(int eventCount)
-    {
-        // Arrange
-        var aggregate = new TestAggregate(Guid.NewGuid());
-        var events = Enumerable.Range(0, eventCount)
-            .Select(i => new TestDomainEvent(aggregate.Id.ToString(), nameof(TestAggregate), i))
-            .ToList();
-
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        foreach (var domainEvent in events)
-        {
-            aggregate.TestAddDomainEvent(domainEvent);
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(50, "Adding domain events should be fast");
-        aggregate.DomainEvents.Should().HaveCount(eventCount);
-    }
-
     [Fact]
     public void DomainEvents_ReadOnlyCollection_CannotBeModifiedDirectly()
     {

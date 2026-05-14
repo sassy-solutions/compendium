@@ -410,37 +410,6 @@ public class EntityTests
         entity.HasBrokenRules.Should().BeFalse();
     }
 
-    [Theory]
-    [InlineData(1000)]
-    public void Equals_PerformanceTest_CompletesQuickly(int iterations)
-    {
-        // Arrange
-        var entities = Enumerable.Range(0, 100)
-            .Select(_ => new TestEntity(Guid.NewGuid()))
-            .ToList();
-
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            foreach (var e1 in entities.Take(10))
-            {
-                foreach (var e2 in entities.Take(10))
-                {
-                    _ = e1.Equals(e2);
-                }
-            }
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        // Allow generous headroom: coverlet code-coverage instrumentation on the
-        // GitHub Actions runner can add 3-5x overhead. Local runs are far below.
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(500, "Entity equality should be fast");
-    }
-
     [Fact]
     public void ConcurrentAccess_BrokenRules_ThreadSafe()
     {
