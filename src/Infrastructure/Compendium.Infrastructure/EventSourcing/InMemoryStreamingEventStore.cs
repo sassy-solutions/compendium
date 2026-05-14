@@ -281,7 +281,7 @@ public sealed class InMemoryStreamingEventStore : IStreamingEventStore, IDisposa
         _lock.EnterReadLock();
         try
         {
-            snapshot = _globalLog.Where(e => e.GlobalPosition >= fromPosition).ToList();
+            snapshot = _globalLog.Where(e => e.GlobalPosition > fromPosition).ToList();
         }
         finally
         {
