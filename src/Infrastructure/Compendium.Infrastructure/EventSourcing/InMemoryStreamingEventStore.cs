@@ -247,11 +247,18 @@ public sealed class InMemoryStreamingEventStore : IStreamingEventStore, IDisposa
         _lock.EnterReadLock();
         try
         {
-            var totalEvents = _streams.Values.Sum(s => s.Count);
+            var tenantId = _tenantContext?.TenantId;
+            var snapshot = string.IsNullOrEmpty(tenantId)
+                ? _streams.Values.ToList()
+                : _streams
+                    .Where(kvp => kvp.Key.StartsWith($"{tenantId}:", StringComparison.Ordinal))
+                    .Select(kvp => kvp.Value)
+                    .ToList();
+
             var stats = new EventStoreStatistics
             {
-                TotalEvents = totalEvents,
-                TotalAggregates = _streams.Count,
+                TotalEvents = snapshot.Sum(s => s.Count),
+                TotalAggregates = snapshot.Count,
             };
             return Task.FromResult(Result.Success(stats));
         }
