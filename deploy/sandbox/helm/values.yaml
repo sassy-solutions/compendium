@@ -1,0 +1,46 @@
+# values.yaml — Compendium coding-agent sandbox cluster prerequisites.
+
+# Namespace pods are provisioned in. Mirrors KubernetesSandboxOptions.Namespace.
+namespace: coding-agents
+
+# Whether the chart creates the namespace. Disable if you provision namespaces
+# from a higher-level multi-tenant module.
+createNamespace: true
+
+# Apply the PodSecurity "restricted" admission label on the namespace.
+podSecurity:
+  enforce: restricted
+  enforceVersion: latest
+
+serviceAccount:
+  # Must match KubernetesSandboxOptions.ServiceAccountName.
+  name: coding-agent-sandbox
+  # Intentionally empty Role: the sandbox needs *no* in-cluster permissions.
+  # The controlling service (compendium-runtime) has separate RBAC to create
+  # pods in this namespace.
+  annotations: {}
+
+networkPolicy:
+  enabled: true
+  # FQDNs allowed for HTTPS egress (used by the companion CiliumNetworkPolicy).
+  allowedFqdns:
+    - api.anthropic.com
+    - api.openai.com
+    - api.github.com
+  allowedFqdnPatterns:
+    - "*.githubusercontent.com"
+  # Cilium-specific addendum. Disabled by default; set to true on Cilium-backed clusters.
+  cilium:
+    enabled: false
+
+# RBAC that lets the runtime service create / read / delete pods inside the
+# sandbox namespace. Apply this to the Role assumed by your runtime workload,
+# *not* to the sandbox service account itself.
+runtimeRbac:
+  enabled: true
+  # Subjects (e.g. the runtime service account) that need pod CRUD inside the
+  # sandbox namespace. Override per environment.
+  subjects:
+    - kind: ServiceAccount
+      name: compendium-runtime
+      namespace: compendium-system

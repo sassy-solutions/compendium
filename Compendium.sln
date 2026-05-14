@@ -167,6 +167,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Core.PerfTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Infrastructure.PerfTests", "tests\Perf\Compendium.Infrastructure.PerfTests\Compendium.Infrastructure.PerfTests.csproj", "{77217115-F266-49E6-B1D9-090218461DDD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{0CB45A8C-EFA9-418F-A1DE-1C5B082B238A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Kubernetes.Sandbox", "src\Adapters\Compendium.Adapters.Kubernetes.Sandbox\Compendium.Adapters.Kubernetes.Sandbox.csproj", "{D098747F-BBF1-488B-9CC6-0E89D693440D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Kubernetes.Sandbox.Tests", "tests\Unit\Compendium.Adapters.Kubernetes.Sandbox.Tests\Compendium.Adapters.Kubernetes.Sandbox.Tests.csproj", "{BFC22E6F-1619-4CC2-9773-0B57DA972B64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{A2517BFF-352C-4123-81B2-2D848F3FB497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Kubernetes.Sandbox.IntegrationTests", "tests\Integration\Compendium.Adapters.Kubernetes.Sandbox.IntegrationTests\Compendium.Adapters.Kubernetes.Sandbox.IntegrationTests.csproj", "{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -432,6 +442,18 @@ Global
 		{77217115-F266-49E6-B1D9-090218461DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77217115-F266-49E6-B1D9-090218461DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77217115-F266-49E6-B1D9-090218461DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FE421F00-7FFD-4666-A961-F1FF325ECD34} = {E35C8F52-5000-4427-9589-AEB5987C1AC6}
@@ -511,5 +533,8 @@ Global
 		{4221097B-A228-4E18-A1E9-4D5423BA94FF} = {B23A5693-C266-43DC-8D3E-CBB108131762}
 		{3907EF5A-478C-43C0-A66C-1A2F5FFA10C6} = {4221097B-A228-4E18-A1E9-4D5423BA94FF}
 		{77217115-F266-49E6-B1D9-090218461DDD} = {4221097B-A228-4E18-A1E9-4D5423BA94FF}
+		{D098747F-BBF1-488B-9CC6-0E89D693440D} = {0CB45A8C-EFA9-418F-A1DE-1C5B082B238A}
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64} = {17245130-8317-4D67-B86D-BFA713DE2C1C}
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B} = {A2517BFF-352C-4123-81B2-2D848F3FB497}
 	EndGlobalSection
 EndGlobal

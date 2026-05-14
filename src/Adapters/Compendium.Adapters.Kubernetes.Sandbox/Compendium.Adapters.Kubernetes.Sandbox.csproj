@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Adapters.Kubernetes.Sandbox</AssemblyName>
+    <RootNamespace>Compendium.Adapters.Kubernetes.Sandbox</RootNamespace>
+    <PackageId>Compendium.Adapters.Kubernetes.Sandbox</PackageId>
+    <Description>Kubernetes adapter for Compendium IAgentSandbox: provisions ephemeral pods for coding-agent runs (Claude Code, Codex, Gemini, OpenCode), drives exec/read/write/edit through the Kubernetes API, and tears the pod down on dispose. Multi-tenant ready; runs as non-root with allowlisted egress.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions.CodingAgents\Compendium.Abstractions.CodingAgents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KubernetesClient" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Adapters.Kubernetes.Sandbox.Tests" />
+    <InternalsVisibleTo Include="Compendium.Adapters.Kubernetes.Sandbox.IntegrationTests" />
+  </ItemGroup>
+
+</Project>

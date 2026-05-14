@@ -1,0 +1,16 @@
+apiVersion: v2
+name: compendium-coding-agent-sandbox
+description: |
+  Cluster prerequisites for Compendium's KubernetesAgentSandbox adapter:
+  dedicated namespace, RBAC-minimal ServiceAccount, default-deny NetworkPolicy
+  with a narrow egress allowlist, and an optional PodSecurity baseline label.
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - compendium
+  - coding-agent
+  - sandbox
+maintainers:
+  - name: Sassy Solutions
+    url: https://github.com/sassy-solutions/compendium
