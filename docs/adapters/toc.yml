@@ -1,8 +1,4 @@
 - name: ASP.NET Core
   href: aspnetcore.md
-- name: PostgreSQL
-  href: postgresql.md
-- name: Redis
-  href: redis.md
 - name: External adapters (separate repos)
   href: external.md

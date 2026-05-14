@@ -16,8 +16,6 @@
     <ProjectReference Include="..\..\..\src\Application\Compendium.Application\Compendium.Application.csproj" />
     <ProjectReference Include="..\..\..\src\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
     <ProjectReference Include="..\..\..\src\Testing\Compendium.Testing\Compendium.Testing.csproj" />
-    <ProjectReference Include="..\..\..\src\Adapters\Compendium.Adapters.PostgreSQL\Compendium.Adapters.PostgreSQL.csproj" />
-    <ProjectReference Include="..\..\..\src\Adapters\Compendium.Adapters.Redis\Compendium.Adapters.Redis.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +24,6 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="NSubstitute" />
-    <PackageReference Include="Testcontainers" />
-    <PackageReference Include="Testcontainers.PostgreSql" />
-    <PackageReference Include="Testcontainers.Redis" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
 
     <!-- OpenTelemetry for telemetry integration tests -->

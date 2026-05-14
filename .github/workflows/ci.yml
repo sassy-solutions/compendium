@@ -50,6 +50,47 @@ jobs:
       - name: Build samples
         run: dotnet build samples/ -c Release
 
+      - name: Enforce 90% line coverage gate
+        # Per ADR-0006: with the heavy integration-bound adapters extracted to their
+        # own repos, the framework's aggregate line coverage is well above 90 % and
+        # the gate is now strict. Each test project's cobertura report includes the
+        # transitive assemblies it references — naive summation would double-count.
+        # We merge per assembly by keeping the report that exercised it the most
+        # (highest lines-covered), then aggregate across the unique set.
+        run: |
+          python3 - <<'PY'
+          import glob, sys, xml.etree.ElementTree as ET
+          reports = glob.glob('TestResults/**/coverage.cobertura.xml', recursive=True)
+          if not reports:
+              print('::error::No coverage reports found under TestResults/')
+              sys.exit(1)
+          agg = {}  # package name -> (lines-valid, lines-covered)
+          for path in reports:
+              root = ET.parse(path).getroot()
+              for pkg in root.findall('packages/package'):
+                  name = pkg.attrib.get('name')
+                  v = c = 0
+                  for cls in pkg.findall('classes/class'):
+                      for ln in cls.findall('lines/line'):
+                          v += 1
+                          if int(ln.attrib.get('hits', 0)) > 0:
+                              c += 1
+                  prev_v, prev_c = agg.get(name, (v, -1))
+                  if c > prev_c:
+                      agg[name] = (v, c)
+          total_v = sum(v for v, _ in agg.values())
+          total_c = sum(c for _, c in agg.values())
+          pct = (total_c / total_v * 100) if total_v else 0
+          print(f'Aggregate line coverage (per-assembly max-merge): {total_c}/{total_v} = {pct:.2f}%')
+          for name in sorted(agg):
+              v, c = agg[name]
+              p = (c / v * 100) if v else 100
+              print(f'  {name:50s} {c:5d}/{v:5d} = {p:5.2f}%')
+          if pct < 90:
+              print(f'::error::Line coverage {pct:.2f}% is below the 90% gate.')
+              sys.exit(1)
+          PY
+
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v7

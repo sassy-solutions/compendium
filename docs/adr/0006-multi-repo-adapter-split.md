@@ -128,7 +128,9 @@ Adapters extracted from this monorepo (chronological):
 | 2026-05-13 | Listmonk | [`compendium-adapter-listmonk`](https://github.com/sassy-solutions/compendium-adapter-listmonk) | `1.0.0-preview.9` |
 | 2026-05-13 | LemonSqueezy | [`compendium-adapter-lemonsqueezy`](https://github.com/sassy-solutions/compendium-adapter-lemonsqueezy) | `1.0.0-preview.9` |
 | 2026-05-13 | Zitadel | [`compendium-adapter-zitadel`](https://github.com/sassy-solutions/compendium-adapter-zitadel) | `1.0.0-preview.9` |
+| 2026-05-14 | PostgreSQL | [`compendium-adapter-postgresql`](https://github.com/sassy-solutions/compendium-adapter-postgresql) | `1.0.0-preview.9` |
+| 2026-05-14 | Redis | [`compendium-adapter-redis`](https://github.com/sassy-solutions/compendium-adapter-redis) | `1.0.0-preview.9` |
 
-PostgreSQL and Redis remain in the framework for now: their tests are entangled with the integration test suite (`tests/Integration/Compendium.IntegrationTests`) and require a separate restructuring before they can be extracted.
+All seven heavy adapters now live in their own repositories. The framework's `tests/Integration` no longer requires Docker (per [ADR-0007](0007-integration-test-split-and-inmemory-defaults.md)); per-adapter integration tests live alongside the adapter that owns them. The framework CI's line-coverage gate is now strict at ≥ 90 %.
 
 The convenience meta-package `Compendium.Extensions.ExternalAdapters` (which previously re-exposed Zitadel + Listmonk + LemonSqueezy DI helpers) was removed as part of this transition — consumers wire each adapter directly through its own DI extension method (`AddStripeBilling`, `AddZitadelIdentity`, etc.).

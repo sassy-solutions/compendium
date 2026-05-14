@@ -5,22 +5,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
-using Compendium.Adapters.Redis.Configuration;
-using Compendium.Adapters.Redis.Idempotency;
 using Compendium.Application.Idempotency;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
+using Compendium.Infrastructure.EventSourcing;
+using Compendium.Infrastructure.Idempotency;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using NSubstitute;
-using StackExchange.Redis;
-using Testcontainers.PostgreSql;
-using Testcontainers.Redis;
-using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -39,112 +29,26 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
     private record OrderResult(string OrderId);
     private record WorkflowResult(string OrderId, bool Success, DateTimeOffset ExecutedAt);
 
-    private PostgreSqlContainer? _postgres;
-    private RedisContainer? _redis;
-    private PostgreSqlEventStore? _eventStore;
+    private InMemoryStreamingEventStore? _eventStore;
     private IIdempotencyService? _idempotencyService;
-    private IConnectionMultiplexer? _redisConnection;
-    private string _postgresConnectionString = null!;
 
-    public async Task InitializeAsync()
+    public Task InitializeAsync()
     {
-        // Use EnvironmentConfigurationHelper for PostgreSQL connection string
-        var externalConnectionString = Compendium.IntegrationTests.Infrastructure.EnvironmentConfigurationHelper.GetPostgreSqlConnectionString();
+        _eventStore = new InMemoryStreamingEventStore();
 
-        if (!string.IsNullOrEmpty(externalConnectionString))
-        {
-            _postgresConnectionString = externalConnectionString;
-        }
-        else
-        {
-            // Fallback to TestContainers for PostgreSQL
-            Console.WriteLine("⚠️ Starting TestContainer for PostgreSQL (Idempotency E2E)...");
-            _postgres = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_idempotency_e2e")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
-
-            await _postgres.StartAsync();
-            _postgresConnectionString = _postgres.GetConnectionString();
-        }
-
-        // Check for Redis environment variable first (CI/CD with remote infrastructure)
-        var redisConnectionString = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRING");
-
-        if (string.IsNullOrWhiteSpace(redisConnectionString))
-        {
-            // Fallback to TestContainers for local development
-            Console.WriteLine("⚠️ Starting TestContainer for Redis (Idempotency E2E)...");
-            _redis = new RedisBuilder()
-                .WithImage("redis:7-alpine")
-                .WithCleanUp(true)
-                .Build();
-
-            await _redis.StartAsync();
-            redisConnectionString = _redis.GetConnectionString();
-        }
-        else
-        {
-            Console.WriteLine("✅ Using Redis from environment variable (Idempotency E2E)");
-        }
-
-        // Initialize PostgreSQL Event Store
-        var postgresOptions = Options.Create(new PostgreSqlOptions
-        {
-            ConnectionString = _postgresConnectionString,
-            AutoCreateSchema = true,
-            TableName = "idempotency_events_e2e",
-            CommandTimeout = 30,
-            BatchSize = 1000
-        });
-
-        var eventDeserializer = new E2EEventDeserializer();
-        var eventStoreLogger = Substitute.For<ILogger<PostgreSqlEventStore>>();
-        _eventStore = new PostgreSqlEventStore(postgresOptions, eventDeserializer, eventStoreLogger);
-
-        var initResult = await _eventStore.InitializeSchemaAsync();
-        initResult.IsSuccess.Should().BeTrue();
-
-        // Initialize Redis Idempotency Store
-        _redisConnection = await ConnectionMultiplexer.ConnectAsync(redisConnectionString);
-        var redisOptions = Options.Create(new RedisOptions
-        {
-            ConnectionString = redisConnectionString,
-            KeyPrefix = "e2e:idempotency:"
-        });
-
-        var redisLogger = Substitute.For<ILogger<RedisIdempotencyStore>>();
-        var idempotencyStore = new RedisIdempotencyStore(_redisConnection, redisOptions, redisLogger);
+        var idempotencyStore = new InMemoryIdempotencyStore();
         _idempotencyService = new IdempotencyService(idempotencyStore, TimeSpan.FromHours(1));
+
+        return Task.CompletedTask;
     }
 
-    public async Task DisposeAsync()
+    public Task DisposeAsync()
     {
-        if (_eventStore != null)
-        {
-            await _eventStore.DisposeAsync();
-        }
-
-        if (_redisConnection != null)
-        {
-            await _redisConnection.DisposeAsync();
-        }
-
-        if (_redis != null)
-        {
-            await _redis.DisposeAsync();
-        }
-
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        _eventStore?.Dispose();
+        return Task.CompletedTask;
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task FirstExecution_WithIdempotencyKey_OperationExecutesAndResultStored()
     {
         // Arrange
@@ -183,7 +87,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Events appended to event store
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task DuplicateExecution_WithSameKey_ReturnsCachedResult()
     {
         // Arrange
@@ -223,7 +127,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ NO duplicate events appended
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task DifferentOperations_SameKey_ConflictDetected()
     {
         // Arrange
@@ -261,7 +165,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Different operation type detectable
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task SameOperation_DifferentKeys_BothExecuteSuccessfully()
     {
         // Arrange
@@ -309,7 +213,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Each has separate cached result
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task IdempotencyPattern_CompleteWorkflow_PreventsDuplicates()
     {
         // Arrange
@@ -364,7 +268,7 @@ public sealed class IdempotencyE2ETests : IAsyncLifetime
         // ✅ Only one event stored
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task IdempotencyExpiration_After1Hour_AllowsReExecution()
     {
         // Arrange

@@ -11,8 +11,6 @@
     <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
     <ProjectReference Include="..\..\Abstractions\Compendium.Abstractions\Compendium.Abstractions.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Compendium.Infrastructure\Compendium.Infrastructure.csproj" />
-    <ProjectReference Include="..\Compendium.Adapters.PostgreSQL\Compendium.Adapters.PostgreSQL.csproj" />
-    <ProjectReference Include="..\Compendium.Adapters.Redis\Compendium.Adapters.Redis.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+    <!-- Npgsql + StackExchange.Redis used directly here for health-check probes. -->
     <PackageReference Include="Npgsql" />
     <PackageReference Include="StackExchange.Redis" />
   </ItemGroup>

@@ -9,6 +9,8 @@ Heavy adapters that ship from their own repositories per [ADR-0006](../adr/0006-
 | Zitadel | [sassy-solutions/compendium-adapter-zitadel](https://github.com/sassy-solutions/compendium-adapter-zitadel) | [`Compendium.Adapters.Zitadel`](https://www.nuget.org/packages/Compendium.Adapters.Zitadel) | Identity: users, tokens, organizations (multi-tenant) |
 | Listmonk | [sassy-solutions/compendium-adapter-listmonk](https://github.com/sassy-solutions/compendium-adapter-listmonk) | [`Compendium.Adapters.Listmonk`](https://www.nuget.org/packages/Compendium.Adapters.Listmonk) | Email: transactional, newsletters, subscribers |
 | OpenRouter | [sassy-solutions/compendium-adapter-openrouter](https://github.com/sassy-solutions/compendium-adapter-openrouter) | [`Compendium.Adapters.OpenRouter`](https://www.nuget.org/packages/Compendium.Adapters.OpenRouter) | AI: access to 100+ LLMs through one OpenAI-compatible API |
+| PostgreSQL | [sassy-solutions/compendium-adapter-postgresql](https://github.com/sassy-solutions/compendium-adapter-postgresql) | [`Compendium.Adapters.PostgreSQL`](https://www.nuget.org/packages/Compendium.Adapters.PostgreSQL) | Event store, projection store, idempotency, row-level tenant isolation |
+| Redis | [sassy-solutions/compendium-adapter-redis](https://github.com/sassy-solutions/compendium-adapter-redis) | [`Compendium.Adapters.Redis`](https://www.nuget.org/packages/Compendium.Adapters.Redis) | Distributed cache, idempotency store, locking |
 
 ## Writing a new adapter
 
@@ -25,10 +27,6 @@ See the template README for the full bootstrap procedure.
 
 ## In-framework adapters
 
-These stay in the framework monorepo for now:
+The only adapter that remains in the framework monorepo:
 
-- [`Compendium.Adapters.AspNetCore`](aspnetcore.md) — thin glue (middleware, ProblemDetails mappers, DI helpers)
-- [`Compendium.Adapters.PostgreSQL`](postgresql.md) — event-store + projection store backed by PostgreSQL
-- [`Compendium.Adapters.Redis`](redis.md) — distributed cache + locking strategy
-
-PostgreSQL and Redis are kept in-tree because their tests are coupled to the framework's integration test suite. A future ADR may extract them once that coupling is unwound.
+- [`Compendium.Adapters.AspNetCore`](aspnetcore.md) — thin glue (middleware, ProblemDetails mappers, DI helpers). No external SDK; evolves in lock-step with `Compendium.Application`.

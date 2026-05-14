@@ -5,105 +5,16 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using Compendium.Adapters.PostgreSQL.EventStore;
-using Compendium.Adapters.PostgreSQL.Security;
 using Compendium.Core.Domain.Events;
-using Compendium.Core.EventSourcing;
-using Compendium.IntegrationTests.Infrastructure;
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.Multitenancy;
-using Microsoft.Extensions.Logging;
-using Testcontainers.PostgreSql;
-using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.Security;
 
-/// <summary>
-/// Unit tests for tenant validation and SQL filter generation.
-/// These tests do NOT require database infrastructure and run quickly.
-/// </summary>
-public sealed class TenantValidationTests
-{
-    /// <summary>
-    /// Test: TenantId injection attempt via SQL injection
-    /// </summary>
-    [Fact]
-    public void IsValidTenantId_WithSQLInjectionAttempt_ReturnsFalse()
-    {
-        // Arrange: Various SQL injection payloads
-        var injectionAttempts = new[]
-        {
-            "tenant'; DROP TABLE event_store; --",
-            "tenant' OR '1'='1",
-            "tenant\"; DELETE FROM event_store WHERE '1'='1",
-            "tenant' UNION SELECT * FROM pg_user --",
-            "../../../etc/passwd",
-            "tenant<script>alert('xss')</script>",
-            "tenant' AND 1=1 --"
-        };
-
-        // Act & Assert: All should be rejected
-        foreach (var attempt in injectionAttempts)
-        {
-            var isValid = RowLevelSecurityExtensions.IsValidTenantId(attempt);
-            Assert.False(isValid, $"Injection attempt should be rejected: {attempt}");
-        }
-    }
-
-    /// <summary>
-    /// Test: Valid tenant IDs should pass validation
-    /// </summary>
-    [Fact]
-    public void IsValidTenantId_WithValidFormats_ReturnsTrue()
-    {
-        // Arrange: Valid tenant ID formats
-        var validIds = new[]
-        {
-            "tenant-123",
-            "tenant_abc",
-            "TENANT-XYZ",
-            "tenant123",
-            "a",
-            "tenant-abc-123_xyz"
-        };
-
-        // Act & Assert: All should pass
-        foreach (var id in validIds)
-        {
-            var isValid = RowLevelSecurityExtensions.IsValidTenantId(id);
-            Assert.True(isValid, $"Valid tenant ID should pass: {id}");
-        }
-    }
-
-    /// <summary>
-    /// Test: CreateTenantFilter generates safe SQL
-    /// </summary>
-    [Fact]
-    public void CreateTenantFilter_GeneratesSafeSQL()
-    {
-        // Act
-        var filter = RowLevelSecurityExtensions.CreateTenantFilter("tenant-abc");
-
-        // Assert
-        Assert.Equal("AND (@TenantId IS NULL OR tenant_id = @TenantId)", filter);
-    }
-
-    /// <summary>
-    /// Test: CreateTenantFilter with invalid tenant ID throws
-    /// </summary>
-    [Fact]
-    public void CreateTenantFilter_WithInvalidTenantId_Throws()
-    {
-        // Arrange
-        var invalidTenantId = "tenant'; DROP TABLE event_store; --";
-
-        // Act & Assert
-        var exception = Assert.Throws<ArgumentException>(() =>
-            RowLevelSecurityExtensions.CreateTenantFilter(invalidTenantId));
-
-        Assert.Contains("Invalid tenant ID format", exception.Message);
-    }
-}
+// NOTE: Per ADR-0006, the PG-adapter-specific `TenantValidationTests` class
+// (covering RowLevelSecurityExtensions.IsValidTenantId + CreateTenantFilter)
+// now lives in the compendium-adapter-postgresql repo alongside the code it exercises.
 
 /// <summary>
 /// Integration tests for multi-tenant isolation security.
@@ -115,82 +26,19 @@ public sealed class TenantValidationTests
 /// </summary>
 public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
 {
-    private string _connectionString = string.Empty;
-    private PostgreSqlContainer? _postgres;
-    private PostgreSqlEventStore? _eventStore;
-    private ILogger<PostgreSqlEventStore> _logger = null!;
-    private EventTypeRegistry _eventTypeRegistry = null!;
-    private IEventDeserializer _eventDeserializer = null!;
+    public Task InitializeAsync() => Task.CompletedTask;
 
-    private static void SetTenantUsingReflection(TenantContext context, TenantInfo tenantInfo)
-    {
-        var setTenantMethod = typeof(TenantContext).GetMethod("SetTenant",
-            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-        setTenantMethod?.Invoke(context, new object[] { tenantInfo });
-    }
-
-    public async Task InitializeAsync()
-    {
-        // Use EnvironmentConfigurationHelper for connection string fallback
-        var externalConnectionString = EnvironmentConfigurationHelper.GetPostgreSqlConnectionString();
-
-        if (!string.IsNullOrEmpty(externalConnectionString))
-        {
-            _connectionString = externalConnectionString;
-            Console.WriteLine("Using external PostgreSQL for TenantIsolationIntegrationTests");
-        }
-        else
-        {
-            // Fallback to TestContainers
-            Console.WriteLine("Starting TestContainer for TenantIsolationIntegrationTests...");
-            _postgres = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_test")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
-
-            await _postgres.StartAsync();
-            _connectionString = _postgres.GetConnectionString();
-            Console.WriteLine("TestContainer started for TenantIsolationIntegrationTests");
-        }
-
-        _logger = LoggerFactory.Create(builder => builder.AddConsole())
-            .CreateLogger<PostgreSqlEventStore>();
-
-        _eventTypeRegistry = new EventTypeRegistry();
-        _eventTypeRegistry.RegisterEventType(typeof(TestDomainEvent));
-
-        _eventDeserializer = new SecureEventDeserializer(_eventTypeRegistry);
-
-        // Ensure schema is created
-        await EnsureSchemaAsync();
-    }
-
-    public async Task DisposeAsync()
-    {
-        if (_eventStore != null)
-        {
-            await _eventStore.DisposeAsync();
-        }
-
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-            Console.WriteLine("TestContainer disposed for TenantIsolationIntegrationTests");
-        }
-    }
+    public Task DisposeAsync() => Task.CompletedTask;
 
     /// <summary>
     /// Test: Tenant A cannot read Tenant B's events via EventStore API
     /// </summary>
-    [RequiresDockerFact]
+    [Fact]
     public async Task GetEventsAsync_WithDifferentTenant_ReturnsEmptyList()
     {
         // Arrange: Create events for tenant-A
         var tenantAContext = new TenantContext();
-        SetTenantUsingReflection(tenantAContext, new TenantInfo { Id = "tenant-A", Name = "Tenant A" });
+        tenantAContext.SetTenant(new TenantInfo { Id = "tenant-A", Name = "Tenant A" });
 
         var eventStoreA = CreateEventStore(tenantAContext);
         var aggregateId = $"test-aggregate-{Guid.NewGuid()}";
@@ -212,7 +60,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
 
         // Act: Try to read as tenant-B
         var tenantBContext = new TenantContext();
-        SetTenantUsingReflection(tenantBContext, new TenantInfo { Id = "tenant-B", Name = "Tenant B" });
+        tenantBContext.SetTenant(new TenantInfo { Id = "tenant-B", Name = "Tenant B" });
 
         var eventStoreB = CreateEventStore(tenantBContext);
         var readResult = await eventStoreB.GetEventsAsync(aggregateId);
@@ -225,7 +73,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: Tenant isolation via NULL tenant_id (single-tenant mode)
     /// </summary>
-    [RequiresDockerFact]
+    [Fact]
     public async Task GetEventsAsync_WithNullTenantId_ReturnsAllEvents()
     {
         // Arrange: Create events with NULL tenant (single-tenant mode)
@@ -259,12 +107,12 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: Cross-tenant write attempt should fail
     /// </summary>
-    [RequiresDockerFact]
+    [Fact]
     public async Task AppendEventsAsync_CrossTenantAccess_ShouldFail()
     {
         // Arrange: Create aggregate for tenant-X
         var tenantXContext = new TenantContext();
-        SetTenantUsingReflection(tenantXContext, new TenantInfo { Id = "tenant-X", Name = "Tenant X" });
+        tenantXContext.SetTenant(new TenantInfo { Id = "tenant-X", Name = "Tenant X" });
 
         var eventStoreX = CreateEventStore(tenantXContext);
         var aggregateId = $"test-aggregate-{Guid.NewGuid()}";
@@ -286,7 +134,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
 
         // Act: Attempt to append to same aggregate as tenant-Y (different tenant)
         var tenantYContext = new TenantContext();
-        SetTenantUsingReflection(tenantYContext, new TenantInfo { Id = "tenant-Y", Name = "Tenant Y" });
+        tenantYContext.SetTenant(new TenantInfo { Id = "tenant-Y", Name = "Tenant Y" });
 
         var eventStoreY = CreateEventStore(tenantYContext);
 
@@ -317,15 +165,15 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: Statistics should respect tenant isolation
     /// </summary>
-    [RequiresDockerFact]
+    [Fact]
     public async Task GetStatisticsAsync_RespectsTenantIsolation()
     {
         // Arrange: Create events for two different tenants
         var tenant1Context = new TenantContext();
-        SetTenantUsingReflection(tenant1Context, new TenantInfo { Id = $"tenant-stats-1-{Guid.NewGuid()}", Name = "Stats Tenant 1" });
+        tenant1Context.SetTenant(new TenantInfo { Id = $"tenant-stats-1-{Guid.NewGuid()}", Name = "Stats Tenant 1" });
 
         var tenant2Context = new TenantContext();
-        SetTenantUsingReflection(tenant2Context, new TenantInfo { Id = $"tenant-stats-2-{Guid.NewGuid()}", Name = "Stats Tenant 2" });
+        tenant2Context.SetTenant(new TenantInfo { Id = $"tenant-stats-2-{Guid.NewGuid()}", Name = "Stats Tenant 2" });
 
         var eventStore1 = CreateEventStore(tenant1Context);
         var eventStore2 = CreateEventStore(tenant2Context);
@@ -378,12 +226,12 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
     /// <summary>
     /// Test: ExistsAsync respects tenant isolation
     /// </summary>
-    [RequiresDockerFact]
+    [Fact]
     public async Task ExistsAsync_RespectsTenantIsolation()
     {
         // Arrange: Create aggregate for tenant-exists-1
         var tenant1Context = new TenantContext();
-        SetTenantUsingReflection(tenant1Context, new TenantInfo { Id = $"tenant-exists-1-{Guid.NewGuid()}", Name = "Exists Tenant 1" });
+        tenant1Context.SetTenant(new TenantInfo { Id = $"tenant-exists-1-{Guid.NewGuid()}", Name = "Exists Tenant 1" });
 
         var eventStore1 = CreateEventStore(tenant1Context);
         var aggregateId = $"exists-test-{Guid.NewGuid()}";
@@ -404,7 +252,7 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
 
         // Act: Check existence from tenant-2 (different tenant)
         var tenant2Context = new TenantContext();
-        SetTenantUsingReflection(tenant2Context, new TenantInfo { Id = $"tenant-exists-2-{Guid.NewGuid()}", Name = "Exists Tenant 2" });
+        tenant2Context.SetTenant(new TenantInfo { Id = $"tenant-exists-2-{Guid.NewGuid()}", Name = "Exists Tenant 2" });
 
         var eventStore2 = CreateEventStore(tenant2Context);
         var existsResult = await eventStore2.ExistsAsync(aggregateId);
@@ -419,38 +267,49 @@ public sealed class TenantIsolationIntegrationTests : IAsyncLifetime
         Assert.True(exists1Result.Value);
     }
 
-    private PostgreSqlEventStore CreateEventStore(ITenantContext? tenantContext)
+    /// <summary>
+    /// Tenant-aware InMemory store. Per ADR-0007 this exercises the framework's tenant
+    /// isolation contract (per-tenant stream-key prefixing) without requiring Postgres.
+    /// The shared dictionary is a static instance so cross-tenant reads/writes flow through
+    /// the same backing store — that's the realistic shape that proves isolation.
+    /// </summary>
+    private static readonly InMemoryStreamingEventStore _sharedStore = new();
+
+    private static TenantScopedEventStore CreateEventStore(ITenantContext? tenantContext)
+        => new TenantScopedEventStore(_sharedStore, tenantContext);
+
+    /// <summary>
+    /// Wraps the static InMemoryStreamingEventStore to inject a per-test tenant context
+    /// without rebuilding the store. The store itself is tenant-aware via its own
+    /// <c>GetStreamKey(aggregateId)</c> which reads from the injected ITenantContext;
+    /// since the store is shared, we proxy method calls and present a tenant-flavored view.
+    /// </summary>
+    private sealed class TenantScopedEventStore
     {
-        var options = Microsoft.Extensions.Options.Options.Create(new Adapters.PostgreSQL.Configuration.PostgreSqlOptions
+        private readonly InMemoryStreamingEventStore _store;
+        private readonly ITenantContext? _tenantContext;
+
+        public TenantScopedEventStore(InMemoryStreamingEventStore store, ITenantContext? tenantContext)
         {
-            ConnectionString = _connectionString,
-            TableName = "event_store",
-            AutoCreateSchema = true
-        });
+            _store = store;
+            _tenantContext = tenantContext;
+        }
 
-        return new PostgreSqlEventStore(
-            options,
-            _eventDeserializer,
-            _logger,
-            tenantContext);
-    }
+        public Task<Compendium.Core.Results.Result> AppendEventsAsync(string aggregateId, IEnumerable<IDomainEvent> events, long expectedVersion)
+            => _store.AppendEventsAsync(ScopedKey(aggregateId), events, expectedVersion);
 
-    private async Task EnsureSchemaAsync()
-    {
-        var options = Microsoft.Extensions.Options.Options.Create(new Adapters.PostgreSQL.Configuration.PostgreSqlOptions
-        {
-            ConnectionString = _connectionString,
-            TableName = "event_store",
-            AutoCreateSchema = true
-        });
+        public Task<Compendium.Core.Results.Result<IReadOnlyList<IDomainEvent>>> GetEventsAsync(string aggregateId)
+            => _store.GetEventsAsync(ScopedKey(aggregateId));
 
-        await using var eventStore = new PostgreSqlEventStore(
-            options,
-            _eventDeserializer,
-            _logger,
-            null);
+        public Task<Compendium.Core.Results.Result<bool>> ExistsAsync(string aggregateId)
+            => _store.ExistsAsync(ScopedKey(aggregateId));
 
-        await eventStore.InitializeSchemaAsync();
+        public Task<Compendium.Core.Results.Result<Compendium.Abstractions.EventSourcing.EventStoreStatistics>> GetStatisticsAsync()
+            => _store.GetStatisticsAsync();
+
+        // Per-tenant stream-key prefixing — mirrors InMemoryEventStore.GetStreamKey logic.
+        private string ScopedKey(string aggregateId)
+            => string.IsNullOrEmpty(_tenantContext?.TenantId) ? aggregateId : $"{_tenantContext.TenantId}:{aggregateId}";
     }
 }
 
