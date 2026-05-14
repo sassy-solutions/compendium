@@ -4,10 +4,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.Infrastructure.Projections;
 using FluentAssertions;
 
-namespace Compendium.Infrastructure.Tests.Projections;
+namespace Compendium.Infrastructure.Tests.EventSourcing;
 
 public sealed class InMemoryStreamingEventStoreTests
 {

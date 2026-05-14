@@ -10,10 +10,10 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using Compendium.Core.EventSourcing;
 using Compendium.Core.Results;
-using Compendium.Infrastructure.EventSourcing;
+using Compendium.Infrastructure.Projections;
 using Compendium.Multitenancy;
 
-namespace Compendium.Infrastructure.Projections;
+namespace Compendium.Infrastructure.EventSourcing;
 
 /// <summary>
 /// In-memory implementation of <see cref="IStreamingEventStore"/> for testing
