@@ -1,0 +1,75 @@
+# Default-deny egress for sandbox pods, with a narrow allowlist for the
+# coding-agent control planes (Anthropic, OpenAI, GitHub) plus DNS. Apply
+# alongside the KubernetesAgentSandbox adapter; pods are matched by the
+# `compendium.io/component=coding-agent-sandbox` label which the adapter sets
+# on every pod it creates.
+#
+# Notes:
+#   * Vendor IP ranges drift — keep these as `external` egress rules (FQDN-based
+#     NetworkPolicy needs a CNI like Cilium). Adjust to your cluster's CNI.
+#   * Ingress is fully denied: nothing should call into a sandbox pod.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: coding-agent-sandbox-default-deny
+  namespace: coding-agents
+spec:
+  podSelector:
+    matchLabels:
+      compendium.io/component: coding-agent-sandbox
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress: []
+  egress:
+    # DNS — required for any FQDN resolution downstream.
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # HTTPS to the model + git providers. Restrict further via a CNI-level
+    # FQDN policy (Cilium ToFQDN) when available.
+    - ports:
+        - protocol: TCP
+          port: 443
+---
+# Companion CiliumNetworkPolicy with FQDN allowlist. Apply only when Cilium is
+# the cluster CNI; ignored elsewhere.
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: coding-agent-sandbox-fqdn-allowlist
+  namespace: coding-agents
+spec:
+  endpointSelector:
+    matchLabels:
+      compendium.io/component: coding-agent-sandbox
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": kube-system
+            "k8s:k8s-app": kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: ANY
+          rules:
+            dns:
+              - matchPattern: "*"
+    - toFQDNs:
+        - matchName: api.anthropic.com
+        - matchName: api.openai.com
+        - matchName: api.github.com
+        - matchPattern: "*.githubusercontent.com"
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP

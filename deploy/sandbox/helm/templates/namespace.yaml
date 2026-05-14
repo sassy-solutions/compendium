@@ -1,0 +1,13 @@
+{{- if .Values.createNamespace }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    compendium.io/component: coding-agent-sandbox
+    {{- if .Values.podSecurity.enforce }}
+    pod-security.kubernetes.io/enforce: {{ .Values.podSecurity.enforce }}
+    pod-security.kubernetes.io/enforce-version: {{ .Values.podSecurity.enforceVersion | default "latest" }}
+    {{- end }}
+{{- end }}

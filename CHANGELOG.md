@@ -45,6 +45,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **`Compendium.Adapters.Kubernetes.Sandbox`** (POM-431). Kubernetes adapter
+  for `IAgentSandbox`: provisions an ephemeral non-root pod per agent run,
+  drives it through `pods/exec` (bash exec, base64 file read/write/edit),
+  deletes the pod on dispose. Ships with a multi-stage Dockerfile for the
+  sandbox base image (`deploy/sandbox/coding-agent.Dockerfile`), a Helm
+  chart with default-deny `NetworkPolicy` + minimal `ServiceAccount`/RBAC
+  (`deploy/sandbox/helm/`), an ArgoCD `Application` template
+  (`deploy/sandbox/argocd-application.yaml`), unit tests for the pod spec
+  and DI wiring, Testcontainers-backed k3s integration tests (auto-skip
+  when Docker is unavailable), and operator docs
+  (`docs/operations/coding-agent-sandbox.md`). Unblocks the Claude Code /
+  Codex / Gemini / OpenCode runtimes.
 - **Typed state reload on `IProcessManagerRepository`.** New
   `Task<Result<IProcessManager<TState>>> GetByIdAsync<TState>(Guid id, ct)` overload
   rehydrates a saga's persisted state into the original typed shape so resumed steps
