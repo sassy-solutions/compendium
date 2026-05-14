@@ -17,6 +17,7 @@
     <!-- PG adapter consumed as a published package per ADR-0006. -->
     <PackageReference Include="Compendium.Adapters.PostgreSQL" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="Npgsql" />
   </ItemGroup>
