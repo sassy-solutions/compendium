@@ -1,0 +1,39 @@
+# ArgoCD Application that installs the coding-agent sandbox cluster
+# prerequisites (Namespace, ServiceAccount, NetworkPolicy, RBAC for the runtime).
+# Adjust `repoURL`, `targetRevision`, and the values overrides to suit your
+# environment, then `kubectl apply -f deploy/sandbox/argocd-application.yaml`.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: compendium-coding-agent-sandbox
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sassy-solutions/compendium
+    targetRevision: main
+    path: deploy/sandbox/helm
+    helm:
+      valueFiles:
+        - values.yaml
+      values: |
+        namespace: coding-agents
+        networkPolicy:
+          cilium:
+            enabled: false
+        runtimeRbac:
+          enabled: true
+          subjects:
+            - kind: ServiceAccount
+              name: compendium-runtime
+              namespace: compendium-system
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: coding-agents
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

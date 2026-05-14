@@ -173,6 +173,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.ClaudeC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.ClaudeCode.IntegrationTests", "tests\Integration\Compendium.Adapters.ClaudeCode.IntegrationTests\Compendium.Adapters.ClaudeCode.IntegrationTests.csproj", "{926E1CB6-3A16-4210-9B71-4CF2C14097A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{0CB45A8C-EFA9-418F-A1DE-1C5B082B238A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Kubernetes.Sandbox", "src\Adapters\Compendium.Adapters.Kubernetes.Sandbox\Compendium.Adapters.Kubernetes.Sandbox.csproj", "{D098747F-BBF1-488B-9CC6-0E89D693440D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Kubernetes.Sandbox.Tests", "tests\Unit\Compendium.Adapters.Kubernetes.Sandbox.Tests\Compendium.Adapters.Kubernetes.Sandbox.Tests.csproj", "{BFC22E6F-1619-4CC2-9773-0B57DA972B64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{A2517BFF-352C-4123-81B2-2D848F3FB497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compendium.Adapters.Kubernetes.Sandbox.IntegrationTests", "tests\Integration\Compendium.Adapters.Kubernetes.Sandbox.IntegrationTests\Compendium.Adapters.Kubernetes.Sandbox.IntegrationTests.csproj", "{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -450,6 +460,18 @@ Global
 		{926E1CB6-3A16-4210-9B71-4CF2C14097A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926E1CB6-3A16-4210-9B71-4CF2C14097A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926E1CB6-3A16-4210-9B71-4CF2C14097A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D098747F-BBF1-488B-9CC6-0E89D693440D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FE421F00-7FFD-4666-A961-F1FF325ECD34} = {E35C8F52-5000-4427-9589-AEB5987C1AC6}
@@ -532,5 +554,8 @@ Global
 		{03BA154C-FB1D-4EBB-9AAB-A38EF18EEE4C} = {73261E87-8FCA-40B6-940B-E25CBDBE33FB}
 		{6B7CA3D8-B870-4C2B-A395-7F690C023984} = {6E0B453A-55CF-4567-ADBD-50CFB84CE629}
 		{926E1CB6-3A16-4210-9B71-4CF2C14097A8} = {DEEC6B90-90D2-4053-A2CE-1958BB881B5E}
+		{D098747F-BBF1-488B-9CC6-0E89D693440D} = {0CB45A8C-EFA9-418F-A1DE-1C5B082B238A}
+		{BFC22E6F-1619-4CC2-9773-0B57DA972B64} = {17245130-8317-4D67-B86D-BFA713DE2C1C}
+		{D8DAEEF0-931B-4CE8-BEC4-767162B4CE7B} = {A2517BFF-352C-4123-81B2-2D848F3FB497}
 	EndGlobalSection
 EndGlobal
