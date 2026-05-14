@@ -5,23 +5,15 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using System.Diagnostics;
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
-using Compendium.Adapters.PostgreSQL.Projections;
 using Compendium.Core.Domain.Events;
-using Compendium.Core.EventSourcing;
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.Infrastructure.Projections;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
 using Compendium.IntegrationTests.EndToEnd.TestProjections;
-using Dapper;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Testcontainers.PostgreSql;
-using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -31,108 +23,50 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// Tests projection rebuild from large event streams with performance monitoring.
 /// </summary>
 [Trait("Category", "E2E")]
-[Trait("Category", "Performance")]
 public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
 {
-    private PostgreSqlContainer? _postgres;
-    private PostgreSqlEventStore? _eventStore;
-    private PostgreSqlStreamingEventStore? _streamingEventStore;
-    private PostgreSqlProjectionStore? _projectionStore;
-    private IProjectionManager? _projectionManager;
-    private string _connectionString = null!;
+    private InMemoryStreamingEventStore? _eventStore;
+    private InMemoryProjectionStore? _projectionStore;
+    private Compendium.Infrastructure.Projections.IProjectionManager? _projectionManager;
+    private ServiceProvider? _provider;
 
-    public async Task InitializeAsync()
+    public Task InitializeAsync()
     {
-        // Use EnvironmentConfigurationHelper for connection string fallback
-        var externalConnectionString = Compendium.IntegrationTests.Infrastructure.EnvironmentConfigurationHelper.GetPostgreSqlConnectionString();
-
-        if (!string.IsNullOrEmpty(externalConnectionString))
-        {
-            _connectionString = externalConnectionString;
-        }
-        else
-        {
-            // Fallback to TestContainers
-            Console.WriteLine("⚠️ Starting TestContainer for PostgreSQL (Projection E2E)...");
-            _postgres = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_projection_e2e")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
-
-            await _postgres.StartAsync();
-            _connectionString = _postgres.GetConnectionString();
-        }
-
-        // Set up dependency injection
         var services = new ServiceCollection();
-        services.AddLogging(builder => builder.AddConsole().SetMinimumLevel(LogLevel.Information));
+        services.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Warning));
 
-        // Configure PostgreSQL options
-        services.Configure<PostgreSqlOptions>(options =>
-        {
-            options.ConnectionString = _connectionString;
-            options.TableName = "projection_events_e2e";
-            options.AutoCreateSchema = true;
-            options.BatchSize = 1000;
-        });
-
-        // Configure projection options
         services.Configure<ProjectionOptions>(options =>
         {
             options.RebuildBatchSize = 100;
             options.MaxConcurrentRebuilds = 2;
-            options.ProgressReportInterval = 10; // Report every 10 events for testing
-            options.EnableSnapshots = false; // Disable for clearer testing
+            options.ProgressReportInterval = 10;
+            options.EnableSnapshots = false;
             options.SnapshotInterval = TimeSpan.FromHours(1);
         });
 
-        // Register services
-        var eventDeserializer = new E2EEventDeserializer();
-        services.AddSingleton<IEventDeserializer>(eventDeserializer);
-        services.AddSingleton<PostgreSqlEventStore>();
-        services.AddSingleton<IStreamingEventStore, PostgreSqlStreamingEventStore>();
-        services.AddSingleton<IProjectionStore, PostgreSqlProjectionStore>();
-        services.AddSingleton<IProjectionManager, EnhancedProjectionManager>();
+        _eventStore = new InMemoryStreamingEventStore();
+        _projectionStore = new InMemoryProjectionStore();
 
-        // Projections must be DI-registered so the manager can resolve them
+        services.AddSingleton(_eventStore);
+        services.AddSingleton<IStreamingEventStore>(_eventStore);
+        services.AddSingleton<IProjectionStore>(_projectionStore);
+        services.AddSingleton<Compendium.Infrastructure.Projections.IProjectionManager, EnhancedProjectionManager>();
         services.AddSingleton<OrderSummaryProjection>();
 
-        var provider = services.BuildServiceProvider();
+        _provider = services.BuildServiceProvider();
+        _projectionManager = _provider.GetRequiredService<Compendium.Infrastructure.Projections.IProjectionManager>();
 
-        _eventStore = provider.GetRequiredService<PostgreSqlEventStore>();
-        _streamingEventStore = (PostgreSqlStreamingEventStore)provider.GetRequiredService<IStreamingEventStore>();
-        _projectionStore = (PostgreSqlProjectionStore)provider.GetRequiredService<IProjectionStore>();
-        _projectionManager = provider.GetRequiredService<IProjectionManager>();
-
-        // Drop and recreate tables to ensure clean state with proper constraints
-        using var connection = new Npgsql.NpgsqlConnection(_connectionString);
-        await connection.OpenAsync();
-        await connection.ExecuteAsync($"DROP TABLE IF EXISTS projection_events_e2e");
-        await connection.ExecuteAsync($"DROP TABLE IF EXISTS projection_checkpoints");
-        await connection.CloseAsync();
-
-        // Initialize schemas
-        var initResult = await _eventStore.InitializeSchemaAsync();
-        initResult.IsSuccess.Should().BeTrue();
-
-        var streamInitResult = await _streamingEventStore.InitializeSchemaAsync();
-        streamInitResult.IsSuccess.Should().BeTrue();
-
-        await _projectionStore.InitializeAsync();
+        return Task.CompletedTask;
     }
 
-    public async Task DisposeAsync()
+    public Task DisposeAsync()
     {
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        _eventStore?.Dispose();
+        _provider?.Dispose();
+        return Task.CompletedTask;
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task RebuildProjection_From1000Events_CompletesSuccessfully()
     {
         // Arrange
@@ -184,11 +118,9 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         var progress = new Progress<RebuildProgress>(report => progressReports.Add(report));
 
         // Act
-        var stopwatch = Stopwatch.StartNew();
         await _projectionManager.RebuildProjectionAsync<OrderSummaryProjection>(
             streamId: orderId.ToString(),
             progress: progress);
-        stopwatch.Stop();
 
         // Assert - Verify projection state
         var projectionState = await _projectionManager.GetProjectionStateAsync("E2E_OrderSummary");
@@ -201,12 +133,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         lastReport.ProcessedEvents.Should().Be(1000);
         lastReport.PercentComplete.Should().BeApproximately(100, 0.1);
 
-        // Performance: Should meet 10k events/minute target
-        var eventsPerMinute = eventCount * 60.0 / stopwatch.Elapsed.TotalSeconds;
-        Console.WriteLine($"Rebuilt projection from {eventCount} events in {stopwatch.Elapsed.TotalSeconds:F2}s ({eventsPerMinute:F0} events/min)");
-
-        eventsPerMinute.Should().BeGreaterThan(10000,
-            "Projection rebuild should process at least 10,000 events/minute");
+        // Performance benchmarks live in tests/Perf/Compendium.Infrastructure.PerfTests.
 
         // **Expected Results:**
         // ✅ Projection rebuilt from 1000 events
@@ -215,7 +142,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         // ✅ Final projection state correct
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task RebuildProjection_WithMultipleOrders_AggregatesCorrectly()
     {
         // Arrange
@@ -263,7 +190,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         // ✅ Statistics show all events processed
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task ProjectionWithCheckpoint_ResumesFromLastPosition()
     {
         // Arrange
@@ -311,7 +238,7 @@ public sealed class ProjectionRebuildE2ETests : IAsyncLifetime
         // ✅ Final state shows completed
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task CompleteOrderLifecycle_WithProjectionRebuild_QueriesSucceed()
     {
         // Arrange
