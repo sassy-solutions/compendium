@@ -12,5 +12,7 @@
   href: 0005-event-sourcing-vs-state.md
 - name: 0006 — Multi-repo adapter split
   href: 0006-multi-repo-adapter-split.md
+- name: 0007 — Integration test split
+  href: 0007-integration-test-split.md
 - name: Template
   href: 0000-template.md
