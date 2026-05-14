@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **All seven heavy adapters extracted to their own repositories per
-  [ADR-0006](docs/adr/0006-multi-repo-adapter-split.md).** `Compendium.Adapters.Stripe`,
+- **All seven heavy adapters extracted to their own repositories** per
+  [ADR-0006](docs/adr/0006-multi-repo-adapter-split.md). `Compendium.Adapters.Stripe`,
   `Compendium.Adapters.LemonSqueezy`, `Compendium.Adapters.Zitadel`,
   `Compendium.Adapters.Listmonk`, `Compendium.Adapters.OpenRouter`,
   `Compendium.Adapters.PostgreSQL`, and `Compendium.Adapters.Redis` are no longer
