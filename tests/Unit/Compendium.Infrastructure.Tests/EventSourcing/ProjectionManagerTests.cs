@@ -398,50 +398,6 @@ public sealed class ProjectionManagerTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Fact]
-    public async Task ProjectionManager_PerformanceTest_ShouldHandleHighThroughput()
-    {
-        // Arrange
-        const int eventCount = 10000;
-        var projection = new TestProjection();
-        _projectionManager.RegisterProjection(projection);
-
-        var events = Enumerable.Range(0, eventCount)
-            .Select(i => new TestDomainEvent
-            {
-                EventId = Guid.NewGuid(),
-                AggregateId = $"aggregate-{i % 100}", // Reuse aggregate IDs
-                AggregateType = "TestAggregate",
-                OccurredOn = DateTimeOffset.UtcNow,
-                AggregateVersion = i + 1,
-                EventVersion = 1,
-                Data = $"Event {i}"
-            })
-            .ToList();
-
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        var tasks = events.Select(e => _projectionManager.ProcessEventAsync("test-aggregate", e));
-        var results = await Task.WhenAll(tasks);
-        stopwatch.Stop();
-
-        // Assert
-        results.Should().AllSatisfy(r => r.IsSuccess.Should().BeTrue());
-        projection.HandledEvents.Should().HaveCount(eventCount);
-
-        var avgTimePerEvent = (double)stopwatch.ElapsedMilliseconds / eventCount;
-        _output.WriteLine($"Processed {eventCount} events in {stopwatch.ElapsedMilliseconds}ms");
-        _output.WriteLine($"Average time per event: {avgTimePerEvent:F3}ms");
-
-        avgTimePerEvent.Should().BeLessThan(1, "Should handle events efficiently");
-    }
-
-    #endregion
-
     #region Edge Cases
 
     [Fact]

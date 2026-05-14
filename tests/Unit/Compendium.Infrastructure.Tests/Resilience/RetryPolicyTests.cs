@@ -467,43 +467,6 @@ public sealed class RetryPolicyTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Fact]
-    public async Task RetryPolicy_PerformanceTest_ShouldHandleMultipleOperations()
-    {
-        // Arrange
-        const int operationCount = 1000;
-        var options = new RetryOptions
-        {
-            MaxRetries = 1,
-            DelayStrategy = new FixedDelayStrategy(TimeSpan.FromMilliseconds(1))
-        };
-        var retryPolicy = new RetryPolicy(options, _logger);
-        var stopwatch = Stopwatch.StartNew();
-
-        // Act
-        var tasks = Enumerable.Range(0, operationCount)
-            .Select(i => retryPolicy.ExecuteAsync(() =>
-                Task.FromResult(Result.Success($"Operation {i}"))));
-
-        var results = await Task.WhenAll(tasks);
-        stopwatch.Stop();
-
-        // Assert
-        results.Should().HaveCount(operationCount);
-        results.Should().AllSatisfy(r => r.IsSuccess.Should().BeTrue());
-
-        var avgTimePerOperation = (double)stopwatch.ElapsedMilliseconds / operationCount;
-        _output.WriteLine($"Processed {operationCount} operations in {stopwatch.ElapsedMilliseconds}ms");
-        _output.WriteLine($"Average time per operation: {avgTimePerOperation:F3}ms");
-
-        avgTimePerOperation.Should().BeLessThan(5, "Should handle operations efficiently");
-    }
-
-    #endregion
-
     #region Integration Tests
 
     [Fact]

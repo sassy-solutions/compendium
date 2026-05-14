@@ -556,55 +556,6 @@ public class SpecificationTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Theory]
-    [InlineData(1000)]
-    public void Specification_Evaluation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var spec = new AgeRangeSpecification(18, 65);
-        var entity = new TestEntity { Age = 25 };
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            _ = spec.IsSatisfiedBy(entity);
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(100, "Specification evaluation should be fast");
-    }
-
-    [Theory]
-    [InlineData(100)]
-    public void Specification_Composition_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var spec1 = new IdSpecification(1);
-        var spec2 = new ActiveSpecification();
-        var entity = new TestEntity { Id = 1, IsActive = true };
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            var combined = spec1.And(spec2).Or(spec1.Not());
-            _ = combined.IsSatisfiedBy(entity);
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        // Allow generous headroom: coverlet code-coverage instrumentation on the
-        // GitHub Actions runner can add 3-5x overhead. Local runs are far below.
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(1000, "Specification composition should be fast (relaxed for CI)");
-    }
-
     [Fact]
     public void Specification_ConcurrentAccess_ThreadSafe()
     {
@@ -631,8 +582,6 @@ public class SpecificationTests
         results.Should().Contain(true);
         results.Should().Contain(false);
     }
-
-    #endregion
 
     #region Edge Cases
 

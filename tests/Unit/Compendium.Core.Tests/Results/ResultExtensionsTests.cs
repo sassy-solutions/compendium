@@ -622,34 +622,6 @@ public class ResultExtensionsTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Theory]
-    [InlineData(1000)]
-    public void ResultExtensions_Performance_Test(int iterations)
-    {
-        // Arrange
-        var result = Result.Success("test value");
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            _ = result.Map(v => v.Length)
-                     .Bind(len => Result.Success(len * 2))
-                     .Tap(val => { /* side effect */ })
-                     .Match(
-                         onSuccess: val => val.ToString(),
-                         onFailure: err => err.Message);
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(100, "Result extensions should be fast");
-    }
-
     [Fact]
     public void ResultExtensions_ConcurrentAccess_ThreadSafe()
     {
@@ -676,8 +648,6 @@ public class ResultExtensionsTests
         results.Should().HaveCount(100);
         results.Should().AllSatisfy(r => r.Should().StartWith("test value_"));
     }
-
-    #endregion
 
     #region Chaining Tests
 

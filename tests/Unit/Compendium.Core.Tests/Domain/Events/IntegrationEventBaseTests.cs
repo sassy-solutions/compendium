@@ -464,34 +464,6 @@ public class IntegrationEventBaseTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Theory]
-    [InlineData(1000)]
-    public void IntegrationEvent_Creation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            _ = new SubscriptionCreatedEvent(
-                SubscriptionId: $"sub-{i}",
-                CustomerId: $"cust-{i}",
-                PlanId: "plan-123",
-                Status: "active",
-                BillingPeriodStart: DateTimeOffset.UtcNow,
-                BillingPeriodEnd: DateTimeOffset.UtcNow.AddMonths(1));
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(100, "Integration event creation should be fast");
-    }
-
     [Fact]
     public void IntegrationEvent_ConcurrentCreation_ThreadSafe()
     {
@@ -520,5 +492,4 @@ public class IntegrationEventBaseTests
         events.Select(e => e.EventId).Should().OnlyHaveUniqueItems();
     }
 
-    #endregion
 }

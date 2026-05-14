@@ -1,0 +1,59 @@
+name: Perf Bench
+
+# Runs the BenchmarkDotNet projects on a schedule and posts the markdown
+# summary as a workflow artifact. Not gating — perf regressions are detected
+# by diffing artifacts across runs, not by failing CI.
+
+on:
+  schedule:
+    # 03:00 UTC daily — quiet hours for any shared runners.
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      filter:
+        description: "BenchmarkDotNet --filter glob (e.g. '*ValueObject*'). Empty = all."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - tests/Perf/Compendium.Core.PerfTests
+          - tests/Perf/Compendium.Infrastructure.PerfTests
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore ${{ matrix.project }}
+
+      - name: Build (Release)
+        run: dotnet build ${{ matrix.project }} -c Release --no-restore
+
+      - name: Run benchmarks
+        run: |
+          filter='${{ inputs.filter }}'
+          args=""
+          if [ -n "$filter" ]; then
+            args="-- --filter $filter"
+          fi
+          dotnet run -c Release --no-build --project ${{ matrix.project }} $args
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bench-${{ matrix.project }}-${{ github.run_id }}
+          path: ${{ matrix.project }}/BenchmarkDotNet.Artifacts/
+          retention-days: 90
