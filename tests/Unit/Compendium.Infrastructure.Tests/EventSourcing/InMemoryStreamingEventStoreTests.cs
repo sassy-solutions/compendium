@@ -75,8 +75,9 @@ public sealed class InMemoryStreamingEventStoreTests
     }
 
     [Fact]
-    public async Task StreamEvents_FromPosition_SkipsEarlierEvents()
+    public async Task StreamEvents_FromPosition_IsExclusive()
     {
+        // Append events at global positions 1, 2, 3.
         await _sut.AppendEventsAsync("agg-1", new[] { NewEvent("agg-1", "Order", 1) }, 0);
         await _sut.AppendEventsAsync("agg-1", new[] { NewEvent("agg-1", "Order", 2) }, 1);
         await _sut.AppendEventsAsync("agg-1", new[] { NewEvent("agg-1", "Order", 3) }, 2);
@@ -87,8 +88,12 @@ public sealed class InMemoryStreamingEventStoreTests
             streamed.Add(ed);
         }
 
-        streamed.Should().HaveCount(2);  // Global positions 2 and 3.
-        streamed.Select(e => e.GlobalPosition).Should().BeEquivalentTo(new long[] { 2, 3 });
+        // Exclusive on fromPosition: only events with GlobalPosition > 2 are yielded.
+        // This matches the SQL `WHERE global_position > @FromPosition` in
+        // PostgreSqlStreamingEventStore — without exclusive semantics,
+        // LiveProjectionProcessor would re-process the checkpoint event on every poll.
+        streamed.Should().HaveCount(1);
+        streamed.Select(e => e.GlobalPosition).Should().BeEquivalentTo(new long[] { 3 });
     }
 
     [Fact]
