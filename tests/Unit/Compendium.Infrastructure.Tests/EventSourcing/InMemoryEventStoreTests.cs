@@ -496,25 +496,22 @@ public sealed class InMemoryEventStoreTests : IDisposable
     #region Edge Cases
 
     [Fact]
-    public async Task AppendEventsAsync_WithLargeBatch_ShouldHandleEfficiently()
+    public async Task AppendEventsAsync_WithLargeBatch_ShouldStoreAllEvents()
     {
         // Arrange
         const int eventCount = 1000;
         var events = GenerateTestEvents(eventCount);
-        var stopwatch = Stopwatch.StartNew();
 
         // Act
         var result = await _sut.AppendEventsAsync(_defaultAggregateId, events, 0);
-        stopwatch.Stop();
 
         // Assert
         result.IsSuccess.Should().BeTrue();
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(1000, "Large batch should be processed quickly");
 
         var storedEvents = await _sut.GetEventsAsync(_defaultAggregateId);
         storedEvents.Value.Should().HaveCount(eventCount);
 
-        _output.WriteLine($"Processed {eventCount} events in {stopwatch.ElapsedMilliseconds}ms");
+        // Throughput is measured in tests/Perf/Compendium.Infrastructure.PerfTests.
     }
 
     [Fact]
@@ -565,30 +562,23 @@ public sealed class InMemoryEventStoreTests : IDisposable
     #region Memory and Performance
 
     [Fact]
-    public async Task EventStore_ShouldHandleLargeBatch_Efficiently()
+    public async Task EventStore_ShouldStoreLargeBatch_WithCorrectVersion()
     {
         // Arrange
         const int eventCount = 10000;
         var events = GenerateTestEvents(eventCount);
-        var stopwatch = Stopwatch.StartNew();
-        var initialMemory = GC.GetTotalMemory(true);
 
         // Act
         var result = await _sut.AppendEventsAsync(_defaultAggregateId, events, 0);
-        stopwatch.Stop();
-        var finalMemory = GC.GetTotalMemory(false);
 
         // Assert
         result.IsSuccess.Should().BeTrue();
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(1000, "10,000 events should be processed in under 1 second");
 
-        var memoryIncrease = finalMemory - initialMemory;
-        _output.WriteLine($"Memory increase: {memoryIncrease / 1024 / 1024:F2} MB for {eventCount} events");
-        _output.WriteLine($"Processing time: {stopwatch.ElapsedMilliseconds}ms");
-
-        // Verify all events were stored
+        // Verify all events were stored.
         var version = await _sut.GetVersionAsync(_defaultAggregateId);
         version.Value.Should().Be(eventCount);
+
+        // Throughput / memory are measured in tests/Perf/Compendium.Infrastructure.PerfTests.
     }
 
     [Fact]

@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Abstractions\Compendium.Abstractions.AI\Compendium.Abstractions.AI.csproj" />
-    <ProjectReference Include="..\..\src\Adapters\Compendium.Adapters.OpenRouter\Compendium.Adapters.OpenRouter.csproj" />
     <ProjectReference Include="..\..\src\Application\Compendium.Application\Compendium.Application.csproj" />
     <ProjectReference Include="..\..\src\Core\Compendium.Core\Compendium.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- OpenRouter adapter lives in its own repo (sassy-solutions/compendium-adapter-openrouter) per ADR-0006. -->
+    <PackageReference Include="Compendium.Adapters.OpenRouter" />
   </ItemGroup>
 
   <ItemGroup>

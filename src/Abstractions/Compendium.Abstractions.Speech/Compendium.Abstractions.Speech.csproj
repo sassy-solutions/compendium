@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Abstractions.Speech</AssemblyName>
+    <RootNamespace>Compendium.Abstractions.Speech</RootNamespace>
+    <PackageId>Compendium.Abstractions.Speech</PackageId>
+    <Description>Speech abstractions for Compendium Framework: ISpeechToText. Provider-agnostic interfaces for speech-to-text transcription (batch + streaming) across Whisper, Deepgram, and similar engines.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Abstractions.Speech.Tests" />
+  </ItemGroup>
+
+</Project>

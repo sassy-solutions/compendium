@@ -33,6 +33,29 @@ public sealed class InMemoryProcessManagerRepository : IProcessManagerRepository
     }
 
     /// <inheritdoc />
+    public Task<Result<IProcessManager<TState>>> GetByIdAsync<TState>(Guid id, CancellationToken cancellationToken = default)
+        where TState : class, new()
+    {
+        if (!_store.TryGetValue(id, out var pm))
+        {
+            return Task.FromResult(Result.Failure<IProcessManager<TState>>(
+                Error.NotFound("ProcessManager.NotFound", $"Process manager {id} not found.")));
+        }
+
+        // The in-memory store keeps the original IProcessManager<TState> reference, so the
+        // typed shape is just a runtime cast. Mismatches surface as a clear Conflict
+        // (e.g. saving a process manager with state TStateA and reloading with TStateB).
+        if (pm is IProcessManager<TState> typed)
+        {
+            return Task.FromResult(Result.Success(typed));
+        }
+
+        return Task.FromResult(Result.Failure<IProcessManager<TState>>(Error.Conflict(
+            "ProcessManager.StateTypeMismatch",
+            $"Process manager {id} was saved with a state type that is not assignable to {typeof(TState).FullName}.")));
+    }
+
+    /// <inheritdoc />
     public Task<Result> SaveAsync(IProcessManager processManager, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(processManager);

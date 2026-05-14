@@ -9,6 +9,8 @@ ADRs document the structural choices of Compendium. Format: [MADR](https://adr.g
 | 0003 | [Zero-dependency Core](0003-zero-dep-core.md) | Accepted | 2026-Q2 |
 | 0004 | [Multi-tenancy strategy](0004-multi-tenancy-strategy.md) | Accepted | 2026-Q2 |
 | 0005 | [Event sourcing over state-stored](0005-event-sourcing-vs-state.md) | Accepted | 2026-Q2 |
+| 0006 | [Multi-repo adapter split](0006-multi-repo-adapter-split.md) | Accepted | 2026-05-14 |
+| 0007 | [Integration test split (InMemory default)](0007-integration-test-split.md) | Accepted | 2026-05-14 |
 
 ## Process
 - Propose new ADR via PR with status `Proposed`

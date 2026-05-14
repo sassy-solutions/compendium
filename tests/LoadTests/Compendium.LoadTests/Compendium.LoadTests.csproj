@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,19 +6,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsTestProject>false</IsTestProject>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="NBomber" />
     <PackageReference Include="NBomber.Http" />
-    <PackageReference Include="Testcontainers.PostgreSql" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../../../src/Abstractions/Compendium.Abstractions/Compendium.Abstractions.csproj" />
     <ProjectReference Include="../../../src/Core/Compendium.Core/Compendium.Core.csproj" />
+    <ProjectReference Include="../../../src/Application/Compendium.Application/Compendium.Application.csproj" />
     <ProjectReference Include="../../../src/Infrastructure/Compendium.Infrastructure/Compendium.Infrastructure.csproj" />
-    <ProjectReference Include="../../../src/Adapters/Compendium.Adapters.PostgreSQL/Compendium.Adapters.PostgreSQL.csproj" />
+    <ProjectReference Include="../../../src/Multitenancy/Compendium.Multitenancy/Compendium.Multitenancy.csproj" />
   </ItemGroup>
 
 </Project>

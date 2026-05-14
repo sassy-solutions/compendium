@@ -51,6 +51,45 @@ public sealed class LiveProjectionProcessorBackfillTests
     }
 
     [Fact]
+    public async Task EmptyCheckpoints_DefaultOptions_HeadAtZero_StaysAtZero()
+    {
+        var (eventStore, projectionStore) = SetupStores(headPosition: 0L, checkpoint: null);
+
+        var processor = CreateProcessor(eventStore, projectionStore, backfill: false);
+        processor.RegisterProjection<TestProjection>();
+
+        await processor.InitializeProjectionsAsync(CancellationToken.None);
+
+        processor.GetStatus().LastProcessedPosition.Should().Be(0L);
+        await eventStore.Received().GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>());
+    }
+
+    [Fact]
+    public async Task EmptyCheckpoints_DefaultOptions_HeadLookupFails_InitializationFails()
+    {
+        var eventStore = Substitute.For<IStreamingEventStore>();
+        var projectionStore = Substitute.For<IProjectionStore>();
+        var ex = new InvalidOperationException("head lookup failed");
+
+        projectionStore
+            .GetCheckpointAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+            .Returns((long?)null);
+
+        eventStore
+            .GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>())
+            .Returns(_ => Task.FromException<long>(ex));
+
+        var processor = CreateProcessor(eventStore, projectionStore, backfill: false);
+        processor.RegisterProjection<TestProjection>();
+
+        var act = async () => await processor.InitializeProjectionsAsync(CancellationToken.None);
+
+        await act.Should().ThrowAsync<InvalidOperationException>()
+            .WithMessage("head lookup failed");
+        await eventStore.Received().GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>());
+    }
+
+    [Fact]
     public async Task ExistingCheckpoint_TakesPrecedence_RegardlessOfBackfillFlag()
     {
         var (eventStore, projectionStore) = SetupStores(headPosition: 999L, checkpoint: 100L);
@@ -76,6 +115,24 @@ public sealed class LiveProjectionProcessorBackfillTests
         await processor.InitializeProjectionsAsync(CancellationToken.None);
 
         processor.GetStatus().LastProcessedPosition.Should().Be(100L);
+        await eventStore.DidNotReceive().GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>());
+    }
+
+    [Fact]
+    public async Task MultipleProjections_WithDifferentCheckpoints_UsesMaximumCheckpoint()
+    {
+        var (eventStore, projectionStore) = SetupStoresForProjectionCheckpoints(
+            headPosition: 999L,
+            ("TestProjection", 100L),
+            ("AnotherTestProjection", 250L));
+
+        var processor = CreateProcessor(eventStore, projectionStore, backfill: true);
+        processor.RegisterProjection<TestProjection>();
+        processor.RegisterProjection<AnotherTestProjection>();
+
+        await processor.InitializeProjectionsAsync(CancellationToken.None);
+
+        processor.GetStatus().LastProcessedPosition.Should().Be(250L);
         await eventStore.DidNotReceive().GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>());
     }
 
@@ -116,7 +173,8 @@ public sealed class LiveProjectionProcessorBackfillTests
 
     private static (IStreamingEventStore eventStore, IProjectionStore projectionStore) SetupStores(
         long headPosition,
-        long? checkpoint)
+        long? checkpoint,
+        IReadOnlyDictionary<string, long?>? checkpointsByProjection = null)
     {
         var eventStore = Substitute.For<IStreamingEventStore>();
         eventStore.GetMaxGlobalPositionAsync(Arg.Any<CancellationToken>())
@@ -124,10 +182,31 @@ public sealed class LiveProjectionProcessorBackfillTests
 
         var projectionStore = Substitute.For<IProjectionStore>();
         projectionStore.GetCheckpointAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
-            .Returns(checkpoint);
+            .Returns(callInfo =>
+            {
+                var projectionName = callInfo.ArgAt<string>(0);
+
+                if (checkpointsByProjection is not null &&
+                    checkpointsByProjection.TryGetValue(projectionName, out var namedCheckpoint))
+                {
+                    return namedCheckpoint;
+                }
+
+                return checkpoint;
+            });
         // Snapshot path is intentionally not exercised — EnableSnapshots=false in CreateProcessor.
 
         return (eventStore, projectionStore);
+    }
+
+    private static (IStreamingEventStore eventStore, IProjectionStore projectionStore) SetupStoresForProjectionCheckpoints(
+        long headPosition,
+        params (string projectionName, long? checkpoint)[] checkpointsByProjection)
+    {
+        var projectionCheckpoints = checkpointsByProjection
+            .ToDictionary(x => x.projectionName, x => x.checkpoint);
+
+        return SetupStores(headPosition, checkpoint: null, checkpointsByProjection: projectionCheckpoints);
     }
 
     private static LiveProjectionProcessor CreateProcessor(
@@ -137,6 +216,7 @@ public sealed class LiveProjectionProcessorBackfillTests
     {
         var services = new ServiceCollection();
         services.AddSingleton<TestProjection>();
+        services.AddSingleton<AnotherTestProjection>();
         var sp = services.BuildServiceProvider();
 
         var options = Options.Create(new ProjectionOptions
@@ -156,7 +236,14 @@ public sealed class LiveProjectionProcessorBackfillTests
     /// <summary>Minimal projection used purely so the processor has at least one registered.</summary>
     private sealed class TestProjection : Compendium.Infrastructure.Projections.IProjection
     {
-        public string ProjectionName => "Test";
+        public string ProjectionName => "TestProjection";
+        public int Version => 1;
+        public Task ResetAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
+    }
+
+    private sealed class AnotherTestProjection : Compendium.Infrastructure.Projections.IProjection
+    {
+        public string ProjectionName => "AnotherTestProjection";
         public int Version => 1;
         public Task ResetAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
     }

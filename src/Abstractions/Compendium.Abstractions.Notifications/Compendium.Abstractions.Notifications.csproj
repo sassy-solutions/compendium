@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Abstractions.Notifications</AssemblyName>
+    <RootNamespace>Compendium.Abstractions.Notifications</RootNamespace>
+    <PackageId>Compendium.Abstractions.Notifications</PackageId>
+    <Description>Notification abstractions for Compendium Framework: IPushNotificationSender (and forthcoming ISmsSender). Provider-agnostic interfaces for push notifications across FCM, APNS, and Web Push.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Abstractions.Notifications.Tests" />
+  </ItemGroup>
+
+</Project>

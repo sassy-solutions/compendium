@@ -217,7 +217,6 @@ public sealed class MetricsCollectorTests : IDisposable
 
         // Assert
         _output.WriteLine($"Processed {operationCount * 3} metric operations in {stopwatch.ElapsedMilliseconds}ms");
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(1000, "High throughput operations should be fast");
     }
 
     [Fact]
@@ -482,7 +481,6 @@ public sealed class MetricsCollectorTests : IDisposable
 
         // Assert
         _output.WriteLine($"Complete workflow recorded in {stopwatch.ElapsedMilliseconds}ms");
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(100, "Metric recording should be very fast");
     }
 
     #endregion

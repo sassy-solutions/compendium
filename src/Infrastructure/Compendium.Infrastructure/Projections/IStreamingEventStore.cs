@@ -19,7 +19,7 @@ public interface IStreamingEventStore : IEventStore
     /// Used for projection rebuilds and live processing.
     /// </summary>
     /// <param name="streamId">Optional stream identifier to filter by specific stream.</param>
-    /// <param name="fromPosition">The global position to start from (inclusive).</param>
+    /// <param name="fromPosition">The global position to start from (exclusive — events with positions <c>&gt; fromPosition</c> are yielded).</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An async enumerable of event data with metadata.</returns>
     IAsyncEnumerable<EventData> StreamEventsAsync(

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Abstractions.Translation</AssemblyName>
+    <RootNamespace>Compendium.Abstractions.Translation</RootNamespace>
+    <PackageId>Compendium.Abstractions.Translation</PackageId>
+    <Description>Translation abstractions for Compendium Framework: ITranslator. Provider-agnostic interface for text translation, batch translation, and language detection.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Abstractions.Translation.Tests" />
+  </ItemGroup>
+
+</Project>

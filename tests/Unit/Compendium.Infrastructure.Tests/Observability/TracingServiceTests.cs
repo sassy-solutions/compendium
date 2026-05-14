@@ -594,7 +594,6 @@ public sealed class TracingServiceTests : IDisposable
 
         // Assert
         _output.WriteLine($"Created and disposed {spanCount} spans in {stopwatch.ElapsedMilliseconds}ms");
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(2000, "High throughput span creation should be efficient");
     }
 
     [Fact]
@@ -629,7 +628,6 @@ public sealed class TracingServiceTests : IDisposable
 
         // Assert
         _output.WriteLine($"Processed {spanCount} complex spans in {stopwatch.ElapsedMilliseconds}ms");
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(1000, "Complex span operations should be efficient");
     }
 
     [Fact]

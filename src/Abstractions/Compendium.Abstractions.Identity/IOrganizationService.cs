@@ -33,6 +33,21 @@ public interface IOrganizationService
     Task<Result<IdentityOrganization>> GetOrganizationAsync(string organizationId, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Retrieves an organization by name (case-insensitive equals).
+    /// </summary>
+    /// <param name="name">The organization name to look up.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A result containing the organization or <see cref="IdentityErrors.OrganizationNotFound"/> if no match.</returns>
+    /// <remarks>
+    /// Primary use case is recovery from <see cref="ErrorType.Conflict"/> on
+    /// <see cref="CreateOrganizationAsync"/>: when the create call fails because the org
+    /// already exists, the caller can look up the existing id and reuse it. Identity
+    /// providers may legitimately have a single shared organization across many tenants
+    /// keyed by name (e.g. a re-run of a saga that previously created the org).
+    /// </remarks>
+    Task<Result<IdentityOrganization>> GetOrganizationByNameAsync(string name, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Adds a user as a member of an organization with specified roles.
     /// </summary>
     /// <param name="organizationId">The unique identifier of the organization.</param>

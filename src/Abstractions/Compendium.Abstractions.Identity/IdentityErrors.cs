@@ -37,6 +37,12 @@ public static class IdentityErrors
         Error.NotFound("Identity.OrganizationNotFound", $"Organization with ID '{organizationId}' was not found.");
 
     /// <summary>
+    /// Error returned when no organization matches the supplied name.
+    /// </summary>
+    public static Error OrganizationNotFoundByName(string name) =>
+        Error.NotFound("Identity.OrganizationNotFoundByName", $"Organization with name '{name}' was not found.");
+
+    /// <summary>
     /// Error returned when an organization with the specified name already exists.
     /// </summary>
     public static Error OrganizationAlreadyExists(string name) =>

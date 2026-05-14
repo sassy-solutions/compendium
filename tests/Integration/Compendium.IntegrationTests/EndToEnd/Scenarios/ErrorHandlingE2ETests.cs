@@ -5,18 +5,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
 using Compendium.Core.Results;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using NSubstitute;
-using Testcontainers.PostgreSql;
-using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -25,72 +18,29 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// E2E Test Scenario 7: Error Handling and Recovery.
 /// Tests graceful error handling and Result pattern usage across framework components.
 /// </summary>
+/// <remarks>
+/// Per ADR-0007, this framework-behaviour test runs against
+/// <see cref="InMemoryStreamingEventStore"/>.
+/// </remarks>
 [Trait("Category", "E2E")]
 [Trait("Category", "ErrorHandling")]
 public sealed class ErrorHandlingE2ETests : IAsyncLifetime
 {
-    private PostgreSqlContainer? _postgres;
-    private PostgreSqlEventStore? _eventStore;
-    private string _connectionString = null!;
+    private InMemoryStreamingEventStore? _eventStore;
 
-    public async Task InitializeAsync()
+    public Task InitializeAsync()
     {
-        // Use EnvironmentConfigurationHelper for connection string fallback
-        var externalConnectionString = Compendium.IntegrationTests.Infrastructure.EnvironmentConfigurationHelper.GetPostgreSqlConnectionString();
-
-        if (!string.IsNullOrEmpty(externalConnectionString))
-        {
-            _connectionString = externalConnectionString;
-        }
-        else
-        {
-            // Fallback to TestContainers
-            Console.WriteLine("⚠️ Starting TestContainer for PostgreSQL (Error Handling E2E)...");
-            _postgres = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_error_e2e")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
-
-            await _postgres.StartAsync();
-            _connectionString = _postgres.GetConnectionString();
-        }
-
-        // Initialize event store
-        var options = Options.Create(new PostgreSqlOptions
-        {
-            ConnectionString = _connectionString,
-            AutoCreateSchema = true,
-            TableName = "error_handling_events_e2e",
-            CommandTimeout = 30,
-            BatchSize = 1000
-        });
-
-        var eventDeserializer = new E2EEventDeserializer();
-        var logger = Substitute.For<ILogger<PostgreSqlEventStore>>();
-        _eventStore = new PostgreSqlEventStore(options, eventDeserializer, logger);
-
-        // Initialize schema
-        var initResult = await _eventStore.InitializeSchemaAsync();
-        initResult.IsSuccess.Should().BeTrue();
+        _eventStore = new InMemoryStreamingEventStore();
+        return Task.CompletedTask;
     }
 
-    public async Task DisposeAsync()
+    public Task DisposeAsync()
     {
-        if (_eventStore != null)
-        {
-            await _eventStore.DisposeAsync();
-        }
-
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        _eventStore?.Dispose();
+        return Task.CompletedTask;
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task InvalidAggregateCommand_ShouldReturnValidationError()
     {
         // Arrange
@@ -132,7 +82,7 @@ public sealed class ErrorHandlingE2ETests : IAsyncLifetime
         // ✅ Aggregate state unchanged
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task BusinessRuleViolation_ShouldReturnBusinessError()
     {
         // Arrange
@@ -188,7 +138,7 @@ public sealed class ErrorHandlingE2ETests : IAsyncLifetime
         // ✅ System maintains consistency
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task OptimisticConcurrencyViolation_ShouldReturnConflictError()
     {
         // Arrange
@@ -234,7 +184,7 @@ public sealed class ErrorHandlingE2ETests : IAsyncLifetime
         // ✅ Retry with correct version succeeds
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task NonExistentAggregate_ShouldReturnNotFoundError()
     {
         // Arrange

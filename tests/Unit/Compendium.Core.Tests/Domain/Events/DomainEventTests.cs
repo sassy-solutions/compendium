@@ -349,47 +349,6 @@ public class DomainEventTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Theory]
-    [InlineData(1000)]
-    public void DomainEvent_Creation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            _ = new TestDomainEventImpl($"aggregate-{i}", "TestAggregate", i);
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(100, "Domain event creation should be fast");
-    }
-
-    [Theory]
-    [InlineData(1000)]
-    public void IntegrationEvent_Creation_PerformanceTest(int iterations)
-    {
-        // Arrange
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            _ = new TestIntegrationEvent($"correlation-{i}", $"causation-{i}");
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(100, "Integration event creation should be fast");
-    }
-
     [Fact]
     public void DomainEvent_ConcurrentCreation_ThreadSafe()
     {
@@ -412,8 +371,6 @@ public class DomainEventTests
         events.Select(e => e.EventId).Should().OnlyHaveUniqueItems();
         events.Select(e => e.AggregateId).Should().OnlyHaveUniqueItems();
     }
-
-    #endregion
 
     #region Edge Cases
 

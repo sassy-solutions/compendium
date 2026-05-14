@@ -109,8 +109,66 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
     /// <inheritdoc />
     public async Task<Result<IProcessManager>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
+        var loaded = await LoadCoreAsync(id, cancellationToken).ConfigureAwait(false);
+        return loaded.IsFailure
+            ? Result.Failure<IProcessManager>(loaded.Error)
+            : Result.Success<IProcessManager>(new PersistedProcessManager(
+                loaded.Value.Saga.Id,
+                Enum.Parse<SagaStatus>(loaded.Value.Saga.Status, ignoreCase: true),
+                DateTime.SpecifyKind(loaded.Value.Saga.CreatedAt, DateTimeKind.Utc),
+                loaded.Value.Saga.CompletedAt is null ? null : DateTime.SpecifyKind(loaded.Value.Saga.CompletedAt.Value, DateTimeKind.Utc),
+                MapSteps(loaded.Value.Steps)));
+    }
+
+    /// <inheritdoc />
+    public async Task<Result<IProcessManager<TState>>> GetByIdAsync<TState>(Guid id, CancellationToken cancellationToken = default)
+        where TState : class, new()
+    {
+        var loaded = await LoadCoreAsync(id, cancellationToken).ConfigureAwait(false);
+        if (loaded.IsFailure)
+        {
+            return Result.Failure<IProcessManager<TState>>(loaded.Error);
+        }
+
+        TState state;
+        if (string.IsNullOrWhiteSpace(loaded.Value.Saga.StateJson))
+        {
+            // No state was persisted yet (saga saved before any step ran). Hand back a
+            // fresh default — callers can write to it and SaveAsync will pick it up.
+            state = new TState();
+        }
+        else
+        {
+            try
+            {
+                state = JsonSerializer.Deserialize<TState>(loaded.Value.Saga.StateJson!, JsonOptions)
+                        ?? new TState();
+            }
+            catch (JsonException ex)
+            {
+                _logger?.LogError(
+                    ex,
+                    "Failed to deserialize process manager {Id} state into {StateType}",
+                    id, typeof(TState).FullName);
+                return Result.Failure<IProcessManager<TState>>(Error.Failure(
+                    "ProcessManager.StateDeserializationFailed",
+                    $"Could not deserialize persisted state of process manager {id} into {typeof(TState).FullName}: {ex.Message}"));
+            }
+        }
+
+        return Result.Success<IProcessManager<TState>>(new PersistedProcessManager<TState>(
+            loaded.Value.Saga.Id,
+            Enum.Parse<SagaStatus>(loaded.Value.Saga.Status, ignoreCase: true),
+            DateTime.SpecifyKind(loaded.Value.Saga.CreatedAt, DateTimeKind.Utc),
+            loaded.Value.Saga.CompletedAt is null ? null : DateTime.SpecifyKind(loaded.Value.Saga.CompletedAt.Value, DateTimeKind.Utc),
+            MapSteps(loaded.Value.Steps),
+            state));
+    }
+
+    private async Task<Result<(SagaRow Saga, IReadOnlyList<StepRow> Steps)>> LoadCoreAsync(Guid id, CancellationToken cancellationToken)
+    {
         const string sagaSql = """
-            SELECT id, status, created_at, completed_at
+            SELECT id, status, state_json AS StateJson, created_at AS CreatedAt, completed_at AS CompletedAt
             FROM process_managers
             WHERE id = @Id AND (@TenantId IS NULL OR tenant_id = @TenantId)
             LIMIT 1;
@@ -136,7 +194,7 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
 
             if (saga is null)
             {
-                return Result.Failure<IProcessManager>(
+                return Result.Failure<(SagaRow, IReadOnlyList<StepRow>)>(
                     Error.NotFound("ProcessManager.NotFound", $"Process manager {id} not found."));
             }
 
@@ -144,38 +202,31 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
                 new CommandDefinition(stepsSql, new { Id = id }, cancellationToken: cancellationToken))
                 .ConfigureAwait(false)).ToList();
 
-            var steps = stepRows.Select(r => new SagaStep
-            {
-                Id = r.Id,
-                Name = r.Name,
-                Order = r.Order,
-                Status = Enum.Parse<SagaStepStatus>(r.Status, ignoreCase: true),
-                ExecutedAt = r.ExecutedAt,
-                CompensatedAt = r.CompensatedAt,
-                ErrorMessage = r.ErrorMessage,
-            });
-
-            var pm = new PersistedProcessManager(
-                saga.Id,
-                Enum.Parse<SagaStatus>(saga.Status, ignoreCase: true),
-                DateTime.SpecifyKind(saga.CreatedAt, DateTimeKind.Utc),
-                saga.CompletedAt is null ? null : DateTime.SpecifyKind(saga.CompletedAt.Value, DateTimeKind.Utc),
-                steps);
-
-            return Result.Success<IProcessManager>(pm);
+            return Result.Success<(SagaRow, IReadOnlyList<StepRow>)>((saga, stepRows));
         }
         catch (NpgsqlException ex)
         {
             _logger?.LogError(ex, "Database failure loading process manager {Id}", id);
-            return Result.Failure<IProcessManager>(Error.Failure("ProcessManager.LoadFailed", ex.Message));
+            return Result.Failure<(SagaRow, IReadOnlyList<StepRow>)>(Error.Failure("ProcessManager.LoadFailed", ex.Message));
         }
         catch (Exception ex) when (ex is ArgumentException or InvalidOperationException)
         {
-            // Row mapping or Enum.Parse rejected unexpected data.
             _logger?.LogError(ex, "Mapping failure loading process manager {Id}", id);
-            return Result.Failure<IProcessManager>(Error.Failure("ProcessManager.LoadFailed", ex.Message));
+            return Result.Failure<(SagaRow, IReadOnlyList<StepRow>)>(Error.Failure("ProcessManager.LoadFailed", ex.Message));
         }
     }
+
+    private static IEnumerable<SagaStep> MapSteps(IEnumerable<StepRow> rows) =>
+        rows.Select(r => new SagaStep
+        {
+            Id = r.Id,
+            Name = r.Name,
+            Order = r.Order,
+            Status = Enum.Parse<SagaStepStatus>(r.Status, ignoreCase: true),
+            ExecutedAt = r.ExecutedAt,
+            CompensatedAt = r.CompensatedAt,
+            ErrorMessage = r.ErrorMessage,
+        });
 
     /// <inheritdoc />
     public async Task<Result> SaveAsync(IProcessManager processManager, CancellationToken cancellationToken = default)
@@ -383,6 +434,8 @@ public sealed class PostgresProcessManagerRepository : IProcessManagerRepository
         public Guid Id { get; init; }
 
         public string Status { get; init; } = string.Empty;
+
+        public string? StateJson { get; init; }
 
         public DateTime CreatedAt { get; init; }
 

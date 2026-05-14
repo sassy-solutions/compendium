@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Compendium.Abstractions.Documents</AssemblyName>
+    <RootNamespace>Compendium.Abstractions.Documents</RootNamespace>
+    <PackageId>Compendium.Abstractions.Documents</PackageId>
+    <Description>Document parsing abstractions for Compendium Framework: IDocumentParser. Provider-agnostic interface for OCR and structured document extraction (receipts, invoices, IDs).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Compendium.Core\Compendium.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Compendium.Abstractions.Documents.Tests" />
+  </ItemGroup>
+
+</Project>

@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Heavy adapters extracted to their own repositories per [ADR-0006](docs/adr/0006-multi-repo-adapter-split.md).**
+  `Compendium.Adapters.Stripe`, `Compendium.Adapters.LemonSqueezy`,
+  `Compendium.Adapters.Zitadel`, `Compendium.Adapters.Listmonk`, and
+  `Compendium.Adapters.OpenRouter` are no longer part of this repository.
+  They now live at `sassy-solutions/compendium-adapter-<vendor>` and are
+  released independently on their own version cadence. Same NuGet
+  `PackageId`s; version sequence continues from `1.0.0-preview.9` per
+  package. Consumers using `<PackageReference>` are unaffected — the
+  packages are still resolved from nuget.org. Consumers using
+  `<ProjectReference>` against this repo's `src/Adapters/` paths must
+  switch to `<PackageReference>`.
+- **Removed `Compendium.Extensions.ExternalAdapters` meta-package.**
+  Previously bundled DI registration helpers for Zitadel, Listmonk, and
+  LemonSqueezy. Each adapter now ships its own `Add<Vendor>...` extension
+  method. To migrate, replace `services.AddCompendiumExternalAdapters(...)`
+  with per-adapter calls (e.g. `services.AddZitadelIdentity(config)`,
+  `services.AddListmonkEmail(config)`, `services.AddLemonSqueezyBilling(config)`).
+- **Removed `Stripe.net` package pin from `Directory.Packages.props`** — that
+  transitive dependency now belongs to the Stripe adapter repository.
+
+### Added
+
+- **Typed state reload on `IProcessManagerRepository`.** New
+  `Task<Result<IProcessManager<TState>>> GetByIdAsync<TState>(Guid id, ct)` overload
+  rehydrates a saga's persisted state into the original typed shape so resumed steps
+  can detect already-completed external work (the foundation for idempotent saga
+  retries). Implemented for `PostgresProcessManagerRepository`
+  (deserializes the existing `state_json` column) and `InMemoryProcessManagerRepository`
+  (returns the original instance, with a `Conflict` error on type mismatch).
+  Existing untyped `GetByIdAsync(Guid id, ct)` is unchanged.
+
 ### Fixed
 
 - `Compendium.Adapters.Zitadel.ZitadelOrganizationIdentityProvisioner` now treats
@@ -17,6 +50,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for the same admin email left an orphan Zitadel org behind and stuck the
   upstream Nexus aggregate in `Provisioning` state. Other failure types
   (validation, unauthorized, network) still propagate as before.
+- `Compendium.Adapters.Zitadel.ZitadelOrganizationIdentityProvisioner` now also
+  treats "resource already exists" conflicts on the Organization, Project, and
+  OIDC App creation steps as recoverable, mirroring the user-conflict handling
+  already in place. On Conflict for org/project, the provisioner falls back to
+  a lookup by name and reuses the existing id. For OIDC apps, the provisioner
+  fails fast with `Zitadel.OidcAppExistsButSecretLost` because the client
+  secret is only returned once by Zitadel and cannot be safely re-derived from
+  a lookup. Operators must manually rotate the OIDC secret in Zitadel and
+  re-run provisioning. Without these changes, every retry of a saga that got
+  past the user step but failed later left orphan Zitadel resources behind.
+  Adds `IOrganizationService.GetOrganizationByNameAsync` to the public
+  identity-abstractions surface so consumers can implement the same idempotent
+  pattern against other identity providers.
 
 ### Added
 

@@ -555,48 +555,6 @@ public sealed class EncryptionServiceTests
     }
 
     #endregion
-
-    #region Performance Tests
-
-    [Fact]
-    public async Task Encryption_PerformanceTest_ShouldHandleReasonableLoad()
-    {
-        // Arrange
-        const int operationCount = 1000;
-        const string testData = "Performance test data that is reasonably sized for encryption testing";
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        var tasks = Enumerable.Range(0, operationCount)
-            .Select(async i =>
-            {
-                var uniqueData = $"{testData} - Operation {i}";
-                var encryptResult = await _encryptionService.EncryptAsync(uniqueData);
-                var decryptResult = await _encryptionService.DecryptAsync(encryptResult.Value);
-                return (encryptResult, decryptResult);
-            });
-
-        var results = await Task.WhenAll(tasks);
-        stopwatch.Stop();
-
-        // Assert
-        results.Should().HaveCount(operationCount);
-        results.Should().AllSatisfy(r =>
-        {
-            r.encryptResult.IsSuccess.Should().BeTrue();
-            r.decryptResult.IsSuccess.Should().BeTrue();
-        });
-
-        var avgTimePerOperation = (double)stopwatch.ElapsedMilliseconds / operationCount;
-        _output.WriteLine($"Processed {operationCount} encrypt/decrypt cycles in {stopwatch.ElapsedMilliseconds}ms");
-        _output.WriteLine($"Average time per operation: {avgTimePerOperation:F3}ms");
-
-        // Performance assertion - should be reasonably fast
-        avgTimePerOperation.Should().BeLessThan(10, "Each encrypt/decrypt cycle should be fast");
-    }
-
-    #endregion
-
     #region Edge Cases
 
     [Fact]

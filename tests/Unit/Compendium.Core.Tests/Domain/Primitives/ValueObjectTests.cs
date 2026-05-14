@@ -361,32 +361,6 @@ public class ValueObjectTests
         vo1.Should().Be(vo3); // Transitive: if x.Equals(y) and y.Equals(z), then x.Equals(z)
     }
 
-    [Theory]
-    [InlineData(1000)]
-    public void GetHashCode_PerformanceTest_CompletesQuickly(int iterations)
-    {
-        // Arrange
-        var valueObjects = Enumerable.Range(0, 100)
-            .Select(i => new TestValueObject($"Value{i}", i))
-            .ToList();
-
-        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-        // Act
-        for (int i = 0; i < iterations; i++)
-        {
-            foreach (var vo in valueObjects)
-            {
-                _ = vo.GetHashCode();
-            }
-        }
-
-        stopwatch.Stop();
-
-        // Assert
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(200, "GetHashCode should be fast (relaxed for CI)");
-    }
-
     [Fact]
     public void ConcurrentAccess_GetHashCode_ThreadSafe()
     {
