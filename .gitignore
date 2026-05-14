@@ -45,3 +45,6 @@ logs/
 # Rider / JetBrains
 .idea/
 *.DotSettings.user
+
+# Claude Code runtime state (tracked skills/commands stay; scheduler lock is transient)
+.claude/scheduled_tasks.lock
