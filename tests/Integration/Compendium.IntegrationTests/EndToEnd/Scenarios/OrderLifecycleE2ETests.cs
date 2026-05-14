@@ -5,19 +5,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using System.Diagnostics;
-using Compendium.Adapters.PostgreSQL.Configuration;
-using Compendium.Adapters.PostgreSQL.EventStore;
 using Compendium.Core.Domain.Events;
-using Compendium.IntegrationTests.EndToEnd.Infrastructure;
+using Compendium.Infrastructure.EventSourcing;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates;
 using Compendium.IntegrationTests.EndToEnd.TestAggregates.ValueObjects;
 using FluentAssertions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using NSubstitute;
-using Testcontainers.PostgreSql;
-using Compendium.IntegrationTests.Fixtures;
 using Xunit;
 
 namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
@@ -27,72 +19,29 @@ namespace Compendium.IntegrationTests.EndToEnd.Scenarios;
 /// Tests the full lifecycle of an order from creation through completion,
 /// including event sourcing, aggregate reconstitution, and domain logic.
 /// </summary>
+/// <remarks>
+/// Per ADR-0007, this framework-behaviour test runs against
+/// <see cref="InMemoryStreamingEventStore"/>. Postgres-specific concurrency
+/// and schema tests live in compendium-adapter-postgresql.
+/// </remarks>
 [Trait("Category", "E2E")]
 public sealed class OrderLifecycleE2ETests : IAsyncLifetime
 {
-    private PostgreSqlContainer? _postgres;
-    private PostgreSqlEventStore? _eventStore;
-    private E2EEventDeserializer? _eventDeserializer;
-    private string _connectionString = null!;
+    private InMemoryStreamingEventStore? _eventStore;
 
-    public async Task InitializeAsync()
+    public Task InitializeAsync()
     {
-        // Use EnvironmentConfigurationHelper for connection string fallback
-        var externalConnectionString = Compendium.IntegrationTests.Infrastructure.EnvironmentConfigurationHelper.GetPostgreSqlConnectionString();
-
-        if (!string.IsNullOrEmpty(externalConnectionString))
-        {
-            _connectionString = externalConnectionString;
-        }
-        else
-        {
-            // Fallback to TestContainers
-            Console.WriteLine("⚠️ Starting TestContainer for PostgreSQL (E2E)...");
-            _postgres = new PostgreSqlBuilder()
-                .WithImage("postgres:15-alpine")
-                .WithDatabase("compendium_e2e")
-                .WithUsername("test_user")
-                .WithPassword("test_password")
-                .WithCleanUp(true)
-                .Build();
-
-            await _postgres.StartAsync();
-            _connectionString = _postgres.GetConnectionString();
-        }
-
-        // Initialize event store
-        var options = Options.Create(new PostgreSqlOptions
-        {
-            ConnectionString = _connectionString,
-            AutoCreateSchema = true,
-            TableName = "order_events_e2e",
-            CommandTimeout = 30,
-            BatchSize = 1000
-        });
-
-        _eventDeserializer = new E2EEventDeserializer();
-        var logger = Substitute.For<ILogger<PostgreSqlEventStore>>();
-        _eventStore = new PostgreSqlEventStore(options, _eventDeserializer, logger);
-
-        // Initialize schema
-        var initResult = await _eventStore.InitializeSchemaAsync();
-        initResult.IsSuccess.Should().BeTrue();
+        _eventStore = new InMemoryStreamingEventStore();
+        return Task.CompletedTask;
     }
 
-    public async Task DisposeAsync()
+    public Task DisposeAsync()
     {
-        if (_eventStore != null)
-        {
-            await _eventStore.DisposeAsync();
-        }
-
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        _eventStore?.Dispose();
+        return Task.CompletedTask;
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public async Task CompleteOrderLifecycle_HappyPath_ShouldSucceed()
     {
         // Arrange
@@ -175,7 +124,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         // ✅ No concurrency conflicts
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public void AddLineToCompletedOrder_ShouldFail()
     {
         // Arrange
@@ -194,7 +143,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.AddLine.Completed");
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public void CompleteEmptyOrder_ShouldFail()
     {
         // Arrange
@@ -209,7 +158,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.Complete.Empty");
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public void AddLineWithInvalidQuantity_ShouldFail()
     {
         // Arrange
@@ -224,7 +173,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.AddLine.InvalidQuantity");
     }
 
-    [RequiresDockerFact]
+    [Fact]
     public void AddLineWithNegativePrice_ShouldFail()
     {
         // Arrange
@@ -239,8 +188,8 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         result.Error.Code.Should().Be("Order.AddLine.InvalidPrice");
     }
 
-    [RequiresDockerFact]
-    public async Task LargeOrderWithManyLines_ShouldHandlePerformantly()
+    [Fact]
+    public async Task LargeOrderWithManyLines_ShouldAppendAllEvents()
     {
         // Arrange
         var orderId = OrderId.New();
@@ -252,9 +201,7 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
         var result = await _eventStore!.AppendEventsAsync(orderId.ToString(), initialEvents, 0);
         result.IsSuccess.Should().BeTrue();
 
-        // Act - Add 100 order lines
-        var stopwatch = Stopwatch.StartNew();
-
+        // Act — add 100 order lines.
         var allLineEvents = new List<IDomainEvent>();
         for (int i = 1; i <= 100; i++)
         {
@@ -266,18 +213,12 @@ public sealed class OrderLifecycleE2ETests : IAsyncLifetime
             order.ClearDomainEvents();
         }
 
-        // Append all events in batches
         var appendResult = await _eventStore.AppendEventsAsync(orderId.ToString(), allLineEvents, 1);
         appendResult.IsSuccess.Should().BeTrue();
 
-        stopwatch.Stop();
-
-        // Assert
+        // Assert — verify functional correctness (throughput is measured in PerfTests).
         order.OrderLines.Should().HaveCount(100);
-
-        // Performance: Should complete in < 5 seconds
-        stopwatch.ElapsedMilliseconds.Should().BeLessThan(5000);
-
-        Console.WriteLine($"Added 100 order lines in {stopwatch.ElapsedMilliseconds}ms");
+        var storedEvents = await _eventStore.GetEventsAsync(orderId.ToString());
+        storedEvents.Value.Should().HaveCount(101); // OrderPlaced + 100 OrderLineAdded
     }
 }
