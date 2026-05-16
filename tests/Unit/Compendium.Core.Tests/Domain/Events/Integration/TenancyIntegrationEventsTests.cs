@@ -184,4 +184,87 @@ public class TenancyIntegrationEventsTests
         // Assert
         evt.UpdatedBy.Should().BeNull();
     }
+
+    // Regression — POM-484. Before the fix, declaring `TenantId` as a positional
+    // record parameter shadowed `IntegrationEventBase.TenantId` (CS8907) and the
+    // value was silently dropped. These assertions would have been null. After
+    // the fix the backward-compat constructor assigns the inherited init-property.
+
+    [Fact]
+    public void TenantCreatedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantCreatedEvent("tenant-1", "Acme", "acme", "owner-1", "pro", true);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantUpdatedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantUpdatedEvent("tenant-1", "Acme", "acme", new[] { "Name" });
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantSuspendedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantSuspendedEvent("tenant-1", "Acme", "non-payment", DateTimeOffset.UtcNow, null);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantReactivatedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantReactivatedEvent("tenant-1", "Acme", DateTimeOffset.UtcNow);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantDeletedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantDeletedEvent("tenant-1", "Acme", DateTimeOffset.UtcNow, true);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantPlanChangedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantPlanChangedEvent("tenant-1", "Acme", "free", "pro", "upgrade", DateTimeOffset.UtcNow);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantUserAddedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantUserAddedEvent("tenant-1", "user-1", "u@x.com", "Owner", DateTimeOffset.UtcNow, null);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantUserRemovedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantUserRemovedEvent("tenant-1", "user-1", "u@x.com", DateTimeOffset.UtcNow, null);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantUserRoleChangedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantUserRoleChangedEvent("tenant-1", "user-1", "u@x.com", "Member", "Owner", DateTimeOffset.UtcNow, null);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantSettingsUpdatedEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var settings = new Dictionary<string, string?> { ["k"] = "v" };
+        var evt = new TenantSettingsUpdatedEvent("tenant-1", "Acme", "general", settings, DateTimeOffset.UtcNow, null);
+        evt.TenantId.Should().Be("tenant-1");
+    }
+
+    [Fact]
+    public void TenantQuotaExceededEvent_BackwardCompatConstructor_PreservesTenantId()
+    {
+        var evt = new TenantQuotaExceededEvent("tenant-1", "Acme", "storage", 100, 50, DateTimeOffset.UtcNow);
+        evt.TenantId.Should().Be("tenant-1");
+    }
 }
