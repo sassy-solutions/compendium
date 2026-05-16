@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace Compendium.Application.CQRS.Behaviors;
 
@@ -33,16 +34,25 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
 
             var errorMessage = string.Join("; ", errors);
 
-            // For Result<T> responses, we need to handle this differently
+            // For Result<T> responses, dispatch through the non-generic Result.Failure<T>(Error)
+            // static factory. The previous lookup against typeof(Result<>) returned null because
+            // Failure<T> is a static on the Result base type, not on the closed generic
+            // Result<TValue>, and GetMethod on a closed generic does not surface inherited statics
+            // without BindingFlags.FlattenHierarchy.
             if (typeof(TResponse).IsGenericType && typeof(TResponse).GetGenericTypeDefinition() == typeof(Result<>))
             {
                 var resultType = typeof(TResponse).GetGenericArguments()[0];
-                var failureMethod = typeof(Result<>).MakeGenericType(resultType)
-                    .GetMethod(nameof(Result<object>.Failure), new[] { typeof(Error) });
+                var failureMethod = typeof(Result)
+                    .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                    .Single(m => m.Name == nameof(Result.Failure)
+                              && m.IsGenericMethodDefinition
+                              && m.GetParameters().Length == 1
+                              && m.GetParameters()[0].ParameterType == typeof(Error))
+                    .MakeGenericMethod(resultType);
 
                 var error = Error.Validation("Validation.Failed", errorMessage);
-                var result = failureMethod?.Invoke(null, new object[] { error });
-                return (TResponse)result!;
+                var result = failureMethod.Invoke(null, new object[] { error })!;
+                return (TResponse)result;
             }
 
             // For Result responses
