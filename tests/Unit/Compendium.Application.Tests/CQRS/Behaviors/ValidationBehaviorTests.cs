@@ -70,21 +70,14 @@ public class ValidationBehaviorTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenInvalidAndResponseIsGenericResult_ShortCircuitsBeforeNext()
+    public async Task HandleAsync_WhenInvalidAndResponseIsGenericResult_ReturnsFailureAndShortCircuits()
     {
         // Arrange
-        // NOTE: The Result<T> branch in ValidationBehavior uses reflection
-        // (typeof(Result<>).MakeGenericType(...).GetMethod("Failure", new[] { typeof(Error) })).
-        // Because Failure<T>(Error) lives on the non-generic Result base, the lookup returns
-        // null without BindingFlags.FlattenHierarchy, so the behavior currently returns null
-        // instead of Result<T>.Failure. We assert the *short-circuit* (no call to next) here,
-        // since asserting "expected failure result" would surface the upstream bug; the
-        // returned value itself is intentionally not asserted.
         var behavior = new ValidationBehavior<ValidatableRequest, Result<int>>();
         var nextCalled = false;
 
         // Act
-        _ = await behavior.HandleAsync(
+        var actual = await behavior.HandleAsync(
             new ValidatableRequest { Name = null, Quantity = 0 },
             () =>
             {
@@ -94,6 +87,10 @@ public class ValidationBehaviorTests
             CancellationToken.None);
 
         // Assert
+        actual.Should().NotBeNull();
+        actual.IsFailure.Should().BeTrue();
+        actual.Error.Code.Should().Be("Validation.Failed");
+        actual.Error.Type.Should().Be(ErrorType.Validation);
         nextCalled.Should().BeFalse();
     }
 
