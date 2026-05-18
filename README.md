@@ -16,8 +16,41 @@ Compendium is the framework that powers [Nexus](https://sassy.solutions), Sassy 
 - **Sagas, two flavors** — `ProcessManager<TState>` for DDD-style orchestration sagas and `IHandle<TEvent>` for event-driven choreography sagas, each clearly named so you don't have to guess which pattern you're using. See [docs/sagas.md](docs/sagas.md).
 - **Multi-tenancy native** — Tenant context, resolution, and scoping baked into the primitives — not bolted on.
 - **Result pattern everywhere** — No control-flow exceptions. Every fallible operation returns `Result<T>` with structured `Error` values.
-- **Modular adapters** — Pick only what you need: PostgreSQL, Redis, Zitadel, Listmonk, LemonSqueezy, OpenRouter, ASP.NET Core.
+- **Modular adapters** — Pick only what you need: fourteen production adapters across persistence (Postgres, Redis, pgvector, Qdrant, S3-compatible), identity (Zitadel), billing (Stripe, LemonSqueezy), email (Listmonk), and AI (OpenRouter, OpenAI, Anthropic, Gemini, Ollama). See [Adapters](#adapters). Each ships its own repo, NuGet package, and release cadence per [ADR-0006](docs/adr/0006-multi-repo-adapter-split.md).
 - **Battle-tested in production** — Powers Nexus, a multi-tenant platform engineering product.
+
+## Adapters
+
+Each public adapter lives in its own repository under `sassy-solutions/compendium-adapter-*` and is released independently per [ADR-0006](docs/adr/0006-multi-repo-adapter-split.md). The framework defines the ports (`IEventStore`, `IAIProvider`, `IVectorStore`, `IBillingProvider`, …); adapters provide concrete implementations.
+
+### Official adapters
+
+| Domain | Adapter | Repo | NuGet |
+|---|---|---|---|
+| Persistence — event store | PostgreSQL | [`compendium-adapter-postgresql`](https://github.com/sassy-solutions/compendium-adapter-postgresql) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.PostgreSQL.svg)](https://www.nuget.org/packages/Compendium.Adapters.PostgreSQL/) |
+| Persistence — cache & idempotency | Redis | [`compendium-adapter-redis`](https://github.com/sassy-solutions/compendium-adapter-redis) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Redis.svg)](https://www.nuget.org/packages/Compendium.Adapters.Redis/) |
+| Persistence — vector store | pgvector | [`compendium-adapter-pgvector`](https://github.com/sassy-solutions/compendium-adapter-pgvector) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Pgvector.svg)](https://www.nuget.org/packages/Compendium.Adapters.Pgvector/) |
+| Persistence — vector store | Qdrant | [`compendium-adapter-qdrant`](https://github.com/sassy-solutions/compendium-adapter-qdrant) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Qdrant.svg)](https://www.nuget.org/packages/Compendium.Adapters.Qdrant/) |
+| Persistence — object storage | S3-compatible (AWS / R2 / MinIO / B2 / Wasabi) | [`compendium-adapter-s3`](https://github.com/sassy-solutions/compendium-adapter-s3) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.S3.svg)](https://www.nuget.org/packages/Compendium.Adapters.S3/) |
+| Identity | Zitadel | [`compendium-adapter-zitadel`](https://github.com/sassy-solutions/compendium-adapter-zitadel) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Zitadel.svg)](https://www.nuget.org/packages/Compendium.Adapters.Zitadel/) |
+| Billing | Stripe | [`compendium-adapter-stripe`](https://github.com/sassy-solutions/compendium-adapter-stripe) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Stripe.svg)](https://www.nuget.org/packages/Compendium.Adapters.Stripe/) |
+| Billing | LemonSqueezy | [`compendium-adapter-lemonsqueezy`](https://github.com/sassy-solutions/compendium-adapter-lemonsqueezy) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.LemonSqueezy.svg)](https://www.nuget.org/packages/Compendium.Adapters.LemonSqueezy/) |
+| Email | Listmonk | [`compendium-adapter-listmonk`](https://github.com/sassy-solutions/compendium-adapter-listmonk) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Listmonk.svg)](https://www.nuget.org/packages/Compendium.Adapters.Listmonk/) |
+| AI — gateway | OpenRouter | [`compendium-adapter-openrouter`](https://github.com/sassy-solutions/compendium-adapter-openrouter) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.OpenRouter.svg)](https://www.nuget.org/packages/Compendium.Adapters.OpenRouter/) |
+| AI — direct provider | OpenAI | [`compendium-adapter-openai`](https://github.com/sassy-solutions/compendium-adapter-openai) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.OpenAI.svg)](https://www.nuget.org/packages/Compendium.Adapters.OpenAI/) |
+| AI — direct provider | Anthropic | [`compendium-adapter-anthropic`](https://github.com/sassy-solutions/compendium-adapter-anthropic) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Anthropic.svg)](https://www.nuget.org/packages/Compendium.Adapters.Anthropic/) |
+| AI — direct provider | Gemini (Google) | [`compendium-adapter-gemini`](https://github.com/sassy-solutions/compendium-adapter-gemini) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Gemini.svg)](https://www.nuget.org/packages/Compendium.Adapters.Gemini/) |
+| AI — local | Ollama | [`compendium-adapter-ollama`](https://github.com/sassy-solutions/compendium-adapter-ollama) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Ollama.svg)](https://www.nuget.org/packages/Compendium.Adapters.Ollama/) |
+
+The thin ASP.NET Core glue (`Compendium.Adapters.AspNetCore` — middleware, ProblemDetails, multi-tenancy HTTP resolution) stays in the framework monorepo since it has no external SDK and evolves lock-step with `Compendium.Application`.
+
+### Verified third-party adapters
+
+None yet. Maintainers of community adapters that pass a security & convention review (namespacing, tenancy, Result-pattern, test coverage) can open a PR adding a row here.
+
+### Writing your own adapter
+
+Use the [`template-compendium-adapter-dotnet`](https://github.com/sassy-solutions/template-compendium-adapter-dotnet) GitHub template — it ships with the test stack, CI gate, MinVer versioning, and NuGet publishing wired in. See [`docs/adapters/external.md`](docs/adapters/external.md) for the writing guide.
 
 ## Quick start
 
@@ -96,26 +129,23 @@ Core (zero deps) → Abstractions → Application → Infrastructure → Adapter
 
 ## Packages
 
+These are the framework packages that ship from this repository. Adapter packages live in their own repositories — see [Adapters](#adapters) above.
+
 | Package | Purpose | NuGet |
 |---------|---------|-------|
 | `Compendium.Core` | DDD primitives, Result pattern, domain events | [![NuGet](https://img.shields.io/nuget/v/Compendium.Core.svg)](https://www.nuget.org/packages/Compendium.Core/) |
 | `Compendium.Abstractions` | Shared infrastructure port interfaces | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.svg)](https://www.nuget.org/packages/Compendium.Abstractions/) |
-| `Compendium.Abstractions.AI` | AI provider contracts | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.AI.svg)](https://www.nuget.org/packages/Compendium.Abstractions.AI/) |
+| `Compendium.Abstractions.AI` | AI provider contracts (incl. `IAIProvider`, `IEmbeddingProvider`, `IReranker`, agent loop) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.AI.svg)](https://www.nuget.org/packages/Compendium.Abstractions.AI/) |
 | `Compendium.Abstractions.Billing` | Billing provider contracts | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.Billing.svg)](https://www.nuget.org/packages/Compendium.Abstractions.Billing/) |
 | `Compendium.Abstractions.Email` | Email provider contracts | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.Email.svg)](https://www.nuget.org/packages/Compendium.Abstractions.Email/) |
 | `Compendium.Abstractions.Identity` | Identity provider contracts | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.Identity.svg)](https://www.nuget.org/packages/Compendium.Abstractions.Identity/) |
+| `Compendium.Abstractions.VectorStore` | Vector store port (`IVectorStore`) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.VectorStore.svg)](https://www.nuget.org/packages/Compendium.Abstractions.VectorStore/) |
+| `Compendium.Abstractions.Search` | Search port (`ISearchIndex`) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Abstractions.Search.svg)](https://www.nuget.org/packages/Compendium.Abstractions.Search/) |
 | `Compendium.Application` | CQRS dispatchers, handlers, pipelines | [![NuGet](https://img.shields.io/nuget/v/Compendium.Application.svg)](https://www.nuget.org/packages/Compendium.Application/) |
 | `Compendium.Infrastructure` | Projections, outbox, infrastructure building blocks | [![NuGet](https://img.shields.io/nuget/v/Compendium.Infrastructure.svg)](https://www.nuget.org/packages/Compendium.Infrastructure/) |
 | `Compendium.Multitenancy` | Tenant context, resolution, and scoping | [![NuGet](https://img.shields.io/nuget/v/Compendium.Multitenancy.svg)](https://www.nuget.org/packages/Compendium.Multitenancy/) |
+| `Compendium.Adapters.AspNetCore` | ASP.NET Core glue (middleware, ProblemDetails, multi-tenancy HTTP resolution) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.AspNetCore.svg)](https://www.nuget.org/packages/Compendium.Adapters.AspNetCore/) |
 | `Compendium.Testing` | Test helpers, fakes, TestContainers fixtures | [![NuGet](https://img.shields.io/nuget/v/Compendium.Testing.svg)](https://www.nuget.org/packages/Compendium.Testing/) |
-| `Compendium.Extensions.ExternalAdapters` | Unified registration for external adapters | [![NuGet](https://img.shields.io/nuget/v/Compendium.Extensions.ExternalAdapters.svg)](https://www.nuget.org/packages/Compendium.Extensions.ExternalAdapters/) |
-| `Compendium.Adapters.AspNetCore` | ASP.NET Core integration (middleware, auth, problem details) | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.AspNetCore.svg)](https://www.nuget.org/packages/Compendium.Adapters.AspNetCore/) |
-| `Compendium.Adapters.PostgreSQL` | PostgreSQL event store & repositories | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.PostgreSQL.svg)](https://www.nuget.org/packages/Compendium.Adapters.PostgreSQL/) |
-| `Compendium.Adapters.Redis` | Redis cache adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Redis.svg)](https://www.nuget.org/packages/Compendium.Adapters.Redis/) |
-| `Compendium.Adapters.Zitadel` | Zitadel OIDC identity adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Zitadel.svg)](https://www.nuget.org/packages/Compendium.Adapters.Zitadel/) |
-| `Compendium.Adapters.Listmonk` | Listmonk email adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.Listmonk.svg)](https://www.nuget.org/packages/Compendium.Adapters.Listmonk/) |
-| `Compendium.Adapters.LemonSqueezy` | LemonSqueezy billing adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.LemonSqueezy.svg)](https://www.nuget.org/packages/Compendium.Adapters.LemonSqueezy/) |
-| `Compendium.Adapters.OpenRouter` | OpenRouter AI provider adapter | [![NuGet](https://img.shields.io/nuget/v/Compendium.Adapters.OpenRouter.svg)](https://www.nuget.org/packages/Compendium.Adapters.OpenRouter/) |
 
 ## Documentation
 
